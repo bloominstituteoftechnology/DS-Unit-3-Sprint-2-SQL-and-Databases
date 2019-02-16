@@ -60,7 +60,10 @@ following questions:
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
 the data you need. the `charactercreator_*` and `armory_*` tables and where you
-should focus your attention.
+should focus your attention. `armory_item` and `charactercreator_character` are
+the main tables for Items and Characters respectively - the other tables are
+subsets of them by type (i.e. subclasses), connected via a key (`item_id` and
+`character_id`).
 
 You can use the DB Browser or other tools to explore the data and work on your
 queries if you wish, but to complete the assignment you should write a file
