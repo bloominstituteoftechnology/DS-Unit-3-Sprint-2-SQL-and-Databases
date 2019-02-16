@@ -94,3 +94,8 @@ mapping, a way to interact with SQL through programming language objects), and
 [query](https://docs.djangoproject.com/en/2.1/topics/db/queries/) the data.
 You'll find that the questions we answered with pure SQL are remarkably simple
 to answer using the ORM.
+
+If you need one more stretch goal - the RPG data was generated using
+[django-autofixture](https://github.com/volrath/django-autofixture), a tool that
+facilitates tests by randomly generating data. Check it out, and if you got
+Django working, see if you can generate more data.
