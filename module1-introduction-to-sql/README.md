@@ -71,6 +71,9 @@ queries if you wish, but to complete the assignment you should write a file
 `rpg_queries.py` that imports `sqlite3` and programmatically executes and
 reports results for the above queries.
 
+Some of these queries are challenging - that's OK! You can keep working on them
+tomorrow as well (we'll visit loading the same data into PostgreSQL.)
+
 ## Resources and Stretch Goals
 
 For a more complicated example SQLite database with a number of tables to play
