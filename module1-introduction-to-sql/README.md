@@ -22,17 +22,6 @@ emphasize using `sqlite3` from Python so we can do things programmatically, but
 it is encouraged to install the DB Browser as a helpful utility for ad hoc
 inspection and querying.
 
-Overview
-Joins come in several flavors, and a favorite of SQL puzzles is to understand the distinction between them. Consider a scenario where you have two tables, for now considered abstractly as $X$ (with $n$ rows $x_i$) and $Y$ (with $m$ rows $y_j$), and that there is some common key $id$ across the tables allowing rows to be connected. Following are the possible joins:
-
-Cross join - also known as Cartesian product, this combines each $x_i$ with each $y_j$, and will multiply out the number of rows returned ($n * m$)
-Left outer join - returns all $n$ rows of $X$, with the columns of $Y$ populated whenever the $id$ matches and allows a join and left as null otherwise
-Right outer join - similar to left, but uses the $m$ rows of $Y$ instead
-Inner join - only returns rows that are both in $X$ and $Y$, reducing the number of rows returned and guaranteeing that no null values introduced
-SQL databases support all of the above, but the last case - inner joins - is the most practical in most situations. Cross joins are essentially never used outside of testing the database (most join implementations are cross-joins followed by filtering), and outer joins, while occasionally useful, should never be the default (only choose an outer join if you know it is appropriate for your problem).
-
-There are specific cases of inner join referred to as equi-join (specifying what should be equal) and natural join (automatically joining by matching column names) - their implementation will vary across real-world databases, and use of natural join is generally discouraged.. Start with regular inner join - you can research and pick up more sophisticated techniques as needed later on.
-
 ## Live Lecture Task
 
 We'll work together with SQLite in Python, making and exploring a simple
