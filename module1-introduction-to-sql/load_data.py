@@ -26,7 +26,7 @@ class Load_Data():
         import sqlite3
         conn = sqlite3.connect(self.db_file)
         c = conn.cursor()
-        if command and argument == None:
+        if (command and argument) == None:
             for row in c.execute('SELECT {} FROM {}'.format(columns, table)):
                 print(row)
         else:
