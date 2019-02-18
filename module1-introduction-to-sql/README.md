@@ -51,22 +51,22 @@ randomized, the numeric and boolean fields were left as defaults.
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
-- How many total Characters are there?
-**A**: There are ___ total characters.
-- How many of each specific subclass?
-**A**: Is Necromancer the only subclass? If so, there are ___ Necromancers.
-- How many total Items?
-**A**: There are ___ total items.
-- How many of the Items are weapons? How many are not?
-**A**: ___ of the Items are weapons. Thus, ___ of the Items are not weapons.
-- How many Items does each character have? (Return first 20 rows)
-**A**: Query that shows first 20 characters and their respective Items.
-- How many Weapons does each character have? (Return first 20 rows)
-**A**: Query that shows first 20 characters and their respective weapons.
-- On average, how many Items does each Character have?
-**A**: Get mean Items for all Characters.
-- On average, how many Weapons does each character have?
-**A**: Get mean Weapons for all Characters.
+- How many total Characters are there?  
+**A**: There are ___ total characters.  
+- How many of each specific subclass?  
+**A**: Is Necromancer the only subclass? If so, there are ___ Necromancers.  
+- How many total Items?  
+**A**: There are ___ total items.  
+- How many of the Items are weapons? How many are not?  
+**A**: ___ of the Items are weapons. Thus, ___ of the Items are not weapons.  
+- How many Items does each character have? (Return first 20 rows)  
+**A**: Query that shows first 20 characters and their respective Items.  
+- How many Weapons does each character have? (Return first 20 rows)  
+**A**: Query that shows first 20 characters and their respective weapons.  
+- On average, how many Items does each Character have?  
+**A**: Get mean Items for all Characters.  
+- On average, how many Weapons does each character have?  
+**A**: Get mean Weapons for all Characters.  
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
