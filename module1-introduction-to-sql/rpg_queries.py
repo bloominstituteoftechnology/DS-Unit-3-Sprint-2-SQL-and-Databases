@@ -8,20 +8,20 @@ curse = connect.cursor()
 def total_char_count():
     '''Total all characters'''
     print(pd.read_sql_query('''SELECT COUNT(distinct character_id)
-        FROM charactercreator_character;''',connect))
+        FROM charactercreator_character;''', connect))
 
 
 def sub_class():
     '''Grab population count of each subclass of characters'''
     print(pd.read_sql_query('''SELECT "mages", COUNT(*)
         From charactercreator_mage
-    
+
         UNION
-    
+
         SELECT "clerics", COUNT(*)
         FROM charactercreator_cleric
 
-        UNION 
+        UNION
 
         SELECT "fighter", COUNT(*)
         FROM charactercreator_fighter
@@ -29,13 +29,13 @@ def sub_class():
         UNION
 
         SELECT "thieves", COUNT(*)
-        FROM charactercreator_thief;''',connect))
+        FROM charactercreator_thief;''', connect))
 
 
 def item_count():
     '''Total count of all items'''
     print(pd.read_sql_query('''SELECT COUNT(distinct item_id)
-        FROM armory_item;''',connect))
+        FROM armory_item;''', connect))
 
 
 def weapons():
@@ -44,7 +44,7 @@ def weapons():
         FROM armory_item
         WHERE item_id IN
             (SELECT distinct item_ptr_id
-                FROM armory_weapon);''',connect))
+                FROM armory_weapon);''', connect))
 
 
 def not_weapon():
@@ -53,7 +53,7 @@ def not_weapon():
         FROM armory_item
         WHERE item_id NOT IN
             (SELECT distinct item_ptr_id
-                FROM armory_weapon);''',connect))
+                FROM armory_weapon);''', connect))
 
 
 def char_items():
@@ -61,7 +61,7 @@ def char_items():
     print(pd.read_sql_query(''' SELECT character_id, COUNT( item_id)
         FROM charactercreator_character_inventory
         GROUP BY character_id
-        LIMIT 20;''',connect))
+        LIMIT 20;''', connect))
 
 
 def char_weapons():
@@ -72,7 +72,7 @@ def char_weapons():
             (SELECT distinct item_ptr_id
                 FROM armory_weapon)
         GROUP BY character_id
-        LIMIT 20;''',connect))
+        LIMIT 20;''', connect))
 
 
 def item_avg():
@@ -81,7 +81,7 @@ def item_avg():
         FROM(
             SELECT character_id, COUNT(item_id) AS items
             FROM charactercreator_character_inventory
-            GROUP BY character_id);''',connect))
+            GROUP BY character_id);''', connect))
 
 
 def weapon_avg():
@@ -93,4 +93,4 @@ def weapon_avg():
             Where item_id IN(
                     SELECT distinct item_ptr_id
                     FROM armory_weapon)
-            GROUP BY character_id);''',connect))
+            GROUP BY character_id);''', connect))
