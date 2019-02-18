@@ -3,20 +3,34 @@ import pandas as pd
 
 
 class QueryRPGDB:
+    """
+    Class for querying rpg_db
+    """
     def __init__(self):
         self.self = self
 
     def chara_count(self):
+        """
+        Queries for unique values id values in charactercreator_character temple table
+        :return:
+        """
         connection = sqlite3.connect('rpg_db.sqlite3')
 
         cursor = connection.cursor()
-        cursor.execute("""SELECT COUNT (DISTINCT character_id) FROM charactercreator_character""")
+        total_chara_counts = cursor.execute("""SELECT COUNT (DISTINCT character_id) FROM charactercreator_character""")
 
-        print('Querying total character amounts:', cursor.fetchone())
+        pretty_results = pd.DataFrame(total_chara_counts, columns=['Total_Character_Count'])
+
+        print(pretty_results)
 
         connection.close()
 
     def subclass_count(self):
+        """
+        Queries multiple character_creator subclasses for counts, maps column names to table what we named the separate
+        counts
+        :return:
+        """
         connection = sqlite3.connect('rpg_db.sqlite3')
 
         cursor = connection.cursor()
@@ -35,7 +49,38 @@ class QueryRPGDB:
 
         connection.close()
 
+    def item_total_weapon_distinguish(self):
+        """
+        Queries DB for total items in item table and queries for matching weapon id in item table
+        :return:
+        """
+        connection = sqlite3.connect('rpg_db.sqlite3')
+
+        cursor = connection.cursor()
+
+        total_item_query = cursor.execute("""SELECT COUNT (DISTINCT item_id) FROM armory_item""")
+        total_item_counts = total_item_query.fetchone()
+
+        total_weapon_query = cursor.execute("""SELECT COUNT(*) 
+        FROM armory_item, armory_weapon WHERE armory_item.item_id = armory_weapon.item_ptr_id""")
+        total_weapon_counts = total_weapon_query.fetchone()
+
+        total_non_weapon_query = cursor.execute("""SELECT COUNT(*) 
+        FROM armory_item WHERE item_id NOT IN(SELECT item_ptr_id FROM armory_weapon)""")
+
+        total_non_weapon_counts = total_non_weapon_query.fetchone()
+
+        # this tricky list extracts the data from the sqlite3 queried tuple so we can pass them in as 1x2 instead of 2x1
+        counts = [total_item_counts[0], total_weapon_counts[0], total_non_weapon_counts[0]]
+
+        pretty_results = pd.DataFrame([counts], columns=['Total_Items_Count', 'Items_Are_Weapons', 'Items_Not_Weapons'])
+
+        print(pretty_results)
+
+        connection.close()
+
 
 db_connect = QueryRPGDB()
 db_connect.chara_count()
 db_connect.subclass_count()
+db_connect.item_total_weapon_distinguish()
