@@ -1,12 +1,12 @@
-import sqlite3
-import pandas as pd
 
-class Read_DB():
+class Load_Data():
 
     def __init__(self, db_file):
         self.db_file = db_file
 
     def create_dataframe(self, columns, table):
+        import sqlite3
+        import pandas as pd
         data = []
         col_names = columns.split(",")
         conn = sqlite3.connect(self.db_file)
