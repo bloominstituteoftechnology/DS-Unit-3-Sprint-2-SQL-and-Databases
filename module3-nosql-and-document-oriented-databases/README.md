@@ -10,12 +10,13 @@ problems.
 
 ## Before Lecture
 
-Sign up for an account at [mLab](https://mlab.com/), the official hosted service
-of MongoDB with a generous (500mb) free tier. You can also explore the many
-[MongoDB tools](http://mongodb-tools.com/) out there, though none in particular
-are recommended or required for installation (we're really just checking out
-MongoDB as a way to understand document-oriented databases - it's unlikely to
-become a core part of your toolkit the way SQLite and PostgreSQL may).
+Sign up for an account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas),
+the official hosted service of MongoDB with a generous (500mb) free tier. You
+can also explore the many [MongoDB tools](http://mongodb-tools.com/) out there,
+though none in particular are recommended or required for installation (we're
+really just checking out MongoDB as a way to understand document-oriented
+databases - it's unlikely to become a core part of your toolkit the way SQLite
+and PostgreSQL may).
 
 ## Live Lecture Task
 
