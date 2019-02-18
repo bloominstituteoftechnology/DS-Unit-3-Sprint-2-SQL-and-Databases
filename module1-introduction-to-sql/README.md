@@ -72,7 +72,9 @@ queries if you wish, but to complete the assignment you should write a file
 reports results for the above queries.
 
 Some of these queries are challenging - that's OK! You can keep working on them
-tomorrow as well (we'll visit loading the same data into PostgreSQL.)
+tomorrow as well (we'll visit loading the same data into PostgreSQL). It's also
+OK to figure out the results partially with a query and partially with a bit of
+logic or math afterwards, though doing things purely with SQL is a good goal.
 
 ## Resources and Stretch Goals
 
