@@ -1,0 +1,3 @@
+#!/bin/bash 
+
+autopep8 -r --in-place -v --aggressive --aggressive --aggressive $1

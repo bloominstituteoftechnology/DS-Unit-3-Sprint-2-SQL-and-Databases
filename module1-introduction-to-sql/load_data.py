@@ -1,4 +1,6 @@
 '''via rudy'''
+
+
 class Load_Data():
 
     def __init__(self, db_file):
@@ -36,7 +38,6 @@ class Load_Data():
             return pd.DataFrame(data=data, columns=col_names)
 
     def make_query(self, SELECT, FROM, STATEMENT=None, query=None):
-
         '''
         Make basic queries using sqlite3
         ---------------------------------
@@ -66,11 +67,11 @@ class Load_Data():
         conn = sqlite3.connect(self.db_file)
         c = conn.cursor()
 
-        if (STATEMENT and query) == None:
+        if (STATEMENT and query) is None:
             for row in c.execute('SELECT {} FROM {}'.format(SELECT, FROM)):
                 print(row)
 
-        elif (STATEMENT and query) != None:
+        elif (STATEMENT and query) is not None:
             for row in c.execute('SELECT {} FROM {} {} {}'.format(SELECT, FROM,
                                                                   STATEMENT,
                                                                   query)):
