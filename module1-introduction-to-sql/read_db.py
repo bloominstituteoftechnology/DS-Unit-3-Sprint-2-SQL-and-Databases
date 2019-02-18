@@ -21,3 +21,17 @@ class Load_Data():
             return pd.DataFrame(data=data)
         else:
             return pd.DataFrame(data=data, columns=col_names)
+
+    def make1_query(self, columns, table, command=None, argument=None):
+        import sqlite3
+        conn = sqlite3.connect(self.db_file)
+        c = conn.cursor()
+        if command and argument == None:
+            for row in c.execute('SELECT {} FROM {}'.format(columns, table)):
+                print(row)
+        else:
+            for row in c.execute('SELECT {} FROM {} {} {}'.format(columns,
+                                                                  table,
+                                                                  command,
+                                                                  argument)):
+                print(row)
