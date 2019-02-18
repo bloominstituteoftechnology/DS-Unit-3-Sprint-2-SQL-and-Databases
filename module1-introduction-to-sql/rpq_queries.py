@@ -37,8 +37,20 @@ for w in c.execute('SELECT COUNT(item_ptr_id) FROM armory_weapon'):
 print((i[0] - w[0]), 'Non-Weapons')
 print()
 
+query1 = '''
+SELECT AVG(items)
+FROM (
+    SELECT character_id, count(item_id) as items
+     FROM charactercreator_character_inventory
+     GROUP BY character_id);
+'''
+for i in c.execute(query1):
+    print('Each character has average of', i[0], 'items')
+
 '''
 How many Items does each character have? (Return first 20 rows)
+
+
 How many Weapons does each character have? (Return first 20 rows)
 On average, how many Items does each Character have?
 On average, how many Weapons does each character have?
