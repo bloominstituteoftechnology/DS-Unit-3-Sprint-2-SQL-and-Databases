@@ -4,11 +4,30 @@ curs = conn.cursor()
 
 # How many total Characters are there?
 query1 = """SELECT COUNT(name) 
-FROM charactercreator_character;
-- How many of each specific subclass?
-SELECT COUNT(*) as mages, COUNT(*) as clerics, COUNT(*) as fighters, COUNT(*) as thieves 
-FROM charactercreator_mage, charactercreator_cleric, charactercreator_fighter, charactercreator_thief"""
+FROM charactercreator_character;"""
 curs.execute(query1)
+curs.fetchall()
+
+## How many of each specific subclass?
+query8 = """SELECT 'mages', COUNT(*) 
+FROM charactercreator_mage
+
+UNION
+
+SELECT 'clerics', COUNT(*) 
+FROM charactercreator_cleric
+
+UNION
+
+SELECT 'fighter', COUNT(*) 
+FROM charactercreator_fighter
+
+UNION
+
+SELECT 'thieves', COUNT(*) 
+FROM charactercreator_thief;"""
+
+curs.execute(query8)
 curs.fetchall()
 
 # How many total Items?
@@ -17,12 +36,13 @@ FROM armory_item;"""
 curs.execute(query2)
 curs.fetchall()
 
-# How many of the Items are weapons? How many are not?
+# How many of the Items are weapons? 
 query3 = """SELECT COUNT(power)  
 FROM armory_weapon;"""
 curs.execute(query3)
 curs.fetchall()
 
+# How many are not?
 total Items - weapon items
 
 # How many Items does each character have? (Return first 20 rows)
