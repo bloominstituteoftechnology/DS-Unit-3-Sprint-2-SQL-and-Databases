@@ -22,16 +22,24 @@ class Load_Data():
         else:
             return pd.DataFrame(data=data, columns=col_names)
 
-    def make1_query(self, columns, table, command=None, argument=None):
+    def make_query(self, columns, table, query1=None, query2=None):
         import sqlite3
         conn = sqlite3.connect(self.db_file)
         c = conn.cursor()
-        if (command and argument) == None:
+        if (query1 and query2) == None:
             for row in c.execute('SELECT {} FROM {}'.format(columns, table)):
+                print(row)
+        elif (query1 != None) and (query2 == None):
+            for row in c.execute('SELECT {} FROM {} {}'.format(columns, table,
+                                                               query1)):
+                print(row)
+        elif (query1 == None) and (query2 != None):
+            for row in c.execute('SELECT {} FROM {} {}'.format(columns, table,
+                                                               query2)):
                 print(row)
         else:
             for row in c.execute('SELECT {} FROM {} {} {}'.format(columns,
                                                                   table,
-                                                                  command,
-                                                                  argument)):
+                                                                  query1,
+                                                                  query2)):
                 print(row)
