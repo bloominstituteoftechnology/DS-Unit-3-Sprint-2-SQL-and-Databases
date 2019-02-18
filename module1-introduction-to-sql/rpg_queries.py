@@ -9,55 +9,56 @@ def count_characters(cursor):
     Args:
         cursor (sqlite3.Cursor): cursor to sqlite database
     Returns:
-        (int) Number of characters.
+        (int) Number of characters
     """
     return cursor.execute("""SELECT COUNT(character_id)
     FROM charactercreator_character;""").fetchone()[0]
 
 
 def count_character_class(cursor, subclass):
-    """Returns the number of characters from sqlite cursor.
+    """Returns the number of characters of subclass from sqlite cursor.
 
     Args:
         cursor (sqlite3.Cursor): cursor to sqlite database
+        subclass (str): name of character class
     Returns:
-        (int) Number of characters.
+        (int) Number of characters of subclass
     """
     return cursor.execute("""SELECT COUNT(*)
     FROM charactercreator_{}""".format(subclass)).fetchone()[0]
 
 
 def count_items(cursor):
-    """Returns the number of characters from sqlite cursor.
+    """Returns the number of items from sqlite cursor.
 
     Args:
         cursor (sqlite3.Cursor): cursor to sqlite database
     Returns:
-        (int) Number of characters.
+        (int) Number of items
     """
     return cursor.execute("""SELECT COUNT(*)
     FROM armory_item""").fetchone()[0]
 
 
 def count_weapons(cursor):
-    """Returns the number of characters from sqlite cursor.
+    """Returns the number of weapons from sqlite cursor.
 
     Args:
         cursor (sqlite3.Cursor): cursor to sqlite database
     Returns:
-        (int) Number of characters.
+        (int) Number of weapons
     """
     return cursor.execute("""SELECT COUNT(*)
     FROM armory_weapon""").fetchone()[0]
 
 
 def count_non_weapons(cursor):
-    """Returns the number of characters from sqlite cursor.
+    """Returns the number of nonweapon items from sqlite cursor.
 
     Args:
         cursor (sqlite3.Cursor): cursor to sqlite database
     Returns:
-        (int) Number of characters.
+        (int) Number of nonweapon items
     """
     return cursor.execute("""SELECT COUNT(*)
     FROM armory_item
@@ -66,12 +67,12 @@ def count_non_weapons(cursor):
 
 
 def avg_item_count_character(cursor):
-    """Returns the number of characters from sqlite cursor.
+    """Returns the average number of items per character from sqlite cursor.
 
     Args:
         cursor (sqlite3.Cursor): cursor to sqlite database
     Returns:
-        (int) Number of characters.
+        (float) Average number of items per character
     """
     return cursor.execute("""SELECT AVG(item_ct)
     FROM(
@@ -82,12 +83,12 @@ def avg_item_count_character(cursor):
 
 
 def avg_weapon_count_character(cursor):
-    """Returns the number of characters from sqlite cursor.
+    """Returns the average number of weapons per character from sqlite cursor.
 
     Args:
         cursor (sqlite3.Cursor): cursor to sqlite database
     Returns:
-        (int) Number of characters.
+        (float) Average number of weapons per character
     """
     return cursor.execute("""SELECT AVG(item_ct)
     FROM(
