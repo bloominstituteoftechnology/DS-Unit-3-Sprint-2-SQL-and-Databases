@@ -55,6 +55,8 @@ following questions:
 - How many of each specific subclass?
 - How many total Items?
 - How many of the Items are weapons? How many are not?
+- How many Items does each character have? (Return first 20 rows)
+- How many Weapons does each character have? (Return first 20 rows)
 - On average, how many Items does each Character have?
 - On average, how many Weapons does each character have?
 
@@ -70,6 +72,14 @@ You can use the DB Browser or other tools to explore the data and work on your
 queries if you wish, but to complete the assignment you should write a file
 `rpg_queries.py` that imports `sqlite3` and programmatically executes and
 reports results for the above queries.
+
+Some of these queries are challenging - that's OK! You can keep working on them
+tomorrow as well (we'll visit loading the same data into PostgreSQL). It's also
+OK to figure out the results partially with a query and partially with a bit of
+logic or math afterwards, though doing things purely with SQL is a good goal.
+[Subqueries](https://www.w3resource.com/sql/subqueries/understanding-sql-subqueries.php)
+and [aggregation functions](https://www.sqltutorial.org/sql-aggregate-functions/)
+may be helpful for putting together more complicated queries.
 
 ## Resources and Stretch Goals
 
