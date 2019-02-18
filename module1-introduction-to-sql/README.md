@@ -77,6 +77,8 @@ Some of these queries are challenging - that's OK! You can keep working on them
 tomorrow as well (we'll visit loading the same data into PostgreSQL). It's also
 OK to figure out the results partially with a query and partially with a bit of
 logic or math afterwards, though doing things purely with SQL is a good goal.
+[Subqueries](https://www.w3resource.com/sql/subqueries/understanding-sql-subqueries.php)
+may be helpful for putting together more complicated queries.
 
 ## Resources and Stretch Goals
 
