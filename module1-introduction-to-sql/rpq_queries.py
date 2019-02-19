@@ -63,6 +63,7 @@ class QueryRPGDB:
 
         total_weapon_query = cursor.execute("""SELECT COUNT(*) 
         FROM armory_item, armory_weapon WHERE armory_item.item_id = armory_weapon.item_ptr_id""")
+
         total_weapon_counts = total_weapon_query.fetchone()
 
         total_non_weapon_query = cursor.execute("""SELECT COUNT(*) 
@@ -79,8 +80,36 @@ class QueryRPGDB:
 
         connection.close()
 
+    def character_items(self, default_rows=20):
+        """
+
+        :param default_rows: Number of rows to return from query: default 20
+        :return:
+        """
+        connection = sqlite3.connect('rpg_db.sqlite3')
+
+        cursor = connection.cursor()
+
+        owned_item_by_char = cursor.execute("""SELECT DISTINCT character_id, COUNT(character_id) 
+        FROM charactercreator_character_inventory GROUP BY character_id""")
+
+        owned_item_result = owned_item_by_char.fetchmany(default_rows)
+
+        tuple1, tuple2 = zip(*owned_item_result)
+
+        list1 = list(tuple1)
+        list2 = list(tuple2)
+
+        series1 = pd.Series(list1)
+        series2 = pd.Series(list2)
+
+        pretty_results = pd.DataFrame(({'Character_ID': series1, 'Items_Owned': series2}))
+
+        print(pretty_results)
+
 
 db_connect = QueryRPGDB()
 db_connect.chara_count()
 db_connect.subclass_count()
 db_connect.item_total_weapon_distinguish()
+db_connect.character_items()
