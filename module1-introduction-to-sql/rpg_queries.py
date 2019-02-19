@@ -16,17 +16,21 @@ q = 'SELECT COUNT(*) FROM django_content_type AS d WHERE d.app_label=="character
 c = conc.execute(q).fetchone()
 print(f"How many subclasses are there? {c[0]}")
 q = """
-
    SELECT d.model AS model FROM django_content_type AS d WHERE d.app_label=="charactercreator" and d.model != "character"
-
-
 """
 print(f"How many of each specific subclass?")
 c = conc.execute(q).fetchall()
 for m in c:
-   print('\t', m[0], end='')
+   if m[0] == 'necromancer':
+       print('\t', 'mage-necromancer', end='')
+   else:
+       print('\t', m[0], end='')
    q = f"select count(*) from charactercreator_{m[0]}"
    c = conc.execute(q).fetchone()[0]
+   if m[0] == 'mage':
+       nq = f"select count(*) from charactercreator_necromancer"
+       nc = conc.execute(nq).fetchone()[0]
+       c -= nc
    print(f': {c}') 
 
 q = "SELECT COUNT(*) FROM armory_item"
