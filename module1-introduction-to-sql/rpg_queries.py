@@ -43,8 +43,12 @@ curs.execute(query3)
 curs.fetchall()
 
 # How many are not?
-total Items - weapon items
-
+query9 = '''SELECT COUNT(*)
+FROM armory_item
+WHERE item_id NOT IN
+            (SELECT item_ptr_id
+            FROM armory_weapon);'''
+            
 # How many Items does each character have? (Return first 20 rows)
 query4 = """SELECT character_id, COUNT(character_id) AS items
 FROM charactercreator_character_inventory 
