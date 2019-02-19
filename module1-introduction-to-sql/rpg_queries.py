@@ -25,6 +25,9 @@ print(char_items.shape[0] - weapons.shape[0], 'are not weapons.\n')
 first_twenty_chars_item_counts = pd.read_sql_query("SELECT character_id, COUNT(item_id) AS item_count from charactercreator_character_inventory GROUP BY character_id LIMIT 20;", connection)
 print(first_twenty_chars_item_counts)
 
-first_twenty_chars_weapon_counts = pd.read_sql_query("SELECT character_id, COUNT(item_id) AS weapon_count from charactercreator_character_inventory JOIN armory_item WHERE 137 < armory_item.item_id GROUP BY character_id LIMIT 20;", connection)
+first_twenty_chars_weapon_counts = pd.read_sql_query("SELECT character_id, COUNT(item_id) AS weapon_count from charactercreator_character_inventory WHERE item_id in (SELECT distinct item_ptr_id from armory_weapon) GROUP BY character_id LIMIT 20;", connection)
+# Hat Tip to KS/LSDS01 for assistance in honing this query above
+
+print('\nIn "armory_item", the weapons are all grouped from item 138 through item 174. Thus, the following query shows character_id and number of items falling in that item range (inclusive of item 174).\n')
 print(first_twenty_chars_weapon_counts)
 
