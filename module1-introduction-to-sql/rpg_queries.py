@@ -22,3 +22,6 @@ weapons = pd.read_sql_query("SELECT * from armory_weapon;", connection)
 print(weapons.shape[0], 'are weapons.')
 print(char_items.shape[0] - weapons.shape[0], 'are not weapons.\n')
 
+first_twenty_chars_item_counts = pd.read_sql_query("SELECT character_id, COUNT(item_id) AS item_count from charactercreator_character_inventory GROUP BY character_id LIMIT 20;", connection)
+print(first_twenty_chars_item_counts)
+
