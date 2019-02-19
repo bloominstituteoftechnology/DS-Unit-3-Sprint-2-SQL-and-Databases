@@ -14,7 +14,20 @@ print(f"How many total Characters are there? {c[0]}")
 
 q = 'SELECT COUNT(*) FROM django_content_type AS d WHERE d.app_label=="charactercreator" and d.model != "character"';
 c = conc.execute(q).fetchone()
-print(f"How many of each specific subclass? {c[0]})")
+print(f"How many subclasses are there? {c[0]}")
+q = """
+
+   SELECT d.model AS model FROM django_content_type AS d WHERE d.app_label=="charactercreator" and d.model != "character"
+
+
+"""
+print(f"How many of each specific subclass?")
+c = conc.execute(q).fetchall()
+for m in c:
+   print('\t', m[0], end='')
+   q = f"select count(*) from charactercreator_{m[0]}"
+   c = conc.execute(q).fetchone()[0]
+   print(f': {c}') 
 
 q = "SELECT COUNT(*) FROM armory_item"
 c = conc.execute(q).fetchone()
@@ -75,12 +88,17 @@ FROM (
      GROUP BY character_id);"""
 print(f" On average, how many Items does each Character have?  {conc.execute(q).fetchone()[0]}")
 
+
 q = """
-SELECT AVG(items)
+SELECT (total * 1.0)/n  FROM (
+(SELECT SUM(items) as total
 FROM (
-     SELECT character_id, count(item_id) as items
+     SELECT i.character_id as id, count(*) as items
      FROM armory_weapon AS w JOIN charactercreator_character_inventory AS i 
      ON w.item_ptr_id = i.character_id
-     GROUP BY character_id)"""
-
-print(f" On average, how many Weapons does each Character have?  {conc.execute(q).fetchone()[0]}")
+     GROUP BY i.character_id))
+,
+(SELECT n FROM (select count(*) as n FROM charactercreator_character))) 
+ """
+fo = conc.execute(q).fetchone()
+print(f" On average, how many Weapons does each Character have?  {fo[0]}")
