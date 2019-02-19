@@ -90,11 +90,14 @@ class QueryRPGDB:
 
         cursor = connection.cursor()
 
+        # this group by statement will return a tuple of the selected values
+        # it is very hard to work with out of the box, especially if you want it in a data frame
         owned_item_by_char = cursor.execute("""SELECT DISTINCT character_id, COUNT(character_id) 
         FROM charactercreator_character_inventory GROUP BY character_id""")
 
         owned_item_result = owned_item_by_char.fetchmany(default_rows)
 
+        # processing for tuple
         tuple1, tuple2 = zip(*owned_item_result)
 
         list1 = list(tuple1)
@@ -103,9 +106,13 @@ class QueryRPGDB:
         series1 = pd.Series(list1)
         series2 = pd.Series(list2)
 
+        # the only way I could get this to work was to map with dictionary, otherwise you get a 2 row
+        # dataframe with each row holding a single list of 20 values...
         pretty_results = pd.DataFrame(({'Character_ID': series1, 'Items_Owned': series2}))
 
         print(pretty_results)
+
+
 
 
 db_connect = QueryRPGDB()
