@@ -67,19 +67,65 @@ def get_num_weapons_and_not_weapons(curs):
     return num_weapons, total_items - num_weapons
 
 def items_per_character(curs):
-    sql_grouped_items_for_each_character = '''
+    sql_grouped_items_per_character = '''
       SELECT character_id, COUNT(item_id)
       FROM charactercreator_character_inventory
       GROUP BY character_id
       LIMIT 20
     '''
     grouped_items_per_character = run(curs,
-                                      sql_grouped_items_for_each_character,
+                                      sql_grouped_items_per_character,
                                       Fetch.FETCH_ALL)
 
     return grouped_items_per_character
 
-# def weapons_per_character(curs):
-#     sql_grouped_weapons_per_character = '''
-#       SELECT character_id, 
-#     '''
+def weapons_per_character(curs):
+
+    sql_grouped_weapons_count_per_character = '''
+      SELECT character_id, COUNT(item_id)
+      FROM charactercreator_character_inventory
+      WHERE item_id IN (
+        SELECT item_ptr_id
+        FROM armory_weapon)
+      GROUP BY item_id
+      LIMIT 20
+    '''
+
+    grouped_weapons_count_per_character = \
+      run(curs,
+          sql_grouped_weapons_count_per_character,
+          Fetch.FETCH_ALL)
+
+    return grouped_weapons_count_per_character
+                                              
+def avg_items_per_character(curs):
+
+    sql_items_avg_per_character = '''
+      SELECT AVG((SELECT COUNT(item_id)
+                     FROM charactercreator_character_inventory
+                     GROUP BY character_id))
+    '''
+
+    avg_items_avg_per_character = \
+        run(curs,
+            sql_items_avg_per_character,
+            Fetch.FETCH_ONE)[0]
+
+    return avg_items_avg_per_character
+
+def avg_weapons_per_character(curs):
+
+    sql_weapons_avg_per_character = '''
+      SELECT AVG((SELECT COUNT(item_id)
+                  FROM charactercreator_character_inventory
+                  WHERE item_id IN (SELECT item_ptr_id
+                                    FROM armory_weapon)
+                  GROUP BY character_id))
+    '''
+
+    weapons_avg_per_character = \
+        run(curs,
+            sql_weapons_avg_per_character,
+            Fetch.FETCH_ONE)[0]
+
+    return weapons_avg_per_character
