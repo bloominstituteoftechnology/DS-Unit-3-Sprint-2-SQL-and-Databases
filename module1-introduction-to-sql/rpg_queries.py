@@ -25,7 +25,7 @@ def count_character_class(cursor, subclass):
         (int) Number of characters of subclass
     """
     return cursor.execute("""SELECT COUNT(*)
-    FROM charactercreator_{}""".format(subclass)).fetchone()[0]
+    FROM charactercreator_{};""".format(subclass)).fetchone()[0]
 
 
 def count_items(cursor):
@@ -37,7 +37,7 @@ def count_items(cursor):
         (int) Number of items
     """
     return cursor.execute("""SELECT COUNT(*)
-    FROM armory_item""").fetchone()[0]
+    FROM armory_item;""").fetchone()[0]
 
 
 def count_weapons(cursor):
@@ -49,7 +49,7 @@ def count_weapons(cursor):
         (int) Number of weapons
     """
     return cursor.execute("""SELECT COUNT(*)
-    FROM armory_weapon""").fetchone()[0]
+    FROM armory_weapon;""").fetchone()[0]
 
 
 def count_non_weapons(cursor):
@@ -63,7 +63,7 @@ def count_non_weapons(cursor):
     return cursor.execute("""SELECT COUNT(*)
     FROM armory_item
     WHERE item_id
-    NOT IN (SELECT item_ptr_id FROM armory_weapon)""").fetchone()[0]
+    NOT IN (SELECT item_ptr_id FROM armory_weapon);""").fetchone()[0]
 
 
 def avg_item_count_character(cursor):
@@ -76,10 +76,10 @@ def avg_item_count_character(cursor):
     """
     return cursor.execute("""SELECT AVG(item_ct)
     FROM(
-        SELECT COUNT(item_id) as item_ct
+        SELECT COUNT(item_id) AS item_ct
         FROM charactercreator_character_inventory
         GROUP BY character_id
-    )""").fetchone()[0]
+    );""").fetchone()[0]
 
 
 def avg_weapon_count_character(cursor):
@@ -92,12 +92,13 @@ def avg_weapon_count_character(cursor):
     """
     return cursor.execute("""SELECT AVG(item_ct)
     FROM(
-        SELECT COUNT(item_id) as item_ct
+        SELECT COUNT(item_id) AS item_ct
         FROM charactercreator_character_inventory
         WHERE item_id
         IN (SELECT item_ptr_id FROM armory_weapon)
         GROUP BY character_id
-    )""").fetchone()[0]
+    );""").fetchone()[0]
+
 
 if __name__ == "__main__":
     conn = sqlite3.connect('rpg_db.sqlite3')
