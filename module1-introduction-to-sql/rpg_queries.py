@@ -74,16 +74,6 @@ query_commands = ["""SELECT COUNT(*)
 # Establish the connection to db file
 conn = sql.connect('rpg_db.sqlite3')
 
-"""for i in range(len(query_list)):
-    curs = conn.cursor()
-    print(query_list[i])
-    curs.execute(query_commands[i])
-    print(curs.fetchall())
-    curs.close()
-curs = conn.cursor()
-curs.execute(query_commands[0])
-print(curs.fetchall())"""
-
 for i in range(len(query_list)):
     print(query_list[i])
     print(query_commands[i])
@@ -92,4 +82,4 @@ for i in range(len(query_list)):
     print(curs.fetchall())
     curs.close()
 
-
+conn.close()
