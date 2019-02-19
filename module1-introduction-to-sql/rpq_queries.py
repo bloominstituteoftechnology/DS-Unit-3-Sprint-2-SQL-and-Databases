@@ -146,6 +146,37 @@ class QueryRPGDB:
 
         print(pretty_results)
 
+    def weapons_items_avg(self):
+        connection = sqlite3.connect('rpg_db.sqlite3')
+
+        cursor = connection.cursor()
+
+        weapons_avg = cursor.execute("""
+        SELECT AVG(OWNED_WEAPONS)
+	    FROM
+		(SELECT DISTINCT charactercreator_character_inventory.character_id AS CHARACTER_ID, 
+		COUNT(charactercreator_character_inventory.character_id) AS OWNED_WEAPONS
+
+		FROM charactercreator_character_inventory, armory_weapon
+		WHERE armory_weapon.item_ptr_id = charactercreator_character_inventory.item_id
+		GROUP BY charactercreator_character_inventory.character_id)
+        """)
+
+        temp = list(weapons_avg.fetchone())
+        weapons_avg_result = temp[0]
+        print("Average amount of owned weapons: ", weapons_avg_result)
+
+        items_avg = cursor.execute("""
+        SELECT AVG(Owned_Items) AS Average_Items_Owned
+        FROM
+        (SELECT DISTINCT character_id AS Character_ID, COUNT(character_id) AS Owned_Items
+        FROM charactercreator_character_inventory
+        GROUP BY character_id)""")
+
+        temp2 = list(items_avg.fetchone())
+        items_avg_results = temp2[0]
+        print("Average amount of owned items: ", items_avg_results)
+
 
 db_connect = QueryRPGDB()
 db_connect.chara_count()
@@ -153,3 +184,4 @@ db_connect.subclass_count()
 db_connect.item_total_weapon_distinguish()
 db_connect.character_items()
 db_connect.weapons_owned_query()
+db_connect.weapons_items_avg()
