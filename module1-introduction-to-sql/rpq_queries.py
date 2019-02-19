@@ -112,7 +112,39 @@ class QueryRPGDB:
 
         print(pretty_results)
 
+    def weapons_owned_query(self, default_rows=20):
 
+        connection = sqlite3.connect('rpg_db.sqlite3')
+        cursor = connection.cursor()
+
+        owned_weapons_query = cursor.execute("""
+        SELECT DISTINCT charactercreator_character_inventory.character_id AS CHARACTER_ID,
+        count(charactercreator_character_inventory.character_id) AS OWNED_WEAPONS
+        
+        FROM charactercreator_character_inventory, armory_weapon
+        
+        WHERE armory_weapon.item_ptr_id = charactercreator_character_inventory.item_id
+        
+        GROUP BY charactercreator_character_inventory.character_id
+        """)
+
+        owned_item_result = owned_weapons_query.fetchmany(default_rows)
+
+
+        # processing for tuple
+        tuple1, tuple2 = zip(*owned_item_result)
+
+        list1 = list(tuple1)
+        list2 = list(tuple2)
+
+        series1 = pd.Series(list1)
+        series2 = pd.Series(list2)
+
+        # the only way I could get this to work was to map with dictionary, otherwise you get a 2 row
+        # dataframe with each row holding a single list of 20 values...
+        pretty_results = pd.DataFrame(({'Character_ID': series1, 'Weapons_Owned': series2}))
+
+        print(pretty_results)
 
 
 db_connect = QueryRPGDB()
@@ -120,3 +152,4 @@ db_connect.chara_count()
 db_connect.subclass_count()
 db_connect.item_total_weapon_distinguish()
 db_connect.character_items()
+db_connect.weapons_owned_query()
