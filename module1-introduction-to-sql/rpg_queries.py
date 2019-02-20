@@ -110,7 +110,8 @@ def run_queries(c):
                  armory_weapon AS weapon
             WHERE character.character_id = inventory.character_id
             AND inventory.item_id = weapon.item_ptr_id
-            GROUP BY character.character_id
+            GROUP BY character.name
+            ORDER BY character.name
             LIMIT 20);
     '''
     for i in c.execute(query2):
