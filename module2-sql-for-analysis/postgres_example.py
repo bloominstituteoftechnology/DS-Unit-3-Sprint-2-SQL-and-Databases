@@ -6,7 +6,7 @@ import psycopg2 as pg
 
 # Get the data from sqlite3
 sl_con = sqlite3.connect('module1-introduction-to-sql/rpg_db.sqlite3')
-results = sl_conn.execute(
+results = sl_con.execute(
     'SELECT * FROM charactercreator_character;').fetchall()
 
 create_character_table = """CREATE TABLE charactercreator_character (
