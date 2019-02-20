@@ -4,25 +4,27 @@ import psycopg2
 import csv
 
 # Username and password to be set by user.
-username = "SET_USERNAME_HERE"
-password = "SET_PASSWORD_HERE"
-host = "SET_HOST_ADDRESS_HERE"
+username = "TODO"
+default_db = "TODO"
+new_db = "TODO"
+password = "TODO"
+host = "TODO"
 
 # Create titanic database if needed.
-conn = psycopg2.connect(host=host, dbname="postgres",
+conn = psycopg2.connect(host=host, dbname=default_db,
                         user=username, password=password)
 conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
 cur = conn.cursor()
 cur.execute("""SELECT datname
             FROM pg_database
             WHERE datistemplate = false;""")
-if 'titanic' not in [X[0] for X in list(cur.fetchall())]:
-    cur.execute('CREATE DATABASE titanic;')
+if new_db not in [X[0] for X in list(cur.fetchall())]:
+    cur.execute('CREATE DATABASE {};'.format(new_db))
     conn.commit()
 conn.close()
 
 # Connect to titanic database.
-conn = psycopg2.connect(host=host, dbname="titanic",
+conn = psycopg2.connect(host=host, dbname=new_db,
                         user=username, password=password)
 cur = conn.cursor()
 

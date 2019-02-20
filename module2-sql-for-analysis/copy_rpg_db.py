@@ -5,9 +5,11 @@ import psycopg2 as pg
 
 
 # Username and password to be set by user.
-username = "SET_USERNAME_HERE"
-password = "SET_PASSWORD_HERE"
-host = "SET_HOST_ADDRESS_HERE"
+username = "TODO"
+default_db = "TODO"
+new_db = "TODO"
+password = "TODO"
+host = "TODO"
 
 # Get the data from sqlite3
 sl_conn = sqlite3.connect('../module1-introduction-to-sql/rpg_db.sqlite3')
@@ -26,19 +28,19 @@ create_character_table = """CREATE TABLE charactercreator_character (
   dexterity int,
   wisdom int
 );"""
-pg_conn = pg.connect(host=host, dbname="postgres",
+pg_conn = pg.connect(host=host, dbname=default_db,
                      user=username, password=password)
 pg_conn.set_isolation_level(pg.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
 pg_curs = pg_conn.cursor()
 pg_curs.execute("""SELECT datname
                 FROM pg_database
                 WHERE datistemplate = false;""")
-if 'rpg' not in [X[0] for X in list(pg_curs.fetchall())]:
-    pg_curs.execute('CREATE DATABASE rpg;')
+if new_db not in [X[0] for X in list(pg_curs.fetchall())]:
+    pg_curs.execute('CREATE DATABASE {};'.format(new_db))
     pg_conn.commit()
 pg_conn.close()
 
-pg_conn = pg.connect(host=host, dbname="rpg",
+pg_conn = pg.connect(host=host, dbname=new_db,
                      user=username, password=password)
 pg_curs = pg_conn.cursor()
 pg_curs.execute(create_character_table)
