@@ -1,8 +1,8 @@
 import psycopg2 as pig
-dbname = 'ppdtwyrt'
-user = 'ppdtwyrt'
-password = '8lIzgnGAvLlp32uvxDdXBd8QuFDBhByh'
-host = 'stampy.db.elephantsql.com'
+dbname = 't'
+user = 't'
+password = 'h'
+host = 'm'
 conn = pig.connect(dbname=dbname,user=user,
                     password=password,host=host)
 curse = conn.cursor()
