@@ -1,27 +1,39 @@
 import psycopg2 as pig
+import pandas as pd
 dbname = 'ppdtwyrt'
 user = 'ppdtwyrt'
 password = '8lIzgnGAvLlp32uvxDdXBd8QuFDBhByh'
 host = 'stampy.db.elephantsql.com'
-conn = pig.connect(dbname=dbname,user=user,
-                    password=password,host=host)
+conn = pig.connect(dbname=dbname, user=user, password=password, host=host)
 curse = conn.cursor()
 
 make_titanic_table = curse.execute('''
     CREATE TABLE titanic_table(
-        survived boolean PRIMARY KEY,
+        pass_id SERIAL PRIMARY KEY,
+        survived int,
         pclass int,
         name varchar(40),
-        sex text,
+        sex varchar(6),
         age int,
         spouse_sibling text,
         parents_children text,
-        fare numeric
-    )
-'''),conn.commit()
+        fare float
+    );
+'''), conn.commit()
+
+#curse.execute(make_titanic_table)
+titanic = pd.read_csv('titanic.csv')
+titanic.Name = titanic.Name.replace("'",'', regex=True)
+titanic_l = titanic.values.tolist()
+
+for item in titanic_l:
+    insert = '''INSERT INTO titanic_table(
+        survived, pclass, name, sex, age, spouse_sibling, 
+        parents_children, fare) VALUES''' + str(tuple(item))
+    curse.execute(insert)
 
 
-with open('titanic.csv', 'r') as f:
-    next(f)
-    curse.copy_from(f, 'titanic_table', sep = ',')
-conn.commit()
+# with open('titanic.csv', 'r') as f:
+#     next(f)
+#     curse.copy_from(f, 'titanic_table', sep=',')
+# conn.commit()
