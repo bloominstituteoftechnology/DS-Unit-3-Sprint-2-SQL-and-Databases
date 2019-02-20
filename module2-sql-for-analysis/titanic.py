@@ -1,10 +1,11 @@
 import sys
 import pandas as pd
 import psycopg2 as pg
+import psycopg2.extras
 
 def csv_to_list_of_tuples(filename, **kwargs):
     df = pd.read_csv(filename, **kwargs)
-    list_of_tuples = df.apply(lambda x: "({},{},{},{},{},{},{},{})".format(x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7]),
+    list_of_tuples = df.apply(lambda x: (x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7]),
                               axis = 1)
     return list_of_tuples
 
@@ -17,18 +18,18 @@ def csv_to_list_of_tuples(filename, **kwargs):
 #     END IF;
 # """
 
-create_enum_sex = """
-        CREATE TYPE sex AS ENUM
-        (
-            'male', 'female'
-        );
-"""
+# create_enum_sex = """
+#         CREATE TYPE sex AS ENUM
+#         (
+#             'male', 'female'
+#         );
+# """
 
 sql_create_titanic_table = """CREATE TABLE titanic (
   passenger_id SERIAL PRIMARY KEY,
   survived int,
   pclass int,
-  name varchar(50),
+  name varchar(100),
   sex varchar(10),
   age real,
   num_siblings_spouses_aboard int,
@@ -44,10 +45,10 @@ def create_titanic_table(curs):
    curs.execute(sql_create_titanic_table)
    conn.commit()
    res = csv_to_list_of_tuples('./titanic.csv', header=0, index_col=False)
-   print(res[0])
+   print(res[4:8].values)
    print("----------- Starting table insert -------")
-   curs.execute("INSERT INTO titanic(survived,pclass,name,sex,age,num_siblings_spouses_aboard,num_parents_children_aboard,fare) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)", (10,11,'a name','male',22.2,2,2,22.7))
-   # curs.executemany("INSERT INTO titanic(survived,pclass,name,sex,age,num_siblings_spouses_aboard,num_parents_children_aboard,fare) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)", res)
+   psycopg2.extras.execute_values(curs, "INSERT INTO titanic (survived,pclass,name,sex,age,num_siblings_spouses_aboard,num_parents_children_aboard,fare) VALUES %s", res.values)
+   conn.commit()
    print("----------- Ended table insert ----------")
 
 if __name__ == "__main__":
