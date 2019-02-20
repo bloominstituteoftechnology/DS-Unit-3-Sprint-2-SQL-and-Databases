@@ -44,6 +44,9 @@ tomorrow - the main topic will be database differences and tradeoffs!
 
 ## Resources and Stretch Goals
 
+Put Titanic data in Big Data! That is, try to load `titanic.csv` from yesterday
+into your MongoDB cluster.
+
 Push MongoDB - it is flexible and can support fast iteration. Design your own
 database to save some key/value pairs for an application you'd like to work on
 or data you'd like to analyze, and build it out as much as you can!
