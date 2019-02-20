@@ -3,10 +3,10 @@
 import sqlite3
 import psycopy2 as pg
 
-dbname=postgres://oljqozut:vtGp1NOnMDgalZrLt54C1_z4DunXeqXm@stampy.db.elephantsql.com:5432/oljqozut
-user=oljqozut
-password=vtGp1NOnMDgalZrLt54C1_z4DunXeqXm
-host=stampy.db.elephantsql.com
+dbname=
+user=
+password=
+host=.db..com
 pg_conn = pg.connect(dbname=dbname, user=user, password=password, host=host)
 
 cur=pg_conn.cursor()
