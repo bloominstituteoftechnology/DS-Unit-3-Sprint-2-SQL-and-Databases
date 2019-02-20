@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d439ad0-02bb-402b-aef4-9355ee6e9ee6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/upload_rpg_explicit_types.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/upload_rpg_explicit_types.py" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/upload_rpg_explicit_types.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/upload_rpgdb.py" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/upload_rpgdb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
