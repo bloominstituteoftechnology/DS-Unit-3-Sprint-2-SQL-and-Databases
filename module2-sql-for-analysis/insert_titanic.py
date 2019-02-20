@@ -71,18 +71,14 @@ pg_cur.execute(q)
 df = pd.read_csv("titanic.csv")
 q = "DROP TYPE IF EXISTS gender"
 pg_cur.execute(q)
-q = "DROP TYPE IF EXISTS madeit"
-pg_cur.execute(q)
 q = "CREATE TYPE gender AS ENUM ('male', 'female');"
-pg_cur.execute(q)
-q = "CREATE TYPE madeit AS ENUM ('0', '1');"
 pg_cur.execute(q)
 
 create_titanic_table = """
 CREATE TABLE titanic
 (
 character_id SERIAL PRIMARY KEY,
-survived madeit,
+survived boolean,
 pclass int,
 name varchar(128),
 sex gender,
@@ -97,9 +93,9 @@ q = """INSERT INTO titanic(survived, pclass, name, sex, age,siblings_spouses_abo
 parents_children_aboard, fare ) VALUES """
 
 for l in df.values[:-1]:
-    q += f"('{l[0]}',{l[1]},$${l[2]}$$,$${l[3]}$$,{l[4]},{l[5]},{l[6]},{l[7]}),"
+    q += f"({l[0] == 1},{l[1]},$${l[2]}$$,$${l[3]}$$,{l[4]},{l[5]},{l[6]},{l[7]}),"
 l = df.values[-1]
-q += f"('{l[0]}',{l[1]},$${l[2]}$$,$${l[3]}$$,{l[4]},{l[5]},{l[6]},{l[7]});"
+q += f"({l[0] == 1},{l[1]},$${l[2]}$$,$${l[3]}$$,{l[4]},{l[5]},{l[6]},{l[7]});"
 pg_cur.execute(q)
 
 conn.commit()
