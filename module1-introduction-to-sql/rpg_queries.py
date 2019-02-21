@@ -31,8 +31,8 @@ first_twenty_chars_weapon_counts = pd.read_sql_query("SELECT character_id, COUNT
 print('\nIn "armory_item", the weapons are all grouped from item 138 through item 174. Thus, the following query shows character_id and number of items falling in that item range (inclusive of item 174).\n')
 print(first_twenty_chars_weapon_counts)
 
-print('\nOn average, each Character has', character_inventory.shape[0] // char_items.shape[0], 'Items.')
+print('\nOn average, each Character has', char_items.shape[0] / character_inventory.shape[0], 'Items.')
 
 total_weapons_ratio = (37/174)  # see above for more information
-print('\nOn average, each Character has', character_inventory.shape[0] // (char_items.shape[0] * total_weapons_ratio), 'Weapons.')
+print('\nOn average, each Character has', (char_items.shape[0] * total_weapons_ratio) / character_inventory.shape[0], 'Weapons.')
 
