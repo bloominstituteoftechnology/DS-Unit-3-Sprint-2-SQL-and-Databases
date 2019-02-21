@@ -9,22 +9,6 @@ def csv_to_list_of_tuples(filename, **kwargs):
                               axis = 1)
     return list_of_tuples
 
-# create_enum_sex = """
-#     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'sex') THEN
-#         CREATE TYPE sex AS ENUM
-#         (
-#             'male', 'female'
-#         );
-#     END IF;
-# """
-
-# create_enum_sex = """
-#         CREATE TYPE sex AS ENUM
-#         (
-#             'male', 'female'
-#         );
-# """
-
 sql_create_titanic_table = """CREATE TABLE titanic (
   passenger_id SERIAL PRIMARY KEY,
   survived int,
@@ -38,25 +22,34 @@ sql_create_titanic_table = """CREATE TABLE titanic (
 );"""
 
 def create_titanic_table(curs):
-   # curs.execute(create_enum_sex)
-   # conn.commit()
-   curs.execute("""DROP TABLE titanic""")
-   conn.commit()
-   curs.execute(sql_create_titanic_table)
-   conn.commit()
-   res = csv_to_list_of_tuples('./titanic.csv', header=0, index_col=False)
-   print(res[4:8].values)
-   print("----------- Starting table insert -------")
-   psycopg2.extras.execute_values(curs, "INSERT INTO titanic (survived,pclass,name,sex,age,num_siblings_spouses_aboard,num_parents_children_aboard,fare) VALUES %s", res.values)
-   conn.commit()
-   print("----------- Ended table insert ----------")
+    # These lines are here just to remove the older table if it exists
+    curs.execute("""DROP TABLE titanic""")
+    conn.commit()
+
+    curs.execute(sql_create_titanic_table)
+    conn.commit()
+    res = csv_to_list_of_tuples('./titanic.csv', header=0, index_col=False)
+    print(res[4:8].values)
+    print("----------- Starting table insert -------")
+    psycopg2.extras.execute_values(curs, "INSERT INTO titanic (survived,pclass,name,sex,age,num_siblings_spouses_aboard,num_parents_children_aboard,fare) VALUES %s", res.values)
+    conn.commit()
+    print("----------- Ended table insert ----------")
+
+def count_survivors_and_not(curs):
+    sql = """
+        SELECT *
+        FROM titanic
+        GROUP BY survived
+    """
+    curs.execute(sql)
+    print(curs.fetchall())
 
 if __name__ == "__main__":
 
     if len(sys.argv) != 5:
         print("Usage: titanic.py dbname user pwd host")
         sys.exit()
-        
+
     dbname = sys.argv[1]
     user   = sys.argv[2]
     pwd    = sys.argv[3]
@@ -65,3 +58,4 @@ if __name__ == "__main__":
     with pg.connect(dbname=dbname, user=user, password=pwd, host=host) as conn:
         with conn.cursor() as curs:
             create_titanic_table(curs)
+            count_survivors_and_not(curs)
