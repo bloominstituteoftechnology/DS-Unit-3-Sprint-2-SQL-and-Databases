@@ -6,9 +6,9 @@ import os
 import psycopg2
 import csv
 load_dotenv()
-URL = os.getenv("ElephantSQL_URL")
+ElephantSQL_URL = os.getenv("ElephantSQL_URL")
 
-conn = psycopg2.connect(URL)
+conn = psycopg2.connect(ElephantSQL_URL)
 cur = conn.cursor()
 
 schema = """CREATE TABLE "passengers" (

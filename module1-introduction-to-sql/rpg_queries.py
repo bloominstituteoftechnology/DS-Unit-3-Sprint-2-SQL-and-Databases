@@ -84,10 +84,13 @@ mean_items = sl_con.execute("""
     FROM
         (
         SELECT character_id, COUNT(item_ptr_id) count_id
-        FROM charactercreator_character_inventory LEFT JOIN armory_weapon
-        ON charactercreator_character_inventory.item_id = armory_weapon.item_ptr_id
+        FROM charactercreator_character_inventory AS inventory
+        LEFT JOIN armory_weapon AS weapons
+        ON inventory.item_id = weapons.item_ptr_id
         GROUP BY character_id
         )
     """).fetchall()
 print(f'\nAverage number of weapons per character: {mean_items[0][0]:.3f}')
 print()
+
+sl_con.close()
