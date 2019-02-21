@@ -156,7 +156,7 @@ for ch in rpg_db.execute('SELECT * FROM charactercreator_character').fetchall():
 		WHERE i.character_id = {ch[0]}
         """
     ).fetchall())
-    wl = [{'power': r[0], 'name': r[1], 'value': r[2], 'weight': r[3]} for r in w]
+    wl = [{'power': r[0], 'id': r[1], 'name': r[2], 'value': r[3], 'weight': r[4]} for r in w]
     d['weapons'] = wl
     it = list(rpg_db.execute(
         f"""
