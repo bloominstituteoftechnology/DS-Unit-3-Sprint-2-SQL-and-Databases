@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import sqlite3
 from enum import Enum
 
@@ -97,7 +98,7 @@ def num_weapons_per_character(curs):
           Fetch.FETCH_ALL)
 
     return grouped_weapons_count_per_character
-                                              
+
 def avg_items_per_character(curs):
 
     sql_items_avg_per_character = '''
@@ -153,7 +154,7 @@ if __name__ == '__main__':
     for item in num_weapons_per_character(curs):
         k, v = item
         print("  {}: {}".format(k, v))
-        
+
     avg_items_per_character = avg_items_per_character(curs)
     print("Average items per character:", avg_items_per_character)
     avg_weapons_per_character = avg_weapons_per_character(curs)
