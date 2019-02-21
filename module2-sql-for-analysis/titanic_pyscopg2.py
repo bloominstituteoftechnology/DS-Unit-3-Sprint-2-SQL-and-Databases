@@ -39,8 +39,8 @@ def main():
     # ____ Connect to an ElephantSQL __________
     pgres_str = """
     dbname='zoafqkfp' user='zoafqkfp'
-    host='stampy.db.elephantsql.com'
-    password='MCJu21HwCynkStIs3FOmV-xHXSAXOSDD'
+    host='TODO'
+    password='TODO'
     """
     pgres_conn = conx_elephant(pgres_str)
 

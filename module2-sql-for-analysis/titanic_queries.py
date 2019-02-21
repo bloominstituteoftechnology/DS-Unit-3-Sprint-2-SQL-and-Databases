@@ -47,8 +47,8 @@ def run_queries(c):
 def main():
     conx_str = """
     dbname='zoafqkfp' user='zoafqkfp'
-    host='stampy.db.elephantsql.com'
-    password='MCJu21HwCynkStIs3FOmV-xHXSAXOSDD'
+    host='TODO'
+    password='TODO'
     """
     conn = conx_elephant(conx_str)
     cur = conn.cursor()  # create cursor

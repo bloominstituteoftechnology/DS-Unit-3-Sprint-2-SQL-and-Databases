@@ -53,8 +53,8 @@ def main():
     # __ Connect to postgres (SQLalchemy.engine) ____
     dbname = 'zoafqkfp'
     user = 'zoafqkfp'
-    host = 'stampy.db.elephantsql.com'
-    passw = 'MCJu21HwCynkStIs3FOmV-xHXSAXOSDD'
+    host = 'TODO'
+    passw = 'TODO'
     pgres_str = 'postgresql+psycopg2://'+user+':'+passw+'@'+host+'/'+dbname
     pgres_engine = create_engine(pgres_str)
 
