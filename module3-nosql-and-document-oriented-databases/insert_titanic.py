@@ -1,6 +1,5 @@
 """Import data from titanic.csv file to PostgreSQL database."""
 
-import sqlite3
 import pymongo
 import csv
 
