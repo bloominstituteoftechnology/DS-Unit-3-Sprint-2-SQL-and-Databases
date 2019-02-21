@@ -1,16 +1,14 @@
-import psycopg2 as pgres
+import psycopg2
 import pandas as pd
 from sqlalchemy import create_engine
 
 
 def run_conversion(engine):
     # ___ load the CSV into a df ____
-    # vals = df.to_csv(index=False, header=None)
-
     csv_url = "titanic.csv"
     df = pd.read_csv(csv_url)
+    # _____ Convert to postgres DB______
     df.to_sql('titanic', if_exists='replace', con=engine, method='multi')
-    engine.execute("SELECT * FROM  titanic").fetchall()
     return
 
 
@@ -23,15 +21,16 @@ def main():
     eng_str = 'postgresql+psycopg2://'+user+':'+passw+'@'+host+'/'+dbname
     engine = create_engine(eng_str)
 
-    # ____ Port titanic.csv to Postgres ___
+    # ____ Port titanic.csv to postgres ___
     run_conversion(engine)
 
-    # ______  Print Titanic table
+    #  _______ verify output  _________
     query = """
     SELECT *
     FROM public.titanic
     LIMIT 10 ;
     """
+    print('--- public.titanic table ---')
     for row in engine.execute(query).fetchall():
         print(row)
 
