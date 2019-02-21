@@ -1,9 +1,9 @@
 import psycopg2 as pig
 import pandas as pd
-dbname = 't'
-user = 't'
-password = 'h'
-host = 'm'
+dbname = ''
+user = ''
+password = ''
+host = ''
 conn = pig.connect(dbname=dbname, user=user, password=password, host=host)
 curse = conn.cursor()
 
@@ -12,18 +12,19 @@ make_titanic_table = curse.execute('''
         pass_id SERIAL PRIMARY KEY,
         survived int,
         pclass int,
-        name varchar(40),
+        name varchar(100),
         sex varchar(6),
         age int,
-        spouse_sibling text,
-        parents_children text,
+        spouse_sibling int,
+        parents_children int,
         fare float
     );
-'''), conn.commit()
+''')
 
-#curse.execute(make_titanic_table)
-titanic = pd.read_csv('titanic.csv')
-titanic.Name = titanic.Name.replace("'",'', regex=True)
+# curse.execute(make_titanic_table)
+titanic = pd.read_csv('''C:/Users/dakot/Documents/GitHub/DS-Unit-3-Sprint-2
+-SQL-and-Databases/module2-sql-for-analysis/titanic.csv''')
+titanic.Name = titanic.Name.replace("'", '', regex=True)
 titanic_l = titanic.values.tolist()
 
 for item in titanic_l:
