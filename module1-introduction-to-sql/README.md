@@ -51,14 +51,14 @@ randomized, the numeric and boolean fields were left as defaults.
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
-- How many total Characters are there?
+### How many total Characters are there?
 * import sqlite3
 * conn=sqlite3.connect('rpg_db.sqlite3')
 * result=conn.execute('select count(*) from charactercreator_character')
 * result.fetchall()
 * [(302,)]
 
-- How many of each specific subclass?
+### How many of each specific subclass?
 * charactercreator_character_inventory
 * charactercreator_cleric
 * charactercreator_fighter
@@ -66,15 +66,15 @@ following questions:
 * charactercreator_necromancer
 * charactercreator_thief
 
-- How many total Items?
+### How many total Items?
 * select count(*) from armory_item
 * 174
 
-- How many of the Items are weapons? How many are not?
+### How many of the Items are weapons? How many are not?
 * select count(*) from armory_weapon where power > 0
 * 0
 
-- How many Items does each character have? (Return first 20 rows)
+### How many Items does each character have? (Return first 20 rows)
 * select count(ai.name)
 * from armory_item as ai, 
 * charactercreator_character_inventory as ci,
@@ -83,7 +83,7 @@ following questions:
 * ci.character_id = cc.character_id
 * limit 20
 
-- How many Weapons does each character have? (Return first 20 rows)
+### How many Weapons does each character have? (Return first 20 rows)
 * select ai.name
 * from armory_item as ai, 
 * armory_weapon as aw,
@@ -95,7 +95,7 @@ following questions:
 * aw.power > 0
 * 0
 
-- On average, how many Items does each Character have?
+### On average, how many Items does each Character have?
 * select avg(ai.name)
 * from armory_item as ai, 
 * charactercreator_character_inventory as ci,
@@ -103,7 +103,7 @@ following questions:
 * where ai.item_id = ci.item_id and
 * ci.character_id = cc.character_id
 
-- On average, how many Weapons does each character have?
+### On average, how many Weapons does each character have?
 * 0
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
