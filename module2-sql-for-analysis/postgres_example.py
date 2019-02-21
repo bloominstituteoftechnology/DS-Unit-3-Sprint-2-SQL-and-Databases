@@ -3,6 +3,8 @@
 
 import sqlite3
 import psycopg2 as pg
+from dotenv import load_dotenv
+import os
 
 # Get the data from sqlite3
 sl_con = sqlite3.connect('module1-introduction-to-sql/rpg_db.sqlite3')
@@ -21,11 +23,12 @@ create_character_table = """CREATE TABLE charactercreator_character (
     wisdom int
 );"""
 
-# Assume user defines database parameters
-dbname = 'bnebnsvq'
-user = 'bnebnsvq'
-password = '4oDEVWZ17YNeBgCawHw3MjPfy4UtkwvN'
-host = 'stampy.db.elephantsql.com'
+# Get PostgreSQL credentials from .env file
+load_dotenv()
+dbname = os.getenv('pg_dbname')
+user = os.getenv('pg_user')
+password = os.getenv('pg_password')
+host = os.getenv('pg_host')
 
 pg_conn = pg.connect(dbname=dbname, user=user,
                      password=password, host=host)
