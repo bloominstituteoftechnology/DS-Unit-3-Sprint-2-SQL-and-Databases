@@ -3,10 +3,10 @@ import pandas as pd
 
 pg.connect
 
-dbname = 'fyhefwlq'
-user = 'fyhefwlq'
-password = 'BuchWImOB1Fa68LH52tirHsWp3yc8mvF'
-host = 'baasu.db.elephantsql.com'
+dbname = ''
+user = ''
+password = ''
+host = ''
 
 conn = pg.connect(dbname=dbname, user=user, password=password, host=host)
 pg_cur = conn.cursor()
