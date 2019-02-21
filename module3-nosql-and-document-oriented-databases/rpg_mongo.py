@@ -39,17 +39,61 @@ def num_weapons_and_other(coll):
     print("Number of items that are weapons:", num_weapons)
     print("Number of items that are not weapons:", num_items - num_weapons)
 
-# def character_inventory(coll):
-#    # inventory = list(coll.find({'model': 'charactercreator.character.inventory'}))
-#    # inventory = list(coll.find({'model': {$regex : ".*inventory.*"}}))
-#    from bson.son import SON
-#    import pprint
-#    pipeline = [
-#        {"$unwind": "$tags"},
-#        {"$group": {"_id": "$tags", "count": {"$sum": 1}}},
-#        {"$sort": SON([("count", -1), ("_id", -1)])}
-#    ]
-#    print(inventory)
+MAX_LIMIT = 10000
+# TODO: Fix the limit in the parameters here !!!
+def character_inventory(coll, limit = MAX_LIMIT, print_result = True):
+
+    characters = list(coll.find({'model': 'charactercreator.character'}))
+    if print_result:
+        print('Characters (limit 20) and the number of items they posess:')
+
+    until = min(limit, len(characters))
+    res = []
+    for i in range(until):
+        c = characters[i]
+        res.append({c["fields"]["name"]: c["fields"]["inventory"]})
+        if print_result:
+            print('  ', c["fields"]["name"], ":", len(c["fields"]["inventory"]))
+    return res
+
+def character_weapons(coll, limit = MAX_LIMIT, print_result = True):
+    c_inventory = character_inventory(coll, limit = limit, print_result = False)
+    weapons = list(map(lambda x: x['pk'], list(coll.find({'model': 'armory.weapon'}))))
+
+    if print_result:
+        print('Number of weapons per character (limit 20):')
+    res = []
+    for character in c_inventory:
+        for k, inventory in character.items():
+            name_to_weapons = {k: 0}
+            for v in inventory:
+                if v in weapons:
+                    name_to_weapons[k] += 1
+            res.append(name_to_weapons)
+
+            if print_result:
+                print('  ', k, ':', name_to_weapons[k])
+    return res
+
+def avg_num_items_per_character(coll):
+    c_inventory = character_inventory(coll, limit = MAX_LIMIT, print_result = False)
+
+    sum = 0
+    for c in c_inventory:
+        for k, inventory in c.items():
+            sum += len(inventory)
+    print('Average number of items per character:',
+          sum / len(c_inventory))
+
+def avg_num_weapons_per_character(coll):
+    c_weapons = character_weapons(coll, limit = MAX_LIMIT, print_result = False)
+
+    sum = 0
+    for c in c_weapons:
+        for k, weapons in c.items():
+            sum += weapons
+    print('Average number of weapons per character:',
+          sum / len(c_weapons))
 
 if __name__ == "__main__":
     mongo_atlas_username = os.environ['MONGO_ATLAS_USERNAME']
@@ -71,4 +115,7 @@ if __name__ == "__main__":
     num_characters_in_each_subclass(coll)
     num_total_items(coll)
     num_weapons_and_other(coll)
-    # character_inventory(coll)
+    character_inventory(coll, 20)
+    character_weapons(coll, 20)
+    avg_num_items_per_character(coll)
+    avg_num_weapons_per_character(coll)
