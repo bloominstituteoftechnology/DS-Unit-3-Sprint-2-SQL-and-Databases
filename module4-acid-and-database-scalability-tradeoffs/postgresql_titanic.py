@@ -147,12 +147,12 @@ if __name__ == "__main__":
                                 split_part(name, ' ', 1) = 'Mr.' AS husb,
                                 split_part(name, ' ', 1) = 'Mrs.' AS wife
                             FROM titanic
-                            WHERE siblings_spouses > 1
+                            WHERE siblings_spouses > 0
                         ) AS family_info
                         GROUP BY l_name
                 ) AS poss_couples
                 WHERE (
-                    (mr_count > 1 and mrs_count > 1)
+                    (mr_count > 0 and mrs_count > 0)
                 )"""
     outputs["COUNT(couples)"] = run_str(cur, find_str)[0][0]
 
