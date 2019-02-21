@@ -1,81 +1,83 @@
 
-
-
 import sqlite3
 import pandas as pd
 
 connection = sqlite3.connect("rpg_db.sqlite3")
 cursor = connection.cursor()
 
-def query_w_names(_query, names):
+def query_w_names(query, names):
     con = sqlite3.connect("rpg_db.sqlite3")
     c = con.cursor()
-    print(pd.DataFrame(c.execute(_query), columns=names))
+    print(pd.DataFrame(c.execute(query), columns=names))
     c.close
     con.close
 
-def query_w_named_columns(_query):
+def query_w_named_columns(query):
     conn = sqlite3.connect("rpg_db.sqlite3")
     conn.row_factory = sqlite3.Row
-    c = conn.cursor()
-    c.execute(_query)
-    r = c.fetchone()
-    print(pd.DataFrame(c.fetchall(), columns=r.keys()))
-    c.close 
+    cur = conn.cursor()
+    cur.execute(query)
+    data = cur.fetchall()
+    print(pd.DataFrame(data, columns=data[0].keys()).to_string(index=False))
+    cur.close 
     conn.close
 
 #How many total Characters are there?
+print("\nHow many total Characters are there?")
+query_w_named_columns("""
+SELECT COUNT (DISTINCT name) AS Number_of_total_Characters
+  FROM charactercreator_character 
+""")
 
-total_character_query = """SELECT COUNT (DISTINCT name) FROM charactercreator_character"""
-
-query_w_names(total_character_query, ["Character_Count"])
-
-#How many of each specific subclass?
-subclass_query = """ SELECT
+# How many of each specific subclass?
+print("\nHow many of each specific subclass?")
+query_w_named_columns("""
+SELECT
     (SELECT COUNT(*) FROM charactercreator_cleric) AS clerics,
     (SELECT COUNT(*) FROM charactercreator_fighter) AS fighters,
     (SELECT COUNT(*) FROM charactercreator_mage) AS mages,
     (SELECT COUNT(*) FROM charactercreator_necromancer) AS necromancers,
     (SELECT COUNT(*) FROM charactercreator_thief) AS theives
-"""
-
-query_w_names(subclass_query,["clerics","fighters","mages","necromancers","theives"])
+""")
 
 #How many total items?
-total_items = """
-    SELECT COUNT(*) FROM armory_item
-"""
-query_w_names(total_items,["Total Items"])
+print("\nHow many total items?")
+query_w_named_columns("""
+    SELECT COUNT(*) AS Total_Item_Count
+      FROM armory_item 
+""")
 
 #How many items are weapons? 
-total_weapons = """
-    SELECT COUNT(*) FROM armory_weapon
-"""
-query_w_names(total_weapons,["Total Weapons"])
+print("\nHow many items are weapons?")
+query_w_named_columns("""
+    SELECT COUNT(*) AS Number_of_Weapons
+      FROM armory_weapon 
+""")
 
 #How many items are not weapons?
-non_weapon = """
-    SELECT COUNT(*) 
+print("\nHow many items are not weapons?")
+query_w_named_columns("""
+    SELECT COUNT(*) AS Non_Weapon_Item_Count
       FROM armory_item 
      WHERE item_id NOT IN 
            (SELECT item_ptr_id 
               FROM armory_weapon)
-"""
-query_w_names(non_weapon,["# Non-Weapons"])
+""")
 
 #How many items does each character have (first 20 rows)?
-character_inventory_item_count = """
+print("\nHow many items does each character have?")
+query_w_named_columns("""
 SELECT *
   FROM (SELECT DISTINCT character_id AS Character_ID, 
                COUNT(character_id) AS Item_Count
           FROM charactercreator_character_inventory
          GROUP BY Character_ID)
  LIMIT 20
-"""
-query_w_named_columns(character_inventory_item_count)
+""")
 
 #How many weapons does each character have (first 20 rows)?
-characters_weapons = """
+print("\nHow many weapons does each character have?")
+query_w_named_columns("""
 SELECT *
   FROM (SELECT DISTINCT character_id AS Character_ID, 
                COUNT(character_id) AS Weapon_Count
@@ -85,10 +87,28 @@ SELECT *
                   FROM armory_weapon)
          GROUP BY Character_ID)
  LIMIT 20
-"""
-query_w_named_columns(characters_weapons)
+""")
 
 #On average, how many items does each Character have?
+print("\nHow many items does each character have on Average?")
+query_w_named_columns("""
+SELECT AVG(Item_Count) AS Average_Number_of_Items_Per_Character
+  FROM (SELECT DISTINCT character_id AS Character_ID, 
+               COUNT(character_id) AS Item_Count
+          FROM charactercreator_character_inventory
+         GROUP BY Character_ID)
+""")
 
 #On average, how many weapons does each Character have?
-
+print("\nHow many items does each character have on Average?")
+query_w_named_columns("""
+SELECT AVG(Weapon_Count) AS Average_Character_Weapon_Count
+  FROM (SELECT DISTINCT character_id AS Character_ID, 
+               COUNT(character_id) AS Weapon_Count
+          FROM charactercreator_character_inventory
+         WHERE item_id IN
+               (SELECT item_ptr_id
+                  FROM armory_weapon)
+         GROUP BY Character_ID)
+ LIMIT 20
+""")
