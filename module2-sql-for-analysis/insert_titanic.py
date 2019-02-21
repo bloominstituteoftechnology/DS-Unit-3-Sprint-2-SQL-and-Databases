@@ -10,7 +10,7 @@ import psycopg2 as pg
 
 dbname = 'fxafszcl'
 user = 'fxafszcl'
-password = 'UY-jriOroxNRn1ZdutKbuUqxVQ5C7svr'
+password = '<password>'
 host = 'baasu.db.elephantsql.com'
 pg_conn = pg.connect(dbname=dbname, user=user, password=password, host=host)
 pg_cur = pg_conn.cursor()
