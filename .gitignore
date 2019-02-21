@@ -102,3 +102,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+sql-and-document-oriented-databases/assignment.ipynb
+module3-nosql-and-document-oriented-databases/setup.py
+
+
