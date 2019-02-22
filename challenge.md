@@ -120,8 +120,8 @@ Using `sqlite3` in `northwind.py`, answer the following:
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
 - What is the largest category (by number of products in it)?
-- (*Stretch*) What are the top territory (by number of employees), and
-  how many employees do they have?
+- (*Stretch*) Who's the employee with the most territories, and
+  how many territories do they have?
 
 ### Part 4 - Questions (and your Answers)
 
@@ -139,6 +139,8 @@ The relationship between the Employee and Territory tables is one-to-many. One e
 A situation where a document store can be appropriate is when there aren't complex relationships among the data. Anything that can fit into one table can be appropriate for a document store such as MongoDB. Items that would work on one table can easily be stored in a dictionary. A document store is just a series of dictionaries.
 
 A situation where a document store is not appropriate is when handling bank or credit card applications. What makes SQL databases so great for bank data is that they guarantee ACID--Atomicity, Consistency, Isolation, and Durability. These are all important for bank data. A document store would not guarantee ACID, so it would not be appropriat for a bank to use.
+
+NewSQL is a class of modern relational database systems that attempts to provide the scalable performance of NoSQL while maintaining the ACID guarantees of traditional relational databases. Traditional SQL is limited by the capacity of a single machine due to the need for the data to be connected among multiple tables. NoSQL doesn't have such a limitation, so it is more scalable. However, NoSQL doesn't have ACID guarantees. NewSQL is an attempt to get a balance of both scalability and ACID guarantees.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well
