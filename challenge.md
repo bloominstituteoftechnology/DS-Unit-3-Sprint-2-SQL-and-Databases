@@ -130,8 +130,25 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+* The relationship is Many-to-many relationship as captured in the EmployeeTerrito
+ries table. Each Employee and Territory is represented in their respective table
+. The EmployeeTerritory table allows as many employee to have as many territory 
+as available.
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  
+* MongoDB is appropriate in situation where large objects need to be read/write ef
+ficiently. The required datatype is a dictionary with key-value pair. Applicatio
+n working with MongoDB, needs to implement schema-on-read library to define appr
+opriate datatype as needed by the application.
+
+* MongoDB is a non-relational data storage. And because of this, application with 
+frequent update operation is not appropriate with MongoDB. All the update operat
+ion works, are done by the application while MongoDB is only helping with read/w
+rite and storage. Hence frequent update operation application, is not efficient 
+with MongoDB.
+
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
 
 ### Part 5 - Turn it in!
