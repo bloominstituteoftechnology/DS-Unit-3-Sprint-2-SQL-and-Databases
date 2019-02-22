@@ -16,7 +16,7 @@ def main():
     # ____ Connect to postgres using SQLalchemy engine  __________
     dbname = 'zoafqkfp'
     user = 'zoafqkfp'
-    host = 'TODO'
+    host = 'TODo'
     passw = 'TODO'
     eng_str = 'postgresql+psycopg2://'+user+':'+passw+'@'+host+'/'+dbname
     engine = create_engine(eng_str)
