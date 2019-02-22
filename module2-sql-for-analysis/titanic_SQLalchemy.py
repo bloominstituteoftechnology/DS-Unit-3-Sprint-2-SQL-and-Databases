@@ -17,7 +17,7 @@ def main():
     dbname = 'zoafqkfp'
     user = 'zoafqkfp'
     host = 'TODo'
-    passw = 'TODO'
+    passw = 'ODO'
     eng_str = 'postgresql+psycopg2://'+user+':'+passw+'@'+host+'/'+dbname
     engine = create_engine(eng_str)
 
