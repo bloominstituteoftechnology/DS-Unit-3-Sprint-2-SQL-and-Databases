@@ -120,8 +120,8 @@ Using `sqlite3` in `northwind.py`, answer the following:
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
 - What is the largest category (by number of products in it)?
-- (*Stretch*) What are the top five territories (by number of employees), and
-  how many employees do they have?
+- (*Stretch*) What is the top territory (by number of employees), and
+  how many employees does it have?
 
 ### Part 4 - Questions (and your Answers)
 
@@ -135,7 +135,7 @@ interview screening questions (a form you fill when applying for a job):
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
 
 ### Part 5 - Turn it in!
-Add all the files you wrote (`buddymove_holidayiq.py`, `northwind.py`), as well
+Add all the files you wrote (`demo_data.py`, `northwind.py`), as well
 as this file with your answers to part 7, to your weekly repo
 (`DS-Unit-3-Sprint-2-SQL-and-Databases`). Commit, push, and await feedback from
 your PM. Thanks for your hard work!
