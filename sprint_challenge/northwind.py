@@ -2,6 +2,7 @@
 import sqlite3
 import pandas as pd
 
+# Define the database for connection
 database = "northwind_small.sqlite3"
 
 # This is my query runner. It connects to the database, runs the query, 
