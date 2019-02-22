@@ -2,10 +2,10 @@
 
 import psycopg2 as pg
 
-dbname='oljqozut'
-user='oljqozut'
-password='vtGp1NOnMDgalZrLt54C1_z4DunXeqXm'
-host='stampy.db.elephantsql.com'
+dbname=''
+user=''
+password=''
+host='.db..com'
 
 pg_conn = pg.connect(dbname=dbname, user=user, password=password, host=host)
 cur=pg_conn.cursor()
