@@ -120,8 +120,8 @@ Using `sqlite3` in `northwind.py`, answer the following:
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
 - What is the largest category (by number of products in it)?
-- (*Stretch*) What are the top five territories (by number of employees), and
-  how many employees do they have?
+- (*Stretch*) What is the top territory (by number of employees), and
+  how many employees does it have?
 
 ### Part 4 - Questions (and your Answers)
 
@@ -130,13 +130,32 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+
+There is a many to many relationship between Employee and Territory. Employees can 
+have more than one territory and territories can have more than one employee. The 
+EmployeeTerritory table is the table used to join the other two together since 
+Territory does not have employee id's and the Employee table does not have territory
+id's.
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+
+The best time to use a document store (NoSQL) database is when you have a large
+quantity or rapidly changing data. In traditional relational databases, you would have
+to try to store this changing data in a rigid structure that would take a lot of effort
+to maintain. If you need a dynamic structure, document store is the way to go.
+Organizations that need to store predictable, structured data relational databases 
+are the best answer. 
+
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+
+NewSQL is a combination of NoSQL and traditional SQL. They support the relational
+data model and use SQL as their primary interface, but they also try to address 
+the same scalability that NoSQL databases do.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well
-as this file with your answers to part 7, to your weekly repo
+as this file with your answers to part 5, to your weekly repo
 (`DS-Unit-3-Sprint-2-SQL-and-Databases`). Commit, push, and await feedback from
 your PM. Thanks for your hard work!
 
