@@ -129,9 +129,12 @@ Answer the following questions, baseline ~3-5 sentences each, as if they were
 interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
-  `Employee` and `Territory` tables?
+  `Employee` and `Territory` tables?  
+**A**: The 'Employee' and 'Territory' tables both have many-to-one relationships with the 'EmployeeTerritory' table.  
 - What is a situation where a document store (like MongoDB) is appropriate, and
-  what is a situation where it is not appropriate?
+  what is a situation where it is not appropriate?  
+**A**: Use a document store when data will not fit on one server. However, do not use a document store when ~real  
+time availability, eg, banking, is crucial. Cf. https://www.quora.com/What-are-the-real-use-cases-where-you-should-use-MongoDB
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
 
 ### Part 5 - Turn it in!
