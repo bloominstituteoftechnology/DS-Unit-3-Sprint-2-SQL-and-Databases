@@ -129,10 +129,10 @@ Answer the following questions, baseline ~3-5 sentences each, as if they were
 interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
-  `Employee` and `Territory` tables?
+  `Employee` and `Territory` tables? The relationship is one to many because there are many employees in one territory but each employee only has one territory.
 - What is a situation where a document store (like MongoDB) is appropriate, and
-  what is a situation where it is not appropriate?
-- (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+  what is a situation where it is not appropriate? When the various documents don't have a clear stucture it could be better to use MongoDb. When you want a clear structure and clear relationships between documents Sql is better. 
+- (*Stretch*) What is "NewSQL", and what is it trying to achieve? NewSql tries to give teh structure of Sql with the flexibility of MongoDb.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`buddymove_holidayiq.py`, `northwind.py`), as well
