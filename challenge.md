@@ -101,10 +101,23 @@ particular table, but it's a good lesson in the danger of keyword conflicts.
 
 Answer the following questions (each is from a single table):
 
-- What are the ten most expensive items (per unit price) in the database?
-- What is the average age of an employee at the time of their hiring? (Hint: a
+#### What are the ten most expensive items (per unit price) in the database?
+* curs.execute('select ProductName,UnitPrice from Product order by UnitPrice desc limit 10').fetchall()
+[('Côte de Blaye', 263.5), ('Thüringer Rostbratwurst', 123.79), ('Mishi Kobe Niku', 97), ("Sir Rodney's Marmalade", 81), ('Carnarvon Tigers', 62.5), ('Raclette Courdavault', 55), ('Manjimup Dried Apples', 53), ('Tarte au sucre', 49.3), ('Ipoh Coffee', 46), ('Rössle Sauerkraut', 45.6)]
+
+
+#### What is the average age of an employee at the time of their hiring? (Hint: a
   lot of arithmetic works with dates.)
-- (*Stretch*) How does the average age of employee at hire vary by city?
+* curs.execute('SELECT firstname, lastname, AVG(hiredate - birthdate) FROM employee').fetchall()
+[('Nancy', 'Davolio', 37.22222222222222)]
+
+####(*Stretch*) How does the average age of employee at hire vary by city?
+*curs.execute('SELECT firstname, lastname, AVG(hiredate - birthdate) FROM employee GROUP BY city').fetchall()
+[('Janet', 'Leverling', 29.0), ('Steven', 'Buchanan', 32.5), ('Margaret', 'Peacock', 56.0), ('Nancy', 'Davolio', 40.0), ('Andrew', 'Fuller', 40.0)]
+
+
+
+
 
 Your code (to load and query the data) should be saved in `northwind.py`, and
 added to the repository. Do your best to answer in purely SQL, but if necessary
@@ -117,11 +130,26 @@ individual tables - now it's time to put things together, and `JOIN`!
 
 Using `sqlite3` in `northwind.py`, answer the following:
 
-- What are the ten most expensive items (per unit price) in the database *and*
+#### What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
+  
+* curs.execute('select ProductName from Product order by UnitPrice limit 10').fetchall()
+[('Geitost',), ('Guaraná Fantástica',), ('Konbu',), ('Filo Mix',), ('Tourtière',), ('Rhönbräu Klosterbier',), ('Tunnbröd',), ('Teatime Chocolate Biscuits',), ('Rogede sild',), ('Zaanse koeken',)]
+
+
 - What is the largest category (by number of products in it)?
+
+
 - (*Stretch*) What are the top five territories (by number of employees), and
   how many employees do they have?
+  
+#### (*Stretch*) What is the top territory (by number of employees), and
+  how many employees does it have?
+* curs.execute('select territoryDescription, count(employeeid) from territory, employeeterritory where territory.id = employeeterritory.territoryid  group by employeeid order by count(employeeid) limit 1').fetchall()
+[('Wilton', 2)]
+
+
+
 
 ### Part 4 - Questions (and your Answers)
 
