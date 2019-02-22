@@ -31,13 +31,13 @@ curs.execute(query8)
 curs.fetchall()
 
 # How many total Items?
-query2 = """SELECT COUNT(name) 
+query2 = """SELECT COUNT(*) 
 FROM armory_item;"""
 curs.execute(query2)
 curs.fetchall()
 
 # How many of the Items are weapons? 
-query3 = """SELECT COUNT(power)  
+query3 = """SELECT COUNT(*)  
 FROM armory_weapon;"""
 curs.execute(query3)
 curs.fetchall()
