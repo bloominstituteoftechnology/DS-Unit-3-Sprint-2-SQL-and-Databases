@@ -130,8 +130,17 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  **The ID's here can be matched up. In the Employee table, there is a one to one match. One ID for one Employee.**
+  **In the Territory table, there are multiple territories that have the same ID. In other words, One employee**
+  **can have multiple territories. These tables could be merged by ID so each territory would be identified**
+  **with an employee name.
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  **A Document store is good for large, unstructured data. Large, unordered datasets that have yet to be cleaned up**
+  **or organized can be stored as documents on something like MongoDB. It's really not appropriate with smaller, organized,** 
+  **and structured data. In this case the expectation is ACID(Atomicity, Consistency, Isolation, and Durability) for the**
+  **properties of the database so that validity is almost guaranteed if a 'catastrophe' occurs**
+  
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
 
 ### Part 5 - Turn it in!
