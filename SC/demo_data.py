@@ -56,7 +56,7 @@ try:
     db()
 except Exception as e:
     print(e)
-    print('fail')
+    print('farewell')
 else:
     print(stats())
 finally:
