@@ -179,12 +179,12 @@ survival   | average_parents_children
   `Mrs.`) with the same last name and with at least 1 sibling/spouse aboard are
   a married couple.
 
-``` SELECT COUNT(DISTINCT passenger) FROM titanic WHERE siblings_spouses_aboard > 0 AND sex='male' AND RIGHT(passenger, POSITION(' ' IN REVERSE(passenger))) LIKE ANY (SELECT RIGHT(passenger, POSITION(' ' IN REVERSE(passenger))) FROM titanic WHERE siblings_spouses_aboard > 0 AND sex='female' AND passenger NOT LIKE 'Miss.%');```
+``` SELECT COUNT(DISTINCT passenger) FROM titanic WHERE siblings_spouses_aboard > 0 AND sex='male' AND RIGHT(passenger, POSITION(' ' IN REVERSE(passenger))) LIKE ANY (SELECT RIGHT(passenger, POSITION(' ' IN REVERSE(passenger))) FROM titanic WHERE siblings_spouses_aboard > 0 AND sex='female' AND passenger LIKE 'Mrs.%');```
 
 ```
 count
 -------
-63
+62
 ```
 
 ## Resources and Stretch Goals
