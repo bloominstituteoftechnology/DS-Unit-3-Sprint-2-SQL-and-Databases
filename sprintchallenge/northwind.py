@@ -25,7 +25,15 @@ cur.execute(command)
 print(f'{int(cur.fetchall()[0][0])}')
 
 print('(Stretch) How does the average age of employee at hire vary by city?')
-print('TBD')
+command = """
+    SELECT City, AVG(HireDate - BirthDate)
+    FROM Employee
+    GROUP BY City;
+    """
+cur.execute(command)
+print('(City, Avg Age at Hire)')
+for value in cur.fetchall():
+    print(f'{value[0], value[1]}')
 
 print('What are the ten most expensive items (per unit price) '
 'in the database and their suppliers?')
@@ -56,4 +64,16 @@ cur.execute(command)
 print(cur.fetchall())
 
 print("(Stretch) Who's the employee with the most territories?")
-print('TBD')
+command = """
+    SELECT e.LastName, e.FirstName, COUNT(t.ID)
+    FROM Employee as e,
+    Territory as t,
+    EmployeeTerritory AS et
+    WHERE e.Id = et.EmployeeId
+    AND t.Id = et.TerritoryId
+    ORDER BY e.LastName, e.FirstName;
+    """
+cur.execute(command)
+print(cur.fetchall())
+
+
