@@ -128,14 +128,14 @@ Using `sqlite3` in `northwind.py`, answer the following:
 Answer the following questions, baseline ~3-5 sentences each, as if they were
 interview screening questions (a form you fill when applying for a job):
 
-- In the Northwind database, what is the type of relationship between the
+#### In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
 * The relationship is Many-to-many relationship as captured in the EmployeeTerrito
 ries table. Each Employee and Territory is represented in their respective table
 . The EmployeeTerritory table allows as many employee to have as many territory 
 as available.
 
-- What is a situation where a document store (like MongoDB) is appropriate, and
+#### What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
   
 * MongoDB is appropriate in situation where large objects need to be read/write ef
@@ -149,7 +149,9 @@ ion works, are done by the application while MongoDB is only helping with read/w
 rite and storage. Hence frequent update operation application, is not efficient 
 with MongoDB.
 
-- (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+#### (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+* NewSQL is a class of modern relational database management systems that seek to provide the same scalable performance of NoSQL systems for online transaction processing (OLTP) read-write workloads while still maintaining the ACID guarantees of a traditional database system. (wikipedia)
+
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`buddymove_holidayiq.py`, `northwind.py`), as well
