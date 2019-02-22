@@ -60,6 +60,14 @@ curs.execute("""SELECT c.CategoryName, MAX(p.UnitsInStock + p.UnitsOnOrder)
 row = curs.fetchone()
 print("Largest Category:", row[0] + ",", "Number of Units:", row[1])
 
+### New answer, based on Aaron's comment
+### Too late - time's up
+### curs.execute("""SELECT c.CategoryName, MAX(COUNT(p.Id))
+###               FROM Product as p, Category AS c
+###               GROUP BY p.CategoryId""")
+### row = curs.fetchall()
+### print("row:", row)
+
 #################################################################
 # (Stretch) Who is the employee with the most territories?
 #################################################################
