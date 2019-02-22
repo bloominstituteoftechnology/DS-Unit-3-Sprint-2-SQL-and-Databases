@@ -129,10 +129,17 @@ Answer the following questions, baseline ~3-5 sentences each, as if they were
 interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
-  `Employee` and `Territory` tables?
+  `Employee` and `Territory` tables? 
+  The relationship is a bit ambigious in my opinion. There is an employeeTerritory as well as Territory. There should only be one territory/regionID per employee, as there is in EmployeeTerritory, so if we follow that train of thought, the employee is mapped in a serperate table, and that table has a one-to-many relationship where each employee has multiple records regarding territory. 
+Or I'm wrong and the mapping table nulls the relationship.
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
-- (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+  It's highly scalable and non-relational, so you want to use a 'NoSQL' approach when you don't care about protecting the integrity of your data structure and sometimes the integrity of your data itself. Meaning, if im a data architect planning a DB, I know how I want my data to be, hopefully, and I structure my tables, the relationships between the data, etc, accordingly. IE a bank!!! 
+  However, If i'm scraping reddit for every post there ever was, I don't really care about the data structure, I just want it for analysis and I need something to store it all and let me query it at super high performance. Hello document storage model. 
+- (*Stretch*) What is "NewSQL", and what is it trying to achieve? 
+NewSQL is an attempt to merge the scalability of "NoSQL" with the data architecture and powerful logical bindings of RBDMS. It attemps to comply with the ACID based transaction model.
+As things like online gaming, the ever-increasing data load of front-end of the internet, and the influx of IoT devices/user oriented services (Google Alo comes to mind), so does the need for structured data that is highly effecient to query and operate on in real time across a vast swath of concurrent users. Personally, I think it's the future for modern applications, and that we will see SQL start to phase out in the next decade or two as data continues to grow and grow.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well
