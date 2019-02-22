@@ -128,11 +128,23 @@ Using `sqlite3` in `northwind.py`, answer the following:
 Answer the following questions, baseline ~3-5 sentences each, as if they were
 interview screening questions (a form you fill when applying for a job):
 
-- In the Northwind database, what is the type of relationship between the
-  `Employee` and `Territory` tables?
-- What is a situation where a document store (like MongoDB) is appropriate, and
-  what is a situation where it is not appropriate?
-- (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+##In the Northwind database, what is the type of relationship between the `Employee` and `Territory` tables?
+The Employee and Territory tables do not have any overlapping feature names. For this reason, we were given an `EmployeeTerritories` table that exists only to pair up each keys. This makes it viable to `join` and compare Employees and Territories, i.e., without it's cross table we wouldn't be able to use `ON` keys between them. 
+
+## What is a situation where a document store (like MongoDB) is appropriate, and what is a situation where it is not appropriate?
+A document store best if you start out with a big mess of unstructured data, and you want to incrementally make some sense out of it. An example would be if you're given files with zero type information (everything is strings). 
+
+If your data is already clean enough to be reasonably-well represented in a pandas dataframe, meaning it's a CSV, not everything is string when it can be something else, etc. and your pipeline isn't going to interact with webapps that add unverified input to them, then you'd probably want to skip JSON and document store and go straight to databases or dataframes. 
+
+## (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+Basically, NoSQL dropped the ACID criteria in favor of scalability. TLDR; NewSQL wants to keep the scalability gains and reclaim ACID at the same time. 
+
+ACID (Atomicity (transactions decomposable to discrete units), Consistency (applying a valid transaction to a valid state returns a valid state), Isolation (equivalence between concurrent and sequential execution), and Durability (safe to e.g. a power outage mid-computation)) is a strong set of guarantees that make apps more accurate and less stressful for everybody. They are restrictive, so sometimes people wanna move quickly so they treat them "more like guidelines than actual rules" to quote Captain Barbossa--- frameworks like NoSQL allow such a thing. NewSQL hopes to be more of an _opinionated_ tool that _enforces_ rather than suggests. 
+
+
+
+
+
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`buddymove_holidayiq.py`, `northwind.py`), as well
