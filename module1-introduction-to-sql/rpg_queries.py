@@ -64,10 +64,10 @@ def run_queries(c):
     query1 = '''
     SELECT character.name, count(item.item_id) as item_count
         FROM charactercreator_character AS character,
-             charactercreator_character_inventory AS inventory,
-             armory_item AS item
-        WHERE character.character_id = inventory.character_id
-          AND inventory.item_id = item.item_id
+        JOIN charactercreator_character_inventory AS inventory
+          ON character.character_id = inventory.character_id
+        JOIN armory_item AS item
+          ON inventory.item_id = item.item_id
         GROUP BY character.name
         LIMIT 5;
     '''
