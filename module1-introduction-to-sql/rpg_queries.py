@@ -83,13 +83,14 @@ def num_items_per_character(curs):
 def num_weapons_per_character(curs):
 
     sql_grouped_weapons_count_per_character = '''
-      SELECT character_id, COUNT(item_id)
-      FROM charactercreator_character_inventory
-      WHERE item_id IN (
+        SELECT character_id, COUNT(item_id)
+        FROM charactercreator_character_inventory
+        WHERE item_id IN (
         SELECT item_ptr_id
         FROM armory_weapon)
-      GROUP BY item_id
-      LIMIT 20
+        GROUP BY character_id
+        ORDER BY character_id
+        LIMIT 20
     '''
 
     grouped_weapons_count_per_character = \
