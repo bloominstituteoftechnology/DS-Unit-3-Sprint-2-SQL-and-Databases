@@ -91,24 +91,12 @@ def run_queries(c):
           AND inventory.item_id = item.item_id
         GROUP BY character.name
         ORDER BY character.name
-        LIMIT 5 );
+        );
     '''
     for i in c.execute(query2):
         print('Each character has average of', i[0], 'items\n')
 
     # _____ how many WEAPONS does each Character have? ___________________
-    query_saved = '''
-    SELECT character.name, item.name, weapon.power
-        FROM charactercreator_character character,
-             charactercreator_character_inventory inventory,
-             armory_item item,
-             armory_weapon weapon
-        WHERE character.character_id = inventory.character_id
-          AND inventory.item_id = weapon.item_ptr_id
-          AND weapon.item_ptr_id = item.item_id
-        ORDER BY character.name
-        LIMIT 5;
-    '''
     query1 = '''
     SELECT character.name, item.name, weapon.power
         FROM charactercreator_character character
@@ -140,7 +128,7 @@ def run_queries(c):
             AND inventory.item_id = weapon.item_ptr_id
             GROUP BY character.name
             ORDER BY character.name
-            LIMIT 5);
+            );
     '''
     for i in c.execute(query2):
         print('Each character has average of', i[0], 'weapons\n')
