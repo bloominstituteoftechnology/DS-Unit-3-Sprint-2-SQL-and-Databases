@@ -48,7 +48,10 @@ SQLite). With PostgreSQL, answer the following:
 
 ```SELECT CASE WHEN survived=1 THEN 'yes' ELSE 'no' END survived, COUNT(passenger) FROM titanic GROUP BY survived;```
 ```
-545
+survived | count
+----------+-------
+ no       |   545
+ yes      |   342
 ```
 - How many passengers were in each class?
 
