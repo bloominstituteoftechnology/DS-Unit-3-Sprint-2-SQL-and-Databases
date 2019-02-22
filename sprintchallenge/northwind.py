@@ -65,13 +65,15 @@ print(cur.fetchall())
 
 print("(Stretch) Who's the employee with the most territories?")
 command = """
-    SELECT e.LastName, e.FirstName, COUNT(t.ID)
+    SELECT e.LastName, e.FirstName, COUNT(t.Id) AS TerritoryCount
     FROM Employee as e,
     Territory as t,
     EmployeeTerritory AS et
     WHERE e.Id = et.EmployeeId
     AND t.Id = et.TerritoryId
-    ORDER BY e.LastName, e.FirstName;
+    GROUP BY e.LastName, e.FirstName
+    ORDER BY TerritoryCount DESC
+    LIMIT 1;
     """
 cur.execute(command)
 print(cur.fetchall())
