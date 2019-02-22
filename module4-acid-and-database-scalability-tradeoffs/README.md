@@ -42,17 +42,17 @@ Practice! Go back to both your deployed PostgreSQL (Titanic data) and MongoDB
 queries](https://docs.mongodb.com/manual/tutorial/query-documents/) to answer
 the same questions as you did from the first module (when the RPG data was in
 SQLite). With PostgreSQL, answer the following:
-# select all columns: \d+ titanic
+- select all columns: \d+ titanic
 
 - How many passengers survived, and how many died?
 
-#SELECT CASE WHEN survived=1 THEN 'yes' ELSE 'no' END survived, COUNT(passenger) FROM titanic GROUP BY survived;
+```SELECT CASE WHEN survived=1 THEN 'yes' ELSE 'no' END survived, COUNT(passenger) FROM titanic GROUP BY survived;```
 ```
 545
 ```
 - How many passengers were in each class?
 
-# SELECT pclass, COUNT(passenger) FROM titanic GROUP BY 1;
+``` SELECT pclass, COUNT(passenger) FROM titanic GROUP BY 1;```
 
 ```
 pclass | count
@@ -64,7 +64,7 @@ pclass | count
 
 - How many passengers survived/died within each class?
 
-# SELECT pclass, CASE WHEN survived=1 THEN 'survived' ELSE 'not survived' END survival, COUNT (DISTINCT passenger) FROM titanic GROUP BY pclass, survived;
+``` SELECT pclass, CASE WHEN survived=1 THEN 'survived' ELSE 'not survived' END survival, COUNT (DISTINCT passenger) FROM titanic GROUP BY pclass, survived;```
 
 ```
 pclass |   survival   | count
@@ -78,7 +78,7 @@ pclass |   survival   | count
 ```
 - What was the average age of survivors vs nonsurvivors?
 
-# SELECT CASE WHEN survived=1 THEN 'survived' ELSE 'not survived' END survival, ROUND(AVG(age)) average_age FROM titanic GROUP BY 1;
+``` SELECT CASE WHEN survived=1 THEN 'survived' ELSE 'not survived' END survival, ROUND(AVG(age)) average_age FROM titanic GROUP BY 1;```
 
 ```
  survival   | average_age
@@ -89,7 +89,7 @@ pclass |   survival   | count
 
 - What was the average age of each passenger class?
 
-# SELECT pclass, ROUND(AVG(age)) average_age FROM titanic GROUP BY pclass ORDER BY pclass;
+``` SELECT pclass, ROUND(AVG(age)) average_age FROM titanic GROUP BY pclass ORDER BY pclass;```
 
 ```
 pclass | average_age
@@ -101,7 +101,7 @@ pclass | average_age
 
 - What was the average fare by passenger class? By survival?
 
-# SELECT pclass, CASE WHEN survived=1 THEN 'survived' ELSE 'not survived' END survival, COUNT(DISTINCT passenger), ROUND(AVG(fare)) average_fare FROM titanic GROUP BY pclass, survival ORDER BY pclass;
+``` SELECT pclass, CASE WHEN survived=1 THEN 'survived' ELSE 'not survived' END survival, COUNT(DISTINCT passenger), ROUND(AVG(fare)) average_fare FROM titanic GROUP BY pclass, survival ORDER BY pclass;```
 
 ```
 pclass |   survival   | count | average_fare
@@ -115,7 +115,7 @@ pclass |   survival   | count | average_fare
 
 ```
 
-# SELECT pclass, ROUND(AVG(fare)) avg_fare FROM titanic GROUP BY pclass ORDER BY pclass; 
+``` SELECT pclass, ROUND(AVG(fare)) avg_fare FROM titanic GROUP BY pclass ORDER BY pclass; ```
 
 ```
 pclass | avg_fare
@@ -127,7 +127,7 @@ pclass | avg_fare
 
 - How many siblings/spouses aboard on average, by passenger class? By survival?
 
-# SELECT pclass, ROUND(AVG(siblings_spouses_aboard),2) average_sibling_spouse FROM titanic GROUP BY pclass ORDER BY pclass;
+``` SELECT pclass, ROUND(AVG(siblings_spouses_aboard),2) average_sibling_spouse FROM titanic GROUP BY pclass ORDER BY pclass;```
 
 ```
 pclass | average_sibling_spouse
@@ -136,7 +136,7 @@ pclass | average_sibling_spouse
       2 |                   0.40
       3 |                   0.62
 ```
-# SELECT CASE WHEN survived=1 THEN 'survived' ELSE 'not survived' END survival, ROUND(AVG(siblings_spouses_aboard),2) average_sibling_spouse FROM titanic GROUP BY survival;  
+``` SELECT CASE WHEN survived=1 THEN 'survived' ELSE 'not survived' END survival, ROUND(AVG(siblings_spouses_aboard),2) average_sibling_spouse FROM titanic GROUP BY survival;  ```
 
 ```
 survival   | average_sibling_spouse
@@ -147,7 +147,7 @@ survival   | average_sibling_spouse
 
 - How many parents/children aboard on average, by passenger class? By survival?
 
-# SELECT pclass, ROUND(AVG(parents_children_aboard),2) average_parents_children FROM titanic GROUP BY 1 ORDER BY 1;
+``` SELECT pclass, ROUND(AVG(parents_children_aboard),2) average_parents_children FROM titanic GROUP BY 1 ORDER BY 1;```
 
 ```
 pclass | average_parents_children
@@ -157,7 +157,7 @@ pclass | average_parents_children
       3 |                     0.40
 ```
 
-# SELECT CASE WHEN survived=1 THEN 'survived' ELSE 'not survived' END survival, ROUND(AVG(parents_children_aboard),2) average_parents_children FROM titanic GROUP BY survival; 
+``` SELECT CASE WHEN survived=1 THEN 'survived' ELSE 'not survived' END survival, ROUND(AVG(parents_children_aboard),2) average_parents_children FROM titanic GROUP BY survival; ```
 
 ```
 survival   | average_parents_children
@@ -168,7 +168,7 @@ survival   | average_parents_children
 
 - Do any passengers have the same name?
 
-# SELECT passenger, COUNT(DISTINCT passenger) count FROM titanic GROUP BY passenger HAVING COUNT(DISTINCT passenger) > 1;
+``` SELECT passenger, COUNT(DISTINCT passenger) count FROM titanic GROUP BY passenger HAVING COUNT(DISTINCT passenger) > 1;```
  0?
 
 - (Bonus! Hard, may require pulling and processing with Python) How many married
@@ -176,7 +176,7 @@ survival   | average_parents_children
   `Mrs.`) with the same last name and with at least 1 sibling/spouse aboard are
   a married couple.
 
-# SELECT COUNT(DISTINCT passenger) FROM titanic WHERE siblings_spouses_aboard > 0 AND sex='male' AND RIGHT(passenger, POSITION(' ' IN REVERSE(passenger))) LIKE ANY (SELECT RIGHT(passenger, POSITION(' ' IN REVERSE(passenger))) FROM titanic WHERE siblings_spouses_aboard > 0 AND sex='female' AND passenger NOT LIKE 'Miss.%');
+``` SELECT COUNT(DISTINCT passenger) FROM titanic WHERE siblings_spouses_aboard > 0 AND sex='male' AND RIGHT(passenger, POSITION(' ' IN REVERSE(passenger))) LIKE ANY (SELECT RIGHT(passenger, POSITION(' ' IN REVERSE(passenger))) FROM titanic WHERE siblings_spouses_aboard > 0 AND sex='female' AND passenger NOT LIKE 'Miss.%');```
 
 ```
 count
