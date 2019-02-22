@@ -2,6 +2,10 @@ import sqlite3
 
 
 def create_demo_data():
+    """
+    Creates a small, very small, sqlite3 db with 3 columns, inserts 3 rows
+    :return: null: functional printing only
+    """
     connection = sqlite3.connect('demo_data.sqlite3')
     cursor = connection.cursor()
 
@@ -26,6 +30,10 @@ def create_demo_data():
 
 
 def db_queries():
+    """
+    runs simple queries on the simple demo database :)
+    :return: null: functional printing only
+    """
     connection = sqlite3.connect('demo_data.sqlite3')
     cursor = connection.cursor()
     count_rows = cursor.execute('SELECT COUNT(*) FROM demo')
@@ -39,7 +47,7 @@ def db_queries():
 
     unique_y = cursor.execute('SELECT COUNT (DISTINCT y) FROM demo')
 
-    print("Number of unique y values: ", cursor.fetchall()[0][0])
+    print("Number of unique y values: ", unique_y.fetchall()[0][0])
 
 # uncomment below if you need fresh db
 # create_demo_data()

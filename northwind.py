@@ -5,6 +5,10 @@ cursor = connection.cursor()
 
 
 def northwind_queries():
+    """
+    returns multiple queries on northwind_small sqlite3 database as print statements
+    :return: null: functional printing only
+    """
     top_ten_unit_price = cursor.execute(
         "SELECT ProductName, UnitPrice FROM Product ORDER BY UnitPrice DESC LIMIT 10;"
     ).fetchall()
