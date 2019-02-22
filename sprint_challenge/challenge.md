@@ -120,8 +120,7 @@ Using `sqlite3` in `northwind.py`, answer the following:
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
 - What is the largest category (by number of products in it)?
-- (*Stretch*) What are the top five territories (by number of employees), and
-  how many employees do they have?
+- (*Stretch*) Who's the employee with the most territories?
 
 ### Part 4 - Questions (and your Answers)
 
@@ -130,9 +129,28 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+
+    The relationship between the `Employee` and `Territory` tables is of `many-to-many`.
+    There are every employees is assigned multiple location. Also, every territory has multiple employees assigned.
+
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+    
+    An appropriate situation for a document store would be where the storage of data
+    needs to be flexible. For example storing information for recording books where
+    certain attributes may be important for some books but not for others and where
+    and where the relationship among these may not be so crucial for our goal in storing
+    the data.
+
+    Document storage may not be appropriate for a bussiness like a retail store, where
+    the company would like to keep track of suppliers, store locations, employees, and
+    customers. Where the relationship among these may be crucial to extract valuable
+    data proper control and decisions. 
+
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+    NewSQL is an attempt to create a framework that include the benefits of a framework like
+    SQL that provides ACID. Yet with the scalability and flexibility of a framework like Mongo.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well
