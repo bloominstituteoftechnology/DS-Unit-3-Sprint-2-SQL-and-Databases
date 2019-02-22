@@ -15,23 +15,24 @@ def run_queries(cur):
     JOIN patient pt ON a.patient=pt.ssn
     JOIN nurse n ON a.prepnurse=n.employeeid
     JOIN physician p ON pt.pcp=p.employeeid
-    ORDER BY pt.name;
-    '''
-    whr = '''
     WHERE a.patient IN
         (SELECT patient
         FROM appointment a
         GROUP BY a.patient
         HAVING count(*)>=2)
-    AND n.registered='true'
+    AND n.registered=1
+    ORDER BY pt.name;
     '''
+
+    for row in cur.execute(qr1):
+        print(row)
+
     qr2 = '''
     SELECT patient
     FROM appointment a
     GROUP BY a.patient
     HAVING count(*) >= 2
     '''
-
     for row in cur.execute(qr2):
         print(row)
     return
