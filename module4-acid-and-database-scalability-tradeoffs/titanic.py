@@ -105,12 +105,83 @@ def avg_age_per_class(curs):
     for item in items:
         print("  class:", item[0], "age:", item[1])
 
-# def avg_fare_per_class(curs):
+def avg_fare_per_class(curs):
 
-#    sql = """
-#        SELECT pclass
-#    """
-# def avg_fare_survivors_vs_nonsurvivors(curs):
+   sql = """
+       SELECT pclass, AVG(fare)
+       FROM titanic
+       GROUP BY pclass
+       ORDER BY pclass
+   """
+   curs.execute(sql)
+   items = curs.fetchall()
+   print("Average fare per class:")
+   for item in items:
+       print("  class:", item[0], "average fare:", item[1])
+
+def avg_fare_survivors_vs_nonsurvivors(curs):
+
+   sql = """
+       SELECT survived, AVG(fare)
+       FROM titanic
+       GROUP BY survived
+       ORDER BY survived
+   """
+   curs.execute(sql)
+   items = curs.fetchall()
+   print("Average fare survivors vs non-survivors:")
+   for item in items:
+       print("  survived:", item[0], "average fare:", item[1])
+
+def avg_num_siblings_spouses_per_class(curs):
+
+    sql = """
+        SELECT pclass, AVG(num_siblings_spouses_aboard)
+        FROM titanic
+        GROUP BY pclass
+        ORDER BY pclass
+    """
+    curs.execute(sql)
+    items = curs.fetchall()
+    print("Average number of siblings and spouses aboard per class:")
+    for item in items:
+        print("  class:", item[0], "num:", item[1])
+
+def avg_num_siblings_spouses_per_class_and_survival(curs):
+
+    sql = """
+        SELECT pclass, survived, AVG(num_siblings_spouses_aboard)
+        FROM titanic
+        GROUP BY pclass, survived
+        ORDER BY pclass, survived
+    """
+    curs.execute(sql)
+    items = curs.fetchall()
+    print("Average number of siblings and spouses aboard per class and survival:")
+    for item in items:
+        print("  class:", item[0], "survived:", item[1], "num:", num)
+
+def passengers_with_same_names(curs):
+
+    sql = """
+        SELECT COUNT(DISTINCT LOWER(name))
+        FROM titanic
+    """
+    curs.execute(sql)
+    num_distinct_names = curs.fetchone()[0]
+    print("Number of passengers with distinct names:",
+          num_distinct_names)
+
+    sql = """
+        SELECT COUNT(*)
+        FROM titanic
+    """
+    curs.execute(sql)
+    num_rows_in_table = curs.fetchone()[0]
+    print("Number of rows in table:",
+          num_rows_in_table)
+    print("Number of names shared with other passengers:",
+          num_rows_in_table - num_distinct_names)
 
 if __name__ == "__main__":
 
@@ -127,3 +198,6 @@ if __name__ == "__main__":
             count_pass_per_class_survived_died(curs)
             avg_age_survivors_nonsurvivors(curs)
             avg_age_per_class(curs)
+            avg_fare_per_class(curs)
+            avg_fare_survivors_vs_nonsurvivors(curs)
+            passengers_with_same_names(curs)
