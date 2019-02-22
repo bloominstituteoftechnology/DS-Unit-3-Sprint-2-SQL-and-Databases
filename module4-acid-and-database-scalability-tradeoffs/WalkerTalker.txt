@@ -1,0 +1,23 @@
+After spending a week learning the basics of databasing, ive been surprised, both in positive and negative ways, at how 
+my understanding has grown.  Some of the things that have made an impression on me are;
+	Once you're in the system, the querying system and imports are easy enough to figure out, and I find the schema 
+planning for SQL fun.  Once you get past the inital hump of difficulty it seems like it smooths out, at least until you 
+get to advanced things like ordering.  One example i particularly like is the joining of tables, which I find to be an
+extremely useful thing and something I could do a ton of, but the first few hours of trying to find out what it did were
+frustrating but ultimately useful.
+	The initial hump was quite a lot for me, as I prefer intuitive systems, and a lot of this,  while readable, is a 
+lot more arbitrary than what im used to, particularly the picky formatting of connection strings.  Another difficult thing
+is that the order of operations is sensible if you were speaking, but it seems odd for a computer to execute commands in
+almost reverse order.  For instance you begin with your readout selection, which seems counterintuitive, as you havent
+even specified the table you want to read yet.  On the other hand, if it knows only to bring in certain columns before it
+gets to the table, it can kind of *plan* your query, which I would assume makes it faster(as it is quite fast).
+  Something I would really like to learn more about  isadvanced querying.  Regular setup and basic
+queries are nothing out of the ordinary; there are plenty of videos that you can fight with and get your environment to
+a working state.  However, advanced querying, and particularly large pulls and ordering, seem like they may need some real
+time and a little guidance to help us understand.  Seeing some of the real world SQL builds, it seems like our knowledge 
+may be enough to pull from basic databases, but for any specific industry some advanced querying will be needed, itd
+be nice to spend at least a little bit talking about or being assigned a specific example so we can have some concrete 
+guidance about it.
+	Overall however, Ive found this week to be relatively enjoyable and something that will come in handy both on the
+job and in the job search itself, and that is not to say anything about the portfolio possibilities.  I look forward
+to learning more about this topic as my adventure continues!
