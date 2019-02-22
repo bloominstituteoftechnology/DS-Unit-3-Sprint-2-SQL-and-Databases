@@ -25,9 +25,35 @@ def run_queries(cur):
         SELECT e.LastName, (e.HireDate - e.Birthdate) as HireAge
         FROM Employee e)
     '''
-    print('--- Employee HireAge ---')
+    print('\n--- Employee HireAge ---')
     for row in cur.execute(qry):
         print("Average employee hire age is ", round(row[0]))
+
+    # ___ 10 most expensive Products with Supliers ___________
+    qry = '''
+    SELECT p.ProductName, p.UnitPrice, s.CompanyName
+    FROM Product p
+    JOIN Supplier s
+      ON p.Supplierid = s.id
+    ORDER BY p.UnitPrice DESC
+    LIMIT 10;
+    '''
+    print('\n--- 10 Most Expensive Items and Supplier ---')
+    for row in cur.execute(qry):
+        print(row[0], "....", row[1], "...", row[2])
+
+    # ___ Category by Number of Products ___________
+    qry = '''
+    SELECT c.CategoryName, COUNT(p.ProductName) as pCount
+    FROM Category c
+    JOIN Product p
+      ON p.Categoryid = c.id
+    GROUP BY c.CategoryName
+    ORDER BY pCount DESC
+    '''
+    print('\n-- 10 Largest Categories by # of Products --')
+    for row in cur.execute(qry):
+        print(row[0], "....", row[1])
 
     # ____ end of queries ___
     return
