@@ -130,9 +130,34 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  
+There is a many-to-many relationship between the Employee
+   and the Territory table with the EmployeeTerritory table
+   as the go-between table.
+   
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  
+Approprite situation for document DB is in a startup where you dont know which
+   data you will want to retain and which you will end up not using.
+   Making a relational database will just end up causing you to
+   keep updating the table - which will cause delays at best and errors
+   in the table at worst.
+   
+An inappropriate situation is hospital records. Here we want the ACID
+   guarantees of a relational database. These guarantees have been worked over
+   since the 1970s, and are pretty solid. They ensure that multiple points of
+   failure have to occur for you to lose data. ACID stands for Atomicity,
+   Consistency, Isolation, and Durability.
+   
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+
+NewSQL wants to create a system that will give you ACID guarantees of a
+relational database plus the flexibility of a document database.
+These databases are split into various nodes that don't share any information.
+Since they're designed from scratch to be distributed, they provide
+good read/write throughput.
+
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well
