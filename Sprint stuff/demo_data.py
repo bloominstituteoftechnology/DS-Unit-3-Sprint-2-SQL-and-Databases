@@ -5,6 +5,9 @@ conn = sqlite3.connect('\demo_data.sqlite3')
 curs = conn.cursor()
 curs2 = conn.cursor()
 curs3 = conn.cursor()
+curs4 = conn.cursor()
+curs5 = conn.cursor()
+curs6 = conn.cursor()
 
 # create table statement
 create_demo = """CREATE TABLE demo(
@@ -37,7 +40,9 @@ curs3.execute(column_3)
 Q_1 = """SELECT COUNT(s) FROM demo;"""
 Q_2 = """SELECT COUNT(s) FROM demo WHERE x > 5 AND y > 5;"""
 Q_3 = """SELECT COUNT(DISTINCT y) FROM demo;"""
-
+curs4.execute(Q_1)
+curs5.execute(Q_2)
+curs6.execute(Q_3)
 
 # checkpoint reached!
 conn.commit()
