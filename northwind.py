@@ -15,6 +15,6 @@ q_two= pd.read_sql_query("SELECT * from Employee;", connection)
 q_three = pd.read_sql_query("SELECT ProductName, UnitPrice, CompanyName from Product JOIN Supplier ORDER BY UnitPrice DESC LIMIT 10;", connection)
 print('\nThe ten most expensive items (per unit price) with their suppliers, in the database, are', q_three)
 
-q_four = ()
+q_four = pd.read_sql_query("SELECT CategoryName from Category JOIN Product ORDER BY COUNT(*) from CategoryID DESC LIMIT 1;", connection)
 print('\nThe largest category (by number of products) is', q_four)
 

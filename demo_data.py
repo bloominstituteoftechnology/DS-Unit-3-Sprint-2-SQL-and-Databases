@@ -15,7 +15,7 @@ def run_part_one():
     c = connection.cursor()
 
     # Create table
-    c.execute('''CREATE TABLE demo
+    c.execute('''CREATE TABLE IF NOT EXISTS demo
               (s, x, y)''')
 
     # Insert data into table
