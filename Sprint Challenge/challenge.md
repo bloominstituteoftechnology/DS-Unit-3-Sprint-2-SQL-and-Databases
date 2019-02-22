@@ -130,6 +130,7 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  **They have a Many to Many relationship with a separate table to link them : EmlployeeTerritories 
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
