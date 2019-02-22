@@ -23,19 +23,19 @@ def create_table(conn, create_table_sql):
 
 
 sql_table= '''	CREATE TABLE demo(
-                s varchar(1),
+                s varchar(1) PRIMARY KEY,
                 x int,
                 y int
                 );'''
 #Define Columns
-column_1="""INSERT INTO demo (s)
-			VALUES ("g"),("v"),("f");"""
+row_1="""INSERT INTO demo (s,x,y)
+			VALUES ("g","3","9");"""
 
-column_2="""INSERT INTO demo(x)
-			VALUES (3),(5),(8);"""
+row_2="""INSERT INTO demo(s,x,y)
+			VALUES ("v",5,7);"""
 
-column_3="""INSERT INTO demo(y)
-			VALUES (9),(7),(7);"""
+row_3="""INSERT INTO demo(s,x,y)
+			VALUES ('f',8,7);"""
 
 
 #Define Queries
@@ -51,13 +51,13 @@ create_table(conn,sql_table)
 curs=conn.cursor()
 
 #Create column 1
-c1 = curs.execute(column_1)
+r1 = curs.execute(row_1)
 
 #Create column 2
-c2=curs.execute(column_2)
+r2=curs.execute(row_2)
 
 #Create column 3
-c3=curs.execute(column_3)
+r3=curs.execute(row_3)
 
 #------
 
