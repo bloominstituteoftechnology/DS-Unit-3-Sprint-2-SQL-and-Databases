@@ -144,6 +144,7 @@ NewSQL is an attempt to combine the better parts of both SQL and NOSQL into one 
 
 
 ### Part 5 - Turn it in!
+
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well
 as this file with your answers to part 7, to your weekly repo
 (`DS-Unit-3-Sprint-2-SQL-and-Databases`). Commit, push, and await feedback from

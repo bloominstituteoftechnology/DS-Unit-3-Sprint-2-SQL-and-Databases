@@ -29,14 +29,16 @@ count_rows = '''SELECT COUNT(s)
     FROM demo;'''
 curs.execute(count_rows)
 curs.fetchall()
-
+# Returns 3
 xy_over5 = '''SELECT COUNT(s)
     FROM demo
     WHERE x>=5 and y>=5;'''
 curs.execute(xy_over5)
 curs.fetchall()
+# Returns 2
 
 unique_y = '''SELECT COUNT(DISTINCT y)
     FROM demo;'''
 curs.execute(unique_y)
 curs.fetchall()
+# Returns 2
