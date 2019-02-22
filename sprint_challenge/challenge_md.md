@@ -120,8 +120,8 @@ Using `sqlite3` in `northwind.py`, answer the following:
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
 - What is the largest category (by number of products in it)?
-- (*Stretch*) What are the top five territories (by number of employees), and
-  how many employees do they have?
+- (*Stretch*) What is the top territory (by number of employees), and
+  how many employees does it have?
 
 ### Part 4 - Questions (and your Answers)
 
