@@ -52,6 +52,13 @@ c.execute("SELECT Product.ProductName, Product.UnitPrice, Supplier.CompanyName F
  ('Rössle Sauerkraut', 45.6, 'Plutzer Lebensmittelgroßmärkte AG')]"""
 
 
-#largest category based on number of products
-c.execute("SELECT Category.CategoryName  FROM Category INNER JOIN Product ON Product.CategoryID=Category.ID ORDER BY Category.CategoryName DESC LIMIT 1;")
-"""[('Beverages')]"""
+#largest category based on number of products - Confections with 13 products 
+c.execute("SELECT Category.CategoryName, Product.CategoryId, COUNT(*) FROM Product INNER JOIN Category ON Product.CategoryID=Category.ID Group BY Category.CategoryName;")
+"""[('Beverages', 1, 12), 
+	('Condiments', 2, 12), 
+	('Confections', 3, 13), 
+	('Dairy Products', 4, 10), 
+	('Grains/Cereals', 5, 7), 
+	('Meat/Poultry', 6, 6), 
+	('Produce', 7, 5), 
+	('Seafood', 8, 12)]"""
