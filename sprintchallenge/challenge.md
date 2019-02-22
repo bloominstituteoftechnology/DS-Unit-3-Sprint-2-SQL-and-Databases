@@ -139,6 +139,8 @@ interview screening questions (a form you fill when applying for a job):
 
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
 
+  NewSQl aims to address some of the issues a trational online relational database faces. Namely, NewSQL promises the scalability of NoSQL, which still maintaing the core ACID attributes that relational databases offer. If you're working in a feild like high-frequency trading, you want your data to stay put, but you also want to be able to scale your data to handle the big loads that come with micro-second timeseries of multiple financial instruments.
+
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`buddymove_holidayiq.py`, `northwind.py`), as well
