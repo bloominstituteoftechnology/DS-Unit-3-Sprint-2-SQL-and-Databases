@@ -130,9 +130,22 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  
+### They have a Many to Many relationship with a separate table to link them : EmployeeTerritories 
+  
 - What is a situation where a document store (like MongoDB) is appropriate, and
+
+### Where you need a flexible structure.  The dynamic schemas in MongoDb allow you to change the record structure by simply adding or deleting fields. Also MongoDB has high scalability and high availability.
+  
   what is a situation where it is not appropriate?
+
+### Where you need to guarantee the completion of transactions.  MongoDB is missing the ACID component of relational databases.
+  
+  
+  
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+
+### NewSql is attempting to bridge the gap between relation and non-relational databases by adding transaction ACID guarantees to the scalability and document-handling abilities of non-relational databases.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`buddymove_holidayiq.py`, `northwind.py`), as well
