@@ -130,9 +130,16 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+
+  ANSWER: It's a one-to-many relationship. Employee and Territiry are related through another table called Employee Territories. Employee and Territory tables can be accessed through this third table. 
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+ANSWER: MongoDB is a greart storage option when the data is unstructered and the order doesn't matter. It saves the space. Basically if the data doesn't show relation (NoSQL) or not related, MongoDB kind of online servers can be very effective. 
+Althogh, if the data shows reationship and has an order or if the user care about the order, MongoDB is'nt a good choice. However, Postgres is graet option in this case: stores large file systems for relational databases. 
+
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+NewSLQ is an attmept to bring the best of both NoSQL (MongoDB and Postgres). NewSQL tried to strike a balance between scalability and ACID properties of relational DBs. 
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well
