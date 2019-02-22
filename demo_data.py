@@ -27,6 +27,9 @@ insert_query = """INSERT INTO demo VALUES
 
 connection.cursor().execute(insert_query)
 
+# commit changes
+connection.commit()
+
 # related questions
 # 1. Count how many rows you have - it should be 3!
 count_rows_query = 'SELECT COUNT(s) FROM demo'
@@ -44,4 +47,4 @@ print ('Rows where x and y are more than 5:', x_y_large_row_count[0])
 # `DISTINCT`)?
 unique_y_query = 'SELECT COUNT (DISTINCT y) FROM demo'
 unique_y = curs.execute(unique_y_query).fetchone()[0]
-print ('Unique y values', unique_y)
+print ('Unique y values:', unique_y)
