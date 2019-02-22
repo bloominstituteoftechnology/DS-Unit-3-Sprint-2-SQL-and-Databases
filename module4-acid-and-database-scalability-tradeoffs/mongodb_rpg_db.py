@@ -7,7 +7,7 @@ def count_characters(db):
     """Returns the number of characters from MongoDB database.
 
     Args:
-        cursor (pymongo.database.Database): MongoDB database
+        db (pymongo.database.Database): MongoDB database
     Returns:
         (int) Number of characters
     """
@@ -24,7 +24,7 @@ def count_character_class(db, subclass):
     """Returns the number of characters of subclass from MongoDB database.
 
     Args:
-        cursor (pymongo.database.Database): MongoDB database
+        db (pymongo.database.Database): MongoDB database
         subclass (str): name of character class
     Returns:
         (int) Number of characters of subclass
@@ -42,7 +42,7 @@ def count_items(db):
     """Returns the number of items from MongoDB database.
 
     Args:
-        cursor (pymongo.database.Database): MongoDB database
+        db (pymongo.database.Database): MongoDB database
     Returns:
         (int) Number of items
     """
@@ -59,7 +59,7 @@ def count_weapons(db):
     """Returns the number of weapons from MongoDB database.
 
     Args:
-        cursor (pymongo.database.Database): MongoDB database
+        db (pymongo.database.Database): MongoDB database
     Returns:
         (int) Number of weapons
     """
@@ -76,7 +76,7 @@ def count_non_weapons(db):
     """Returns the number of nonweapon items from MongoDB database.
 
     Args:
-        cursor (pymongo.database.Database): MongoDB database
+        db (pymongo.database.Database): MongoDB database
     Returns:
         (int) Number of nonweapon items
     """
@@ -112,7 +112,7 @@ def avg_item_count_character(db):
     database.
 
     Args:
-        cursor (pymongo.database.Database): MongoDB database
+        db (pymongo.database.Database): MongoDB database
     Returns:
         (float) Average number of items per character
     """
@@ -149,7 +149,7 @@ def avg_weapon_count_character(db):
     database.
 
     Args:
-        cursor (pymongo.database.Database): MongoDB database
+        db (pymongo.database.Database): MongoDB database
     Returns:
         (float) Average number of weapons per character
     """
