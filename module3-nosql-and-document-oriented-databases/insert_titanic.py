@@ -17,7 +17,7 @@ data = []
 names = None
 for i, row in enumerate(reader):
     if i == 0:
-        names = row[:]
+        names = ["".join("".join(c.split(" ")).split("/")) for c in row]
     else:
         d = {}
         for j, n in enumerate(names):
