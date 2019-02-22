@@ -19,6 +19,7 @@ df.to_sql('table_name', engine)
 # Make connection object
 pg_connxn = pg.connect(dbname=dbname, user=user, password=password, host=host)
 
+
 # Populate table
 def make_and_populate_table():
     pg_curs = pg_connxn.cursor()
@@ -29,6 +30,7 @@ def make_and_populate_table():
         <table_name> (a tuple of values) VALUES""" + str(tuple(something))
     
     pg_curs.execute(insert_something)
+
 
 # Commit
 pg_connxn.commit()
