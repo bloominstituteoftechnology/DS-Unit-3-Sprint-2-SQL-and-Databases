@@ -125,6 +125,6 @@ if __name__ == "__main__":
     print(format_str.format(num_str, num_rows(curs, "demo")))
     print(format_str.format(num_gte_str, count_rows_greater(curs, "demo")))
     print(format_str.format(num_dist_str, count_distinct_col(curs, "demo")))
-    
+
     # Close connection to database
     conn.close()

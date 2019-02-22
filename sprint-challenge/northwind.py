@@ -33,7 +33,7 @@ if __name__ == "__main__":
     for c in curs.execute(avgage_bycity_str).fetchall():
         print("\t{}: {}".format(c[0], c[1]))
     print()
-    
+
     # Find top 10 most expensive products with company name of supplier from
     # Product and Supplier tables
     expensive_supplier_str = """SELECT ProductName, CompanyName, UnitPrice
