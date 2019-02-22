@@ -134,6 +134,28 @@ interview screening questions (a form you fill when applying for a job):
   what is a situation where it is not appropriate?
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
 
+```
+1. There is a many-to-many relationship between Employee and Territory Tables,
+one employee may belong to many terrotories and one territory may include many
+employees. They are connected via EmployeeTerritory Table, which contains foreign keys
+EmployeeId and TerritoryId.
+
+2. A document store is appropriate for large scale databases and unstructured data.
+The data-objects are stored as separate documents inside a collection — instead of storing the data
+into the columns and rows of a relational database. We would use it when we need high
+performance, high availability, and automatic scaling. It is relatively simple to install and implement.
+
+If we design the data model upfront, need highly structured data, and
+provide support for ACID (Atomicity, Consistency, Isolation, and Durability)
+transactions, relational database is a way to go. In such databases, data is easily
+stored and retreived using SQL queries.
+
+3. NewSQL is a category of SQL database products that address the performance
+and scalability issues posed by traditional relational database management systems. It
+is a kind of combination of traditional SQL and NoSQL
+
+```
+
 ### Part 5 - Turn it in!
 Add all the files you wrote (`buddymove_holidayiq.py`, `northwind.py`), as well
 as this file with your answers to part 7, to your weekly repo
