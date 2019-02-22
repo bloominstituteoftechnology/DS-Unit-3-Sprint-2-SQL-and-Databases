@@ -19,11 +19,14 @@ def run_part_one():
               (s, x, y)''')
 
     # Insert data into table
-    three_tup_data = [('g', 3, 9), ('v', 5, 7), ('f', 8, 7)]
-    c.execute('INSERT INTO demo VALUES three_tup_data')
+    # three_tup_data = [('g', 3, 9), ('v', 5, 7), ('f', 8, 7)]
+    # for tup in three_tup_data:
+    c.execute("INSERT INTO demo VALUES ('g', 3, 9)")
+    c.execute("INSERT INTO demo VALUES ('v', 5, 7)")
+    c.execute("INSERT INTO demo VALUES ('f', 8, 7)")
 
     # Commit data and close connection
-    c.commit()
+    connection.commit()
     connection.close()
 
 
