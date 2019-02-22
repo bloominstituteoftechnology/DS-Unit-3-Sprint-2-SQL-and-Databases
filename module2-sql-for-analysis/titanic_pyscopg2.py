@@ -38,12 +38,24 @@ def run_conversion(pgres_cur):
 
 def main():
     # ____ Connect to an ElephantSQL __________
-    pgres_str = """
-    dbname='zoafqkfp'
-    user='zoafqkfp'
-    host='TODO'
-    password='TODO'
-    """
+    dbname = ''
+    user = ''
+    host = ''
+    passw = ''
+    file = open('elephant.pwd', 'r')
+    ctr = 1
+    for line in file:
+        line=line.replace('\n', '')
+        if ctr == 1:
+            dbname = line
+        if ctr == 2:
+            user = line
+        if ctr == 3:
+            host = line
+        if ctr == 4:
+            passw = line
+        ctr = ctr + 1
+    pgres_str = 'dbname=' + dbname + ' user=' + user +' host=' + host + ' password=' + passw
     pgres_conn = conx_elephant(pgres_str)
 
     # ____ create cursor ___

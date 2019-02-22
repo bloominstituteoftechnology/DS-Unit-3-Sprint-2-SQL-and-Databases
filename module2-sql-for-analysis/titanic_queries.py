@@ -45,11 +45,25 @@ def run_queries(c):
 
 
 def main():
-    conx_str = """
-    dbname='zoafqkfp' user='zoafqkfp'
-    host='TODO'
-    password='TODO'
-    """
+        # ____ Connect to an ElephantSQL __________
+    dbname = ''
+    user = ''
+    host = ''
+    passw = ''
+    file = open('elephant.pwd', 'r')
+    ctr = 1
+    for line in file:
+        line = line.replace('\n', '')
+        if ctr == 1:
+            dbname = line
+        if ctr == 2:
+            user = line
+        if ctr == 3:
+            host = line
+        if ctr == 4:
+            passw = line
+        ctr = ctr + 1
+    conx_str = 'dbname=' + dbname + ' user=' + user + ' host=' + host + ' password=' + passw
     conn = conx_elephant(conx_str)
     cur = conn.cursor()  # create cursor
     run_queries(cur)
