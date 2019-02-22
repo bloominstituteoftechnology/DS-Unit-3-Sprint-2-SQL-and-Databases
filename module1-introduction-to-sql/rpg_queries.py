@@ -37,13 +37,13 @@ queries = {
     2: '''SELECT 'mages' as class, COUNT(*) as amount
         FROM charactercreator_mage
         UNION
-        SELECT 'clerics', COUNT(*) 
+        SELECT 'clerics', COUNT(*)
         FROM charactercreator_cleric
         UNION
-        SELECT 'fighters', COUNT(*) 
+        SELECT 'fighters', COUNT(*)
         FROM charactercreator_fighter
         UNION
-        SELECT 'thieves', COUNT(*) 
+        SELECT 'thieves', COUNT(*)
         FROM charactercreator_thief;''',
     3: 'SELECT COUNT(*) FROM armory_item;',
     4: 'SELECT COUNT(*) FROM armory_weapon',

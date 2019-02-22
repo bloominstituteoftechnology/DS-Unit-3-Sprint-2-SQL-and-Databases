@@ -2,6 +2,9 @@ import psycopg2 as pg
 import pandas as pd
 from functools import reduce
 '''
+For ElephantSQL API.
+
+
 - Make a table in your PostgreSQL db for titanic data (think about the schema!)
 - Figure out inserting all the rows from the provided `titanic.csv`
      (try to do it all in a single `INSERT` statement, so it's more efficient)
@@ -32,34 +35,48 @@ def f(x):
         return x
 
 
-df = pd.read_csv('titanic.csv').rename(columns=f).applymap(f)
-
+name = 'titanic'
+df = pd.read_csv(name + '.csv').rename(columns=f).applymap(f)
+N = df.shape[0]
 dts = df.dtypes.replace({'int64': 'INT', 'object': 'TEXT', 'float64': 'FLOAT'})
 
-tab_feats_name = '{0} ({1})'.format('titanic', reduce(
+tab_feats_name = '{0} ({1})'.format(name, reduce(
     lambda s, t: s + ', ' + t, [' '.join(t) for t in zip(dts.index,
                                                          [x.__str__() for x in dts.values])]))
 
 create = f'CREATE TABLE {tab_feats_name};'
 curs = pg_conn.cursor()
 
-# + '(' + reduce(lambda s, t: s + ', ' + t, dts.index) + ')'
-insert_prefix = f'INSERT INTO ' + '"titanic"'
+insert_prefix = f'INSERT INTO ' + name
 
 inserts_multir = ' VALUES {0};'.format(reduce(
     lambda s, t: s + ", " + t, ["('" + "', '".join(map(str, df.loc[k].values)) + "')" for k in df.index]))
-'''
+
+
+def inserts(q, NNN=N):
+    curs.execute('SELECT COUNT(*) FROM ' + name)
+    if curs.fetchall()[0][0] < NNN:
+        try:
+            curs.execute(q)
+        except pg.ProgrammingError as e:
+            print(e)
+        else:
+            print("inserted now")
+        finally:
+            print("exiting")
+            pass
+    else:
+        print("items already inserted. ")
+        pass
+
+
+#curs.execute("DROP TABLE "+name)
 try:
     curs.execute(create)
 except pg.ProgrammingError as e:
     print(e)
-'''
-'''
-try:
-    curs.execute(insert_prefix + inserts_multir)
-except pg.ProgrammingError as e:
-    print(e)
-#'''
-
-pg_conn.commit()
-pg_conn.close()
+else:
+    inserts(insert_prefix + inserts_multir)
+finally:
+    pg_conn.commit()
+    pg_conn.close()
