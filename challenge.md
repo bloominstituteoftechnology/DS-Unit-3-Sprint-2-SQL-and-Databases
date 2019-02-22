@@ -138,7 +138,9 @@ Using `sqlite3` in `northwind.py`, answer the following:
 [('Geitost',), ('Guaraná Fantástica',), ('Konbu',), ('Filo Mix',), ('Tourtière',), ('Rhönbräu Klosterbier',), ('Tunnbröd',), ('Teatime Chocolate Biscuits',), ('Rogede sild',), ('Zaanse koeken',)]
 
 
-- What is the largest category (by number of products in it)?
+#### What is the largest category (by number of products in it)?
+* curs.execute('select categoryname from Category where id = (select categoryid from Product group by categoryid order by categoryid desc limit 1)').fetchone()
+('Seafood',)
 
 
 - (*Stretch*) What are the top five territories (by number of employees), and
