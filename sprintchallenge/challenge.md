@@ -131,7 +131,8 @@ interview screening questions (a form you fill when applying for a job):
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
   
-  **Answer** : 
+  **Answer** : *Employee* and *Territory* has many to many relationship which is getting mapped in a separate table *EmployeeTerritories*. What this signifies is that a particular Employee can be mapped to multiple Territories and in the same way a particular Territory can have multiple Employees. This is mapped based on EmployeeID and TerritoryID in EmployeeTerritories table.
+  
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
   
@@ -140,6 +141,7 @@ interview screening questions (a form you fill when applying for a job):
   If the schema of the data being stored in very well structured and if the reliablity of the data with respect to ACID (Atomicity, Consistency, Isolation, Durability) guarantees is utmost priority, then it would be better to use relational DB like Postgres instead of Mongo. Applications like Bank should still use relational DB instead of Mongo DB.
   
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+
  **Answer** : Relational DB (RDBMS using SQL) are used in mission critical applications where guarantee of data is utmost important. For this relationship across tables like keys needs to be maintained in the RAM. This leads to a constraint on the amount of data which can be stored on any particular computer. This brings in vertical scalability issues. To address this NoSQl or rather Non-relational DB came into existance where data was split across computers based on logical divisions and reassembled later. This gave advantage of horizontal scalabilty but at the cost of ACID guarantees being compromised.
  NewSQL is trying to get the best out of these 2 prior ideas and combine them together thus addressing both reliability and scalability. To summarize NewSQL attempts at extreme scalability that still provide ACID guarantees.
 
