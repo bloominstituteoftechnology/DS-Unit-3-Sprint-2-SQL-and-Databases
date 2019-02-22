@@ -1,7 +1,5 @@
 import sqlite3
 import pandas as pd
-import numpy as np
-
 
 database = "demo_data.sqlite3"
 

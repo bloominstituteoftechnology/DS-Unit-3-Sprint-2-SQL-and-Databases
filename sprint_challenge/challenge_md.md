@@ -130,9 +130,13 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+#### The relationship between Employee and Territory is a Many (Employees) to Many (Territory) as mapped on the EmployeeTerritory field. Many employees cover more than one area as there are 53 territories and only 9 employees. This may lead some to believe that it is a one to many relationship of employees to territories. However, further examination of the number of employees per territory yeilds the findings that at least one territory, New York, has more than 1 employee assigned. This means the relationship is many to many.
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+#### Mongo DB Shines in instances where the data is so large that maintaining all the SQL keys in memory for processing would be unreasonable or inefficient. In these cases the natural sharding & redundancy capabilities of MongoDB make it well suited to scaling. It is also excellent for high velocity data generation because data can be generated and stored in multiple places. An inappropriate application would be in finance or banking where time excecution is critical and there can be no mistake in the processing of the time series transactions. As far as application design goes the flexibility of tying views to documents and allowing easy design transitions without database overhauls lends strength to the case for selecting MongoDB as an initial database when building new rapidly-evolving web applications. 
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+#### NewSQL is a paradigm of Relational Database design and the products that are flowing forth from that type of mindset. This model can be understood by first understanding the weaknesses inherent to traditional SQL databases particuarly in their ability to scale (grow larger than what a single high performance server can withstand.) NewSQL is similar to SQL because they still use Relational Data Models, but they allow the data to be hosted across hundreds and thousands of servers or sites while maintaining transactional consistency requirements and the similar query structure that SQL offers. The end goal of these architecture changes and new storage engines is to ensure that SQL can run on a distributed archeticture while providing concurrency, flow control for failover & performance, and distributed query processing. 
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well
