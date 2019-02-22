@@ -134,6 +134,13 @@ interview screening questions (a form you fill when applying for a job):
   what is a situation where it is not appropriate?
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
 
+1) The `Employee` and `territory` tables relate to each other in the database through a third table, `EmployeeTerritory`, which contains the ID for both tables in it.  This allows one to pull a comparison between the two by using the third table as a joiner.  Semantically the steps are getting the employees' ID, looking up what Territory ID that ID is assigned to, and then finally seeing what territory has that ID.  Without the joiner table these two table would be unable to 'speak' to each other in the database, and none of their other values correspond to anywhere else in the database.  This is why planning queries and structure are so important.    
+
+2) A document store is useful when you just need a place to dump large amounts of data that can be pulled and queried easily.  One of the ways this might happen is if you have a focus on availability of data rather than saftey through multiple transactions, although that is becoming a part of the MongoDB architechture.  IT would not be appropirate, however, for something like a bank, because a bank needs to have an accurate reflection of your balance at all times, whereas mongo is less useful than a relational tables database (like SQl) for things that need high transactional safety (persistence is better in SQL than MongoDB).  Mongo is also better for scaling up because of the lack of need to check certain boxes compared to SQl databases.  
+
+3) NewSQL is essentially just a way to try and make relational databases more scalable.  they do this by trying to find ways to allow for much heavier write -read workloads (similar to Mongo) while still keeping as much of the ACID ideals for databases used in SQL (**A**tomicity, **C**onsistency, **I**solation, and **D**urability).  One example is Google Spanner, which operates as a distributed cluster of subsets of data, which is kind of similar to tables but no subset(node) shares any disk space with any other node (called shared-nothing nodes), which if we compare to our Northwind SQL table, means we wouldnt have a table like `Employee Territory` that, if it went down, would just disconnect parts of the database from each other and maybe break everything(imagine the postage charges for sending checks to the wrong places at best!!).
+
+
 ### Part 5 - Turn it in!
 Add all the files you wrote (`buddymove_holidayiq.py`, `northwind.py`), as well
 as this file with your answers to part 7, to your weekly repo
