@@ -43,8 +43,8 @@ x_y_greater_than_5_query = """SELECT COUNT (s) FROM demo
 x_y_large_row_count = curs.execute(x_y_greater_than_5_query).fetchone()
 print ('Rows where x and y are more than 5:', x_y_large_row_count[0])
 
-# 3. How many unique values of `y` are there (hint - `COUNT()` can accept a keyword
-# `DISTINCT`)?
+# 3. How many unique values of `y` are there (hint - `COUNT()` can accept a
+# keyword `DISTINCT`)?
 unique_y_query = 'SELECT COUNT (DISTINCT y) FROM demo'
 unique_y = curs.execute(unique_y_query).fetchone()[0]
 print ('Unique y values:', unique_y)
