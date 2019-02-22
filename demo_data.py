@@ -17,6 +17,12 @@ curs.execute("INSERT INTO demo VALUES ('g', 3, 9),('v', 5, 7), ('f', 8, 7)")
 conn.commit()
 conn.close()
 
+# Question1: Count how many rows you have - it should be 3!
+total_rows_query = """SELECT COUNT(*)
+FROM demo;"""
+curs.execute(total_rows_query)
+print(curs.fetchall())
+
 # How many rows are there where both x and y are at least 5?
 total_xy_query = """SELECT COUNT(*)
 FROM demo WHERE x >= 5 AND y >=  5;"""
