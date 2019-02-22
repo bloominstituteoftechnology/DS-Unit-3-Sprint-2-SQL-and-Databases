@@ -130,9 +130,29 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+
+  There are three tables here that are linked to give us the Employee-Territory
+  relationship. The Employee and EmployeeTerritory tables are linked by the
+  employee id and have a one to many relationship.  Each employee only has one
+  territory but each territory can have many employees.  The Territory table is
+  linked with the EmployeeTerritory table through territory id.
+
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+
+  A situation where document store is appropriate is when a company is just
+  spinning up and the structure of the data isn't of utmost importance.  It is
+  also appropriate for scaling really large databases for big data instances
+  because tradition databases don't do so well with those.  It is not
+  appropriate when ACID is important such as large financial institutions
+  that need to be consistent and correct each and every time.
+
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
+
+  'NewSQL' is trying to achieve the best of both worlds. They are still relational
+  and use SQL as their way to interface with data while optimizing for larger
+  data sets and new use cases. 
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`buddymove_holidayiq.py`, `northwind.py`), as well
