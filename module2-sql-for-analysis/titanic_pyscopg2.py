@@ -32,13 +32,15 @@ def run_conversion(pgres_cur):
     vals = df.to_csv(index=False, header=None)
     print(df.head(5))
     print(vals)
+    # -___ U N D E R   C O N S T R U C T I O N ___
     return
 
 
 def main():
     # ____ Connect to an ElephantSQL __________
     pgres_str = """
-    dbname='zoafqkfp' user='zoafqkfp'
+    dbname='zoafqkfp'
+    user='zoafqkfp'
     host='TODO'
     password='TODO'
     """

@@ -1,4 +1,4 @@
-#  ________ rpg_postgres.py ______
+#  ________
 import pandas as pd
 import sqlite3
 import psycopg2
@@ -15,10 +15,6 @@ def verify_output(pgres_engine, table_name):
 
 
 def run_conversion(pgres_engine):
-    # ___ connect to  sqlite3  ____
-    lite_engine = create_engine('sqlite+pysqlite:///rpg_db.sqlite3',
-                                module=sqlite)
-
     # ___ process tables ____
     tables = ['charactercreator_character',
               'charactercreator_character_inventory',
@@ -29,6 +25,10 @@ def run_conversion(pgres_engine):
               'charactercreator_necromancer',
               'armory_item',
               'armory_weapon']
+
+    # ___ connect to  sqlite3  ____
+    lite_engine = create_engine('sqlite+pysqlite:///rpg_db.sqlite3',
+                                module=sqlite)
 
     for table_name in tables:
         print('converting........ ', table_name)

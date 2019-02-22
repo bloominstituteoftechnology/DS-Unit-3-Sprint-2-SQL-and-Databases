@@ -5,7 +5,7 @@ import sqlite3
 import psycopg2 as pg
 
 # Get the data from sqlite3
-sl_conn = sqlite3.connect('../module1-introduction-to-sql/rpg_db.sqlite3')
+sl_conn = sqlite3.connect('rpg_db.sqlite3')
 results = sl_conn.execute('SELECT * FROM charactercreator_character;').fetchall()
 
 
