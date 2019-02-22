@@ -59,5 +59,8 @@ except Exception as e:
     print('farewell')
 else:
     print(stats())
+    F = open('demo_OUTPUT.txt', 'w')
+    F.write(stats())
+    F.close()
 finally:
     print(' may your journeys bring you blessings. ')

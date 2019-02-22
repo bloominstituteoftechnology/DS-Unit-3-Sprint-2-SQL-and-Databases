@@ -88,7 +88,7 @@ def part3():
 
 print(part3())
 
-F = open('OUTPUT.txt', 'w')
+F = open('northwind_OUTPUT.txt', 'w')
 F.write(part2())
 F.write(part3())
 F.close()
