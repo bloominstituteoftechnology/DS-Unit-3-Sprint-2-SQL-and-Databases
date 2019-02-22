@@ -36,3 +36,9 @@ def y_unique():
     curs.execute("""SELECT COUNT (DISTINCT y) 
                     FROM demo;""")
     return curs.fetchall()
+
+print('There are ', row_count(), ' rows in the demo table')
+print('\n')
+print('There are ', xy_atleast_5(), ' rows where both x and y are at least 5 in the demo table')
+print('\n')
+print('There are ', y_unique(), ' unique y values in the demo table')
