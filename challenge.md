@@ -111,7 +111,8 @@ Answer the following questions (each is from a single table):
 * curs.execute('SELECT firstname, lastname, AVG(hiredate - birthdate) FROM employee').fetchall()
 [('Nancy', 'Davolio', 37.22222222222222)]
 
-####(*Stretch*) How does the average age of employee at hire vary by city?
+#### (*Stretch*) How does the average age of employee at hire vary by city?
+
 *curs.execute('SELECT firstname, lastname, AVG(hiredate - birthdate) FROM employee GROUP BY city').fetchall()
 [('Janet', 'Leverling', 29.0), ('Steven', 'Buchanan', 32.5), ('Margaret', 'Peacock', 56.0), ('Nancy', 'Davolio', 40.0), ('Andrew', 'Fuller', 40.0)]
 
@@ -137,7 +138,9 @@ Using `sqlite3` in `northwind.py`, answer the following:
 [('Geitost',), ('Guaraná Fantástica',), ('Konbu',), ('Filo Mix',), ('Tourtière',), ('Rhönbräu Klosterbier',), ('Tunnbröd',), ('Teatime Chocolate Biscuits',), ('Rogede sild',), ('Zaanse koeken',)]
 
 
-- What is the largest category (by number of products in it)?
+#### What is the largest category (by number of products in it)?
+* curs.execute('select categoryname from Category where id = (select categoryid from Product group by categoryid order by categoryid desc limit 1)').fetchone()
+('Seafood',)
 
 
 - (*Stretch*) What are the top five territories (by number of employees), and
