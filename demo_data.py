@@ -41,6 +41,8 @@ def row_count():
 
 row_count()
 
+[(3,)]
+
 #Count rows greater than 5
 def min_count():
     a3 = '''
@@ -53,6 +55,8 @@ def min_count():
 
 min_count()
 
+[(2,)]
+
 #Count unique y values
 def unique_count():
     a4 = '''
@@ -63,3 +67,5 @@ def unique_count():
     return curs.fetchall()
 
 unique_count()
+
+[(2,)]
