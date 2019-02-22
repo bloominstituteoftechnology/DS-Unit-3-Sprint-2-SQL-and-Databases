@@ -1,6 +1,15 @@
 import psycopg2 as pg
 import csv
 
+""""
+For this assignment I decided to work off my local Postgresql database 
+for faster queries and to not depend on 3rd party software that might
+be proned to securit issues.  I've included the python output of this file
+as an image with the pull request for this assignment.
+"""
+
+
+### The database titanic_db already exists on my local machine
 conn = pg.connect("host=localhost dbname=titanic_db user=sammylee")
 cur = conn.cursor()
 
@@ -20,7 +29,7 @@ CREATE TABLE IF NOT EXISTS public.titanic (
 
 cur.execute(query)
 
-
+# Loading data from CSV file into postgres with a for loop
 with open('titanic_cleaned.csv', 'r') as f:
 	reader = csv.reader(f)
 	next(reader)
