@@ -1,5 +1,14 @@
 # ./usr/bin/env python
-"""I love the smell of SQL in the morning"""
+"""
+Sample output (for reference):
+
+Total rows: 3
+
+Rows where x and y are at least 5: 2
+
+Unique values of y: 2
+
+"""
 import sqlite3
 
 # Create new database
