@@ -25,11 +25,26 @@ def run_part_one():
     c.execute("INSERT INTO demo VALUES ('v', 5, 7)")
     c.execute("INSERT INTO demo VALUES ('f', 8, 7)")
 
-    # Commit data and close connection
+    # Commit data
     connection.commit()
-    connection.close()
+    return c
+    # connection.close()
+
+
+def part_one_queries(func):
+    '''
+    This function performs required queries in SC
+    '''
+    print('There are', c.execute("SELECT COUNT(*) from demo"),
+          'rows in the demo table.')
+    print('There are',
+          c.execute("SELECT COUNT(*) from demo WHERE (x>=5 and y>=5)"),
+          'rows where both x and y are at least 5.')
+    print('There are', c.execute("SELECT COUNT(DISTINCT(y)) from demo"),  
+          'unique values of y.')
 
 
 if __name__ == '__main__':
-    run_part_one()
+    part_one_queries(run_part_one())
+    connection.close()
 
