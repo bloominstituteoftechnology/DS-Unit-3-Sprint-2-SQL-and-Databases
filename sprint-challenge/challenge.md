@@ -54,9 +54,17 @@ Make sure to `commit()` so your data is saved! The file size should be non-zero.
 Then write the following queries (also with `sqlite3`) to test:
 
 - Count how many rows you have - it should be 3!
+
+      Number of rows: 3
+
 - How many rows are there where both `x` and `y` are at least 5?
+
+      Number of rows w/ x >= 5 and y >= 5:  2
+
 - How many unique values of `y` are there (hint - `COUNT()` can accept a keyword
   `DISTINCT`)?
+
+      Number of distinct y values:  2
 
 Your code (to reproduce all above steps) should be saved in `demo_data.py` and
 added to the repository along with the generated SQLite database.
@@ -102,9 +110,34 @@ particular table, but it's a good lesson in the danger of keyword conflicts.
 Answer the following questions (each is from a single table):
 
 - What are the ten most expensive items (per unit price) in the database?
+
+  Top 10 most expensive products:
+  * Côte de Blaye: 263.5
+  * Thüringer Rostbratwurst: 123.79
+  * Mishi Kobe Niku: 97
+  * Sir Rodney's Marmalade: 81
+  * Carnarvon Tigers: 62.5
+  * Raclette Courdavault: 55
+  * Manjimup Dried Apples: 53
+  * Tarte au sucre: 49.3
+  * Ipoh Coffee: 46
+  * Rössle Sauerkraut: 45.6
+
 - What is the average age of an employee at the time of their hiring? (Hint: a
   lot of arithmetic works with dates.)
+
+  Average age at hiring date of employees:
+    
+      37.22222222222222
+
 - (*Stretch*) How does the average age of employee at hire vary by city?
+
+  Average age at hiring date of employees by city:
+  * Kirkland: 29.0
+  * London: 32.5
+  * Redmond: 56.0
+  * Seattle: 40.0
+  * Tacoma: 40.0
 
 Your code (to load and query the data) should be saved in `northwind.py`, and
 added to the repository. Do your best to answer in purely SQL, but if necessary
@@ -119,9 +152,34 @@ Using `sqlite3` in `northwind.py`, answer the following:
 
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
+
+  Top 10 most expensive products with company name:
+  * Côte de Blaye [Aux joyeux ecclésiastiques]: 263.5
+  * Thüringer Rostbratwurst [Plutzer Lebensmittelgroßmärkte AG]: 123.79
+  * Mishi Kobe Niku [Tokyo Traders]: 97
+  * Sir Rodney's Marmalade [Specialty Biscuits, Ltd.]: 81
+  * Carnarvon Tigers [Pavlova, Ltd.]: 62.5
+  * Raclette Courdavault [Gai pâturage]: 55
+  * Manjimup Dried Apples [G'day, Mate]: 53
+  * Tarte au sucre [Forêts d'érables]: 49.3
+  * Ipoh Coffee [Leka Trading]: 46
+  * Rössle Sauerkraut [Plutzer Lebensmittelgroßmärkte AG]: 45.6
+
 - What is the largest category (by number of products in it)?
+
+  Category w/ most products:
+      
+      Confections: 13
+
 - (*Stretch*) What are the top five territories (by number of employees), and
   how many employees do they have?
+
+  Top 5 employees with most territories:
+  * Mr. Robert King: 10
+  * Dr. Andrew Fuller: 7
+  * Mr. Steven Buchanan: 7
+  * Ms. Anne Dodsworth: 7
+  * Mr. Michael Suyama: 5
 
 ### Part 4 - Questions (and your Answers)
 

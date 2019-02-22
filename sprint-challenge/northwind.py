@@ -60,22 +60,18 @@ if __name__ == "__main__":
 
     # Find 5 most populous territories for employees from Employee,
     # EmployeeTerritory, and Territory tables
-    employee_terr_str = """SELECT TerritoryID,
-        TerritoryDescription,
-        COUNT(*) AS EmpCount
-    FROM (
-        SELECT TerritoryID
-        FROM Employee
-        INNER JOIN EmployeeTerritory
-            ON EmployeeTerritory.EmployeeId = Employee.Id
-    ) AS EmpTerrID
-    INNER JOIN Territory ON Territory.Id = EmpTerrID.TerritoryID
-    GROUP BY TerritoryID
-    ORDER BY EmpCount DESC
+    employee_terr_str = """SELECT LastName,
+        FirstName,
+        TitleOfCourtesy,
+        COUNT(*) AS TerrCount
+    FROM Employee
+    INNER JOIN EmployeeTerritory ON EmployeeTerritory.EmployeeId = Employee.Id
+    GROUP BY Employee.Id
+    ORDER BY TerrCount DESC
     LIMIT 5;"""
-    print("Top 5 most populous employee territories:")
+    print("Top 5 employees with most territories:")
     for c in curs.execute(employee_terr_str).fetchall():
-        print("\t{} [{}]: {}".format(c[0], c[1], c[2]))
+        print("\t{} {} {}: {}".format(c[2], c[1], c[0], c[3]))
 
     # Close connection
     conn.close()
