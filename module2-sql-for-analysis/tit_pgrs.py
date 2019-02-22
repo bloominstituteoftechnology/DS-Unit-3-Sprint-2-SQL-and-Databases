@@ -2,7 +2,7 @@ import psycopg2 as pg
 import pandas as pd
 from functools import reduce
 '''
-For ElephantSQL API.
+For ElephantSQL API. 
 
 
 - Make a table in your PostgreSQL db for titanic data (think about the schema!)
@@ -34,9 +34,8 @@ def f(x):
     else:
         return x
 
-
 name = 'titanic'
-df = pd.read_csv(name + '.csv').rename(columns=f).applymap(f)
+df = pd.read_csv(name+'.csv').rename(columns=f).applymap(f)
 N = df.shape[0]
 dts = df.dtypes.replace({'int64': 'INT', 'object': 'TEXT', 'float64': 'FLOAT'})
 
@@ -53,30 +52,31 @@ inserts_multir = ' VALUES {0};'.format(reduce(
     lambda s, t: s + ", " + t, ["('" + "', '".join(map(str, df.loc[k].values)) + "')" for k in df.index]))
 
 
-def inserts(q, NNN=N):
+def inserts(q, NNN=N): 
     curs.execute('SELECT COUNT(*) FROM ' + name)
-    if curs.fetchall()[0][0] < NNN:
+    if curs.fetchall()[0][0]<NNN: 
         try:
             curs.execute(q)
         except pg.ProgrammingError as e:
             print(e)
-        else:
+        else: 
             print("inserted now")
-        finally:
+        finally: 
             print("exiting")
             pass
     else:
         print("items already inserted. ")
         pass
 
-
 #curs.execute("DROP TABLE "+name)
 try:
     curs.execute(create)
 except pg.ProgrammingError as e:
     print(e)
-else:
+else: 
     inserts(insert_prefix + inserts_multir)
-finally:
+finally: 
     pg_conn.commit()
     pg_conn.close()
+
+
