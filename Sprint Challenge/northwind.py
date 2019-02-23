@@ -23,14 +23,25 @@ def run_queries(cur):
     qry = '''
     SELECT Avg(HireAge)
     FROM (
-        SELECT e.LastName, (e.HireDate - e.Birthdate) as HireAge
+        SELECT e.LastName, (e.HireDate - e.Birthdate) HireAge
         FROM Employee e)
     '''
     print('\n--- Employee HireAge ---')
     for row in cur.execute(qry):
-        print("Average employee hire age is ", round(row[0]))
+        print("Average employee hire age is", round(row[0]))
 
-    # ___ 10 most expensive Products with Supliers ___________
+    # __ How does the average age of employee at hire vary by city __
+    qry = '''
+    SELECT e.City,  AVG(e.HireDate-e.Birthdate) HireAge
+    FROM Employee e
+    GROUP BY e.City
+    ORDER BY e.City, HireAge DESC
+    '''
+    print('\n--- Employee HireAge by City---')
+    for row in cur.execute(qry):
+        print(row[0], '...', row[1])
+
+    # ___ 10 most expensive Products with Suppliers ___________
     qry = '''
     SELECT p.ProductName, p.UnitPrice, s.CompanyName
     FROM Product p
@@ -45,7 +56,7 @@ def run_queries(cur):
 
     # ___ Category by Number of Products ___________
     qry = '''
-    SELECT c.CategoryName, COUNT(p.ProductName) as pCount
+    SELECT c.CategoryName, COUNT(p.ProductName) pCount
     FROM Category c
     JOIN Product p
       ON p.Categoryid = c.id
@@ -55,8 +66,24 @@ def run_queries(cur):
     print('\n-- 10 Largest Categories by # of Products --')
     for row in cur.execute(qry):
         print(row[0], "....", row[1])
+    # __What are the top five territories (by number of employees)__
+    qry = '''
+    SELECT t.TerritoryDescription, COUNT(e.LastName) eCount
+    From EmployeeTerritory et
+    JOIN Employee e  ON et.EmployeeId = e.id
+    JOIN Territory t ON et.TerritoryId = t.id
+    GROUP BY t.TerritoryDescription
+    ORDER BY eCount DESC
+    LIMIT 5
+    '''
+    print('\n-- 5 Top Territories by # of employees --')
+    for row in cur.execute(qry):
+        print(row[0], '...', row[1])
+
+    return
 
 
+def run_new_queries(cur):
     # ____ end of queries ___
     return
 
@@ -68,6 +95,7 @@ def main():
 
     # _____  Process ______
     run_queries(cur)
+    run_new_queries(cur)
 
     # ___end main ________
     cur.close()
