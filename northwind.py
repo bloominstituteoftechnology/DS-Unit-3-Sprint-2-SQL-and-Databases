@@ -140,7 +140,7 @@ print(
 
 # - In the Northwind database, what is the type of relationship between the
 #   `Employee` and `Territory` tables?
-# *  One to Many. There are many Employees in each Territory but each Employee has only one Territory.
+# *  One to Many. There can be many  Territories for an Employees but each Territory has only one Employee.
 # - What is a situation where a document store (like MongoDB) is appropriate, and
 #   what is a situation where it is not appropriate?
 # *  MongoDB is appropriate where a document per id is appropriate or there are unknown or varying schema. Because of document storage MongoDB can be extended (sharding) more easily, there isn't the dependence on shared tables that RDBMS has.   If the schema is known and fixed RDBMS can be faster.   There are many choices of RDBMS tools but only a limited of document storage choices
