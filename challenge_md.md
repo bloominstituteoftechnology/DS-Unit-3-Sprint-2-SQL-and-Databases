@@ -130,8 +130,21 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+
+***
+Each Employee can be assigned to multiple Territories. Each Territory has only one Employee assigned to it. Since each Employee can be assigned to multiple Territories but each Territory has only 1 Employee assigned to it, this would be a one-to-many relationship between Employee and Territory tables. 
+***  
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+
+***
+A document store is appropriate for a business to use if their database is extremely large and does not all fit into a single machine's memory space. They are also good for when a business has data that needs to be scaleable, as a relational database is not good at being flexible and scaleable. Generally a document store will hold data that does not fit as well into a relational database as well, such as documents, hence the name. Generally, a document store will be less rigid in its structure, which can lead to faster prototyping and rapid development. 
+
+When you would not want to use a document store is when you have relatively small amounts of data, such that could fit into a single computer. This would not find as much use as a relational database would for small databases. Document store would also not be favorable for a well established company to switch their data from a relational database to a document store, as the data collected previously would lekely already have relationships that work well with relational database structures. 
+***
+  
+  
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
 
 ### Part 5 - Turn it in!
