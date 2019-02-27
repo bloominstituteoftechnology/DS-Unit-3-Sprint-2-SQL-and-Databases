@@ -1,3 +1,4 @@
+# PART 1
 # to create a new connection to a blank db
 import sqlite3
 conn = sqlite3.connect('demo_data.sqlite3')
