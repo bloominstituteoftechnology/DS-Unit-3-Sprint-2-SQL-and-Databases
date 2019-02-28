@@ -14,11 +14,9 @@ data = [('g', 3, 9),
 def make_table(data):
     CONN = sqlite3.connect('demo_data2.sqlite3')
     cur = CONN.cursor()
-    # Create table
     cur.execute("""CREATE TABLE demo
         (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, s text NOT NULL,
         x integer NOT NULL, y text NOT NULL)""")
-    # Add data to table
     for demo in data:
         cur.execute("""INSERT INTO demo (s,
             x, y) VALUES """ + str(demo))
