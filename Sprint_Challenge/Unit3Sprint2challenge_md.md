@@ -134,6 +134,29 @@ interview screening questions (a form you fill when applying for a job):
   what is a situation where it is not appropriate?
 - (*Stretch*) What is "NewSQL", and what is it trying to achieve?
 
+# 1. The type of relationship between the Employee and Territory tables is 
+# a One-to-Many relationship. Each employee has multiple territories that
+# he/she covers while each territory does NOT have more than one employee
+# responsible for it.
+# 2. A document store like MongoDB can potentially be appropriate for 
+# Northwind if the company plans to rapidly grow and change and therefore
+# need more flexibility where they expect their database schema to change.
+# Additionally since the company is global and may have mobile sales people
+# mining new additional data then MongoDB can be a better option for 
+# scaling without requiring a DBA to centralize data management. 
+# However if Northwind is already fairly settled with their current defined
+# structure and schema then a SQL approach is more appropriate. As a product
+# company that has suppliers and shippers with multi-row transactions from
+# both inventory and also accounting systems and as a more legacy "old-
+# fashioned" food/grocery products company the common schema is more cost-
+# effective, reliable, and replicable.
+# 3. NewSQL is trying to incorporate the benefits of both relational and
+# non-relational database systems. It is trying to increase the scalability
+# performance of non-relational DB for online transaction processing while
+# maintaining the ACID security of SQL. As more digital services companies
+# are created the need for more agile and scalable product is needed while
+# digital security remains a key tenet to e-commerce companies. 
+
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well
 as this file with your answers to part 7, to your weekly repo
