@@ -12,7 +12,7 @@ data = [('g', 3, 9),
 
 
 def make_table(data):
-    CONN = sqlite3.connect('demo_data.sqlite3')
+    CONN = sqlite3.connect('demo_data2.sqlite3')
     cur = CONN.cursor()
     # Create table
     cur.execute("""CREATE TABLE demo
@@ -30,7 +30,7 @@ def make_table(data):
 make_table(data)
 
 
-CONN = sqlite3.connect('demo_data.sqlite3')
+CONN = sqlite3.connect('demo_data2.sqlite3')
 cur = CONN.cursor()
 cur.execute("""SELECT * FROM demo""")
 # <sqlite3.Cursor at 0x7f1437e0a810>
