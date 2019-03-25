@@ -73,7 +73,7 @@ def avg_weapons():
     ON c.character_id = i.character_id
     WHERE i.item_id IN (SELECT item_ptr_id FROM armory_weapon);
     """
-    df = pd.DataFrame(curs.execute(items_per_char).fetchall())
+    df = pd.DataFrame(curs.execute(weapons_per_char).fetchall())
     counts = df[0].value_counts()
     return counts.mean()
 
