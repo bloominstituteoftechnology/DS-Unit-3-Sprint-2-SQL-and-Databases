@@ -52,14 +52,26 @@ Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
 - How many total Characters are there?
+## 302 characters
 - How many of each specific subclass?
+## 75 clerics
+## 68 fighters
+## 108 mages
+## 51 thieves
+## 11 necromancers
 - How many total Items?
+## 174 items
 - How many of the Items are weapons? How many are not?
+## 37 items are weapons
+## 137 items are not weapons
 - How many Items does each character have? (Return first 20 rows)
+## made table
 - How many Weapons does each character have? (Return first 20 rows)
+## made table
 - On average, how many Items does each Character have?
+## each character has 2.97350993377483 (let's say 3) items on average
 - On average, how many Weapons does each character have?
-
+## each character has 1.30967741935484 (let's say 1) weapon on average
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
 the data you need. the `charactercreator_*` and `armory_*` tables and where you
