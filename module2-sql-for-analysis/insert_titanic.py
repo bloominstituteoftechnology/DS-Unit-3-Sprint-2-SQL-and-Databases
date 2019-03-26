@@ -7,7 +7,7 @@ from sqlalchemy import create_engine
 
 # Create a postgres db on sqelephant using SQL Alchemy and pandas
 df = pd.read_csv('titanic.csv')
-engine = create_engine('postgres://dqsrsnzf:d6ciiKCSJSRR4a-jqmd8ecVF5m4VGNZc@isilo.db.elephantsql.com:5432/dqsrsnzf')
+engine = create_engine(secret_url)
 df.to_sql('titanic_table', engine)
 
 # Use psychopig and sqlite query all the rows
