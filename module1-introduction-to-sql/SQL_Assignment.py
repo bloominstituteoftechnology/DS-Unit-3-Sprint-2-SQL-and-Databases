@@ -42,3 +42,4 @@ print (curs.execute(query6).fetchall())
 query7 = 'SELECT avg(number) from (SELECT count() as number FROM charactercreator_character_inventory GROUP by character_id)'
 
 print (curs.execute(query7).fetchall())
+
