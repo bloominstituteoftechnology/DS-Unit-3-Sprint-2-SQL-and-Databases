@@ -1,0 +1,5 @@
+secret_url = 'postgres://dqsrsnzf:d6ciiKCSJSRR4a-jqmd8ecVF5m4VGNZc@isilo.db.elephantsql.com:5432/dqsrsnzf'
+dbname = 'dqsrsnzf'
+user = 'dqsrsnzf'
+password = 'd6ciiKCSJSRR4a-jqmd8ecVF5m4VGNZc'
+host = 'isilo.db.elephantsql.com'
