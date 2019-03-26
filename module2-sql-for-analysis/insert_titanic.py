@@ -7,11 +7,11 @@ from sqlalchemy import create_engine
 
 # Create a postgres db on sqelephant using SQL Alchemy and pandas
 df = pd.read_csv('titanic.csv')
+# secret_url and other credential vars are in a separate file, not in the repo
 engine = create_engine(secret_url)
 df.to_sql('titanic_table', engine)
 
 # Use psychopig and sqlite query all the rows
-# Credentials are in a separate file, Credentials.py
 pg_conn = psycopg2.connect(dbname=dbname, user=user,
                            password=password, host=host)
 pg_curs = pg_conn.cursor()
