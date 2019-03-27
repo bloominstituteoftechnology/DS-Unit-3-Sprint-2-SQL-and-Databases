@@ -1,8 +1,13 @@
 import sqlite3
 
+
+'''exploration of the rpg dataset in sql'''
+
+
 '''import rpg_db and make cursor object'''
 rpgdb = sqlite3.connect('rpg_db.sqlite3')
 cursor = rpgdb.cursor()
+
 
 '''how many characters are in the game?'''
 problem1 = 'SELECT COUNT(*) FROM charactercreator_character;'
@@ -60,4 +65,24 @@ problem6 = 'SELECT charactercreator_character_inventory.character_id,
  cursor.execute(problem6).fetchall()
 
 
+'''How many items does each character have, on average?'''
+problem7 = 'CREATE TABLE freqtable AS   
+                SELECT character_id, COUNT(character_id) AS FREQUENCY
+                FROM charactercreator_character_inventory
+                GROUP BY character_id;'
+cursor.execute(problem7)
 
+problem7_avg = 'SELECT AVG(FREQUENCY) FROM freqtable;'
+cursor.execute(problem7_avg).fetchall()
+
+'''How many weapons does each character have, on average?'''
+problem8 = 'CREATE TABLE weapon_freq AS
+               SELECT charactercreator_character_inventory.character_id,
+               COUNT(charactercreator_character_inventory.character_id) AS FREQUENCY
+               FROM charactercreator_character_inventory, armory_weapon
+               WHERE charactercreator_character_inventory.item_id = armory_weapon.item_ptr_id
+               GROUP BY character_id;'
+cursor.execute(problem8)
+
+problem8_avg = 'SELECT AVG(FREQUENCY) FROM weapon_freq;'
+cursor.execute(problem8_avg).fetchall()
