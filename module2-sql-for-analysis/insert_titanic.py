@@ -7,6 +7,7 @@ import warnings
 # pg = PostGres, sql3 = sqlite3
 
 # for connect to WinstonElephantSQL
+# verify at https://api.elephantsql.com/console/f4c79e99-f01a-4a10-983b-fc0636c96aeb/details?
 dbname = "fxbzafim"
 user = "fxbzafim"
 password = "wqVYFX8ryOe6QXiUzYk_kbJj8SnRJ6nv"
