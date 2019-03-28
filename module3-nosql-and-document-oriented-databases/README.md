@@ -40,6 +40,7 @@ PostgreSQL? What was easier, and what was harder?"
 PostgreSQL appears to be quite braindamaged when handling the apostrophe in string 
 fields such as "O'Brien". I "solved" the problem by str.replace'ing them out.
 To insert a df into a MongoDB "table" (which it ain't) was a one-liner:
+
 ==>> db.characters.insert_many(df_chars.to_dict('records'))
 
 There is no other required tasks to turn in, but it is suggested to then revisit
