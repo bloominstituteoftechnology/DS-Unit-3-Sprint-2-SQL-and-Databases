@@ -51,7 +51,8 @@ pg_cursor.execute(create_table)
 passengers = cursor.execute('SELECT * FROM titanic;').fetchall()
 for passenger in passengers:
     insert_passenger = """INSERT INTO titanic
-                          (Survived,
+                          (index,
+                           Survived,
                            Pclass,
                            Name,
                            Sex,
