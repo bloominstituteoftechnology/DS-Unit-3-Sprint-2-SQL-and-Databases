@@ -64,7 +64,7 @@ for passenger in passengers:
 pg_conn.commit()
 
 
- '''confirmation a given row in sqlite3 and psycopg2 are equal'''
+'''confirmation a given row in sqlite3 and psycopg2 are equal'''
 pg_cursor.execute('SELECT * FROM titanic;')
 pg_passengers = pg_cursor.fetchall()
 print(passengers[0])
