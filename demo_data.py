@@ -2,12 +2,15 @@ import sqlite3
 
 '''create a three row test database'''
 
+
 '''connect to blank file and add table schema'''
 conn = sqlite3.connect('demo_data.sqlite3')
 cursor = conn.cursor()
-create_table = """CREATE TABLE demo_data (S VARCHAR(1),
-                                          X INT,
-                                          Y INT);"""
+create_table = """CREATE TABLE IF NOT EXISTS demo_data (
+                                                        S VARCHAR(1),
+                                                        X INT,
+                                                        Y INT
+                                                        );"""
 cursor.execute(create_table)
 
 
