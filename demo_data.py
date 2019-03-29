@@ -3,6 +3,15 @@ import sqlite3
 conn = sqlite3.connect('demo_data.sqlite3')
 curs = conn.cursor()
 
+print('Creating table demo:')
+query1 = """
+CREATE TABLE demo (
+    s varchar(1),
+    x int,
+    y int
+);
+"""
+print(curs.execute(query1).fetchall())
 
 query2 = """
 INSERT INTO demo
