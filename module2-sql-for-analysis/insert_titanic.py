@@ -15,7 +15,7 @@ df = df.rename(columns={"Siblings/Spouses Aboard":"Siblings_or_Spouse",
 '''converting from csv to sqlite3'''
 conn = sqlite3.connect('titanic.sqlite3')
 cursor = conn.cursor()
-df.to_sql('titanic', conn, index=False, if_exists='replace')
+df.to_sql('titanic', conn, index=True, if_exists='replace')
 conn.commit()
 
 
@@ -35,7 +35,8 @@ pg_cursor.execute(type_gender)
 
 
 '''define psycopg2 table properties'''
-create_table = """CREATE TABLE titanic (Survived INT,
+create_table = """CREATE TABLE titanic (index SERIAL PRIMARY KEY,
+                                        Survived INT,
                                         Pclass INT,
                                         Name VARCHAR(50),
                                         Sex gender,
