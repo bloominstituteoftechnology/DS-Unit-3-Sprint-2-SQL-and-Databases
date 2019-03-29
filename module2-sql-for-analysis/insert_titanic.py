@@ -38,7 +38,7 @@ pg_cursor.execute(type_gender)
 create_table = """CREATE TABLE titanic (index SERIAL PRIMARY KEY,
                                         Survived INT,
                                         Pclass INT,
-                                        Name VARCHAR(50),
+                                        Name VARCHAR(100),
                                         Sex gender,
                                         Age INT,
                                         Siblings_or_Spouse INT,
