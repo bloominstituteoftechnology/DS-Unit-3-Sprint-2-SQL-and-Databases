@@ -44,6 +44,13 @@ the same questions as you did from the first module (when the RPG data was in
 SQLite). With PostgreSQL, answer the following:
 
 - How many passengers survived, and how many died?
+  #SELECT COUNT(*) FROM "public"."titanic"
+  #WHERE titanic.Survived = 1
+  #342
+  #SELECT COUNT(*) FROM "public"."titanic"
+  #WHERE titanic.Survived = 0
+  #545
+  
 - How many passengers were in each class?
 - How many passengers survived/died within each class?
 - What was the average age of survivors vs nonsurvivors?
