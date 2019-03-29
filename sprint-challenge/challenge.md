@@ -59,11 +59,12 @@ Then write the following queries (also with `sqlite3`) to test:
   ```
 - How many rows are there where both `x` and `y` are at least 5?
   ```
-  [(2,)  ]
+  [(2,)]
   ```
 - How many unique values of `y` are there (hint - `COUNT()` can accept a keyword
   `DISTINCT`)?
   ```
+  [(2,)]
   ```
 
 Your code (to reproduce all above steps) should be saved in `demo_data.py` and
@@ -110,6 +111,9 @@ particular table, but it's a good lesson in the danger of keyword conflicts.
 Answer the following questions (each is from a single table):
 
 - What are the ten most expensive items (per unit price) in the database?
+  ```
+  [(263.5,), (123.79,), (97,), (81,), (62.5,), (55,), (53,), (49.3,), (46,), (45.6,)] 
+  ```
 - What is the average age of an employee at the time of their hiring? (Hint: a
   lot of arithmetic works with dates.)
   ```
@@ -137,9 +141,9 @@ Using `sqlite3` in `northwind.py`, answer the following:
   [(263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5)]
   ```
 - What is the largest category (by number of unique products in it)?
-   ```
-   [('Confections', 13)]
-   ```
+  ```
+  [('Confections', 13)]
+  ```
 - (*Stretch*) Who's the employee with the most territories? Use `TerritoryId`
   (not name, region, or other fields) as the unique identifier for territories.
   ```
