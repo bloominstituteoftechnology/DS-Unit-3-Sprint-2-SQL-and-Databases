@@ -1,2 +1,1 @@
-# DS-Unit-3-Sprint-2-SQL-and-Databases
-SQL and Databases for Data Science
+My materials here: https://github.com/chrisluedtke/data-science-journal/tree/master/10-SQL-and-Databases
