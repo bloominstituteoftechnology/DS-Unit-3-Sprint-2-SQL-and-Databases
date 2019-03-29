@@ -112,7 +112,7 @@ Answer the following questions (each is from a single table):
 
 - What are the ten most expensive items (per unit price) in the database?
   ```
-  [(263.5,), (123.79,), (97,), (81,), (62.5,), (55,), (53,), (49.3,), (46,), (45.6,)] 
+  [(263.5,), (123.79,), (97,), (81,), (62.5,), (55,), (53,), (49.3,), (46,), (45.6,)]
   ```
 - What is the average age of an employee at the time of their hiring? (Hint: a
   lot of arithmetic works with dates.)
