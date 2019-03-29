@@ -1,4 +1,4 @@
-import sqlite
+import sqlite3
 
 '''create a three row test database'''
 
