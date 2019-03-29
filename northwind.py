@@ -1,7 +1,7 @@
 import sqlite3
 
 # Connect to existing northwind_small.sqlite3 file
-
+conn = sqlite3.connect('northwind_small.sqlite3')
 # Create cursor
 curs = conn.cursor()
 
