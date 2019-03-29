@@ -143,7 +143,7 @@ between the two tables.
 appropriate for situations where the data is very structure-less, and for huge volumes
 of data where the need for keeping keys in memory is minimal. Because of their horizontal
 orientation, they tend to scale better than relational DBs. However they are not
-particularly appropriate for situations where the need to meet ACID considerations is]
+particularly appropriate for situations where the need to meet ACID considerations is
 required.
 - 3. NewSQL is an attempt to merge the SQL and NoSQL concepts, and the jury is still out as
 to how effective it will be. The basic idea is to combine much of the structure that
