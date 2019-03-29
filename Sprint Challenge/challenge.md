@@ -128,11 +128,28 @@ Using `sqlite3` in `northwind.py`, answer the following:
 Answer the following questions, baseline ~3-5 sentences each, as if they were
 interview screening questions (a form you fill when applying for a job):
 
-- In the Northwind database, what is the type of relationship between the
+- 1. In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
-- What is a situation where a document store (like MongoDB) is appropriate, and
+- 2. What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
-- What is "NewSQL", and what is it trying to achieve?
+- 3. What is "NewSQL", and what is it trying to achieve?
+
+#### Answers:
+- 1. One employee can be assigned to multiple territories, and obviously each territory can
+have many employees. Therefore the relationship between the two tables is many-to-many.
+A table, EmployeeTerritories, with keys into each table exists to manage the relationships
+between the two tables.
+- 2. Apparently some of the recent fuss about MongoDB has died down. It appears to be most
+appropriate for situations where the data is very structure-less, and for huge volumes
+of data where the need for keeping keys in memory is minimal. Because of their horizontal
+orientation, they tend to scale better than relational DBs. However they are not
+particularly appropriate for situations where the need to meet ACID considerations is]
+required.
+- 3. NewSQL is an attempt to merge the SQL and NoSQL concepts, and the jury is still out as
+to how effective it will be. The basic idea is to combine much of the structure that
+SQL databases provide - along with much of the reliability - with the ability to scale
+that many NoSQL DBs provide. It's in theory a nice idea, but whether it can be made
+to actually work is so far unproven.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
