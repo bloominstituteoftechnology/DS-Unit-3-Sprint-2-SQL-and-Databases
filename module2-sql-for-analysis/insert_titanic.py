@@ -1,8 +1,3 @@
-cd DS-Unit-3-Sprint-2-SQL-and-Databases
-cd module2-sql-for-analysis
-cd module2-sql-for-analysis
-python
-
 import sqlite3
 import pandas
 import psycopg2
