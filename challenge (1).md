@@ -130,8 +130,14 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+
+> Employee is a one to many relationship to the Territory table. Each employee has more than one territory, but each territory only has 1 employee.
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+
+> MongoDB is a good way to store documents when there are so many different points to the data that it does not make sense for it to just exist in one database, but rather keep data in clusters of similar data. Keeping the data in clusters is effective if new data were to be created that would just be some permutation of previously created data. s
+
 - What is "NewSQL", and what is it trying to achieve?
 
 ### Part 5 - Turn it in!
