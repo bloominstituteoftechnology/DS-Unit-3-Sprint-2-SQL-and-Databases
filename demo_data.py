@@ -27,7 +27,7 @@ cursor.execute(row3)
 commit()
 
 '''how many rows are there?'''
-rowcount = """SELECT COUNT(*) FROM demo_data;""
+rowcount = """SELECT COUNT(*) FROM demo_data;"""
 print(cursor.execute(rowcount).fetchall())
 
 
