@@ -134,6 +134,22 @@ interview screening questions (a form you fill when applying for a job):
   what is a situation where it is not appropriate?
 - What is "NewSQL", and what is it trying to achieve?
 
+#### Answers:
+
+- The relationship between the Employee and Territory tables is the City column in    
+  Employee and the TerritoryDescription column in Territory. This will help us answer
+  questions about employees in the context of territory and vice versa. For example,
+  we could find the average age of employees by RegionId.
+- A document store would be appropriate when you need Big Data storage (data too
+  large to fit on one machine) and when the data is unstructured or semi-structured.
+  For example, a very large number of news stories used for Natural Language Processing 
+  would be good for document-oriented databases. So, document store wouldn't be appropriate 
+  when you don't have big data or when you need your data to be highly structured.
+- NewSQL is a relational database management system that is trying to combine the benefits
+  of regular SQL and NoSQL. It wants to achieve the scalability of NoSQL and the ACID 
+  guarantees of regular SQL. In other words, NewSQL wants to achieve non-volatile/consistent 
+  Big Data management.
+
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
 file with your answers to part 4, to your weekly repo
