@@ -31,7 +31,7 @@ pg_cursor = pg_conn.cursor()
 
 '''make Sex into an enumerated type'''
 type_gender = """CREATE TYPE gender as ENUM ('female', 'male');"""
-cursor.execute(type_gender)
+pg_cursor.execute(type_gender)
 
 
 '''define psycopg2 table properties'''
