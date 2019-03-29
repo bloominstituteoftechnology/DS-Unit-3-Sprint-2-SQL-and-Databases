@@ -1,7 +1,7 @@
 import sqlite3
 
-DB = "tiny"
-TABLE = "part_one"
+DB = "tiny_db"
+TABLE = "tiny_table"
 DATA = [
     ('g', 3, 9),
     ('v', 5, 7),
