@@ -52,14 +52,76 @@ Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
 - How many total Characters are there?
+302
 - How many of each specific subclass?
-- How many total Items?
-- How many of the Items are weapons? How many are not?
-- How many Items does each character have? (Return first 20 rows)
-- How many Weapons does each character have? (Return first 20 rows)
-- On average, how many Items does each Character have?
-- On average, how many Weapons does each character have?
+Mage: 108
+Cleric: 75
+Fighter: 68
+Thief: 51
+Necromancer: 11
 
+- How many total Items?
+898
+- How many of the Items are weapons? How many are not?
+203, 695
+- How many Items does each character have? (Return first 20 rows)
+1	Quos re
+1	Dolores rem v
+1	Alias laboriosam sapiente e
+2	Sapiente do
+2	Natus
+2	Libero saepe accusantium
+3	Saepe ea vo
+3	Tempore
+4	Atque laudantium dolor q
+4	Sit rerum err
+4	Alias laboriosam sapiente e
+4	Culpa accusantium fugit id
+5	Commodi deserunt in illo
+5	Corporis fug
+5	Quos nihil quibusdam
+5	Omnis
+6	Natus
+7	Reprehen
+7	Error maiores nulla
+7	Illo q
+7	Alias laboriosam sapiente e
+7	Distinctio tene
+8	Labore a consecte
+8	Tempore
+8	Beatae ve
+9	Ipsam placeat e
+9	Et ducimus cumque aut perspic
+9	Fuga necessitatibus
+9	Labore architecto tempora d
+10	Quos voluptates at n
+10	Neq
+
+- How many Weapons does each character have? (Return first 20 rows)
+5	145
+5	140
+7	166
+11	158
+20	156
+22	164
+23	160
+26	149
+27	172
+27	148
+27	157
+29	170
+29	157
+30	138
+32	142
+34	160
+35	166
+35	165
+36	153
+36	155
+- On average, how many Items does each Character have?
+89.1781737193764
+- On average, how many Weapons does each character have?
+157.034482758621
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
 the data you need. the `charactercreator_*` and `armory_*` tables and where you
