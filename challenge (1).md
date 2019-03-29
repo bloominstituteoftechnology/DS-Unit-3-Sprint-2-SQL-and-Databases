@@ -102,6 +102,18 @@ particular table, but it's a good lesson in the danger of keyword conflicts.
 Answer the following questions (each is from a single table):
 
 - What are the ten most expensive items (per unit price) in the database?
+Answer: Ten most expensive items are:
+Côte de Blaye	263.5
+Thüringer Rostbratwurst	123.79
+Mishi Kobe Niku	97
+Sir Rodney's Marmalade	81
+Carnarvon Tigers	62.5
+Raclette Courdavault	55
+Manjimup Dried Apples	53
+Tarte au sucre	49.3
+Ipoh Coffee	46
+Rössle Sauerkraut	45.6
+
 - What is the average age of an employee at the time of their hiring? (Hint: a
   lot of arithmetic works with dates.)
 - (*Stretch*) How does the average age of employee at hire vary by city?
@@ -130,8 +142,12 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+Answer: MongoDB is a document-based database where the objects are stored in documents, instead of as rows and columns in table in the case of relational database. Even though MongoDB is dynamic, flexible, has high  performance, is easy for replication and has high scalability, it is not suited for all siatuations.
+
 - What is "NewSQL", and what is it trying to achieve?
 
 ### Part 5 - Turn it in!
