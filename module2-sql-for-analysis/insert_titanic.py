@@ -21,10 +21,10 @@ conn.commit()
 
 
 '''permissions for psycopg2, connect'''
-user = 'cfiwxdhp'
-dbname = 'cfiwxdhp'
-password = '9GYie0tbijLrBM_HgZJWPiz3KuMCZtzS'
-host = 'isilo.db.elephantsql.com'
+user = ''
+dbname = ''
+password = ''
+host = ''
 pg_conn = psycopg2.connect(dbname=dbname, user=user,
                            password=password, host=host)
 pg_cursor = pg_conn.cursor()
