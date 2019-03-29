@@ -142,9 +142,8 @@ between the two tables.
 - 2. Apparently some of the recent fuss about MongoDB has died down. It appears to be most
 appropriate for situations where the data is very structure-less, and for huge volumes
 of data where the need for keeping keys in memory is minimal. Because of their horizontal
-orientation, they tend to scale better than relational DBs. However they are not
-particularly appropriate for situations where the need to meet ACID considerations is
-required.
+orientation, they tend to scale better than relational DBs. However they are not particularly
+appropriate for situations where the need to meet ACID considerations is required.
 - 3. NewSQL is an attempt to merge the SQL and NoSQL concepts, and the jury is still out as
 to how effective it will be. The basic idea is to combine much of the structure that
 SQL databases provide - along with much of the reliability - with the ability to scale
