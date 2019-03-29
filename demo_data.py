@@ -12,13 +12,13 @@ cursor.execute(create_table)
 
 
 '''add three rows to the table'''
-row1 = """INSERT INTO demo_data [(S, X, Y)]
+row1 = """INSERT INTO demo_data
           VALUES ('g', 3, 9);"""
 
-row2 = """INSERT INTO demo_data [(S, X, Y)]
+row2 = """INSERT INTO demo_data
           VALUES ('v', 5, 7);"""
 
-row3 = """INSERT INTO demo_data [(S, X, Y)]
+row3 = """INSERT INTO demo_data
           VALUES ('f', 8, 7);"""
 
 cursor.execute(row1)
