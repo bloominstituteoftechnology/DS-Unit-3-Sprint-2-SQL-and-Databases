@@ -10,7 +10,7 @@ import psycopg2
 df = pd.read_csv('titanic.csv')
 df = df.rename(columns={"Siblings/Spouses Aboard":"Siblings_or_Spouse",
                         "Parents/Children Aboard":"Parents_or_Children"})
-df = df[df['Names'].str.replace("'", "_")
+df = df[df['Names'].str.replace("'", "_")]
 
 
 '''converting from csv to sqlite3'''
