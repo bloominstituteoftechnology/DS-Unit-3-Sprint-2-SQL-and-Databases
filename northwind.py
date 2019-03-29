@@ -9,7 +9,7 @@ cursor = northwind.cursor()
 
 
 '''what are the ten most expensive items per unit price?'''
-problem1 = """SELECT ProductName FROM PRODUCT
+problem1 = """SELECT ProductName FROM Product
                   ORDER BY UnitPrice DESC
                   LIMIT 10;"""
 print(cursor.execute(problem1).fetchall())
