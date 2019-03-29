@@ -142,13 +142,17 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+Answer: Employee and Territory tables has one-to-many relationship. Each employee has one territory, but each each territory can have multiple employees.
 
 
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
-Answer: MongoDB is a document-based database where the objects are stored in documents, instead of as rows and columns in table in the case of relational database. Even though MongoDB is dynamic, flexible, has high  performance, is easy for replication and has high scalability, it is not suited for all siatuations.
+Answer: MongoDB is a document-based database where the objects are stored in documents, instead of as rows and columns in table in the case of relational database.MongoDB is dynamic, flexible, has high  performance, is easy for replication and has high scalability. These qualities make MongoDB a better candidate for situations like Blogs and content management, E-commerce sites or mobile and social networking sites.
+However, MongoDB does not support transactions and is not suitable in that scenario.
 
 - What is "NewSQL", and what is it trying to achieve?
+Answer: NewSQL databases combine the distributed architectures typically seen in NoSQL systems with a multi-node concurrency scheme and unique storage mechanisms to maintain Atomicity, Consistency, Isolation, and Durability (ACID) guarantees. 
+With NewSQL, traditional SQL database users have the ability to scale-out, often on-demand, without affecting application logic or violating the transaction model. These databases offer traditional SQL and support for familiar tools – making it not only possible, but easy to migrate from scale-up, client-server architectures to cloud and hybrid or multi-datacenter deployments.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
