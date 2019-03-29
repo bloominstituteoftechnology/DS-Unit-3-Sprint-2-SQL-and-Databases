@@ -18,7 +18,7 @@ print(cursor.execute(problem1).fetchall())
 '''What is the average hiring age?'''
 problem2 = """SELECT AVG(strftime('%Y', HireDate) - strftime('%Y', BirthDate))
                   FROM Employee;"""
-print(cursor.execute(problem2).fetchall()
+print(cursor.execute(problem2).fetchall())
 
 
 '''what are the ten most expensive items per unit price BY supplier? '''
