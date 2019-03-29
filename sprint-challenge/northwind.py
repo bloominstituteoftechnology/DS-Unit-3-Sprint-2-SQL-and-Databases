@@ -33,7 +33,7 @@ print("A:", northwind.execute(top_ten_unit_price_query).fetchall())
 largest_product_category_query = (
     """
     select 
-        Category.CategoryName, count(*) as Count
+        Category.CategoryName, count(distinct Product.Id) as Count
     from 
         Category
     inner join
