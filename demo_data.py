@@ -27,7 +27,7 @@ row3 = """INSERT INTO demo_data
 cursor.execute(row1)
 cursor.execute(row2)
 cursor.execute(row3)
-commit()
+conn.commit()
 
 '''how many rows are there?'''
 rowcount = """SELECT COUNT(*) FROM demo_data;"""
