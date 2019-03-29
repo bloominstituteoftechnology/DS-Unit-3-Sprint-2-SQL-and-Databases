@@ -138,7 +138,7 @@ Using `sqlite3` in `northwind.py`, answer the following:
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
   ```
-  [(263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5)]
+  [(263.5, 263.5), (263.5, 123.79), (263.5, 97), (263.5, 81), (263.5, 62.5), (263.5, 55), (263.5, 53), (263.5, 49.3), (263.5, 46), (263.5, 45.6)]
   ```
 - What is the largest category (by number of unique products in it)?
   ```

@@ -17,18 +17,12 @@ print("A:", northwind.execute("select avg(HireDate - BirthDate), City from Emplo
 # Part 3
 top_ten_unit_price_query = ( 
     """
-    select 
-        p.UnitPrice as 'Northwind Prices', 
-        o.UnitPrice as 'Supplier Prices'
-    from 
-        Product p
-    inner join 
-        OrderDetail o
-    on 
-        o.ProductId = p.Id
-    order by
-        p.UnitPrice desc, 
-        o.UnitPrice desc
+    select
+        o.UnitPrice,
+        p.UnitPrice
+    from
+        (select UnitPrice from OrderDetail order by UnitPrice desc) o,
+        (select UnitPrice from Product order by UnitPrice desc) p
     limit 10
     """
 )
