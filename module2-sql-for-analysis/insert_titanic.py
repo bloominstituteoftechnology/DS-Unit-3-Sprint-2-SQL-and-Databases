@@ -57,7 +57,7 @@ for passenger in passengers:
                            Age,
                            Siblings_or_Spouse,
                            Parents_or_Children,
-                           Fare) VALUES;"""
+                           Fare) VALUES """ + str(passenger[1:])
     pg_cursor.execute(insert_passenger)
 pg_conn.commit()
 
