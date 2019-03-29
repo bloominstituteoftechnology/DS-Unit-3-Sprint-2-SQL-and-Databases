@@ -54,9 +54,17 @@ Make sure to `commit()` so your data is saved! The file size should be non-zero.
 Then write the following queries (also with `sqlite3`) to test:
 
 - Count how many rows you have - it should be 3!
+  ```
+  [(3,)]
+  ```
 - How many rows are there where both `x` and `y` are at least 5?
+  ```
+  [(2,)  ]
+  ```
 - How many unique values of `y` are there (hint - `COUNT()` can accept a keyword
   `DISTINCT`)?
+  ```
+  ```
 
 Your code (to reproduce all above steps) should be saved in `demo_data.py` and
 added to the repository along with the generated SQLite database.
@@ -104,7 +112,13 @@ Answer the following questions (each is from a single table):
 - What are the ten most expensive items (per unit price) in the database?
 - What is the average age of an employee at the time of their hiring? (Hint: a
   lot of arithmetic works with dates.)
+  ```
+  [(37.22222222222222,)]
+  ```
 - (*Stretch*) How does the average age of employee at hire vary by city?
+  ```
+  [(29.0, 'Kirkland'), (32.5, 'London'), (56.0, 'Redmond'), (40.0, 'Seattle'), (40.0, 'Tacoma')]
+  ```
 
 Your code (to load and query the data) should be saved in `northwind.py`, and
 added to the repository. Do your best to answer in purely SQL, but if necessary
@@ -119,9 +133,18 @@ Using `sqlite3` in `northwind.py`, answer the following:
 
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
+  ```
+  [(263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5), (263.5, 263.5)]
+  ```
 - What is the largest category (by number of unique products in it)?
+   ```
+   [('Confections', 13)]
+   ```
 - (*Stretch*) Who's the employee with the most territories? Use `TerritoryId`
   (not name, region, or other fields) as the unique identifier for territories.
+  ```
+  [(7, 10)] 
+  ```
 
 ### Part 4 - Questions (and your Answers)
 
@@ -130,10 +153,36 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  
+  They're linked by way of a Primary-Foreign key relationship. Specifically they're
+  connected via a third table `EmployeeTeritory` acting as an intermediary to allow a
+  ssociations between a given Territory ID and a given Employee ID. Thus to find,
+  for example, the corresponding territory for a given employee ID, you would match
+  that to a territory id in the `EmployeeTeritory` table and then use that id to look
+  up information in the `Territory` table.
+  
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  
+  MongoDB is a quick and easy solution that cares very little about what kind of 
+  data you add, and have very few constrains on the manner in which you add that
+  data. MongoDB is great for quick and easy solutions, it doesn't provide great
+  consistency, doesn't allow for complex multi-document transaction done in an
+  atomic manner, uses a great deal of memory, and doesn't impose many constraints
+  on the structure of the data you add to it. CRUD applications would probably
+  benefit best from MongoDB, as their isn't a whole lot of complex structure needed
+  to build such an application. Alternatively if you need to garuntee that writes
+  are consistent, stored to disk immediately, or occuring in an orderly manner, you
+  probably should choose something other than MongoDB.
+  
 - What is "NewSQL", and what is it trying to achieve?
-
+    
+  NewSQL is trying to bring the scalability and ease-of-use of NoSQL databases to 
+  relational database systems. In particular, many of the more complicated aspects
+  of scaling, such as sharding or master-slave replication, are now done automatically
+  by the databases themselves. Many of the NewSQL databases are also designed to operate
+  and store data in memory first, conferring a huge speed boost in reads and writes. 
+    
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
 file with your answers to part 4, to your weekly repo
