@@ -16,6 +16,8 @@ def verify_output(pgres_engine, table_name):
 
 def run_conversion(pgres_engine):
     # ___ process tables ____
+    # - WARNING!  schema must already exist
+    schema_name = 'lambdaRPG'
     tables = ['charactercreator_character',
               'charactercreator_character_inventory',
               'charactercreator_cleric',
@@ -43,6 +45,7 @@ def run_conversion(pgres_engine):
         df.to_sql(table_name,
                   if_exists='replace',
                   con=pgres_engine,
+                  schema=schema_name,
                   method='multi')
         verify_output(pgres_engine, table_name)
 
@@ -51,10 +54,20 @@ def run_conversion(pgres_engine):
 
 def main():
     # __ Connect to postgres (SQLalchemy.engine) ____
-    dbname = 'zoafqkfp'
-    user = 'zoafqkfp'
-    host = 'TODO'
-    passw = 'TODO'
+    dbname = ''
+    user = ''
+    host = ''
+    password = ''
+    file = open('aws.pwd', 'r')
+    ctr = 1
+    for line in file:
+        line = line.replace('\n', '')
+        if ctr == 1: dbname = line
+        if ctr == 2: user = line
+        if ctr == 3: host = line
+        if ctr == 4: passw = line
+        ctr = ctr + 1
+
     pgres_str = 'postgresql+psycopg2://'+user+':'+passw+'@'+host+'/'+dbname
     pgres_engine = create_engine(pgres_str)
 

@@ -32,14 +32,10 @@ file = open('elephant.pwd', 'r')
 ctr = 1
 for line in file:
     line = line.replace('\n', '')
-    if ctr == 1:
-        dbname = line
-    if ctr == 2:
-        user = line
-    if ctr == 3:
-        host = line
-    if ctr == 4:
-        passw = line
+    if ctr == 1: dbname = line
+    if ctr == 2: user = line
+    if ctr == 3: host = line
+    if ctr == 4: passw = line
     ctr = ctr + 1
 pg_conn = pg.connect(dbname=dbname, user=user,
                      password=password, host=host)

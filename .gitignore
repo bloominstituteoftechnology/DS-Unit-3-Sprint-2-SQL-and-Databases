@@ -105,3 +105,4 @@ venv.bak/
 #  pwd files
 .pwd
 module2-sql-for-analysis/elephant.pwd
+module2-sql-for-analysis/aws.pwd
