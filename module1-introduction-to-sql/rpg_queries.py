@@ -38,17 +38,18 @@ results.fetchall()
 Q: How many total Items?
 A: 174
 """
-SELECT ai.name
-FROM armory_item AS ai;
+q_6 = 'SELECT COUNT(*) FROM armory_item;'
+results = curs.execute(q_6)
+results.fetchall()
 
 """
 Q: How many of the Items are weapons? How many are not?
 A: Weapons = 37
 Not weapons = 174 - 37 = 137
 """
-SELECT ai.name, aw.power
-FROM armory_weapon AS aw, armory_item AS ai
-WHERE ai.item_id = aw.item_ptr_id;
+q_7 = 'SELECT COUNT(*) FROM armory_weapon AS aw, armory_item AS ai WHERE ai.item_id = aw.item_ptr_id;'
+results = curs.execute(q_7)
+results.fetchall()
 
 """
 Q: How many Items does each character have? (Return first 20 rows)
