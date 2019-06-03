@@ -28,26 +28,30 @@ def fetch(query: str) -> None:
 
 if __name__ == '__main__':
   print('How many total characters are there?')
-  query = 'SELECT COUNT(*) FROM charactercreator_character;'
-  fetch(query)
+  fetch('SELECT COUNT(*) FROM charactercreator_character;')
 
-  print('How many of each specific subclass')
+  print('How many of each specific subclass?')
   class_tables = ['charactercreator_mage', 'charactercreator_thief', 'charactercreator_cleric', 'charactercreator_fighter', 'charactercreator_necromancer']
   for table in class_tables:
     fetch(f'SELECT COUNT(*) FROM {table};')
 
   print('How many total Items?')
-  query = 'SELECT COUNT(*) FROM armory_item;'
-  fetch(query)
+  fetch('SELECT COUNT(*) FROM armory_item;')
 
   print('How many of the Items are weapons?')
-  query = 'SELECT COUNT(*) FROM armory_weapon;'
-  fetch(query)
+  fetch('SELECT COUNT(*) FROM armory_weapon;')
 
-  # How many are not?
-  # WHERE NOT IN
+  print('How many are not?')
+  fetch('SELECT COUNT(*) FROM armory_item WHERE NOT EXISTS (SELECT * FROM armory_weapon WHERE armory_weapon.item_ptr_id = armory_item.item_id);')
 
-  # How many Items does each character have? (Return first 20 rows)
-  # How many Weapons does each character have? (Return first 20 rows)
-  # On average, how many Items does each Character have?
-  # On average, how many Weapons does each character have?
+  print('How many Items does each character have? (Return first 20 rows)')
+  fetch('SELECT character_id, COUNT(item_id) FROM charactercreator_character_inventory GROUP BY character_id LIMIT 20;')
+
+  print('How many Weapons does each character have? (Return first 20 rows)')
+  fetch('SELECT cci.character_id, COUNT(cci.item_id) FROM charactercreator_character_inventory AS cci WHERE cci.item_id IN (SELECT item_ptr_id FROM armory_weapon) GROUP BY character_id LIMIT 20;')
+
+  print('On average, how many Items does each Character have?')
+  fetch('SELECT AVG(inv_count) FROM (SELECT COUNT(item_id) AS inv_count FROM charactercreator_character_inventory GROUP BY character_id);')
+
+  print('On average, how many Weapons does each character have?')
+  fetch('SELECT AVG(weapon_count) FROM (SELECT COUNT(item_id) AS weapon_count FROM charactercreator_character_inventory WHERE charactercreator_character_inventory.item_id IN (SELECT item_ptr_id FROM armory_weapon) GROUP BY character_id);')
