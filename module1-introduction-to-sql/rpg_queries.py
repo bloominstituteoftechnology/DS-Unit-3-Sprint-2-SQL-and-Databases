@@ -2,8 +2,10 @@
 import sqlite3
 import typing
 
+
 conn = sqlite3.connect('rpg_db.sqlite3')
 curs = conn.cursor()
+
 
 def fetch(query: str) -> None:
   '''
@@ -25,16 +27,27 @@ def fetch(query: str) -> None:
     return None
 
 if __name__ == '__main__':
+  print('How many total characters are there?')
+  query = 'SELECT COUNT(*) FROM charactercreator_character;'
+  fetch(query)
+
+  print('How many of each specific subclass')
+  class_tables = ['charactercreator_mage', 'charactercreator_thief', 'charactercreator_cleric', 'charactercreator_fighter', 'charactercreator_necromancer']
+  for table in class_tables:
+    fetch(f'SELECT COUNT(*) FROM {table};')
+
+  print('How many total Items?')
   query = 'SELECT COUNT(*) FROM armory_item;'
   fetch(query)
-  print('Exiting.')
 
+  print('How many of the Items are weapons?')
+  query = 'SELECT COUNT(*) FROM armory_weapon;'
+  fetch(query)
 
-# How many total Characters are there?
-# How many of each specific subclass?
-# How many total Items?
-# How many of the Items are weapons? How many are not?
-# How many Items does each character have? (Return first 20 rows)
-# How many Weapons does each character have? (Return first 20 rows)
-# On average, how many Items does each Character have?
-# On average, how many Weapons does each character have?
+  # How many are not?
+  # WHERE NOT IN
+
+  # How many Items does each character have? (Return first 20 rows)
+  # How many Weapons does each character have? (Return first 20 rows)
+  # On average, how many Items does each Character have?
+  # On average, how many Weapons does each character have?
