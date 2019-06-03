@@ -4,9 +4,9 @@ import sqlite3
 df = pd.read_csv('buddymove_holidayiq.csv')
 conn = sqlite3.connect('buddymove_holidayiq.sqlite3')
 curs = conn.cursor()
-query = "SELECT COUNT(*) FROM review;"
 
 print('\nQ1: Count how many rows you have - it should be 249!')
+query = "SELECT COUNT(*) FROM review;"
 num_rows = curs.execute(query).fetchall()[0][0]
 print(num_rows)
 
