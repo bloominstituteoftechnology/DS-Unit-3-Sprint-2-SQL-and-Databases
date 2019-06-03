@@ -36,6 +36,12 @@ inserting the RPG data into a MongoDB instance, and add the code you write to do
 so here. Then answer the following question (can be a comment in the top of your
 code or in Markdown) - "How was working with MongoDB different from working with
 PostgreSQL? What was easier, and what was harder?"
+### answer:
+PostgreSQL appears to be quite braindamaged when handling the apostrophe in string 
+fields such as "O'Brien". I "solved" the problem by str.replace'ing them out.
+To insert a df into a MongoDB "table" (which it ain't) was a one-liner:
+
+==>> db.characters.insert_many(df_chars.to_dict('records'))
 
 There is no other required tasks to turn in, but it is suggested to then revisit
 the first two modules, rework/complete things as needed, and just check out with
