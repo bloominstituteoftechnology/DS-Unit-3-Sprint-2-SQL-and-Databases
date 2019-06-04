@@ -55,3 +55,6 @@ if __name__ == '__main__':
 
   print('On average, how many Weapons does each character have?')
   fetch('SELECT AVG(weapon_count) FROM (SELECT COUNT(item_id) AS weapon_count FROM charactercreator_character_inventory WHERE charactercreator_character_inventory.item_id IN (SELECT item_ptr_id FROM armory_weapon) GROUP BY character_id);')
+
+  print('Character name of every character that has a weapon.')
+  # fetch(' ;')
