@@ -8,10 +8,10 @@ import psycopg2
 
 
 # From help(psycopg2.connect) - Enter the bottom 4.
-dbname = ''
+dbname = 'ximkxdxb'
 user = 'ximkxdxb'
-password = '' # Don't commit this. delete when you commit/push
-host = ''
+password = 'I-CL3XbHy_kdyDPWMaF0lK5d7f1VO60W' # Don't commit this. delete when you commit/push
+host = 'raja.db.elephantsql.com'
 
 # Connect to Elephant Database
 pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
