@@ -18,12 +18,10 @@ pg_conn = ps.connect(dbname=dbname, user=user,
 
 
 # this was inside the create_pass_table but only run once
-
 # CREATE TYPE sex_enum AS ENUM ('male', 'female');
 
 # describe the table that will hold all values
 create_passenger_table = """
-
 
 CREATE TABLE IF NOT EXISTS simple_passenger_table(
     passenger_id SERIAL PRIMARY KEY,

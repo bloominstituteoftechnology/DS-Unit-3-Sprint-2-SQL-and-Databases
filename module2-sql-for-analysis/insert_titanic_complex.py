@@ -1,12 +1,12 @@
 #imports
 import psycopg2 as ps, pandas as pd
-
+import passwords
 
 # DB connection setup
-dbname = 'lxgfrdqi'
-user = 'lxgfrdqi'
-password = 'VWf_fCSBuL_cHzWjnfB9U27AmZdZtOto' #don't commit this
-host = 'raja.db.elephantsql.com'
+dbname = passwords.dbname
+user = passwords.user
+password = passwords.password #don't commit this
+host = passwords.host
 
 # import titanic df
 df = pd.read_csv('titanic.csv')
