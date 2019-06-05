@@ -3,7 +3,7 @@ import psycopg2
 # Re Enter
 dbname = 'eczastgf'
 user = 'eczastgf'
-password = 'zyivYQ2vkLGrqP1uolcjwowAjg-V4Zya'
+password = ''
 host = 'raja.db.elephantsql.com'
 
 # Connect to ElephantSQL
