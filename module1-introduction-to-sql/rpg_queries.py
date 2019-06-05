@@ -180,5 +180,3 @@ print('###### RPG DATABASE ANALYSIS ######################','\n\n'
 
 print('###### Weapon Inventory ######','\n\n', weapon_per_character(),'\n\n\n',
       '###### Item Inventory ######', '\n\n', item_per_character())
-
-
