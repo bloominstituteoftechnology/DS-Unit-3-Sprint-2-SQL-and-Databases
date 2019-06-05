@@ -2,7 +2,11 @@ import sqlite3
 import pymongo
 
 # connect to MongoDB 
-client = pymongo.MongoClient("mongodb://admin:password@cluster0-shard-00-00-yhyf0.mongodb.net:27017,cluster0-shard-00-01-yhyf0.mongodb.net:27017,cluster0-shard-00-02-yhyf0.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority")
+client = pymongo.MongoClient("""mongodb://admin:{}@cluster0-shard-
+00-00-yhyf0.mongodb.net:27017,cluster0-shard-00-01-yhyf0.mongodb.net:
+27017,cluster0-shard-00-02-yhyf0.mongodb.net:27017/test?ssl=
+true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=
+majority""".format(input('enter password: ')))
 db = client.test
 
 # open connection to sqlite3 db
