@@ -56,6 +56,7 @@ for row in titanic_db:
     VALUES ''' + str(row)
     pg_curs.execute(insert_row)
 
+# Commit to Elephantsql and test from browser: SELECT * FROM titanic
 pg_conn.commit()
 
 # Create a local titanic db then upload to elephant db
