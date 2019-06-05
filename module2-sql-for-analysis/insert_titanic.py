@@ -19,7 +19,7 @@ from sqlalchemy import create_engine
 # Save df
 df = pd.read_csv('titanic.csv')
 
-# Replace ' with empty space
+# Replace ' with an empty space
 df['Name'] = df['Name'].str.replace('\'', ' ')
 
 # Create engine - Used to convert a dataframe to database
