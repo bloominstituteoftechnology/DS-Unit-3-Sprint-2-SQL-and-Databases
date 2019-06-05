@@ -1,0 +1,1 @@
+I found Mongo pretty irritating at first. It took a while to get a local push working, but once it did, the fact that I didn't have to pre-specify schemas is quite interesting. I could see myself using Mongo in a situation where the boundaries between tables are ambiguous, or if a strict table structure isn't appropriate for the task at hand.
