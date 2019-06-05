@@ -28,7 +28,7 @@ conn.commit()
 
 dbname = 'gosxmeyr'
 user = 'gosxmeyr'
-password = 'bwJU_pVJYZwLh82_fcAue5wQlzIrvHPq'
+# password = use a password
 host = 'raja.db.elephantsql.com'
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user,
