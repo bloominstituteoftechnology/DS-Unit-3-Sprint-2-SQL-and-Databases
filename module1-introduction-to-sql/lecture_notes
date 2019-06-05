@@ -19,7 +19,7 @@ IMPORT, CREATE TABLE, COMMIT TO DB
 ...   toy_id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 ...   toy_name varchar(30),
 ...   price numeric,
-...   small_parts integer)"""
+...   small_parts integer)""
 >>> create_statement
 '\nCREATE TABLE toy (\n  toy_id integer NOT NULL PRIMARY KEY AUTOINCREMENT,\n  toy_name varchar(30),\n  price numeric,\n  small_parts integer)'
 >>> curs = conn.cursor()

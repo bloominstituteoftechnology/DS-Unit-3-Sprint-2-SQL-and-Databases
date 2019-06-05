@@ -6,7 +6,8 @@ df = pd.read_csv('buddymove_holidayiq.csv')
 
 #connect to blank database
 with sqlite3.connect('buddymove_holidayiq.sqlite3') as conn:
-    df.to_sql('buddymove_holidayiq', con=conn, index=False, if_exists='replace')
+    df.to_sql('buddymove_holidayiq', con=conn, index=False, 
+    if_exists='replace')
 
 
 #create our connection object

@@ -1,12 +1,13 @@
 #imports
-import psycopg2 as ps, pandas as pd, re
+import psycopg2 as ps, pandas as pd
 
+import passwords
 
 # DB connection setup
-dbname = 'lxgfrdqi'
-user = 'lxgfrdqi'
-password = 'VWf_fCSBuL_cHzWjnfB9U27AmZdZtOto' #don't commit this
-host = 'raja.db.elephantsql.com'
+dbname = passwords.dbname
+user = passwords.user
+password = passwords.password #don't commit this
+host = passwords.host
 
 # import titanic df
 df = pd.read_csv('titanic.csv')
@@ -15,6 +16,8 @@ df = pd.read_csv('titanic.csv')
 pg_conn = ps.connect(dbname=dbname, user=user,
                 password=password, host=host)
 
+
+# this was inside the create_pass_table but only run once
 
 # CREATE TYPE sex_enum AS ENUM ('male', 'female');
 
@@ -48,7 +51,6 @@ for table in table_list:
 pg_conn.commit()
 
 # clean out my df name strings:
-
 df['Name'] = df['Name'].str.replace(r"[\"\',]", '')
 
 #create rows of tuples from the df
@@ -64,9 +66,11 @@ def gen_row_tuples(df):
     return rows
 
 tups = gen_row_tuples(df)
-print(tups[0])
-print(tups[28][3])
-print(type(tups[28][3]))
+
+# some debugging
+# print(tups[0])
+# print(tups[28][3])
+# print(type(tups[28][3]))
 # print(str(tups[25:32]))
 
 # iterate through tuples and insert into db
