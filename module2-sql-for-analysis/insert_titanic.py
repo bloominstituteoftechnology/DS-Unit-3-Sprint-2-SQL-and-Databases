@@ -12,8 +12,7 @@ pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=hos
 # Read the ElephantSQL database
 pg_curs = pg_conn.cursor()
 
-# sqlite3-  df to titanic database
-import sqlite3
+# Df to titanic database
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -22,6 +21,7 @@ df = pd.read_csv('titanic.csv')
 
 # Replace ' with empty space
 df['Name'] = df['Name'].str.replace('\'', ' ')
+
 # Create engine - Used to convert a dataframe to database
 engine = create_engine('sqlite://', echo=False)
 
@@ -46,7 +46,7 @@ create_titanic_table = '''
     );
 '''
 
-# Read thorgh the table we created
+# Read thourgh the table we created
 pg_curs.execute(create_titanic_table)
 
 # INSERT INTO the rest of the rows to postgresql database
@@ -61,6 +61,8 @@ pg_conn.commit()
 
 # Create a local titanic db then upload to elephant db
 """
+import sqlite3
+
 # Reset index to get an index,id
 df = df.reset_index().rename(columns={'index':'id'})
 
