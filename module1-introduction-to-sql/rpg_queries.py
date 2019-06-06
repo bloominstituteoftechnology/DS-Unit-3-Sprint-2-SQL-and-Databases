@@ -49,5 +49,3 @@ def total_items_count():
     total_items = result.fetchall()
 
     return print('Total Items:', total_items[0][0])
-
-def

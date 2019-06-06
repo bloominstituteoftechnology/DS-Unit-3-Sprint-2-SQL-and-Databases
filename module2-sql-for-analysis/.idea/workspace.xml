@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbf74788-0c1a-4345-a5cc-ba29e14d6f32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/insert_titanic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/rpg_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/rpg_queries.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LS DS3 322 - Connecting to PostgreSQ.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/LS DS3 322 - Connecting to PostgreSQ.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
