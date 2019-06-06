@@ -28,7 +28,7 @@ engine = create_engine('sqlite://', echo=False)
 # Create the new table on sql db
 df.to_sql('titanic', con=engine)
 
-# Titanic df is now a db
+# Titanic df is now a db - Is a list of tuples
 titanic_db = engine.execute('SELECT * FROM titanic;').fetchall()
 
 # Create an empty db for ElephantSQL
