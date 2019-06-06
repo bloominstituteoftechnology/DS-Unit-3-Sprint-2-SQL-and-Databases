@@ -85,3 +85,4 @@ pg_human = pg_curs.fetchall()
 
 pg_human[28]
 
+'''MongoDB was a lot easier to upload to. So I think I like it better'''
