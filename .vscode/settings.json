@@ -1,0 +1,16 @@
+{
+    "sqltools.connections": [
+        {
+            "askForPassword": true,
+            "connectionTimeout": 30,
+            "database": "apyydkhz",
+            "dialect": "PostgreSQL",
+            "name": "Lambda school",
+            "password": "CLTMR3jZ2CgNb3IzHgNCusDFQaer63xO",
+            "port": 5432,
+            "server": "raja.db.elephantsql.com",
+            "username": "apyydkhz"
+        }
+    ],
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe"
+}
