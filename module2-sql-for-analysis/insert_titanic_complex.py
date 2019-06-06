@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS passenger_table(
 
 create_survived_table = """
 CREATE TABLE IF NOT EXISTS survived_table(
-    passenger_id INT REFERENCES passenger_table(passenger_id),
+    passenger_id INT REFERENCES passenger_table(passenger_id) DEFERRABLE INITIALLY DEFERRED,
     survived SMALLINT,
     PRIMARY KEY (passenger_id)
 )
@@ -50,7 +50,7 @@ create_sex_table = """
 CREATE TYPE sex_enum AS ENUM ('male', 'female');
 
 CREATE TABLE IF NOT EXISTS sex_table(
-    passenger_id INT REFERENCES passenger_table(passenger_id),
+    passenger_id INT REFERENCES passenger_table(passenger_id) DEFERRABLE INITIALLY DEFERRED,
     sex sex_enum,
     PRIMARY KEY (passenger_id)
 )
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS sex_table(
 
 create_pclass_table = """
 CREATE TABLE IF NOT EXISTS pclass_table(
-    passenger_id INT REFERENCES passenger_table(passenger_id),
+    passenger_id INT REFERENCES passenger_table(passenger_id) DEFERRABLE INITIALLY DEFERRED,
     pclass SMALLINT,
     PRIMARY KEY (passenger_id) 
 )
@@ -90,37 +90,53 @@ def gen_row_tuples(df):
         rows.append(row)
     return rows
 
+# turn dataframe into tuples
 tups = gen_row_tuples(df)
-print(tups[0])
-print(tups[1])
 
+print(tups[0])
+# print(tups[1])
+# tup = tups[0]
+
+# passenger_tup = tuple([tup[0]+1, tup[3], tup[5], tup[6], tup[7], tup[8]])
+
+# print(str(passenger_tup))
+
+# load tupples into db
 for tup in tups:
-    survived = tup[1]
-    pclass = tup[2]
-    name = tup[3]
-    sex = tup[4]
-    age = tup[5]
-    sibs = tup[6] 
-    p_c = tup[7]
-    fare = tup[8]
+    # print('inside tup loop')
+    # index = tup[0] +1
+    # survived = tup[1]
+    # pclass = tup[2]
+    # name = tup[3]
+    # sex = tup[4]
+    # age = tup[5]
+    # sibs = tup[6] 
+    # p_c = tup[7]
+    # fare = tup[8]
+
+    #create tuple insert objects:
+    passenger_tup = tuple([tup[0]+1, tup[3], tup[5], tup[6], tup[7], tup[8]])
+    survived_tup = tuple([tup[0]+1, tup[1]])
+    sex_tup = tuple([tup[0]+1, tup[4]])
+    pclass_tup = tuple([tup[0]+1, tup[2]])
+
 
     # create our inserts
     passenger_insert = """
     INSERT INTO passenger_table
-    VALUES """+ ('(' + str(tup[0]+1) + ',' + str(name) +','+ str(age) +','
-    + str(sibs) + ',' + str(p_c)+','+ str(fare)+')' )    
+    VALUES """+ str(passenger_tup)    
  
     survived_insert = """
     INSERT INTO survived_table
-    VALUES """+ str(survived)
+    VALUES """+ str(survived_tup)
 
     sex_insert = """
     INSERT INTO sex_table
-    VALUES """+ str(sex)
+    VALUES """+ str(sex_tup)
 
     pclass_insert = """
     INSERT INTO pclass_table
-    VALUES """+ str(pclass)
+    VALUES """+ str(pclass_tup)
 
     insert_list = [passenger_insert, survived_insert,
                     sex_insert, pclass_insert]
@@ -130,6 +146,7 @@ for tup in tups:
 
     # attempt to insert
     for insert in insert_list:
+        print(insert)
         pg_curs.execute(insert)
 
 pg_conn.commit()
@@ -143,22 +160,3 @@ pg_curs = pg_conn.cursor()
 result = pg_curs.execute('SELECT * FROM passenger_table;').fetchmany(20)
 
 print(result)
-
-# print(pg_conn)
-
-# tried using the pandas method, doesn't work with pg_conn
-# df.to_sql('titanic', con = pg_conn, index=False, 
-#     if_exists='replace')
-
-
-
-
-
-# query db to see if it loaded
-# query = """select *
-# from titanic.Survived
-# """
-# result = pg_conn.execute(query)
-# output = result .fetchmany(10)
-
-# print('Some titanic data: ', output)

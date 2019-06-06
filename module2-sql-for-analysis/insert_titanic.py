@@ -72,12 +72,14 @@ tups = gen_row_tuples(df)
 # print(str(tups[25:32]))
 
 # iterate through tuples and insert into db
-for tup in tups:
+for tup in tups[:5]:
 
     # create our inserts
     passenger_insert = """
     INSERT INTO simple_passenger_table
     VALUES """+ str(tup)    
+
+    # print(passenger_insert)
 
     # create a new cursor
     pg_curs = pg_conn.cursor()
