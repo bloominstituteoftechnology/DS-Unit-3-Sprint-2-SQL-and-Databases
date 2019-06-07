@@ -16,6 +16,16 @@ df = pd.read_csv('titanic.csv')
 pg_conn = ps.connect(dbname=dbname, user=user,
                 password=password, host=host)
 
+# create a new cursor
+pg_curs = pg_conn.cursor()
+
+result = pg_curs.execute('SELECT * FROM simple_passenger_table;')
+output = result.fetchmany(20)
+
+print(result)
+
+
+
 
 # this was inside the create_pass_table but only run once
 # CREATE TYPE sex_enum AS ENUM ('male', 'female');
@@ -89,3 +99,10 @@ for tup in tups[:5]:
     pg_conn.commit()
 
 # and that totally worked
+
+# create a new cursor
+pg_curs = pg_conn.cursor()
+
+result = pg_curs.execute('SELECT * FROM passenger_table;').fetchmany(20)
+
+print(result)
