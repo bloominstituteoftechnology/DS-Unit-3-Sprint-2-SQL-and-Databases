@@ -18,8 +18,6 @@ SELECT AVG(HireDate - BirthDate)
 FROM Employee
 """
 
-# Part 3
-
 query3 = """
 SELECT Product.ProductName, Product.UnitPrice, Supplier.CompanyName
 FROM Product, Supplier
