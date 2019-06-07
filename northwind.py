@@ -48,3 +48,37 @@ for row in (curs.execute("""SELECT Employee.FirstName, Employee.LastName,
                 
 """).fetchall()):
     print('is ',row[0],row[1],'with',row[2],'territories')
+    
+'''Docstring answersThe top ten most expensive products are:
+name :  Côte de Blaye -------price $ 263.5
+name :  Thüringer Rostbratwurst -------price $ 123.79
+name :  Mishi Kobe Niku -------price $ 97
+name :  Sir Rodney's Marmalade -------price $ 81
+name :  Carnarvon Tigers -------price $ 62.5
+name :  Raclette Courdavault -------price $ 55
+name :  Manjimup Dried Apples -------price $ 53
+name :  Tarte au sucre -------price $ 49.3
+name :  Ipoh Coffee -------price $ 46
+name :  Rössle Sauerkraut -------price $ 45.6
+The average age of employee at time of hire is 37.22 years old
+here is a table displaying average age at hire grouped by city
+City :  Redmond -------average age  56.0  years old
+City :  Seattle -------average age  40.0  years old
+City :  Tacoma -------average age  40.0  years old
+City :  London -------average age  32.5  years old
+City :  Kirkland -------average age  29.0  years old
+The top ten most expensive products and their suppliers are:
+Product : Côte de Blaye  -- Price $: 263.5  -- Supplier : Aux joyeux ecclésiastiques
+Product : Thüringer Rostbratwurst  -- Price $: 123.79  -- Supplier : Plutzer Lebensmittelgroßmärkte AG
+Product : Mishi Kobe Niku  -- Price $: 97  -- Supplier : Tokyo Traders
+Product : Sir Rodney's Marmalade  -- Price $: 81  -- Supplier : Specialty Biscuits, Ltd.
+Product : Carnarvon Tigers  -- Price $: 62.5  -- Supplier : Pavlova, Ltd.
+Product : Raclette Courdavault  -- Price $: 55  -- Supplier : Gai pâturage
+Product : Manjimup Dried Apples  -- Price $: 53  -- Supplier : G'day, Mate
+Product : Tarte au sucre  -- Price $: 49.3  -- Supplier : Forêts d'érables
+Product : Ipoh Coffee  -- Price $: 46  -- Supplier : Leka Trading
+Product : Rössle Sauerkraut  -- Price $: 45.6  -- Supplier : Plutzer Lebensmittelgroßmärkte AG
+the largest category by number of unique products in it is:
+('Desserts, candies, and sweet breads', 13)
+the employee with the most territories is :
+is  Robert King with 10 territories'''
