@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbf74788-0c1a-4345-a5cc-ba29e14d6f32" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/DS-Unit-3-Sprint-Challenge-2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/rpg_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/rpg_queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +123,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1080" extended-state="7" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
