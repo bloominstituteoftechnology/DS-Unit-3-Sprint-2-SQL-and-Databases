@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e0007f1f-6b52-4800-bd44-369a867af4e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Sprint Challenge/.idea/Sprint Challenge.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Sprint Challenge/demo_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Sprint Challenge/northwind.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/module1-introduction-to-sql.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/module1-introduction-to-sql.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buddy_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/buddy_queries.py" afterDir="false" />
+    <list default="true" id="4e61988b-d7b8-4b68-b253-c9d179a33708" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Sprint Challenge.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/northwind.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/module1-introduction-to-sql.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/module1-introduction-to-sql.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/buddy_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/buddy_queries.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,12 +18,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/challenge.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="330">
-                <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+              <first_editor relative-caret-position="407">
+                <caret line="161" lean-forward="true" selection-start-line="161" selection-end-line="161" />
               </first_editor>
               <second_editor />
             </state>
@@ -31,22 +31,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rpg_queries.py">
+        <entry file="file://$PROJECT_DIR$/northwind.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-              <folding>
-                <element signature="e#827#841#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="439">
+              <caret line="96" column="23" lean-forward="true" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/buddy_queries.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="415">
+              <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
             </state>
           </provider>
         </entry>
@@ -66,12 +63,23 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/rpg_queries.py" />
-        <option value="$PROJECT_DIR$/buddy_queries.py" />
+        <option value="$PROJECT_DIR$/northwind.py" />
+        <option value="$PROJECT_DIR$/demo_data.py" />
+        <option value="$PROJECT_DIR$/challenge.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/Sprint Challenge.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="840" />
     <option name="y" value="23" />
     <option name="width" value="840" />
@@ -87,8 +95,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="module1-introduction-to-sql" type="b2602c69:ProjectViewProjectNode" />
-              <item name="module1-introduction-to-sql" type="462c0819:PsiDirectoryNode" />
+              <item name="Sprint Challenge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sprint Challenge" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -99,7 +107,6 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -114,9 +121,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.buddy_queries">
-    <configuration name="buddy_queries" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="module1-introduction-to-sql" />
+  <component name="RunManager" selected="Python.northwind">
+    <configuration name="demo_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Sprint Challenge" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -124,7 +131,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/buddy_queries.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -133,8 +140,8 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="rpg_queries" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="module1-introduction-to-sql" />
+    <configuration name="northwind" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Sprint Challenge" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -142,7 +149,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rpg_queries.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/northwind.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -153,8 +160,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.buddy_queries" />
-        <item itemvalue="Python.rpg_queries" />
+        <item itemvalue="Python.northwind" />
+        <item itemvalue="Python.northwind" />
+        <item itemvalue="Python.demo_data" />
       </list>
     </recent_temporary>
   </component>
@@ -163,28 +171,28 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e0007f1f-6b52-4800-bd44-369a867af4e3" name="Default Changelist" comment="" />
-      <created>1559579807915</created>
+      <changelist id="4e61988b-d7b8-4b68-b253-c9d179a33708" name="Default Changelist" comment="" />
+      <created>1559919850960</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1559579807915</updated>
+      <updated>1559919850960</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="840" y="23" width="840" height="961" extended-state="1" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.63614166" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.023508137" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" weight="0.32911393" />
-      <window_info active="true" anchor="bottom" id="Python Console" visible="true" weight="0.5592635" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info active="true" anchor="bottom" id="Python Console" visible="true" weight="0.32959184" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32911393" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -195,30 +203,27 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/demo_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/northwind.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="96" column="23" lean-forward="true" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/challenge.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="330">
-            <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+          <first_editor relative-caret-position="407">
+            <caret line="161" lean-forward="true" selection-start-line="161" selection-end-line="161" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpg_queries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding>
-            <element signature="e#827#841#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buddy_queries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>

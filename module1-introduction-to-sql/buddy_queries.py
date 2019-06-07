@@ -33,3 +33,4 @@ def get_cross_count():
     return result[0][0]
 
 print()
+
