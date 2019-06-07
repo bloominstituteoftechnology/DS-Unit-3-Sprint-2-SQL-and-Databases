@@ -112,16 +112,16 @@ Answer the following questions (each is from a single table):
 
 - What are the ten most expensive items (per unit price) in the database?
 
-Zaanse Koeken
-Rogede Sild
-Teatime Chocolate Biscuits
-Tunnbrod
-Rhonbrau Klosterbier
-Tourtiere
-Filo Mix
-Konbu
-Guarana Fantastica
-Geitost
+Zaanse Koeken;
+Rogede Sild;
+Teatime Chocolate Biscuits;
+Tunnbrod;
+Rhonbrau Klosterbier;
+Tourtiere;
+Filo Mix;
+Konbu;
+Guarana Fantastica;
+Geitost;
 
 
 - What is the average age of an employee at the time of their hiring? (Hint: a
@@ -144,16 +144,16 @@ Using `sqlite3` in `northwind.py`, answer the following:
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
 
-Zaanse Koeken, Zaanse Snoepfabriek
-Rogede Sild, Lyngbysild
-Teatime Chocolate Biscuits, Specialty Biscuits, Ltd
-Tunnbrod, PB Knackebord AB
-Rhonbrau Klosterbier, Plutzer LebensmittelgroBmarkte AG
-Tourtiere, Ma Maison
-Filo Mix, G'day, Mate
-Konbu, Mayumi's
-Guarana Fantastica, Refrescos Americanas LTDA
-Geitost, NOrske Meierier
+Zaanse Koeken, Zaanse Snoepfabriek;
+Rogede Sild, Lyngbysild;
+Teatime Chocolate Biscuits, Specialty Biscuits, Ltd;
+Tunnbrod, PB Knackebord AB;
+Rhonbrau Klosterbier, Plutzer LebensmittelgroBmarkte AG;
+Tourtiere, Ma Maison;
+Filo Mix, G'day, Mate;
+Konbu, Mayumi's;
+Guarana Fantastica, Refrescos Americanas LTDA;
+Geitost, NOrske Meierier;
 
 
 
