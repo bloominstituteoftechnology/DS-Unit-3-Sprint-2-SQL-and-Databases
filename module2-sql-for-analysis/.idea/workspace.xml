@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbf74788-0c1a-4345-a5cc-ba29e14d6f32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/DS-Unit-3-Sprint-Challenge-2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/demo_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_insert_values.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/dataSources/1d7d21f5-35f5-4070-8061-efd6e7440d99.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/dataSources/1d7d21f5-35f5-4070-8061-efd6e7440d99.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_db.sqlite3-journal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module1-introduction-to-sql/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>

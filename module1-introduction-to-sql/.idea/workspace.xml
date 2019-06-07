@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07618887-322a-41d4-b0b7-e8e54d559282" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/DS-Unit-3-Sprint-Challenge-2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/demo_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_insert_values.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/dataSources/1d7d21f5-35f5-4070-8061-efd6e7440d99.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/dataSources/1d7d21f5-35f5-4070-8061-efd6e7440d99.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/part1_db.sqlite3-journal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../module2-sql-for-analysis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module2-sql-for-analysis/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -45,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rpg_queries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="775">
-              <caret line="77" column="71" lean-forward="true" selection-start-line="77" selection-start-column="71" selection-end-line="77" selection-end-column="71" />
+            <state relative-caret-position="180">
+              <caret line="12" column="11" selection-start-line="9" selection-end-line="15" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -162,12 +168,12 @@
       <option name="presentableId" value="Default" />
       <updated>1559647022022</updated>
       <workItem from="1559647023077" duration="6416000" />
-      <workItem from="1559677538675" duration="21434000" />
+      <workItem from="1559677538675" duration="22047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27850000" />
+    <option name="totallyTimeSpent" value="28463000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1080" extended-state="6" />
@@ -219,8 +225,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rpg_queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="775">
-          <caret line="77" column="71" lean-forward="true" selection-start-line="77" selection-start-column="71" selection-end-line="77" selection-end-column="71" />
+        <state relative-caret-position="180">
+          <caret line="12" column="11" selection-start-line="9" selection-end-line="15" selection-end-column="61" />
         </state>
       </provider>
     </entry>
