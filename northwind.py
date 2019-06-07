@@ -18,6 +18,9 @@ SELECT AVG(HireDate - BirthDate)
 FROM Employee
 """
 
+print(curs.execute(query2).fetchall())
+conn.commit()
+
 query3 = """
 SELECT Product.ProductName, Product.UnitPrice, Supplier.CompanyName
 FROM Product, Supplier
