@@ -27,11 +27,6 @@ VALUES
 curs.execute(query2)
 conn.commit()
 
-'''
-Count how many rows you have - it should be 3!
-How many rows are there where both x and y are at least 5?
-How many unique values of y are there (hint - COUNT() can accept a keyword DISTINCT)?
-'''
 
 query3 = """
 SELECT COUNT(*) FROM sxy
