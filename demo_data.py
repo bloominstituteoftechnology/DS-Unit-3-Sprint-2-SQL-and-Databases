@@ -29,3 +29,11 @@ c='SELECT COUNT(DISTINCT y) FROM demo'
 queries=[a,b,c]
 for q in queries:
     print(curs.execute(q).fetchall()[0][0])
+    
+'''answering these questions in order
+Count how many rows you have - it should be 3!
+How many rows are there where both x and y are at least 5?
+How many unique values of y are there (hint - COUNT() can accept a keyword DISTINCT)?
+3
+1
+2'''
