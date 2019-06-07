@@ -5,7 +5,8 @@ conn = sqlite3.connect('northwind_small.sqlite3')
 
 curs = conn.cursor()
 
-# Queries Part 2
+# Queries Part 2 With Outputs
+# Question 1:
 """What are the top ten most expensive items in the database?")"""
 curs.execute("""
 SELECT ProductName, UnitPrice 
@@ -26,7 +27,7 @@ LIMIT 10
  ('Rössle Sauerkraut', 45.6)]
 """
 
-
+# Question 2:
 """What is the average age of an employee at the time of their hiring?"""
 curs.execute("""
 SELECT AVG(HireDate - BirthDate) 
@@ -34,7 +35,7 @@ FROM Employee
 """).fetchall()
 """[(37.22222222222222,)]"""
 
-
+# Question 3: Stretch
 """How does the average age of employee at hire vary by city?"""
 curs.execute("""
 SELECT City, AVG(HireDate - BirthDate) 
@@ -49,7 +50,8 @@ GROUP BY City
  ('Tacoma', 40.0)]
 """
 
-# Queries Part 3
+# Queries Part 3 With Outputs
+# Question 1:
 """What are the ten most expensive items in the database and their suppliers?"""
 curs.execute("""
 SELECT CompanyName, ProductName, UnitPrice 
@@ -60,7 +62,7 @@ ORDER BY UnitPrice DESC
 LIMIT 10
 """).fetchall()
 
-
+# Question 2:
 """What is the largest category (by number of unique products 
 in it)?"""
 curs.execute("""
@@ -74,7 +76,7 @@ LIMIT 1
 """).fetchall()
 """[('Confections', 13)]"""
 
-
+# Question 3:
 """
 Who's the employee with the most territories? Use TerritoryId (not name, region, 
 or other fields) as the unique identifier for territories.)"""
