@@ -1,4 +1,4 @@
- import sqlite3
+import sqlite3
 
 conn = sqlite3.connect('northwind_small.sqlite3')
 curs = conn.cursor()
