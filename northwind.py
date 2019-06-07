@@ -30,6 +30,8 @@ SELECT  C.CategoryName, COUNT(DISTINCT P.Id) as PN
          """
 
 #print(curs.execute('SELECT sql FROM sqlite_master WHERE name="Category";').fetchall())
-#print(curs.execute(query1).fetchall())
-#print(curs.execute(query2).fetchall())
+print(curs.execute(query1).fetchall())
+print(curs.execute(query2).fetchall())
+print(curs.execute(query3).fetchall())
+print(curs.execute(query4).fetchall())
 print(curs.execute(query5).fetchall())
