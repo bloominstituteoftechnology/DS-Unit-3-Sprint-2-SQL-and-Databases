@@ -1,0 +1,17 @@
+SQL statements list
+
+CREATE TYPE pcla AS ENUM ('First', 'Second', 'Third')
+CREATE TYPE gndr AS ENUM ('Female','Male')
+CREATE TYPE status AS ENUM ('survived', 'perished')
+
+CREATE TABLE titanic_manifest (
+  pid int CONSTRAINT PRIMARY KEY
+  name varchar(100),
+  pclass pcla,
+  gender gndr,
+  surv status,
+  age shortint,
+  ss_abd shortint,
+  pc_abd shortint,
+  fare real
+)
