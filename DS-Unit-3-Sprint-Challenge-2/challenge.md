@@ -57,7 +57,27 @@ Then write the following queries (also with `sqlite3`) to test:
 - How many rows are there where both `x` and `y` are at least 5?
 - How many unique values of `y` are there (hint - `COUNT()` can accept a keyword
   `DISTINCT`)?
+  
+#### Part 1 Answers
 
+- Output for rows:
+  ```python
+     import demo_db
+     demo_db.insert_values()
+     Out[5]: (<sqlite3.Cursor at 0x7fa77fc917a0>, <sqlite3.Cursor at 0x7fa77fc91730>, None)
+     demo_db.count_rows()
+     Total Rows: 3
+   ```
+- Output for rows where both `x` and `y` are at least 5:
+  ```python
+     demo_db.find_five()
+     Total Rows with a value of 5: 1
+   ```
+- Unique `y` value counts:
+  ```python
+     demo_db.unique_y()
+     'y' unique value count: 2
+  ```
 Your code (to reproduce all above steps) should be saved in `demo_data.py` and
 added to the repository along with the generated SQLite database.
 
@@ -106,6 +126,27 @@ Answer the following questions (each is from a single table):
   lot of arithmetic works with dates.)
 - (*Stretch*) How does the average age of employee at hire vary by city?
 
+#### Part 2 Answers
+
+- Ten most expenive items:
+  ```python
+     northwind.most_expensive()
+     10 Most Expensive Product: [('Côte de Blaye', 263.5),
+                                 ('Thüringer Rostbratwurst', 123.79), 
+                                 ('Mishi Kobe Niku', 97),
+                                 ("Sir Rodney's Marmalade", 81),
+                                 ('Carnarvon Tigers', 62.5), 
+                                 ('Raclette Courdavault', 55),
+                                 ('Manjimup Dried Apples', 53),
+                                 ('Tarte au sucre', 49.3),
+                                 ('Ipoh Coffee', 46),
+                                 ('Rössle Sauerkraut', 45.6)]
+  ```
+- Average employee age at hire date:
+  ```python
+     northwind.avg_hire_age()
+     Employee average age at hire date: 37.22222222222222
+  ```
 Your code (to load and query the data) should be saved in `northwind.py`, and
 added to the repository. Do your best to answer in purely SQL, but if necessary
 use Python/other logic to help.
@@ -122,6 +163,23 @@ Using `sqlite3` in `northwind.py`, answer the following:
 - What is the largest category (by number of unique products in it)?
 - (*Stretch*) Who's the employee with the most territories? Use `TerritoryId`
   (not name, region, or other fields) as the unique identifier for territories.
+  
+#### Part 3 Answers
+
+- Ten most expensive items and suppliers:
+  ```python
+     northwind.most_expensive_with_supplier()
+     10 Most Expensive Product with Suppliers: [('Côte de Blaye', 'Aux joyeux ecclésiastiques', 263.5),
+                                                ('Thüringer Rostbratwurst', 'Plutzer Lebensmittelgroßmärkte AG', 123.79),
+                                                ('Mishi Kobe Niku', 'Tokyo Traders', 97),
+                                                ("Sir Rodney's Marmalade", 'Specialty Biscuits, Ltd.', 81),
+                                                ('Carnarvon Tigers', 'Pavlova, Ltd.', 62.5),
+                                                ('Raclette Courdavault', 'Gai pâturage', 55),
+                                                ('Manjimup Dried Apples', "G'day, Mate", 53),
+                                                ('Tarte au sucre', "Forêts d'érables", 49.3),
+                                                ('Ipoh Coffee', 'Leka Trading', 46),
+                                                ('Rössle Sauerkraut', 'Plutzer Lebensmittelgroßmärkte AG', 45.6)]
+  ```
 
 ### Part 4 - Questions (and your Answers)
 
@@ -134,6 +192,17 @@ interview screening questions (a form you fill when applying for a job):
   what is a situation where it is not appropriate?
 - What is "NewSQL", and what is it trying to achieve?
 
+#### Part 4 Answers
+- `Employee` and `Territory` table have a One to One Relationship
+- It appriate to have a document in something like MongoDB when the DB
+  has a dynamaic schema and can be scaled horizontally this is beneficial 
+  for a business whose goal is flexibility and speed. Whereas it would
+  not be appropriate to use something like MongoDB when the database needs
+  to be scaled vertically, is relational and structured.
+- NewSQL is to have a relational database system that provides the scalability
+  of NoSQL systems while maintaining ACID guarantees. NewSQL aims to solve the
+  conflicts between traditional SQL and NoSQL systems.
+  
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
 file with your answers to part 4, to your weekly repo
