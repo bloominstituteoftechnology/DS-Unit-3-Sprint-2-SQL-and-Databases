@@ -54,14 +54,24 @@ GROUP BY City
 # Question 1:
 """What are the ten most expensive items in the database and their suppliers?"""
 curs.execute("""
-SELECT CompanyName, ProductName, UnitPrice 
+SELECT ProductName, UnitPrice, CompanyName 
 FROM Product
 LEFT JOIN Supplier
 ON SupplierID
 ORDER BY UnitPrice DESC
 LIMIT 10
 """).fetchall()
-
+## Added Post Submission 
+# Côte de Blaye  :  263.5  :  Aux joyeux ecclésiastiques
+# Thüringer Rostbratwurst  :  123.79  :  Plutzer Lebensmittelgroßmärkte AG
+# Mishi Kobe Niku  :  97  :  Tokyo Traders
+# Sir Rodney's Marmalade  :  81  :  Specialty Biscuits, Ltd.
+# Carnarvon Tigers  :  62.5  :  Pavlova, Ltd.
+# Raclette Courdavault  :  55  :  Gai pâturage
+# Manjimup Dried Apples  :  53  :  G'day, Mate
+# Tarte au sucre  :  49.3  :  Forêts d'érables
+# Ipoh Coffee  :  46  :  Leka Trading
+# Rössle Sauerkraut  :  45.6  :  Plutzer Lebensmittelgroßmärkte AG
 # Question 2:
 """What is the largest category (by number of unique products 
 in it)?"""
