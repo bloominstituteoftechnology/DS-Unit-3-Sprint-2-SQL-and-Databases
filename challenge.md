@@ -112,16 +112,17 @@ Answer the following questions (each is from a single table):
 
 - What are the ten most expensive items (per unit price) in the database?
 
-Zaanse Koeken;
-Rogede Sild;
-Teatime Chocolate Biscuits;
-Tunnbrod;
-Rhonbrau Klosterbier;
-Tourtiere;
-Filo Mix;
-Konbu;
-Guarana Fantastica;
-Geitost;
+Cote de Blaye;
+Thuringer Rostbratwurst
+Mishi Kobe Niku;
+Sir ROdney's Marmalade;
+Carnarvon Tigers;
+Raclette Courdavault;
+Manjimup Dried Apples;
+Tarte au sucre;
+Ipoh Coffee;
+Rossle Sauerkraut;
+
 
 
 - What is the average age of an employee at the time of their hiring? (Hint: a
@@ -144,17 +145,7 @@ Using `sqlite3` in `northwind.py`, answer the following:
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
 
-Zaanse Koeken, Zaanse Snoepfabriek;
-Rogede Sild, Lyngbysild;
-Teatime Chocolate Biscuits, Specialty Biscuits, Ltd;
-Tunnbrod, PB Knackebord AB;
-Rhonbrau Klosterbier, Plutzer LebensmittelgroBmarkte AG;
-Tourtiere, Ma Maison;
-Filo Mix, G'day, Mate;
-Konbu, Mayumi's;
-Guarana Fantastica, Refrescos Americanas LTDA;
-Geitost, NOrske Meierier;
-
+[('Aux joyeux ecclésiastiques', 'Côte de Blaye', 263.5), ('Plutzer Lebensmittelgroßmärkte AG', 'Thüringer Rostbratwurst', 123.79), ('Tokyo Traders', 'Mishi Kobe Niku', 97), ('Specialty Biscuits, Ltd.', "Sir Rodney's Marmalade", 81), ('Pavlova, Ltd.', 'Carnarvon Tigers', 62.5), ('Gai pâturage', 'Raclette Courdavault', 55), ("G'day, Mate", 'Manjimup Dried Apples', 53), ("Forêts d'érables", 'Tarte au sucre', 49.3), ('Leka Trading', 'Ipoh Coffee', 46), ('Plutzer Lebensmittelgroßmärkte AG', 'Rössle Sauerkraut', 45.6)]
 
 
 - What is the largest category (by number of unique products in it)?
