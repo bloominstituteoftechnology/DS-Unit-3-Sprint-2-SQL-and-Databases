@@ -11,8 +11,8 @@ result_10 = curs.execute('SELECT ProductName, UnitPrice FROM Product ORDER BY Un
 print('Top 10 expensive items:', result_10)
 print('###################################')
 
-result_avg_age = curs.execute('SELECT HireDate, AVG(HireDate - BirthDate) FROM Employee GROUP BY HireDate').fetchall()
-print('Avg age of employees at hiring date:', result_avg_age)
+result_avg_age = curs.execute('SELECT ROUND(AVG(HireDate - BirthDate), 2) FROM Employee').fetchall()
+print('Avg age of employees at hiring date:', result_avg_age[0][0])
 print('###################################')
 
 result_city = curs.execute('SELECT City, HireDate, AVG(HireDate - BirthDate) FROM Employee GROUP BY City;').fetchall()
@@ -26,17 +26,13 @@ result_10_supplier = curs.execute('SELECT p.ProductName, s.CompanyName, p.UnitPr
 print('Top 10 expensive product and their supplier', result_10_supplier)
 print('###################################')
 
-result_large_category = curs.execute('SELECT CategoryID,  COUNT(p.ProductName) FROM Category AS c INNER JOIN Product as p ON CategoryID GROUP BY CategoryID;').fetchall()
-print('Large category with number of unique products', result_large_category)
+result_large_category = curs.execute('SELECT CategoryID,  COUNT(p.ProductName) FROM Category AS c INNER JOIN Product as p ON CategoryID GROUP BY CategoryID ORDER BY COUNT(p.ProductName) DESC LIMIT 1;').fetchall()
+print('Largest category,', result_large_category[0][0], ', with number of unique products:', result_large_category[0][1])
 print('###################################')
-
-# result_territory = curs.execute('SELECT COUNT(TerritoryID) FROM (SELECT * FROM EmployeeTerritory INNER JOIN Territory ON TerritoryID) JOIN Employee ON EmployeeID WHERE TerritoryID = 48075;').fetchall()
-# print(result_territory)
-# print('###################################')
 
 result_territory = curs.execute('SELECT EmployeeID, COUNT(TerritoryDescription) FROM EmployeeTerritory INNER JOIN Territory ON TerritoryID GROUP BY EmployeeID ORDER BY COUNT(TerritoryDescription) DESC LIMIT 1;').fetchall()
 
-print('EmployeeID with the most territory', result_territory)
+print('EmployeeID:,', result_territory[0][0], ', with the most territory:', result_territory[0][1])
 ########### PART 4 ############
 
 # The type of relationship between employee and territory tables is none. However once you join the table employee territory to either emplyoee or territory then you will get a one to one relationship. You can join a second time on the primary key, EmployeeID.
