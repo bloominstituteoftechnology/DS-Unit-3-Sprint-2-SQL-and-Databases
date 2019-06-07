@@ -12,26 +12,11 @@ Most Expensive products
 
 """
 """
-[(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles',
-263.5, 17, 0, 15, 0, '10518/38', 10518, 38, 263.5, 15, 0.0),
-(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles',
-263.5, 17, 0, 15, 0, '10540/38', 10540, 38, 263.5, 30, 0.0),
-(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles',
-263.5, 17, 0, 15, 0, '10541/38', 10541, 38, 263.5, 4, 0.1),
-(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles',
-263.5, 17, 0, 15, 0, '10616/38', 10616, 38, 263.5, 15, 0.05),
-(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles',
-263.5, 17, 0, 15, 0, '10672/38', 10672, 38, 263.5, 15, 0.1),
-(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles',
-263.5, 17, 0, 15, 0, '10783/38', 10783, 38, 263.5, 5, 0.0),
-(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles',
-263.5, 17, 0, 15, 0, '10805/38', 10805, 38, 263.5, 10, 0.0),
-(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles',
-263.5, 17, 0, 15, 0, '10816/38', 10816, 38, 263.5, 30, 0.05),
-(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles',
-263.5, 17, 0, 15, 0, '10817/38', 10817, 38, 263.5, 30, 0.0),
-(38, 'Côte de Blaye', 18, 1, '12 - 75 cl bottles',
-263.5, 17, 0, 15, 0, '10828/38', 10828, 38, 263.5, 2, 0.0)]
+[('Côte de Blaye',), ('Thüringer Rostbratwurst',),
+ ('Mishi Kobe Niku',), ("Sir Rodney's Marmalade",),
+  ('Carnarvon Tigers',), ('Raclette Courdavault',),
+   ('Manjimup Dried Apples',), ('Tarte au sucre',),
+    ('Ipoh Coffee',), ('Rössle Sauerkraut',)]
 
 """
 
