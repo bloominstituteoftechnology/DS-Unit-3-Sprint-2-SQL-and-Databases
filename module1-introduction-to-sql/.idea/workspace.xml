@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07618887-322a-41d4-b0b7-e8e54d559282" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/northwind.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/northwind.py" beforeDir="false" afterPath="$PROJECT_DIR$/../DS-Unit-3-Sprint-Challenge-2/northwind.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../module2-sql-for-analysis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module2-sql-for-analysis/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -169,7 +169,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1080" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.2524013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
