@@ -1,5 +1,5 @@
 # In the Northwind database, what is the type of relationship between the Employee and Territory tables?
-**The relationship is one-to-many, mediated through the EmployeeTerritory table. Each employee is connected to a different territory, which may have many different employees operating in it.**
+**The relationship is one-to-many, mediated through the EmployeeTerritory table. Each employee is connected to several different territories, each of which may have only one employee operating in it.**
 # What is a situation where a document store (like MongoDB) is appropriate, and what is a situation where it is not appropriate?
 
   **Document stores are appropriate where a rigid schema structure is not appropriate; for example, we might use a document store if we're operating a database for an online store, where different types of items have different characteristics, subject to change at the company's whim. We might, for example, wish to include a field measuring an item's softness for bedding, but such a field wouldn't be appropriate for a description of a bedframe. Schemaless databases allow for this kind of on-the-fly modification of properties.**
