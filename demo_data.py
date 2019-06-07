@@ -1,9 +1,10 @@
 import sqlite3
 
+# Establishing Connection
 conn = sqlite3.connect('demo_data.sqlite3')
 curs = conn.cursor()
 
-
+# Creating a table
 curs.execute(
 """
 CREATE TABLE demo (
@@ -16,6 +17,7 @@ y int
 
 conn.commit()
 
+# Inserting Values
 curs.execute(
 """
 INSERT INTO demo
