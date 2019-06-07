@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="07618887-322a-41d4-b0b7-e8e54d559282" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/rpg_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/rpg_queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2-sql-for-analysis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module2-sql-for-analysis/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,16 +27,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rpg_queries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="51" selection-start-line="51" selection-end-line="51" />
+            <state relative-caret-position="789">
+              <caret line="73" column="13" lean-forward="true" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SECOND">
@@ -72,7 +73,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="5">
     <option name="x" value="961" />
     <option name="width" value="959" />
     <option name="height" value="1079" />
@@ -158,15 +159,15 @@
       <option name="presentableId" value="Default" />
       <updated>1559647022022</updated>
       <workItem from="1559647023077" duration="6416000" />
-      <workItem from="1559677538675" duration="14745000" />
+      <workItem from="1559677538675" duration="19715000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21161000" />
+    <option name="totallyTimeSpent" value="26131000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1920" height="1080" extended-state="6" />
+    <frame x="961" y="0" width="959" height="1079" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.2524013" />
@@ -184,7 +185,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.32979852" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3301486" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -201,6 +202,13 @@
     <SUITE FILE_PATH="coverage/module1_introduction_to_sql$rpg_queries.coverage" NAME="rpg_queries Coverage Results" MODIFIED="1559651423624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/rpg_queries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="789">
+          <caret line="73" column="13" lean-forward="true" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/schema.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -211,13 +219,6 @@
             <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpg_queries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>

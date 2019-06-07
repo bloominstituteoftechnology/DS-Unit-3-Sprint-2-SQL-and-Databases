@@ -21,19 +21,19 @@ def sub_characters_count():
     conn = sqlite3.connect('rpg_db.sqlite3')
     curs = conn.cursor()
     query = 'SELECT COUNT (*) AS Category_Count, "Total Clerics" ' \
-            'AS Description FROM charactercreator_cleric ' \
+            'AS Sub_Character FROM charactercreator_cleric ' \
             'UNION ALL ' \
             'SELECT COUNT (*) AS Category_Count, "Total Fighters" ' \
-            'AS Description FROM charactercreator_fighter ' \
+            'AS Sub_Character FROM charactercreator_fighter ' \
             'UNION ALL ' \
             'SELECT COUNT (*) AS Category_Count, "Total_Mages" ' \
-            'AS Description FROM charactercreator_mage ' \
+            'AS Sub_Character FROM charactercreator_mage ' \
             'UNION ALL ' \
             'SELECT COUNT (*) AS Category_Count, "Total Necromancers" ' \
-            'AS Description FROM charactercreator_necromancer ' \
+            'AS Sub_Character FROM charactercreator_necromancer ' \
             'UNION ALL ' \
             'SELECT COUNT (*) AS Category_Count, "Total Thieves" ' \
-            'AS Description FROM charactercreator_thief;'
+            'AS Sub_Character FROM charactercreator_thief;'
     result = curs.execute(query)
     total_subs = result.fetchall()
 
@@ -49,3 +49,30 @@ def total_items_count():
     total_items = result.fetchall()
 
     return print('Total Items:', total_items[0][0])
+
+
+def weapons_vs_nonweapons():
+    """Queries the total weapons and non-weapons"""
+    conn = sqlite3.connect('rpg_db.sqlite3')
+    curs = conn.cursor()
+    query = 'SELECT COUNT (*) AS Inventory_Count, "Weapons"' \
+            'AS Items FROM charactercreator_character_inventory ' \
+            'WHERE id BETWEEN 138 AND 174 '\
+            'UNION ALL '\
+            'SELECT COUNT (*) AS Inventory_Count, "Non-Weapons" '\
+            'AS Items FROM charactercreator_character_inventory '\
+            'WHERE id NOT BETWEEN 138 AND 174;'
+    result = curs.execute(query)
+    total_w_vs_nw = result.fetchall()
+
+    return print('Weapon vs Non-Weapons:', total_w_vs_nw)
+
+def num_weapons_per_character():
+    """Queries the number of weapons of each character."""
+    conn = sqlite3.connect('rpg_db.sqlite3')
+    curs = conn.cursor()
+    query = ''
+    result = curs.execute(query)
+    character_weapons = result.fetchall()
+
+    return print("Number of Weapons per Character:", character_weapons)
