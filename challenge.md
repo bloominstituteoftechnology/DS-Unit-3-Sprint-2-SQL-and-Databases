@@ -130,9 +130,31 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  
+  The relationship between the tables in question is that each territory is 
+  assigned one employee while there may be many territories assigned to one 
+  employee. So this is a one to many relationship. One employee for possibly
+  many territories.
+  
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  
+  A situation where a document store is appropriate is any scenario where 
+  flexibility in the way the database is structured as well as the ability
+  to scale is necessary. For example, an e-commerce site would be a good candidate
+  for a document store system since the items on sale are constantly changing
+  and so the flexibility in structure would be beneficial. A situation where it may 
+  not be appropriate is one where there are expected to be many transactions or 
+  when the data model is designed up front and doesn't change. One example would
+  possibly be some banking database where queries are made constantly but the 
+  structure of the data never changes.
+  
 - What is "NewSQL", and what is it trying to achieve?
+  
+  "NewSQL" is a class of relational database systems that is trying to achieve 
+  the scalability of NoSQL models while also adhering to the ACID guarantees
+  of a traditional database system.
+
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
