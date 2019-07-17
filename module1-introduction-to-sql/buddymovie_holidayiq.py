@@ -3,12 +3,13 @@ import sqlite3
 
 
 def import_dataset():
+    global data
     data = pd.read_csv('https://raw.githubusercontent.com/NikuDubenco/DS-Unit-3-Sprint-2-SQL-and-Databases/'
                        'master/module1-introduction-to-sql/buddymove_holidayiq.csv')
 
     print('First 5 rows of DataFrame data: \n', data.head(),
-          'Shape of DataFrame data: \n', data.shape,
-          'Check the DataFrame data for Null values: \n', data.isna().sum())
+          '\nShape of DataFrame data: \n', data.shape,
+          '\nCheck the DataFrame data for Null values: \n', data.isna().sum())
 
     return data
 
