@@ -5,7 +5,7 @@ def connect_conn():
     """Establish connection to database and return connection object."""
     db = 'bgpuyxgj'
     user = 'bgpuyxgj'
-    password = 'V-Jx_5OuILdziMIe5MvVDu61OdhoWMCR'  # Don't commit!
+    password = 'password'  # Don't commit!
     host = 'raja.db.elephantsql.com'
 
     conn = psycopg2.connect(dbname=db, user=user,
