@@ -44,14 +44,31 @@ the same questions as you did from the first module (when the RPG data was in
 SQLite). With PostgreSQL, answer the following:
 
 - How many passengers survived, and how many died?
+    342 survived, 545 died
 - How many passengers were in each class?
+    1 - 216; 2 - 184; 3 - 487
 - How many passengers survived/died within each class?
+    Survived (1 - 136, 2 - 87, 3 - 119)
+    Died (1 - 80, 2 - 97, 3 - 368)
 - What was the average age of survivors vs nonsurvivors?
+    Survivors: 28.4
+    Died: 30.1
 - What was the average age of each passenger class?
+    1: 38.7
+    2: 29.9
+    3: 25.2
 - What was the average fare by passenger class? By survival?
+    Fare:
+        1: 84.1
+        2: 20.7
+        3: 13.7
+    Survival:
+        Survived: 22.2
+        Died: 48.4
 - How many siblings/spouses aboard on average, by passenger class? By survival?
 - How many parents/children aboard on average, by passenger class? By survival?
 - Do any passengers have the same name?
+     No, not the exact name at least.
 - (Bonus! Hard, may require pulling and processing with Python) How many married
   couples were aboard the Titanic? Assume that two people (one `Mr.` and one
   `Mrs.`) with the same last name and with at least 1 sibling/spouse aboard are
