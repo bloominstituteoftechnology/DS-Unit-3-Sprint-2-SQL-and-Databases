@@ -131,8 +131,13 @@ Using `sqlite3` in `northwind.py`, answer the following:
   ('Côte de Blaye', 'Aux joyeux ecclésiastiques'), ('Thüringer Rostbratwurst', 'Plutzer Lebensmittelgroßmärkte AG'), ('Mishi Kobe Niku', 'Tokyo Traders'), ("Sir Rodney's Marmalade", 'Specialty Biscuits, Ltd.'), ('Carnarvon Tigers', 'Pavlova, Ltd.'), ('Raclette Courdavault', 'Gai pâturage'), ('Manjimup Dried Apples', "G'day, Mate"), ('Tarte au sucre', "Forêts d'érables"), ('Ipoh Coffee', 'Leka Trading'), ('Rössle Sauerkraut', 'Plutzer Lebensmittelgroßmärkte AG')
   
 - What is the largest category (by number of unique products in it)?
+
+Confections.
+
 - (*Stretch*) Who's the employee with the most territories? Use `TerritoryId`
   (not name, region, or other fields) as the unique identifier for territories.
+  
+  Robert King.
 
 ### Part 4 - Questions (and your Answers)
 
