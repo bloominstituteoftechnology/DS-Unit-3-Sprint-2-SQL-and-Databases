@@ -45,3 +45,6 @@ query6 = 'SELECT FirstName, LastName from Employee \
         ORDER BY territory_count DESC LIMIT 1));'
 answer6 = cursor.execute(query6).fetchone()
 print(answer6[0], answer6[1], 'is the employee with the most territories')
+
+conn.commit()
+conn.close()
