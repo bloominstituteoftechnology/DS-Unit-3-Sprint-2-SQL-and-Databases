@@ -29,5 +29,7 @@ def main():
     LIMIT 1;
     ''', conn)
     print(top_category_by_unique_products)
+    conn.commit()
+    conn.close()
 if __name__ == "__main__":
     main()
