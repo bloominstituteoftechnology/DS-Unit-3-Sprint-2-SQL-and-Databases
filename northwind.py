@@ -47,3 +47,7 @@ c.execute("SELECT City, AVG(HireDate-BirthDate) FROM Employee GROUP BY City")
  ('Seattle', 40.0),
  ('Tacoma', 40.0)]
  '''
+#2nd stretch
+c.execute("SELECT EmployeeId, COUNT(TerritoryId) as total FROM EmployeeTerritory GROUP BY EmployeeId ORDER BY total DESC LIMIT 1")
+c.fetchone()
+#(7, 10)
