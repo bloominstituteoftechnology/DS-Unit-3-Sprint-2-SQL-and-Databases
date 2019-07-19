@@ -29,3 +29,5 @@ query3 = 'SELECT COUNT (DISTINCT y) FROM demo;'
 answer3 = cursor.execute(query3).fetchone()
 print(answer3[0], 'unique y values')
 
+conn.commit()
+conn.close()
