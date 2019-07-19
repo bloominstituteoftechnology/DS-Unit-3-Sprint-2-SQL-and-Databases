@@ -1,5 +1,5 @@
 Question 1: In the Northwind database, what is the type of relationship between the Employee and Territory tables?
-The relationship between Employee and Territory is one to one. They are only related by the region column. 
+The relationship between Employee and Territory is many to many. They are interconnected with many other tables. 
 
 
 Question 2: What is a situation where a document store (like MongoDB) is appropriate, and what is a situation where it is not appropriate?
