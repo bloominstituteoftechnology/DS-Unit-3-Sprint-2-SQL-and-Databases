@@ -38,3 +38,12 @@ c.execute("SELECT DISTINCT COUNT(ProductName) FROM Product GROUP BY CategoryId")
 c.fetchall()
 
 # [(12,), (13,), (10,), (7,), (6,), (5,)]
+
+#Stretch
+c.execute("SELECT City, AVG(HireDate-BirthDate) FROM Employee GROUP BY City")
+'''[('Kirkland', 29.0),
+ ('London', 32.5),
+ ('Redmond', 56.0),
+ ('Seattle', 40.0),
+ ('Tacoma', 40.0)]
+ '''
