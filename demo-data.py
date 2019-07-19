@@ -18,14 +18,23 @@ curs.execute('''INSERT INTO demo (s, x, y) VALUES ('f', 8, 7);''')
 curs.execute('''SELECT COUNT(*) FROM demo;''')
 print('Number of Rows:')
 print(curs.fetchall())
-
+'''
+Number of Rows:
+[(3,)]
+'''
 curs.execute('''SELECT COUNT(*) FROM demo WHERE x >= 5 AND y >=5;''')
 print('Number of rows with x and y greater than 5:')
 print(curs.fetchall())
-
+'''
+Number of rows with x and y greater than 5:
+[(2,)]
+'''
 curs.execute('''SELECT COUNT(DISTINCT y) FROM demo;''')
 print('Number of Unique y values:')
 print(curs.fetchall())
-
+'''
+Number of Unique y values:
+[(2,)]
+'''
 conn.commit()
 conn.close()
