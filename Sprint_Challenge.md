@@ -102,9 +102,17 @@ particular table, but it's a good lesson in the danger of keyword conflicts.
 Answer the following questions (each is from a single table):
 
 - What are the ten most expensive items (per unit price) in the database?
+
+('Côte de Blaye',), ('Thüringer Rostbratwurst',), ('Mishi Kobe Niku',), ("Sir Rodney's Marmalade",), ('Carnarvon Tigers',), ('Raclette Courdavault',), ('Manjimup Dried Apples',), ('Tarte au sucre',), ('Ipoh Coffee',), ('Rössle Sauerkraut',)
+
 - What is the average age of an employee at the time of their hiring? (Hint: a
   lot of arithmetic works with dates.)
+  
+  37 years old.
+  
 - (*Stretch*) How does the average age of employee at hire vary by city?
+
+(29, 'Kirkland'), (32, 'London'), (56, 'Redmond'), (40, 'Seattle'), (40, 'Tacoma')
 
 Your code (to load and query the data) should be saved in `northwind.py`, and
 added to the repository. Do your best to answer in purely SQL, but if necessary
@@ -119,6 +127,9 @@ Using `sqlite3` in `northwind.py`, answer the following:
 
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
+  
+  ('Côte de Blaye', 'Aux joyeux ecclésiastiques'), ('Thüringer Rostbratwurst', 'Plutzer Lebensmittelgroßmärkte AG'), ('Mishi Kobe Niku', 'Tokyo Traders'), ("Sir Rodney's Marmalade", 'Specialty Biscuits, Ltd.'), ('Carnarvon Tigers', 'Pavlova, Ltd.'), ('Raclette Courdavault', 'Gai pâturage'), ('Manjimup Dried Apples', "G'day, Mate"), ('Tarte au sucre', "Forêts d'érables"), ('Ipoh Coffee', 'Leka Trading'), ('Rössle Sauerkraut', 'Plutzer Lebensmittelgroßmärkte AG')
+  
 - What is the largest category (by number of unique products in it)?
 - (*Stretch*) Who's the employee with the most territories? Use `TerritoryId`
   (not name, region, or other fields) as the unique identifier for territories.
@@ -130,9 +141,19 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  
+  Employee to Territory is a One to Many relationship. EmployeeTerritories, Territories and Region are filtered down from the Employees table. The primary key of Employees (EmployeeID) can be connected to Territories through the intermediary table EmployeeTerritories, which contains both primary keys of Employees and Territory.
+  
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  
+  MongoDB is ideal for large amounts of schema-less, flexible data where it's hard to implement in a RDMBS; when cost is a consideration since MongoDB is free/cheap; when fast speed is critical.
+  
+  On the flip side, if ACID compliance is critical or you need table joins then MongoDB is not appropriate since it can't be guaranteed in Mongo's non-relational format. 
+  
 - What is "NewSQL", and what is it trying to achieve?
+
+NewSQL is a RDBMS that tries to provide the scalability of NoSQL systems for transaction processing while also guaranteeing the ACID compliance of a traditional database system. Attempts to update relational database models SQL query language to address SQL's traditional inflexibility or lack of focus that has driven NoSQL adoption. 
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
