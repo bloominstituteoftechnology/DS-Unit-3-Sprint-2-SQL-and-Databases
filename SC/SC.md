@@ -131,7 +131,7 @@ interview screening questions (a form you fill when applying for a job):
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
 
-    - The relationship between the Employee And the Territory is one-to-many. The records on the Employee table are related to the records of the Territory table through the foreign key Territory.EmployeeId that maps to the primary key Employee.Id on the Employee table. As the name suggests, a single record on the Employee table can be maped to multiple records on the Territory table. 
+    - The relationship between the Employee And the Territory is many-to-many. The records on the Employee table are related to the records of the Territory table through the foreign keys from the EmployeeIdTerritories table. As the name suggests, multiple records on the Employee table can be maped to multiple records on the Territory table. 
     
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
