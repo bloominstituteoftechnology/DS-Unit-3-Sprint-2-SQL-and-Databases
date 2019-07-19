@@ -1,0 +1,12 @@
+Question 1: In the Northwind database, what is the type of relationship between the Employee and Territory tables?
+The relationship between Employee and Territory is one to one. They are only related by the region column. 
+
+
+Question 2: What is a situation where a document store (like MongoDB) is appropriate, and what is a situation where it is not appropriate?
+It would be more benefitial to use something like MongoDB when structure is not nessesary. It is also good for saving storege space and being quick to start. The documents you place inside
+of a document store can be any kind and does not have restictions like ACID compliant database management systems. It is good for user inputed documents as well since there can be differences
+with every users document.  
+
+Question 3: What is "NewSQL", and what is it trying to achieve?
+It is trying to take the best of SQL in terms of structure and NoSQL in terms of being quick, effiecient in storage, and the need to be structred is lessened. What NewSQL is trying to achieve
+is high performance and data availablity without needing such robust rules when entering data. 
