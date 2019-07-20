@@ -63,7 +63,7 @@ JOIN supplier sup
 ON prod.supplierid = sup.id
 ORDER BY unitprice DESC
 LIMIT 10;''').fetchall()
-print(f'Ten most expensive products and supplier: {list(pricy_supply)}/n')
+print(f'Ten most expensive products and supplier: {list(pricy_supply)}\n')
 
 """Ten most expensive products and supplier: 
 [('Côte de Blaye', 'Aux joyeux ecclésiastiques', 263.5), 
@@ -75,16 +75,17 @@ print(f'Ten most expensive products and supplier: {list(pricy_supply)}/n')
 ('Manjimup Dried Apples', "G'day, Mate", 53), 
 ('Tarte au sucre', "Forêts d'érables", 49.3), 
 ('Ipoh Coffee', 'Leka Trading', 46), 
-('Rössle Sauerkraut', 'Plutzer Lebensmittelgroßmärkte AG', 45.6)]/n
+('Rössle Sauerkraut', 'Plutzer Lebensmittelgroßmärkte AG', 45.6)]
 """
 
 # Most common categories.
 comm_cat = curr.execute('''
-SELECT productname, COUNT(productname) count
+SELECT categoryname, COUNT(product.id) count
 FROM product
 JOIN category
 ON product.categoryid=category.id
-ORDER BY count DESC
+GROUP BY product.categoryid
+ORDER BY  count DESC
 LIMIT 1''').fetchall()
 print(f'Largest category: {list(comm_cat)}\n')
 
