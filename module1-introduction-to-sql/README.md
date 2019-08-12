@@ -52,7 +52,7 @@ Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
 - **How many total Characters are there?**
-302
+-- 302
 - **How many of each specific subclass?**
 
 - **How many total Items?**
