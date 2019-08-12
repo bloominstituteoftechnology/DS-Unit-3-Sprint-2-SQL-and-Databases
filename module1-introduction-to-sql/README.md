@@ -54,9 +54,15 @@ following questions:
 - **How many total Characters are there?**
   - 302
 - **How many of each specific subclass?**
-
+  - Cleric: 75
+  - Fighter: 68
+  - Mage: 108
+  - Necromancer: 11
+  - Theif: 51
 - **How many total Items?**
+  - 898
 - **How many of the Items are weapons? How many are not?**
+  - 203 are weapons, 695 are not
 - **How many Items does each character have? (Return first 20 rows)**
 - **How many Weapons does each character have? (Return first 20 rows)**
 - **On average, how many Items does each Character have?**
