@@ -3,7 +3,7 @@ import sqlite3
 
 
 df = pd.read_csv("buddymove_holidayiq.csv")
-conn = sqlite3.connect("rpg_db.sqlite3")
+conn = sqlite3.connect("buddymove_holidayiq.sqlite3")
 
 print(df.head())
 

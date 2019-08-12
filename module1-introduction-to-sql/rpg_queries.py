@@ -80,7 +80,7 @@ query7 = '''SELECT AVG(item_counts)
                 GROUP BY character_id
             );'''
 avg_item = curs.execute(query7).fetchall()
-print("On average, each character have {} weapons.".format(avg_item[0][0]))
+print("On average, each character have {} items.".format(avg_item[0][0]))
 
 # on average, how many Weapons does each character have?
 query8 = '''SELECT AVG(weapon_counts)
