@@ -105,11 +105,11 @@ curs = conn.cursor()
 query = '''SELECT AVG(item_count)
 FROM (SELECT COUNT(item_id) as item_count
 FROM charactercreator_character_inventory 
-GROUP BY character_id)'''
+GROUP BY character_id);'''
 
 curs.execute(query)
 print("\nOn average, how many Items does each Character have?")
-print("Answer: ", curs.fetchall())
+print("Answer: ", curs.fetchall()[0][0])
 curs.close()
 
 # --- Q8 On average, how many Weapons does each character have? ----
@@ -120,10 +120,10 @@ FROM (SELECT COUNT(item_id) AS item_count
 FROM charactercreator_character_inventory 
 INNER JOIN armory_weapon
 ON item_id = item_ptr_id
-GROUP BY character_id)'''
+GROUP BY character_id);'''
 
 curs.execute(query)
 print("\nOn average, how many Weapons does each character have?")
-print("Answer: ", curs.fetchall())
+print("Answer: ", curs.fetchall()[0][0])
 curs.close()
 conn.commit()
