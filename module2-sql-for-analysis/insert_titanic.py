@@ -6,7 +6,7 @@ import psycopg2
 
 dbname = 'bndoemhv'
 user = 'bndoemhv'
-password = 'S5fpKo7jwss3AWThqAICdpQFbYjdpRgc'  # Dont commit this
+password = ''  # Dont commit this
 host = 'raja.db.elephantsql.com'
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user,
