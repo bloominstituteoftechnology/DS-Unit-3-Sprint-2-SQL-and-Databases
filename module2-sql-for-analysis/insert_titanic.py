@@ -7,7 +7,7 @@ import pandas as pd
 
 dbname = 'phbjzmrx'
 user = 'phbjzmrx'
-password = '4IDroMCeCS0wmfznxwd_yr9RLUvVU47p'
+password = ''
 host = 'raja.db.elephantsql.com'
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
