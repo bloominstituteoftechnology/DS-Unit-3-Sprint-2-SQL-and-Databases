@@ -7,14 +7,14 @@ def sql_fetch(con):
 
     """ Get total number of Characters"""
 
-    query1 = '''SELECT COUNT (DISTINCT name)
+    query1 = '''SELECT COUNT (character_id)
     FROM charactercreator_character;'''
     cursor.execute(query1)
     rows1 = cursor.fetchall()
     for row in rows1:
         print(f'Total number of characters: {row[0]}')
 
-    """ Get total number of Characters"""
+    """ Get total number of Characters for each class"""
 
     query2 = '''SELECT COUNT (DISTINCT character_ptr_id)
     FROM charactercreator_mage
