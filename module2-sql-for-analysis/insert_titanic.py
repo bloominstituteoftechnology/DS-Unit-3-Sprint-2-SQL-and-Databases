@@ -2,9 +2,9 @@ import pandas as pd
 import psycopg2
 from tqdm import tqdm
 
-dbname = 'anhydaff'
-user = 'anhydaff'
-password = '08yEUwXsZ6Fv2c9Z2DKOxb0-u6qZVSsC'
+dbname = ''
+user = ''
+password = ''
 host = 'raja.db.elephantsql.com'
 csv = 'titanic.csv'
 
