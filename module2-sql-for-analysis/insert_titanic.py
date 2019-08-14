@@ -6,7 +6,7 @@ import psycopg2
 
 dbname = 'bndoemhv'
 user = 'bndoemhv'
-password = 'fDD9GnY1gTkEmM_npPmq8uUu063pcUBO'  # Dont commit this
+password = ''  # Dont commit this
 host = 'raja.db.elephantsql.com'
 
 conn = sqlite3.connect('titanic')
