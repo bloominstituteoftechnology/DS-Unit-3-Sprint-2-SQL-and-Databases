@@ -38,7 +38,7 @@ for i in range(0,877):
 # Store table creation string as variable
 create_table = '''
     CREATE TABLE titanic (
-        person_id SERIAL PRImARY KEY,
+        person_id SERIAL PRIMARY KEY,
         survived INT,
         pclass INT,
         name TEXT,
