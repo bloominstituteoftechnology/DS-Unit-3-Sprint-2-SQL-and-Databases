@@ -1,5 +1,5 @@
 import psycopg2
-import pandas as pandas
+import pandas as pd 
 
 """
 This script will take a local csv and insert the data into
@@ -9,7 +9,7 @@ a postgreSQL table
 # Database info
 dbname = 'jehgnrff'
 user = 'jehgnrff'
-password = 'XXXX'
+password = '21Al2FjnMu8SMSi6q505r4qfFZ7JLGTO'
 host = 'otto.db.elephantsql.com'
 
 # Initialzie connection and cursor
@@ -19,7 +19,7 @@ pg_conn = psycopg2.connect(dbname=dbname, user=user,
 pg_curs = pg_conn.cursor()
 
 # Retrieve data
-PATH = 'C:\Users\Cactuar\Projects\DS-Unit-3-Sprint-2-SQL-and-Databases\module2-sql-for-analysis'
+PATH = 'C:/Users/Cactuar/Projects/DS-Unit-3-Sprint-2-SQL-and-Databases/module2-sql-for-analysis/titanic.csv'
 
 df = pd.read_csv(PATH)
 
@@ -42,12 +42,12 @@ create_table = '''
         survived INT,
         pclass INT,
         name TEXT,
-        sex CHAR(7)
-        age NUMERIC(5,2)
+        sex CHAR(7),
+        age FLOAT(2),
         siblings_spouses_aboard INT,
         parents_children_aboard INT,
         fare NUMERIC(8,5)
-    ):
+    );
 '''
 
 # Send instructions to create table
@@ -60,7 +60,7 @@ for person in people:
         (survived, pclass, name, sex, age, siblings_spouses_aboard,
          parents_children_aboard, fare)
          VALUES ''' + str(person[1:]) + ';'
-    pg.curs.execute(insert_data)
+    pg_curs.execute(insert_data)
 
 # Close cursor and commit to database
 pg_curs.close()
