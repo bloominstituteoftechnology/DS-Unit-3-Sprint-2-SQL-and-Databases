@@ -16,7 +16,7 @@ import pymongo
 import sqlite3
 
 # MONGO DB STUFF
-client = pymongo.MongoClient("mongodb+srv://admin:L2oz0xJtZmJwfTsg@cluster0-2wndt.mongodb.net/test?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://admin:<password>@cluster0-2wndt.mongodb.net/test?retryWrites=true&w=majority")
 db = client.test
 
 # SQLITE3 STUFF
