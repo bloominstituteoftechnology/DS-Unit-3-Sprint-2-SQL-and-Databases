@@ -4,7 +4,7 @@ import sqlite3
 """
 How was working with MongoDB different from working with PostgreSQL? What was easier, and what was harder?
 I think it was easier to create a database and insert the RGB data into MongoDB from SQLite. On the other hand,
-it was 
+it was harder to query the database to get useful information such as descriptive statistics.
 
 """
 
