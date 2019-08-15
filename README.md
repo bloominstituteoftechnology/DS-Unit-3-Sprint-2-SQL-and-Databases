@@ -2,4 +2,4 @@
 SQL and Databases for Data Science
 
 
-[answers](answers.png)
+![answers](answers.png)
