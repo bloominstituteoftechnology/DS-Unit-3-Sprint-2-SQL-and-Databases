@@ -130,13 +130,13 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
-  - ````Employee` and `Territory` tables have a "Many to Many" relationship. Each record in both tables can't relate to any number of records in the other table. Both tables require a third linking table, EmployeeTerritory, to associate between the two tables.```
+  - `Employee` and `Territory` tables have a `Many to Many` relationship. Each record in both tables can't relate to any number of records in the other table. Both tables require a third linking table, EmployeeTerritory, to associate between the two tables.
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
-  - ```Mongo has no predefined schema so it's possible to change the data structure without recreating the entire database. It can store different types of data in the same collection. However, working without a schema introduces the potential for data integrity issues. The client needs to be responsible for making sure the data is correct. It's more difficult to impose restrictions on the data in the collections when one doesn't have a schema. In the world of enterprise application reporting, Mongo isn't ideal. Mongo's io and resource usage are tuned for web applications and other short-lived interactions where enterprise-level database systems are designed with a much more tight coupling.```
+  - Mongo has no predefined schema so it's possible to change the data structure without recreating the entire database. It can store different types of data in the same collection. However, working without a schema introduces the potential for data integrity issues. The client needs to be responsible for making sure the data is correct. It's more difficult to impose restrictions on the data in the collections when one doesn't have a schema. In the world of enterprise application reporting, Mongo isn't ideal. Mongo's io and resource usage are tuned for web applications and other short-lived interactions where enterprise-level database systems are designed with a much more tight coupling.
 
 - What is "NewSQL", and what is it trying to achieve?
-  - ```NewSQL is a class of modern relational database management systems that seek to provide the same scalable performance of NoSQL systems for online transaction processing (OLTP) read-write workloads while still maintaining the ACID guarantees of a traditional database system.```
+  - `NewSQL` is a class of modern relational database management systems that seek to provide the same scalable performance of NoSQL systems for online transaction processing (OLTP) read-write workloads while still maintaining the ACID guarantees of a traditional database system.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
