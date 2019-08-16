@@ -130,14 +130,9 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
-  - The type of relationship between the 'Employee' and 'Territory' table is many-to-many. The two table require a linking table in order to connect. An Employee can have many territory ID but between 'EmployeeTerritories' and 'Territories' its a one to one relationship.  
-  
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
-  - MongoDb is appropriate to store where there is a large amount unstructure data. When you need high avialibilty with the data and use with the cloud. It's not appropriate if you would rather imagine your data as a bunch of interconnected tables. If you want strong ACID gurantees, you should not use MongoDB.
-  
 - What is "NewSQL", and what is it trying to achieve?
-  - NewSQl is a new approach to relational database. Its trying to improve performance and scalabilty issue traditional systems have. NewSQL wants to combine transactional ACID guarantees of RDBMSs and the horizontal scalability of NoSQL.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
