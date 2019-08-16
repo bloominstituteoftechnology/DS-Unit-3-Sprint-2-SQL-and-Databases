@@ -130,9 +130,17 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  
+There is no direct relationship between the `Employee` and `Territory` tables. However, they may be made to relate through the `EmployeeTerritory` table, which connects them through the `Id` columns of each table. Once the tables have been joined in this way, `Employee` and `Territory` are both related in a one-to-many relationship, as each employee has multiple territories. Each `TerritoryID` only appears once, which means that no two employees have the same territory and that the relationship is not many-to-many. 
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  
+Since document stores like MongoDB are No-SQL, they do not require a strict partitioning of data into a schema. This means that there is some more flexibility with how data may be added to the system, allowing rapid changes in types of data storage without having to rebuild the schema. A situation in which MongoDB would be ideal is in an industry where there are a number of different types of records to be stored whose format might change at a rapid pace. Conversely, a situation in which an SQL system would be preferable would be one in which much of the organization of the data will be done up front and in which maintaining ACID compliance (if records must remain perpetually consistent, for instance) is important.
+  
 - What is "NewSQL", and what is it trying to achieve?
+
+NewSQL attempts to achieve the best of both worlds from No-SQL and SQL databases. Because No-SQL can offer faster transaction times than SQL systems and SQL offers higher ACIDity, there is room for a system that achieves higher transaction speed while maintaining Atomicity, Consistency, Isolation and Durability. However, as of yet, NewSQL systems are not as flexible as SQL systems; they do not offer the same degree of customizability nor are they as general-purpose. 
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
