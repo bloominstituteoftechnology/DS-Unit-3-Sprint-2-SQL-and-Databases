@@ -2,12 +2,22 @@ QUESTIONS
 
 In the Northwind database, what is the type of relationship between the Employee and Territory tables?
 
-	The relationship between Employee and Territory tables is many to one assuming each entry in the Employee table is a unique EmployeeID. There would be multiple employees for each territory making it many to one. If EmployeeID’s are not unique, in the case where an employee works in multiple territories, this would be a many to many relationship between the Employee and Territory tables because there could be multiple territories for each employee and multiple employees for each territory.
+	The relationship between Employee and Territory tables is many to one assuming each entry 
+	in the Employee table is a unique EmployeeID. There would be multiple employees for each 
+	territory making it many to one. If EmployeeID’s are not unique, in the case where an employee works 
+	in multiple territories, this would be a many to many relationship between the Employee and Territory 
+	tables because there could be multiple territories for each employee and multiple employees for each territory.
 
 What is a situation where a document store (like MongoDB) is appropriate, and what is a situation where it is not appropriate?
 
-	MongoDB prioritizes for horizontal scalability of non-relational data and the data is distributed over multiple servers. It is appropriate for massive amounts of unstructured data that don’t have a clear schema. It is not appropriate for relational data that is not already joined.
+	MongoDB prioritizes for horizontal scalability of non-relational data and the data is distributed 
+	over multiple servers. It is appropriate for massive amounts of unstructured data that don’t have 
+	a clear schema. It is not appropriate for relational data that is not already joined.
 
 What is "NewSQL", and what is it trying to achieve?
 
-	NewSQL builds on SQL and NoSQL to preserve the functionality of traditional SQL relational databases, and scalability of NoSQL databases. NewSQL adheres to ACID(atomicity, consistency, isolation, durability) for transactional consistency and uses a SQL interface. It aims to achieve improved functionality over SQL and NoSQL by offering high speed transactions for massive amounts of data, scalability, while maintaining ACID.
+	NewSQL builds on SQL and NoSQL to preserve the functionality of traditional SQL relational databases, 
+	and scalability of NoSQL databases. NewSQL adheres to ACID(atomicity, consistency, isolation, durability) 
+	for transactional consistency and uses a SQL interface. It aims to achieve improved functionality over 
+	SQL and NoSQL by offering high speed transactions for massive amounts of data, scalability, 
+	while maintaining ACID.
