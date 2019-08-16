@@ -155,7 +155,7 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?  ANSWER: Employee and territory tables 
-  have a One to Many relationship. The two tables are connected by the auxillary
+  have a Many to Many relationship. The two tables are connected by the auxillary
    table EmployeeTerritories. The Employee and Territory tables use their 
    respective primary ID keys to join using the EmployeeTerritories table.
    
