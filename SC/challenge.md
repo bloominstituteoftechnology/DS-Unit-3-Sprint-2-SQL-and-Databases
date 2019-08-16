@@ -105,7 +105,7 @@ particular table, but it's a good lesson in the danger of keyword conflicts.
 Answer the following questions (each is from a single table):
 
 - What are the ten most expensive items (per unit price) in the database?
-    Answer: [('Côte de Blaye', 263.5), ('Thüringer Rostbratwurst', 123.79), 
+    ANSWER: [('Côte de Blaye', 263.5), ('Thüringer Rostbratwurst', 123.79), 
             ('Mishi Kobe Niku', 97), ("Sir Rodney's Marmalade", 81), 
             ('Carnarvon Tigers', 62.5), ('Raclette Courdavault', 55), 
             ('Manjimup Dried Apples', 53), ('Tarte au sucre', 49.3), 
@@ -154,13 +154,13 @@ Answer the following questions, baseline ~3-5 sentences each, as if they were
 interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
-  `Employee` and `Territory` tables?  Employee and territory tables have a Many
-   to Many relationship. The two tables are connected by the auxillary table
-   EmployeeTerritories. The Employee and Territory tables use their respective 
-   primary ID keys to join using the EmployeeTerritories table.
+  `Employee` and `Territory` tables?  ANSWER: Employee and territory tables 
+  have a One to Many relationship. The two tables are connected by the auxillary
+   table EmployeeTerritories. The Employee and Territory tables use their 
+   respective primary ID keys to join using the EmployeeTerritories table.
    
 - What is a situation where a document store (like MongoDB) is appropriate, and
-  what is a situation where it is not appropriate?
+  what is a situation where it is not appropriate? ANSWER:
   The use of document stores would be appropriate if you are running parallel 
   computations in a horizontal machine configuration.  This configuration would
   facilitate scaling into bigger amounts of data and would be free of the 
