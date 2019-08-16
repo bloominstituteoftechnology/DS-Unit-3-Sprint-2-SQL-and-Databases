@@ -32,7 +32,7 @@ df['Name'] = df['Name'].map(lambda x: x.replace("'", ''))
 
 # Construct list of all the rows for later insertion
 people = []
-for i in range(0,887):
+for i in range(len(df)):
     people.append(tuple(df.loc[i]))
 
 # Store table creation string as variable
