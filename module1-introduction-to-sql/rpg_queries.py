@@ -114,3 +114,24 @@ curs.execute(query)
 results = curs.fetchall()
 print('\nHow many weapons does each character have?(first 20)')
 print(results)
+
+query = '''SELECT AVG(item_count)
+FROM (SELECT COUNT(item_id) as item_count
+FROM charactercreator_character_inventory
+GROUP BY character_id);'''
+
+curs.execute(query)
+print('\nOn average how many items does each Character have?')
+print(curs.fethcall()[0][0])
+
+query = '''SELECT AVG(item_count)
+FROM(SELECT COUNT(item_id) AS item_count
+FROM charactercreator_character_inventory
+INNER JOIN armory_weapon
+ON item_id = item_ptr_id
+GROUP BY character_id);'''
+
+curs.execute(query)
+print('\nOn average how many weapons does each character have?')
+print(curs.fetchall()[0][0])
+curs.close
