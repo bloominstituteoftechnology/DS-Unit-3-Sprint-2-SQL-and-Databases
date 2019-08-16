@@ -2,11 +2,12 @@ QUESTIONS
 
 In the Northwind database, what is the type of relationship between the Employee and Territory tables?
 
-	The relationship between Employee and Territory tables is many to one assuming each entry 
-	in the Employee table is a unique EmployeeID. There would be multiple employees for each 
-	territory making it many to one. If EmployeeID’s are not unique, in the case where an employee works 
-	in multiple territories, this would be a many to many relationship between the Employee and Territory 
-	tables because there could be multiple territories for each employee and multiple employees for each territory.
+	The relationship between Employee and Territory tables is many to many assuming there are multiple 
+	entries in the Employee table under each unique EmployeeID and if each territory is not unique to EmployeeID. 
+	There would be multiple employees for each territory and multiple territories for each employee making 
+	it many to many. If TerritoryID is unique to an employee, in the case where only one employee can work
+	in each territory, this would be a many to one relationship between the Employee and Territory tables 
+	because there could only be one employee for each territory, but multiple terrritories for each employee.
 
 What is a situation where a document store (like MongoDB) is appropriate, and what is a situation where it is not appropriate?
 
