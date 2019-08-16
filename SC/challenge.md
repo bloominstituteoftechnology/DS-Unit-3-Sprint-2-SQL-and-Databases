@@ -128,11 +128,28 @@ Using `sqlite3` in `northwind.py`, answer the following:
 Answer the following questions, baseline ~3-5 sentences each, as if they were
 interview screening questions (a form you fill when applying for a job):
 
-- In the Northwind database, what is the type of relationship between the
-  `Employee` and `Territory` tables?
-- What is a situation where a document store (like MongoDB) is appropriate, and
-  what is a situation where it is not appropriate?
-- What is "NewSQL", and what is it trying to achieve?
+"""
+
+In the Northwind database, what is the type of relationship between the Employee and Territory tables?
+
+The relationship is one-to-many. This is explained by the fact that a single employee can be related to one or more territories, 
+but a single territory can only be related to a single employee from the first table. To verify this, you can check the
+territory IDs and see that they only correspond to a single employee, not more than one.
+
+What is a situation where a document store (like MongoDB) is appropriate, and what is a situation where it is not appropriate?
+
+A situation where a document store like MongoDB is appropriate would be a small startup looking to quickly develop a prototype to
+show to investors. If they anticipate widespread usage and big data, then it might well serve them in the long run. Also,
+it would be much faster to develop this database since they don't need to worry about a schema and they're likely to start again
+from scratch once they have investor approval.
+
+What is "NewSQL", and what is it trying to achieve?
+
+Proponents of NewSQL believe that is possible to have the best of two worlds: the structured nature and reliability of traditional
+SQL and the horizontal scalability of NoSQL systems. In other words, it strives to maintain the ACID guarantees of SQL, which are
+just a set of properties of database transactions to guarantee the integrity of your data, even in the event of power failures or human errors. 
+
+"""
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
