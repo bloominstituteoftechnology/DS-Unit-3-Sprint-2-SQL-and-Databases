@@ -146,3 +146,6 @@ with pd.option_context('display.max_rows', None,
                        'display.max_columns', None):
     print(pd.read_sql(sql, conn))
 print()
+
+curs.close()
+conn.c
