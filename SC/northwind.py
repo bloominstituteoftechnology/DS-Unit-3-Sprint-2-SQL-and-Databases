@@ -19,6 +19,12 @@ q2_2 = '''SELECT AVG(HireDate - BirthDate) FROM Employee'''
 a2_2 = curs.execute(q2_2).fetchall()[0][0]
 print(f'The average age of employees at the time of hiring is {a2_2}\n')
 
+q2_3 = '''SELECT City, AVG(HireDate - BirthDate) 
+          FROM Employee
+          GROUP BY City'''
+a2_3 = curs.execute(q2_3).fetchall()
+print(f'The average age of employees at the time of hiring is {a2_3}\n')
+
 q3_1 = '''SELECT ProductName, UnitPrice
           FROM (
             SELECT Product.ProductName, OrderDetail.UnitPrice 
@@ -39,5 +45,15 @@ q3_2 = '''SELECT CategoryName, COUNT(Product.ID)
           ORDER BY COUNT(Product.ID) DESC LIMIT 1
        '''
 a3_2 = curs.execute(q3_2).fetchall()
-print(f'The largest category by number of unique products is {a3_2[0][0]} with {a3_2[0][1]} products')
+print(f'The largest category by number of unique products is {a3_2[0][0]} with {a3_2[0][1]} products\n')
+
+q3_3 = '''SELECT FirstName, LastName, COUNT(*)
+          FROM Employee
+          JOIN EmployeeTerritory
+          ON Employee.ID = EmployeeTerritory.EmployeeID
+          GROUP BY EmployeeID
+          ORDER BY COUNT(*) DESC LIMIT 1
+       '''
+a3_3 = curs.execute(q3_3).fetchall()
+print(f'{a3_3[0][0]} {a3_3[0][1]} has the most territories at {a3_3[0][2]}')
 
