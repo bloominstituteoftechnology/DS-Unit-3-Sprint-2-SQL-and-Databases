@@ -13,8 +13,9 @@ rows1 = cursor.fetchall()
 print(f'Top 10 most expensive items: {",".join(map(" ".join,rows1))}')
 
 """
-ANSWER: Top 10 most expensive items: Côte de Blaye,Thüringer Rostbratwurst,Mishi Kobe Niku,Sir Rodney's Marmalade,
-Carnarvon Tigers,Raclette Courdavault,Manjimup Dried Apples,Tarte au sucre,Ipoh Coffee,Rössle Sauerkraut
+ANSWER: Top 10 most expensive items: Côte de Blaye,Thüringer Rostbratwurst,
+Mishi Kobe Niku,Sir Rodney's Marmalade, Carnarvon Tigers,Raclette Courdavault,
+Manjimup Dried Apples,Tarte au sucre,Ipoh Coffee,Rössle Sauerkraut
 
 """
 
@@ -40,7 +41,7 @@ for label, row in zip(labels3, rows_result3):
     print(f'{label}: {row:.2f}')
 
 """
-ANSWER: 
+ANSWER:
 
 Kirkland: 29.00
 London: 32.50
@@ -65,7 +66,7 @@ for label, row in zip(labels4, rows_result4):
     print(f'{label}: {row}')
 
 """
-ANSWER: 
+ANSWER:
 
 Côte de Blaye: Aux joyeux ecclésiastiques
 Thüringer Rostbratwurst: Plutzer Lebensmittelgroßmärkte AG
@@ -105,7 +106,8 @@ Confections: 13
 """
 
 
-query6 = '''SELECT FirstName, LastName, COUNT(DISTINCT b.TerritoryId) AS "No. Territories"
+query6 = '''SELECT FirstName, LastName,
+        COUNT(DISTINCT b.TerritoryId) AS "No. Territories"
         FROM Employee a
         INNER JOIN EmployeeTerritory b
         ON a.Id = b.EmployeeId
