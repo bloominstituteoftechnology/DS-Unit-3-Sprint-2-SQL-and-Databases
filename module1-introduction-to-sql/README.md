@@ -52,9 +52,37 @@ Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
 - How many total Characters are there?
+`SELECT COUNT(name)
+FROM charactercreateor_character;`
+302
+
 - How many of each specific subclass?
+`
+SELECT(
+SELECT COUNT(*) 
+FROM charactercreator_cleric) AS cleric,
+(SELECT COUNT(*)
+FROM charactercreator_fighter) AS fighter,
+(SELECT COUNT(*)
+FROM charactercreator_mage) AS mage,
+(SELECT COUNT(*)
+FROM charactercreator_necromancer) AS necromancer,
+(SELECT COUNT(*)
+FROM charactercreator_thief) AS thief; `
+cleric	fighter	mage	necromancer	thief
+75	68	108	11	51
+
 - How many total Items?
+`
+SELECT COUNT(*) FROM armory_item;
+`
+COUNT(*)
+174
 - How many of the Items are weapons? How many are not?
+`SELECT COUNT(*) FROM armory_weapon;`
+COUNT(*)
+37
+
 - How many Items does each character have? (Return first 20 rows)
 - How many Weapons does each character have? (Return first 20 rows)
 - On average, how many Items does each Character have?
