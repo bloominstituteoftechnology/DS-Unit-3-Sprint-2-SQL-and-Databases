@@ -25,7 +25,7 @@ q3_1 = '''SELECT ProductName, UnitPrice
                 FROM Product
                 JOIN OrderDetail
                 ON Product.ID = OrderDetail.ProductID 
-                GROUP BY OrderDetail.UnitPrice
+                GROUP BY Product.UnitPrice, OrderDetail.UnitPrice
           ) 
           ORDER BY UnitPrice DESC LIMIT 10'''
 a3_1 = curs.execute(q3_1).fetchall()
