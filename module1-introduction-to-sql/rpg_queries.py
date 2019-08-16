@@ -21,7 +21,7 @@ SELECT mage_ptr_id FROM charactercreator_necromancer
 curs.execute(query)
 results = curs.fetchall()
 print('\nHow many of each specific subclass?')
-print ('Mages:', results[0][0])
+print('Mages:', results[0][0])
 
 # Necromancer count
 query = '''SELECT COUNT(character_ptr_id)
@@ -85,7 +85,7 @@ curs.execute(query)
 results = curs.fetchall()
 print('Non-weapons:', results[0][0])
 
-#Items by character
+# Items by character
 query = '''SELECT COUNT(ai.name)
 FROM charactercreator_character AS cc,
 armory_item AS ai,
@@ -99,7 +99,7 @@ results = curs.fetchall()
 print('\nHow many items does each character have?(first 20)')
 print(results)
 
-#Weapons by character
+# Weapons by character
 query = '''SELECT COUNT(ai.name)
 FROM charactercreator_character AS cc,
 armory_item AS ai,

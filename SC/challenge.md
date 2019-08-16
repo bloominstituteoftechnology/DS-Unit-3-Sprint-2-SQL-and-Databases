@@ -54,9 +54,12 @@ Make sure to `commit()` so your data is saved! The file size should be non-zero.
 Then write the following queries (also with `sqlite3`) to test:
 
 - Count how many rows you have - it should be 3!
+    ANSWER: 3 rows
 - How many rows are there where both `x` and `y` are at least 5?
+    ANSWER: 2 rows
 - How many unique values of `y` are there (hint - `COUNT()` can accept a keyword
   `DISTINCT`)?
+  ANSWER: 2  distinct values
 
 Your code (to reproduce all above steps) should be saved in `demo_data.py` and
 added to the repository along with the generated SQLite database.
@@ -102,9 +105,19 @@ particular table, but it's a good lesson in the danger of keyword conflicts.
 Answer the following questions (each is from a single table):
 
 - What are the ten most expensive items (per unit price) in the database?
+    Answer: [('Côte de Blaye', 263.5), ('Thüringer Rostbratwurst', 123.79), 
+            ('Mishi Kobe Niku', 97), ("Sir Rodney's Marmalade", 81), 
+            ('Carnarvon Tigers', 62.5), ('Raclette Courdavault', 55), 
+            ('Manjimup Dried Apples', 53), ('Tarte au sucre', 49.3), 
+            ('Ipoh Coffee', 46), ('Rössle Sauerkraut', 45.6)]
+    
 - What is the average age of an employee at the time of their hiring? (Hint: a
   lot of arithmetic works with dates.)
+  ANSWER: 37.22222222222222
+  
 - (*Stretch*) How does the average age of employee at hire vary by city?
+  ANSWER: [('Kirkland', 29.0), ('London', 32.5), ('Redmond', 56.0), 
+          ('Seattle', 40.0), ('Tacoma', 40.0)]
 
 Your code (to load and query the data) should be saved in `northwind.py`, and
 added to the repository. Do your best to answer in purely SQL, but if necessary
@@ -119,9 +132,21 @@ Using `sqlite3` in `northwind.py`, answer the following:
 
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
+  ANSWER: [('Côte de Blaye', 'Aux joyeux ecclésiastiques'), 
+  ('Thüringer Rostbratwurst', 'Plutzer Lebensmittelgroßmärkte AG'), 
+  ('Mishi Kobe Niku', 'Tokyo Traders'), 
+  ("Sir Rodney's Marmalade", 'Specialty Biscuits, Ltd.'), 
+  ('Carnarvon Tigers', 'Pavlova, Ltd.'), 
+  ('Raclette Courdavault', 'Gai pâturage'), 
+  ('Manjimup Dried Apples', "G'day, Mate"), 
+  ('Tarte au sucre', "Forêts d'érables"), ('Ipoh Coffee', 'Leka Trading'), 
+  ('Rössle Sauerkraut', 'Plutzer Lebensmittelgroßmärkte AG')]
+  
 - What is the largest category (by number of unique products in it)?
+  ANSWER: Confections
 - (*Stretch*) Who's the employee with the most territories? Use `TerritoryId`
   (not name, region, or other fields) as the unique identifier for territories.
+  ANSWER: Robert King
 
 ### Part 4 - Questions (and your Answers)
 
@@ -129,10 +154,27 @@ Answer the following questions, baseline ~3-5 sentences each, as if they were
 interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
-  `Employee` and `Territory` tables?
+  `Employee` and `Territory` tables?  Employee and territory tables have a Many
+   to Many relationship. The two tables are connected by the auxillary table
+   EmployeeTerritories. The Employee and Territory tables use their respective 
+   primary ID keys to join using the EmployeeTerritories table.
+   
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
-- What is "NewSQL", and what is it trying to achieve?
+  The use of document stores would be appropriate if you are running parallel 
+  computations in a horizontal machine configuration.  This configuration would
+  facilitate scaling into bigger amounts of data and would be free of the 
+  constraints of a table schema as used in a relational database.
+  
+  A situation where a document store would not be appropriate is if the 
+  information would need to live in a relational database. A document store 
+  does not allow table joins which is a critical function of relational 
+  databases. Additionally a document store would be inappropriate for dealing 
+  with highly structured data. 
+- What is "NewSQL", and what is it trying to achieve? NewSQL attempts to bridge
+  the divide between a traditional relational database and NoSql document store.
+  It is intended to provide relational databases with the freedom to be able to 
+  scale up efficiently and easily, as well as conforming to ACID compliance.  
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
