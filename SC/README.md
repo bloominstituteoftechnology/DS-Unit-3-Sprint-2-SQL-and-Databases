@@ -130,10 +130,18 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
-  ```One to Many```
+  - ```One to Many```
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  
+  1. Mongo may be a smart document DB. PostgreSQL may be a smart relative dB that additionally offers a number of the advantages of a document model.
+  
+  2. MongoDB limits its BSON format to a most of sixty-four bits for representing a whole number or floating purpose number. Postgres’ JSONB format isn’t restricted.
+
+  3. MongoDB additionally helps you to increase your write outturn by deferring writing to disk. You may lose some data that means, however it is often smart for users that are less disturbed concerning dogging their data.
+
 - What is "NewSQL", and what is it trying to achieve?
+  - ```NewSQL is a class of modern relational database management systems that seek to provide the same scalable performance of NoSQL systems for online transaction processing (OLTP) read-write workloads while still maintaining the ACID guarantees of a traditional database system.```
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
