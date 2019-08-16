@@ -89,7 +89,7 @@ query = '''
     WHERE pclass = 3 AND survived = 0;
     '''
 pg_curs.execute(query)
-print(pg_curs.fetchall()[0][0], 'passengers in class 3 survied')
+print(pg_curs.fetchall()[0][0], 'passengers in class 3 died')
 
 
 query = '''
