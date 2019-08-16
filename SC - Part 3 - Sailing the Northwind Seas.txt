@@ -1,0 +1,18 @@
+Part 4 - Questions (and your Answers)
+Answer the following questions, baseline ~3-5 sentences each, as if they were interview screening questions (a form you fill when applying for a job):
+
+In the Northwind database, what is the type of relationship between the Employee and Territory tables?
+--Relationship between Employee and Territory table is a many to many where the EmployeeTerritories
+is a junction table that cross-references Employee and Territory tables.
+ 
+What is a situation where a document store (like MongoDB) is appropriate, 
+and what is a situation where it is not appropriate?
+-- MongonDB is used in the situation where we don't now how looks the final 
+database: more common for start-up, or new project to create the MVP. 
+In other situation like when we have databases for bank where those databases 
+have an clear established, and we now how the final db relationships looks.
+
+What is "NewSQL", and what is it trying to achieve?
+--NewSQL is a class of relational database management system that applies the concept
+and principals of SQL to the NoSQL languages. It tries to combine the reliability of SQL
+and the performance of NoSQL.
