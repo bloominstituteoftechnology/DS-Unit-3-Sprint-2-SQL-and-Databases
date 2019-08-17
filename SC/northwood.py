@@ -71,19 +71,16 @@ print('Ten most expensive by unit price/supplier:', curs.fetchall())
 
 
 # Query for the largest category
-query = """
-    SELECT CategoryName
-FROM (
-	  SELECT Product.ID, Product.CategoryID, Category.CategoryName
-      FROM Product
-	  INNER JOIN Category
-	  ON Product.CategoryID = Category.ID)
-GROUP BY CategoryID
-HAVING COUNT(*) >= 13
-"""
+query = '''
+    SELECT MAX(cnt), CategoryName
+    FROM (SELECT CategoryName, COUNT(*) as cnt
+          FROM Product
+          INNER JOIN Category
+          ON Product.CategoryID = Category.ID
+          GROUP BY CategoryName);
+'''
 curs.execute(query)
-print(curs.fetchall()[0][0])
-
+print('Category with the most unique products:', curs.fetchall()[0][1])
 
 curs.close()
 conn.commit()
