@@ -23,7 +23,7 @@ query2 = '''SELECT AVG(HireDate-BirthDate) FROM Employee;'''
 
 cursor.execute(query2)
 rows2 = cursor.fetchall()
-print(f'Average age of employees at date of hire: {str(rows2).strip("[],()")}')
+print(f'Average age of employees at date of hire: {rows2[0][0]:.2f}')
 
 """
 ANSWER: 37.22
