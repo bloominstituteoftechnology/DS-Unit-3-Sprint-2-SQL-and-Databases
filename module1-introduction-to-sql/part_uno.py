@@ -3,6 +3,8 @@ import os
 
 conn = sqlite3.connect('rpg_db.sqlite3')
 curs = conn.cursor()
+# Not sure if we should commit changes to table since you can view the correct
+# results straight from python in CLI
 
 # How many total characters are there
 total_char = curs.execute('''
