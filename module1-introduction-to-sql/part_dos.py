@@ -4,6 +4,8 @@ import sqlite3
 # Already done
 # df = pd.read_csv("./buddymove_holidayiq.csv")
 # df.to_sql('review', con=conn)
+# Not sure if we should commit changes to table since you can view the correct
+# results straight from python in CLI
 conn = sqlite3.connect('buddymove_holidayiq.sqlite3')
 curs = conn.cursor()
 
