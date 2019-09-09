@@ -35,6 +35,7 @@ AVG(Shopping),
 AVG(Picnic)
 FROM review;
 ''')
+# Look how hard I made this for myself lol.
 """
 average_for_all = curs.execute(f'''
 SELECT
