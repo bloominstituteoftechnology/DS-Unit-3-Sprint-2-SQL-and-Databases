@@ -1,5 +1,7 @@
 # Teacher's:
 # https://colab.research.google.com/drive/1ytC02TuG4VnHKTLJ2F7L1TvE2cwWYXL2
+# Best one vvv
+# https://colab.research.google.com/drive/1IdP7r8Q4MNtykXPvqrJv84C-jKuOx3zE
 
 # Pythonic Python Pythonifies the Pythas.
 import psycopg2
