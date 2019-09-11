@@ -30,6 +30,7 @@ pg_curs.execute('DROP TABLE IF EXISTS titanic_table')
 # Create schema for postgreSQL table
 create_titanic_table = """
     CREATE TABLE titanic_table (
+        index SERIAL PRIMARY KEY,
         Survived INT,
         Pclass INT,
         Name TEXT,
@@ -37,7 +38,7 @@ create_titanic_table = """
         Age REAL,
         Siblings_Spouses_Aboard INT,
         Parents_Children_Aboard INT,
-        Fare REAL
+        Fare FLOAT
     );
 """
 pg_curs.execute(create_titanic_table)
@@ -65,12 +66,7 @@ pg_conn.commit()
 sl_curs.close()
 sl_conn.commit()
 
-print('''This throws an assertion error at the end but I'm not sure why.
-      Here's the two lists of data printed out.''')
-print(chars)
-print(pg_chars)
-
 # Test that it works - for some reason it doesn't
 for char, pg_char in zip(chars, pg_chars):
     print(char, pg_char)
-    assert char == pg_chars
+    assert char == pg_char
