@@ -84,11 +84,11 @@ def run_queries(c):
     SELECT AVG(item_count)
     FROM (
         SELECT character.name, count(item.item_id) as item_count
-        FROM charactercreator_character AS character,
-             charactercreator_character_inventory AS inventory,
-             armory_item AS item
-        WHERE character.character_id = inventory.character_id
-          AND inventory.item_id = item.item_id
+        FROM charactercreator_character AS c,
+             charactercreator_character_inventory AS i,
+             armory_item AS t
+        WHERE c.character_id = i.character_id
+          AND i.item_id = t.item_id
         GROUP BY character.name
         ORDER BY character.name
         );

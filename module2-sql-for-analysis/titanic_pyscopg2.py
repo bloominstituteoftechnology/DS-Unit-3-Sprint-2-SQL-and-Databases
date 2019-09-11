@@ -25,14 +25,11 @@ def create_table(tbl_name, fields_str, cur, conn):
     return
 
 
-def run_conversion(pgres_cur):
+def insert_titanic(pgres_cur):
     # __________
     csv_url = "titanic.csv"
     df = pd.read_csv(csv_url)
-    vals = df.to_csv(index=False, header=None)
-    print(df.head(5))
-    print(vals)
-    # -___ U N D E R   C O N S T R U C T I O N ___
+    df.to_sql('titanic', if_exists='replace', con=pgres_cur, method='multi')
     return
 
 
@@ -56,13 +53,24 @@ def main():
             passw = line
         ctr = ctr + 1
     pgres_str = 'dbname=' + dbname + ' user=' + user +' host=' + host + ' password=' + passw
+
     pgres_conn = conx_elephant(pgres_str)
 
     # ____ create cursor ___
     pgres_cur = pgres_conn.cursor()
 
     # ____ Port titanic.csv to Postgres ___
-    run_conversion(pgres_cur)
+    insert_titanic(pgres_conn)
+
+    # #  _______ verify output  _________
+    # query = """
+    # SELECT *
+    # FROM public.titanic
+    # LIMIT 10 ;
+    # """
+    # print('--- public.titanic table ---')
+    # for row in pgres_cur.execute(query).fetchall():
+    #     print(row)
 
     # ___ end main ___________
     pgres_cur.close()   # close cursor
