@@ -28,26 +28,6 @@ def main():
     # ____ Connect to postgres using SQLalchemy engine  __________
     engine = db_connect()
 
-    # dbname = ''
-    # user = ''
-    # host = ''
-    # passw = ''
-    # file = open('elephant.pwd', 'r')
-    # ctr = 1
-    # for line in file:
-    #     line=line.replace('\n', '')
-    #     if ctr == 1:
-    #         dbname = line
-    #     if ctr == 2:
-    #         user = line
-    #     if ctr == 3:
-    #         host = line
-    #     if ctr == 4:
-    #         passw = line
-    #     ctr = ctr + 1
-    # eng_str = 'postgresql+psycopg2://'+user+':'+passw+'@'+host+'/'+dbname
-    # engine = create_engine(eng_str)
-
     # ____ Port titanic.csv to postgres ___
     insert_titanic(engine)
 
