@@ -47,6 +47,11 @@ table_names = ['armory_item', 'armory_weapon',
 tables = []
 t_len = len(table_names)
 # Makes two keys, one is the cursor object ID and the other is the table name
+# Unsure if want a dict for each table -> name: list of values
+# (so all in one collection or whatever)
+# or if it should be like different collections for each type of table
+# inside that collection is name: value times however many values there are
+# to have, so a whole lot.
 for n in range(t_len):
     tables.append({table_names[n]: curs.execute(f'''
     SELECT * FROM {table_names[n]}
@@ -62,4 +67,6 @@ print(f'''
 # Now let's throw these tables up there into the yonder cloud
 db.test.insert_many(tables)
 
+# See the whole kit and caboodle
 scourMongo(db)
+# See specific entry
