@@ -29,11 +29,6 @@ query1 = 'SELECT count(*) FROM charactercreator_character'
 curs.execute(query1)
 # print(curs.fetchall())
 
-
-# 2. How many of each specific subclass?
-
-
-
 # 3. How many total Items? 174
 curs2 = conn.cursor()
 query2 = 'SELECT count(*) FROM armory_item'
@@ -68,7 +63,7 @@ LIMIT 20'''
 curs5.execute(query).fetchall()
 pd.read_sql(query, conn)
 
-# on average, how many weapons does each character have?
+# 7. on average, how many weapons does each character have?
 
 avg_weapons_per_char = """
 SELECT avg(wc) 
@@ -88,6 +83,36 @@ curs = conn.cursor()
 # better way to print
 query_db(query=avg_weapons_per_char, label_str='Avg. weapons per character:', curs=curs)
 
+# 2. How many of each specific subclass?
+cleric_count_query = """
+SELECT count(character_ptr_id)
+FROM charactercreator_cleric"""
+    
+query_db(query=cleric_count_query, label_str='Total # of cleric characters:', curs=curs)
+
+fighter_count_query = """
+SELECT count(character_ptr_id)
+FROM charactercreator_fighter"""
+    
+query_db(query=fighter_count_query, label_str='Total # of fighter characters:', curs=curs)
+
+mage_count_query = """
+SELECT count(character_ptr_id)
+FROM charactercreator_mage"""
+    
+query_db(query=mage_count_query, label_str='Total # of mage characters:', curs=curs)
+
+necromancer_count_query = """
+SELECT count(mage_ptr_id)
+FROM charactercreator_necromancer"""
+    
+query_db(query=necromancer_count_query, label_str='Total # of necromancer characters:', curs=curs)
+
+thief_count_query = """
+SELECT count(character_ptr_id)
+FROM charactercreator_thief"""
+   
+query_db(query=thief_count_query, label_str='Total # of thief characters:', curs=curs)
 
 
 
