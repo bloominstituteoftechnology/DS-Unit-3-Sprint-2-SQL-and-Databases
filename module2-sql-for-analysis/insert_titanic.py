@@ -43,9 +43,8 @@ def main():
     # Print data type of SQLite titanic table
     print('------------------ DATA TYPE OF TITANIC TABLE ------------------')
     query = 'PRAGMA table_info(titanic);'
-    pragma_result = helper.select_all_query(db_file, query)
-    for row in pragma_result:
-        print(row)
+    df = pd.read_sql(query, sql_conn)
+    print(df)
     print('-'*80, '\n')
 
     # Connect to Postgre SQL database in Elephant SQl Server
