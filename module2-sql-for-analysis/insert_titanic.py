@@ -29,7 +29,7 @@ n_curs.execute('PRAGMA table_info(titanic);').fetchall()
 # connect psycopg2
 dbname = 'vlfwvshe'
 user = 'vlfwvshe'
-password = 'N2IX2e0smqxGQXPP-qRNmYNXvxZk67Yu'  # Don't commit this!
+password = ''  # Don't commit this!
 host = 'salt.db.elephantsql.com'
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user,
