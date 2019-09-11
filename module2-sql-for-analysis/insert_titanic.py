@@ -5,7 +5,7 @@ import sqlite3
 #Reproduce demopostgres lecture
 #Extract data from csv
 
-df = pd.read_csv("https://raw.githubusercontent.com/Jaydenzk/DS-Unit-3-Sprint-2-SQL-and-Databases/master/module2-sql-for-analysis/titanic.csv")
+df = pd.read_csv("titanic.csv")
 df['Name'] = df['Name'].str.replace("'", " ")
 
 # Make sqlite3 file and Connect to get cursor
