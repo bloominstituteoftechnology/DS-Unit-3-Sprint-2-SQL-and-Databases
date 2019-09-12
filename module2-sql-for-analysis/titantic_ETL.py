@@ -3,10 +3,10 @@ import psycopg2
 import sqlite3
 
 # don't commit this 
-dbname = 'stppkqaz'
-user = 'stppkqaz'
-password = '8SmasUR6fET2bcgKxng7y7Xre5d6fIwp' 
-host = 'salt.db.elephantsql.com'
+dbname = ''
+user = ''
+password = '' 
+host = ''
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user,
                         password=password, host=host)
