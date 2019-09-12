@@ -42,7 +42,7 @@ items_per_char_query = ("""
      ;""")
 
 items_per_char = curs.execute(items_per_char_query).fetchall()
-print('**********Number of Items per Character***********')
+print('******Number of Items per Character - Top 20******')
 print(tabulate(items_per_char,
       headers=['ID', 'Character Name', 'Item Count']))
 
@@ -62,7 +62,7 @@ weapons_per_char_query = ("""
      ;""")
 
 weapons_per_char = curs.execute(weapons_per_char_query).fetchall()
-print('\n**********Number of Weapons per Character***********')
+print('\n******Number of Weapons per Character - Top 20******')
 print(tabulate(weapons_per_char, headers=['ID', 'Name', 'Weapon Count']))
 
 # On average, how many Items does each Character have?
