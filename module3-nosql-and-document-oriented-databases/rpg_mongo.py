@@ -1,7 +1,7 @@
 #Pull out the IP address for this collab notebook
 !curl ipecho.net/plain
 
-# admin, j7RfCt5tqrpTNWmr
+# admin
 
 #How do we figure out our python version?
 import sys
@@ -13,7 +13,7 @@ import pymongo
 
 #Use 3.4 connection string for clarity
 
-client = pymongo.MongoClient("mongodb://admin:j7RfCt5tqrpTNWmr@cluster0-shard-00-00-za38b.mongodb.net:27017,cluster0-shard-00-01-za38b.mongodb.net:27017,cluster0-shard-00-02-za38b.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb://admin:password@cluster0-shard-00-00-za38b.mongodb.net:27017,cluster0-shard-00-01-za38b.mongodb.net:27017,cluster0-shard-00-02-za38b.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority")
 db = client.test
 
 db
