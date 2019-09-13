@@ -137,6 +137,7 @@ interview screening questions (a form you fill when applying for a job):
   MongoDB is based on scalability and the data stores in JSON which it acts like python dictionary. It is appropriate to use for companies   that does not have clear set of schema. However, it is not good for companies have complete set of schema which SQL would be the better   choice here. 
   
 - What is "NewSQL", and what is it trying to achieve?
+ 
   NewSQL is blend of traditional SQL and NoSQL databases. It tends to get best of both sides of traditional SQL and NoSQL
 
 ### Part 5 - Turn it in!
