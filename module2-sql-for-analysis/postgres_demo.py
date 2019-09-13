@@ -1,14 +1,15 @@
 import psycopg2
 import sqlite3
 import os
+from dotenv import load_dotenv
 
 dir(psycopg2)
 
+load_dotenv()
+password = os.getenv("ELEPHANT_PW")
+
 dbname = 'htcgadjc'
 user = 'htcgadjc'
-password = 'DN937XfQHtC9Ion65f1UV4Pq4nVVzMYe'
-# password = os.environ.get('password')
-# 'DN937XfQHtC9Ion65f1UV4Pq4nVVzMYe'
 host = ('salt.db.elephantsql.com')
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user,

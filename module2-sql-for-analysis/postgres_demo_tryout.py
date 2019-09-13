@@ -1,8 +1,13 @@
+
+import os
 import psycopg2
+from dotenv import load_dotenv
+
+load_dotenv()
+password = os.getenv("ELEPHANT_PW")
 
 dbname = 'htcgadjc'
 user = 'htcgadjc'
-password = 'DN937XfQHtC9Ion65f1UV4Pq4nVVzMYe'
 host = ('salt.db.elephantsql.com')
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user,
