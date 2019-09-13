@@ -1,4 +1,4 @@
-import query_func
+from query_func import run_query
 
 # Part 2 - The Northwind Database
 # db to connect to
