@@ -1,3 +1,4 @@
+import postgres_helper
 
 # Make a Connection
 pg_conn = postgres_helper.create_postgres_connection(verbose=True)
