@@ -37,6 +37,9 @@ so here. Then answer the following question (can be a comment in the top of your
 code or in Markdown) - "How was working with MongoDB different from working with
 PostgreSQL? What was easier, and what was harder?"
 
+## Answer
+Both were challenging in their own way. Getting the data up to mongodb was easier but when it came to queries, I preferred elephantsql.
+
 There is no other required tasks to turn in, but it is suggested to then revisit
 the first two modules, rework/complete things as needed, and just check out with
 fresh eyes the SQL approach. Compare and contrast, and come with questions
