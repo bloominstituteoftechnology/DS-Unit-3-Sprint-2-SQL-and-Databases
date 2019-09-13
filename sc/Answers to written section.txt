@@ -1,0 +1,4 @@
+1. The relationship is 1-many because Employee is connected to EmployeeTerritory and Territory.
+2. When you have so much data that requires you to scale but you don't have the resources to scale: when to use mongodb.
+	Would not use it for small datasets.
+3. "NewSQL is a class of relational database management systems." NewSQl is trying to combine the scalability that mongodb has and the ACID guarantees from database systems like ElephantSQL.
