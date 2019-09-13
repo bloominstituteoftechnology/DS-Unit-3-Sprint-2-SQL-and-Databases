@@ -30,7 +30,7 @@ query = """SELECT ProductName FROM Product
             LIMIT 10;"""
 curs.execute(query)
 info = curs.fetchall()
-print('The ten most expensive items are:')
+print('The ten most expensive items in database and supplier are:')
 y = 1
 for i in info:
     print(f'{y}. {i[0]}')
