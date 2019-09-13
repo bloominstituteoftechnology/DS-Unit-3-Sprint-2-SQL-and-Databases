@@ -8,7 +8,18 @@ curs = conn.cursor()
 
 
 def list_entries(query):
+    ''' List entries
+
+    Parameters
+    ------------------
+    query: str
+
+    ------------------
+    Returns
+    queried: list of tuples(?)
+    '''
     queried = curs.execute(query).fetchall()
+    # Sorry for the super ugly output
     return queried
 
 
@@ -32,9 +43,11 @@ SELECT ProductName, UnitPrice FROM Product
 ORDER BY UnitPrice DESC
 LIMIT 10;
 '''
+# Average age at hiring
 average_age_hired = f'''
 SELECT ROUND(AVG(HireDate-BirthDate),2) FROM Employee
 '''
+# Average age at hiring by city
 average_age_hByC = f'''
 SELECT City, ROUND(AVG(HireDate-BirthDate),2) FROM Employee
 GROUP BY City
@@ -50,22 +63,24 @@ Average Age Hired (by city):
 
 # Part 3 JOINs
 
+# Ten most expensive items and their suppliers
 expensive_items_pSp = f'''
 SELECT ProductName, UnitPrice, Supplier.CompanyName
 FROM Product JOIN Supplier ON (Product.SupplierID=Supplier.Id)
 ORDER BY UnitPrice DESC
 LIMIT 10;
 '''
+# Largest category by unique products
 largest_category_unique = f'''
 SELECT
-DISTINCT(Product.ProductName),
-COUNT(DISTINCT(Product.ProductName)) c,
-CategoryName
-FROM Product JOIN Category ON (Product.CategoryID=Category.Id)
+CategoryName,
+COUNT(DISTINCT(Product.ProductName)) c
+FROM Product LEFT JOIN Category ON (Product.CategoryID=Category.Id)
 GROUP BY CategoryName
 ORDER BY c DESC
 LIMIT 1;
 '''
+# Employee with the most territories
 most_territories = f'''
 SELECT
 FirstName, LastName,

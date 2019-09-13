@@ -6,10 +6,16 @@ curs = conn.cursor()
 
 
 def show_table(curs):
+    ''' Show table
+
+    Parameters
+    ---------------
+    curs: object
+    '''
+    # Show how many rows
     rows = curs.execute(f'''
     SELECT COUNT(*) FROM demo
     ''')
-    # Show how many rows
     print(f'{rows.fetchall()[0][0]} rows')
     # Show that the rows work
     print(curs.execute('SELECT * FROM demo;').fetchall())
@@ -38,6 +44,7 @@ insert_table = f'''
 INSERT INTO demo (
     s, x, y
 )
+-- Yes...manually
 VALUES
     ( 'g', 3, 9 ),
     ( 'v', 5, 7 ),
