@@ -24,10 +24,10 @@ print(run_query(db, query))
 
 # Part 3 - Sailing the Northwind Seas
 # What are the ten most expensive items in the database and their suppliers?
-query = """SELECT DISTINCT (p.ProductName), s.CompanyName
-           FROM Product AS p JOIN Supplier AS s
-           ON SupplierId = SupplierId
-           ORDER BY p.UnitPrice DESC
+query = """SELECT p.ProductName, s.CompanyName
+           FROM Supplier as s JOIN Product as p
+           ON p.Id = s.id
+           ORDER BY UnitPrice DESC
            LIMIT 10;"""
 # NOT SURE THIS IS RIGHT
 print(run_query(db, query))
