@@ -26,7 +26,7 @@ print(run_query(db, query))
 # What are the ten most expensive items in the database and their suppliers?
 query = """SELECT p.ProductName, s.CompanyName
            FROM Supplier as s JOIN Product as p
-           ON p.Id = s.id
+           ON p.SupplierId = s.Id
            ORDER BY UnitPrice DESC
            LIMIT 10;"""
 # NOT SURE THIS IS RIGHT
