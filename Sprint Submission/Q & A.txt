@@ -1,0 +1,25 @@
+1. In the Northwind database, what is the type of relationship
+ between the Employee and Territory tables?
+
+Given that the EMPLOYEE table has a specific EmployeeID per employee 
+(aka EmployeeID = Primary Key for the EMPLOYEE table) which matches to
+multiple territories in the TERRITORY table (aka EmployeeID = Foreign Key
+for TERRITORY table), the relationship can be considered
+as ONE TO MANY. 
+
+2. What is a situation where a document store (like MongoDB) is
+ appropriate, and what is a situation where it is not appropriate?
+
+MongoDB type document stores are for situations that require high degree
+of scaling (i.e. cloud servers with multiple server locations that can
+spin up new instances). Situations where MongoDV type document stores
+are not required is when relational-based ACID-transaction-type data
+is being handled (i.e. wiring money from account to account).
+
+3. What is "NewSQL", and what is it trying to achieve?
+
+
+NewSQL seeks to provide the scalability of NoSQL AND ACID transactions.
+NewSQL's aim is to achieve lower feature/development costs for situations
+like handling financial data. It is an attempt at "having your cake and
+eating it too."
