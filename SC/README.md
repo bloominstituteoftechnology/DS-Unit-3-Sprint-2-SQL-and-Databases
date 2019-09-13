@@ -1,5 +1,8 @@
 # Data Science Unit 3 Sprint Challenge 2
 
+## Output
+![Output](./output.png)
+
 ## Databases and SQL
 
 A SQL Query walks into a bar. In one corner of the bar are two tables. The Query
