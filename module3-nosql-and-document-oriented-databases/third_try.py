@@ -17,13 +17,10 @@ import pymongo
 conn = sqlite3.connect('rpg_db.sqlite3')
 curs = conn.cursor()
 
-tables = curs.execute("""
-      SELECT name
-      FROM sqlite_master
-      WHERE type='table';""").fetchall()
+chars = curs.execute('SELECT * FROM charactercreator_character').fetchall()
 
-table_dict = {}
-for table in tables:
-    data = curs.execute('SELECT * FROM {}'.format(table)).fetchall()
-    table_dict.append(dict(table, data))
-table_dict.keys
+chars_dict = {'characters': chars}
+
+# Open connection to MongoDB
+
+client = pymongo.MongoClient("mongodb://jayson:layson@cluster0-shard-00-00-nxctz.mongodb.net:27017,cluster0-shard-00-01
