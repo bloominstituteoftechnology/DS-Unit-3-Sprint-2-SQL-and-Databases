@@ -5,7 +5,7 @@ Func for running sqlite3 queries
 import sqlite3
 
 
-def run_query(db, query, commit=True):
+def run_query(db, query, commit=False):
     """
     Function
     ----------------------------------
@@ -18,9 +18,8 @@ def run_query(db, query, commit=True):
 
     query: (str) query to run on database
 
-    commit: (boolean, default=True)
-    commits query to db. If just poking around
-    and don't want to set changes, set to False
+    commit: (boolean, default=False)
+    Set to True to commit changes to db
 
     Returns
     ----------------------------------

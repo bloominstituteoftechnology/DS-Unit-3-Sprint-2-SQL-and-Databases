@@ -15,14 +15,14 @@ if curs:
     print('yay')
 
 # Drop table to start so the file can be rerun no issues
-run_query(db, 'DROP TABLE demo')
+run_query(db, 'DROP TABLE demo;')
 # Create the table with its schema
 query = '''CREATE TABLE IF NOT EXISTS demo(
               s TEXT,
               x INT,
               y INT
             );'''
-run_query(db, query)
+run_query(db, query, commit=True)
 # Confirm that table created correctly by grabbing its' schema
 print(run_query(db, 'PRAGMA table_info(demo);'))
 
@@ -33,21 +33,21 @@ query = """INSERT INTO demo
         ('g', 3, 9),
         ('v', 5, 7),
         ('f', 8, 7);"""
-run_query(db, query)
+run_query(db, query, commit=True)
 # Confirm data is inserted
 print(run_query(db, 'SELECT * FROM demo;'))
 
 # Test queries to confirm table is correct
 # How many lines in file?
-print(run_query(db, 'SELECT COUNT(*) FROM demo'))
+print(run_query(db, 'SELECT COUNT(*) FROM demo;', commit=True))
 
 # How many rows where both x and y >= 5
 query = """SELECT COUNT(*)
            FROM demo
-           WHERE x >=5 AND y >=5"""
-print(run_query(db, query))
+           WHERE x >=5 AND y >=5;"""
+print(run_query(db, query, commit=True))
 
 # How many unique y values?
 query = """SELECT COUNT(DISTINCT y)
-           FROM demo"""
-print(run_query(db, query))
+           FROM demo;"""
+print(run_query(db, query, commit=True))
