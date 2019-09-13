@@ -140,7 +140,7 @@ interview screening questions (a form you fill when applying for a job):
   
 - What is "NewSQL", and what is it trying to achieve?
  
-  NewSQL is blend of traditional SQL and NoSQL databases. It tends to get best of both sides of traditional SQL and NoSQL
+  NewSQL is blend of traditional SQL and NoSQL databases. It tends to get best of both sides of traditional SQL and NoSQL.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
