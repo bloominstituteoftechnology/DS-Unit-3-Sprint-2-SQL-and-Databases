@@ -3,7 +3,7 @@ import sqlite3
 from pandas import DataFrame 
 
 n_conn = sqlite3.connect('northwind_small.sqlite3')
-n_curs = conn.cursor()
+n_curs = n_conn.cursor()
 
 
 # What are the ten most expensive items (per unit price) in the database?
@@ -30,10 +30,10 @@ print(n_curs.fetchall())
 # answer: 37.22
 
 # (*Stretch*) How does the average age of employee at hire vary by city?
-query = ""SELECT City, AVG(HireDate-BirthDate)
+query = """SELECT City, AVG(HireDate-BirthDate)
 FROM Employee
 GROUP BY City
-""
+"""
 n_curs.execute(query)
 print(n_curs.fetchall())
 
