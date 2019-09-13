@@ -1,7 +1,7 @@
 """
 @author: Harsh Desai
 @date: 09/12/19
-@description: Simple wrapper functions for Postgre SQL database
+@description: Simple wrapper functions for PostgreSQL pyscopg2 python api
 """
 import os
 import psycopg2
@@ -68,17 +68,20 @@ def select_query(pg_conn, query):
     Parameter
     -------------------------------------------------------
 
-    pg_conn: connection
-            postgres database connection object
-    return: Pandas DataFrame
+    pg_conn : connection
+                postgres database connection object
+
+    Returns
+    --------------------------------------------------------
+    df : Pandas DataFrame
             returns results as pandas dataframe
     """
     if not query.startswith('SELECT'):
         raise ValueError('Query should begin with `SELECT`')
-    
+
     pg_curs = pg_conn.cursor()
     pg_curs.execute(query)
-    
+
     df = pd.read_sql(query, pg_conn)
     return df
 
@@ -89,9 +92,12 @@ def get_sql_tables(pg_conn):
 
     Parameter
     -------------------------------------------------------
-    pg_conn :connection
+    pg_conn : connection
             postgres database connection object
-    return: Pandas DataFrame
+
+    Returns
+    --------------------------------------------------------
+    tables : Pandas DataFrame
             returns results as pandas dataframe
     """
     show_tables = """
@@ -116,7 +122,9 @@ def get_table_info(pg_conn, table_name):
     pg_conn :connection
             postgres database connection object
 
-    return: Pandas DataFrame
+    Returns
+    --------------------------------------------------------
+    result : Pandas DataFrame
             returns results as pandas dataframe
     """
     table_info = f"PRAGMA table_info({table_name});"

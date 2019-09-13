@@ -1,7 +1,7 @@
 """
 @author: Harsh Desai
 @date: 09/12/19
-@description: Simple wrapper for sqlite3 database
+@description: Simple wrapper for python sqlite3 api
 """
 
 import sqlite3
