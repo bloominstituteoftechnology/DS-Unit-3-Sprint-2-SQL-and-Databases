@@ -134,7 +134,7 @@ interview screening questions (a form you fill when applying for a job):
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
   
-  Well to begin, `Employee` is connected to `Territory` through an intermediary table called `EmployeeTerritory`. There can be many employees attached to multiple territories, so I would classify the relationship as many-to-many. There are no restrictions on how many territories an employee can work in, nor are there restrictions on how many employees a territory receives.
+  Well to begin, `Employee` is connected to `Territory` through an intermediary table called `EmployeeTerritory`. There can be one employee attached to multiple territories, so I would classify the relationship as one-to-many. There are no restrictions on how many territories an employee can work in, nor are there restrictions on how many employees a territory receives.
   
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
