@@ -66,3 +66,14 @@ print(n_curs.fetchall())
 
 # (*Stretch*) Who's the employee with the most territories? Use `TerritoryId`
 # (not name, region, or other fields) as the unique identifier for territories.
+# EMPLOYEE ID 7
+
+query = """
+SELECT EmployeeId, TerritoryId, COUNT(DISTINCT TerritoryId)
+FROM EmployeeTerritory
+GROUP BY EmployeeId
+ORDER BY COUNT(DISTINCT TerritoryId) DESC
+"""
+n_curs.execute(query)
+print(n_curs.fetchall())
+
