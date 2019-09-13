@@ -130,9 +130,17 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  
+  Well to begin, `Employee` is connected to `Territory` through an intermediary table called `EmployeeTerritory`. There can be many employees attached to multiple territories, so I would classify the relationship as many-to-many. There are no restrictions on how many territories an employee can work in, nor are there restrictions on how many employees a territory receives.
+  
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  
+  A situation that makes document storing appropriate can be something that is not required to be explicitly structured. So for example, if you wished to store a complex set of objects that have mixed values and where you have no presupposed knowledge of how exactly the information will be laid out you would use document storing akin to MongoDB (keys are already in the document usually). Now, if you need to have clear and defined relationships between the the data and a set of keys, a very structured database that you need to be a certain layout always (see: ACID), then a document store would definitely be inappropiate and instead something like SQL would be a better fit for your needs.  
+  
 - What is "NewSQL", and what is it trying to achieve?
+
+  NewSQL attempts to combine the robustness and ACID guarantees of a more traditional database system such as SQL, with a more fluid take on how easily it should be able to scale akin to a NoSQL database like MongoDB. For some big data needs, scalablity is as critical of a goal as integrity and ACID-like guarantees, that's where NewSQL tries to fill the gap. Is it successful? As time passes we'll find out since any real implementations are still less than a decade old.
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
