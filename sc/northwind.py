@@ -30,6 +30,12 @@ print(n_curs.fetchall())
 # answer: 37.22
 
 # (*Stretch*) How does the average age of employee at hire vary by city?
+query = ""SELECT City, AVG(HireDate-BirthDate)
+FROM Employee
+GROUP BY City
+""
+n_curs.execute(query)
+print(n_curs.fetchall())
 
 # What are the ten most expensive items (per unit price) 
 # in the database *and* their suppliers?
@@ -58,3 +64,5 @@ print(n_curs.fetchall())
 
 # largest category is Confections 13
 
+# (*Stretch*) Who's the employee with the most territories? Use `TerritoryId`
+# (not name, region, or other fields) as the unique identifier for territories.
