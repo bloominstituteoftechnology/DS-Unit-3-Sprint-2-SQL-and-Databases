@@ -41,9 +41,9 @@ print(n_curs.fetchall())
 # in the database *and* their suppliers?
 query = """
 SELECT ProductName, UnitPrice, CompanyName
-FROM Product
-JOIN Supplier
-ON SupplierID=SupplierID
+FROM Product as p
+JOIN Supplier as s
+ON p.SupplierID = s.ID
 ORDER BY UnitPrice DESC
 LIMIT 10
 """
