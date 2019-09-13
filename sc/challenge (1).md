@@ -131,7 +131,7 @@ interview screening questions (a form you fill when applying for a job):
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
 
-Many:one. The common key is `EmployeeID`. Multiple `EmployeeID`s can belong to the same `TerritoryID`, not vice versa. 
+Many:Many. Multiple `EmployeeID`s can belong to the same `TerritoryID`, and vice versa.
 
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
