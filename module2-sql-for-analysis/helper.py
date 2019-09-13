@@ -23,6 +23,13 @@ def create_connection(db_file, verbose=False):
     except sqlite3.Error as e:
         print(e)
 
+def get_sql_tables(db_file, verbose=False):
+    conn = create_connection(db_file, verbose)
+    with conn:
+        curs = conn.cursor()
+        curs.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        return curs.fetchall()
+    return None
 
 def select_all_query(db_file, query, verbose=False):
     """
@@ -52,13 +59,7 @@ def select_all_query(db_file, query, verbose=False):
         return rows
 
 
-def get_sql_tables(db_file, verbose=False):
-    conn = create_connection(db_file, verbose)
-    with conn:
-        curs = conn.cursor()
-        curs.execute("SELECT name FROM sqlite_master WHERE type='table';")
-        return curs.fetchall()
-    return None
+
 
 
 if __name__ == '__main__':
