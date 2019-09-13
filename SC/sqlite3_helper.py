@@ -59,7 +59,9 @@ def get_sql_tables(conn, verbose=False):
      """
     try:
         curs = conn.cursor()
-        curs.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        curs.execute("""SELECT name FROM sqlite_master
+                     WHERE type='table'
+                     ORDER BY name;""")
         tables = curs.fetchall()
 
         if verbose:
@@ -147,8 +149,3 @@ def select_query(conn, query, verbose=False):
             print(row)
 
     return rows
-
-
-if __name__ == '__main__':
-    conn = create_connection('titanic.sqlite3', verbose=True)
-    results = get_table_info(conn, 'titanic', verbose=True)
