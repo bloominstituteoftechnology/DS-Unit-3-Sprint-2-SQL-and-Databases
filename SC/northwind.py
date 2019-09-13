@@ -70,7 +70,7 @@ FROM Product JOIN Supplier ON (Product.SupplierID=Supplier.Id)
 ORDER BY UnitPrice DESC
 LIMIT 10;
 '''
-# Largest category by unique products
+# Largest category by unique products (unsure if want product id column)
 largest_category_unique = f'''
 SELECT
 CategoryName,
@@ -80,7 +80,8 @@ GROUP BY CategoryName
 ORDER BY c DESC
 LIMIT 1;
 '''
-# Employee with the most territories
+# Employee with the most territories (unsure if you want employee id as an
+# outputted column)
 most_territories = f'''
 SELECT
 FirstName, LastName,
