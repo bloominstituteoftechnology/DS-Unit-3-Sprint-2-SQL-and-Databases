@@ -52,12 +52,35 @@ Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
 - How many total Characters are there?
+> SELECT COUNT(*) FROM charactercreator_character -> 302
 - How many of each specific subclass?
+> SELECT COUNT(\*) FROM charactercreator_cleric -> 75  
+> SELECT COUNT(\*) FROM charactercreator_fighter -> 68  
+> SELECT COUNT(\*) FROM charactercreator_mage -> 108  
+> SELECT COUNT(\*) FROM charactercreator_necromancer -> 11  
+> SELECT COUNT(\*) FROM charactercreator_thief -> 51  
+> 75 + 68 + 108 + 11 + 51 = 313 (Necromancers are mages.)  
 - How many total Items?
+> SELECT COUNT(\*) FROM armory_item -> 174
 - How many of the Items are weapons? How many are not?
+> SELECT COUNT(\*) FROM armory_weapon -> 37  
+> SELECT COUNT(*) FROM armory_item WHERE item_id NOT IN (SELECT item_ptr_id FROM armory_weapon) -> 137  
 - How many Items does each character have? (Return first 20 rows)
+> SELECT character.character_id COUNT(item_id)  
+> FROM charactercreator_character AS character  
+> JOIN charactercreator_character_inventory AS inventory  
+> ON character.character_id = inventory.character_id  
+> GROUP BY character.character_id  
+> LIMIT 20  
 - How many Weapons does each character have? (Return first 20 rows)
 - On average, how many Items does each Character have?
+> SELECT AVG(num_items) FROM  
+> (SELECT COUNT(item_id) AS num_items  
+> FROM charactercreator_character AS character  
+> JOIN charactercreator_character_inventory AS inventory  
+> ON character.character_id = inventory.character_id  
+> GROUP BY character.character_id)  
+> 2.97350993377483  
 - On average, how many Weapons does each character have?
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
