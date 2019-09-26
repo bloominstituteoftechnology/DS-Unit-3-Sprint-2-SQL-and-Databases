@@ -4,7 +4,7 @@ import pandas as pd
 
 
 df = pd.read_csv('buddymove_holidayiq.csv')
-assert df.shape() = (249, 7)
+assert df.shape == (249, 7)
 
 CONN = sqlite3.connect('buddymove_holidayiq.sqlite3')
 
