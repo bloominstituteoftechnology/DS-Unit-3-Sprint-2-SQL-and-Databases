@@ -12,7 +12,9 @@ SQLite). With PostgreSQL, answer the following:
 > 1st - 216, 2nd - 184, 3rd - 487
 - How many passengers survived/died within each class?
 > 1st:	136 survived, 80 died
+> 
 > 2nd: 87 suvived, 97 died
+> 
 > 3rd: 119 survived, 368 died
 - What was the average age of survivors vs nonsurvivors?
 > The average age of survivors was 28; the average age of nonsurvivors was 30.
@@ -20,12 +22,15 @@ SQLite). With PostgreSQL, answer the following:
 > 1st - 38, 2nd -29, 3rd - 25
 - What was the average fare by passenger class? By survival?
 > 1st - 84.15, 2nd - 20.66, 3rd - 13.71
+> 
 > survived - 22.21, didn't survive - 48.40
 - How many siblings/spouses aboard on average, by passenger class? By survival?
 > 1st - 0.42, 2nd - 0.40, 3rd - 0.62
+> 
 > survived - 0.47, didn't survive - 0.56
 - How many parents/children aboard on average, by passenger class? By survival?
 > 1st - 0.36, 2nd - 0.38, 3rd - 0.40 
+> 
 > survived - 0.46, didn't survive - 0.33
 - Do any passengers have the same name?
 > Not exactly!
