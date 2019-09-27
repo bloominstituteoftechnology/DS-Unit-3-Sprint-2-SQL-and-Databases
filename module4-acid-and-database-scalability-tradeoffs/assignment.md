@@ -22,8 +22,13 @@ SQLite). With PostgreSQL, answer the following:
 > 1st - 84.15, 2nd - 20.66, 3rd - 13.71
 > survived - 22.21, didn't survive - 48.40
 - How many siblings/spouses aboard on average, by passenger class? By survival?
+> 1st - 0.42, 2nd - 0.40, 3rd - 0.62
+> survived - 0.47, didn't survive - 0.56
 - How many parents/children aboard on average, by passenger class? By survival?
+> 1st - 0.36, 2nd - 0.38, 3rd - 0.40 
+> survived - 0.46, didn't survive - 0.33
 - Do any passengers have the same name?
+> Not exactly!
 - (Bonus! Hard, may require pulling and processing with Python) How many married
   couples were aboard the Titanic? Assume that two people (one `Mr.` and one
   `Mrs.`) with the same last name and with at least 1 sibling/spouse aboard are
