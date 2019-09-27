@@ -68,11 +68,45 @@ def total_non_weapons():
     )
 
 def items_per_character():
-    # How many items are NOT weapons?
+    # How many items does each character have?
     print(pd.read_sql_query(
         '''
         SELECT character_id, COUNT(item_id) as item_count
         FROM charactercreator_character_inventory
+        GROUP BY character_id
+        LIMIT 20
+        ''',
+        conn)
+    )
+
+def weapons_per_character():
+    # How many weapons does each character have?
+    print(pd.read_sql_query(
+        '''
+        SELECT character_id, COUNT(item_ptr_id) as weapon_count
+        FROM armory_weapon
+        GROUP BY character_id
+        LIMIT 20
+        ''',
+        conn)
+    )
+
+def avg_items_per_character():
+    # How many average items does each character have?
+    print(pd.read_sql_query(
+        '''
+        SELECT character_id, AVG(item_id) as item_count
+        FROM charactercreator_character_inventory
+        ''',
+        conn)
+    )
+
+def avg_weapons_per_character():
+    # How many average weapons does each character have?
+    print(pd.read_sql_query(
+        '''
+        SELECT character_id, COUNT(item_ptr_id) as weapon_count
+        FROM armory_weapon
         GROUP BY character_id
         LIMIT 20
         ''',
