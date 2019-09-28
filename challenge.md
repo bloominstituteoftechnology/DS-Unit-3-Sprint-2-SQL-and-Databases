@@ -130,12 +130,17 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
-  **There is no direct relationship between 'Employee' and 'Territory' as they share no common values. There is no foreign key constraint shown in the schema. There is also no common column between the tables. **
+  
+  **There is no direct relationship between 'Employee' and 'Territory' as they share no common values. There is no foreign key constraint shown in the schema. There is also no common column between the tables.**
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  
   **A situation where a document store would be appropriate would be a Customer Comment aggregation. Many retailers offer incentives for their customers to do surveys after their transactions. A document store like Mongo DB would be able to handle the immense volume and and variety of this data. On the other hand they would not be appropriate for an Accountant's office where multi pbject transactions are required often.**
+
 - What is "NewSQL", and what is it trying to achieve?
-**The Label 'NewSQL' was coined by 'The 451 Group'. NewSQL is a category of SQL products that are trying to bridge the gap I mentioned previously. It tries to merge the transactional consistency of operational databases with the scalability and speed of NoSQL. 
+
+**The Label 'NewSQL' was coined by 'The 451 Group'. NewSQL is a category of SQL products that are trying to bridge the gap I mentioned previously. It tries to merge the transactional consistency of operational databases with the scalability and speed of NoSQL.** 
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
