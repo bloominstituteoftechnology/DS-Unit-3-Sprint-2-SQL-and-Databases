@@ -2,7 +2,7 @@
 
 import sqlite3
 
-conn = sqlite3.connect('demo_data1.sqlite3')
+conn = sqlite3.connect('demo_data.sqlite3')
 curs = conn.cursor()
 
 """Defining the columns of the table, this will begin the foundation"""
