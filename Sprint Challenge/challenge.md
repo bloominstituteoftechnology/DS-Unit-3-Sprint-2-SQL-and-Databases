@@ -133,6 +133,7 @@ interview screening questions (a form you fill when applying for a job):
 > **The `Employee` and `Territory` tables have a many-to-many relationship via the joining table `EmployeeTerritory`.**
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+> **A document store (like MongoDB) is appropriate when the schema of the data to be stored is not clearly defined in advance or may evolve over time, as when data from multiple sources (observers with different priorities, forms with different fields) is to be combined in a single place. It is not appropriate for situations where the relational constraints supported by traditional SQL are important to data integrity. The Northwind database, for example, is naturally relational and well-suited to SQL.**
 - What is "NewSQL", and what is it trying to achieve?
 
 ### Part 5 - Turn it in!
