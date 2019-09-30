@@ -23,7 +23,7 @@ query2 = '''SELECT AVG(HireDate - BirthDate) FROM Employee;'''
 print(f'Average age of Employee at time of Hiring is: {count(dbfile,query2)}\n')
 
 query3 = '''SELECT City, AVG(HireDate - BirthDate) FROM Employee
-            ORDER BY City;'''
+            GROUP BY City;'''
 
 print(f'Average age of Employee at time of Hiring by City is:\n {count(dbfile,query3)}\n')
 
@@ -49,7 +49,6 @@ print(f'largest category by number of products in it is:{count(dbfile,query5)}\n
 
 # Below is the output of this file :
 '''
-(base) karthiks-mbp-2:Sprint_Challenge karthikmahendra$ python northwind.py 
 10 Most expensive items in database are: 
                ProductName  UnitPrice
 0            Côte de Blaye     263.50
@@ -66,7 +65,7 @@ print(f'largest category by number of products in it is:{count(dbfile,query5)}\n
 Average age of Employee at time of Hiring is: [(37.22222222222222,)]
 
 Average age of Employee at time of Hiring by City is:
- [('Seattle', 37.22222222222222)]
+ [('Kirkland', 29.0), ('London', 32.5), ('Redmond', 56.0), ('Seattle', 40.0), ('Tacoma', 40.0)]
 
 ten most expensive items (per unit price) in the database and their suppliers are:
     UnitPrice                        CompanyName
