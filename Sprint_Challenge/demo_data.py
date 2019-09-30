@@ -40,6 +40,20 @@ print (f'number of rows in demo table where x and y are atleast 5 is {y}\n')
 z = count(dbfile,'SELECT COUNT(DISTINCT y) FROM demo ')
 print (f'Number of unique values in y is {z}\n')
 
+'''
+Dropping table demo if it exists
+
+Creating demo table....
+
+Populating demo table with values....
+
+Total number of rows in demo table is 3
+
+number of rows in demo table where x and y are atleast 5 is 2
+
+Number of unique values in y is 2
+'''
+
 
 
 
