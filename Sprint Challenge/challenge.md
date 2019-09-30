@@ -135,7 +135,7 @@ interview screening questions (a form you fill when applying for a job):
   what is a situation where it is not appropriate?
 > **A document store (like MongoDB) is appropriate when the schema of the data to be stored is not clearly defined in advance or may evolve over time, as when data from multiple sources (observers with different priorities, forms with different fields) is to be combined in a single place. It is not appropriate for situations where the relational constraints supported by traditional SQL are important to data integrity. The Northwind database, for example, is naturally relational and well-suited to SQL.**
 - What is "NewSQL", and what is it trying to achieve?
-> **NewSQL attempts to combine the best aspects of NoSQL (horizontal scalability, availability, flexibility) with the best of SQL (particularly full ACID compliance). Many NewSQL products are further specialized for specific needs or use cases.**
+> **NewSQL attempts to combine the best aspects of NoSQL (horizontal scalability, availability, flexibility) with the best of SQL (particularly full ACID compliance, but also support for SQL queries and useful elements of the relational model). Many NewSQL products are further specialized for specific needs or use cases.**
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
