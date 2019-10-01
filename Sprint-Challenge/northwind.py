@@ -65,24 +65,25 @@ def most_expensive_items_and_city():
     # What are the ten most expensive items (per unit price) in the database 
     #  and their suppliers?
     '''RESULT: 
-    [(263.5, None),
-    (123.79, "Forêts d'érables"),
-    (97, 'PB Knäckebröd AB'),
-    (81, 'Leka Trading'),
-    (62.5, 'Aux joyeux ecclésiastiques'),
-    (55, None),
-    (53, None),
-    (49.3, None),
-    (46, None),
-    (45.6, 'Gai pâturage')]
+         UnitPrice                     CompanyName
+    0     263.50         Aux joyeux ecclésiastiques
+    1     123.79  Plutzer Lebensmittelgroßmärkte AG
+    2      97.00                      Tokyo Traders
+    3      81.00           Specialty Biscuits, Ltd.
+    4      62.50                      Pavlova, Ltd.
+    5      55.00                       Gai pâturage
+    6      53.00                        G'day, Mate
+    7      49.30                   Forêts d'érables
+    8      46.00                       Leka Trading
+    9      45.60  Plutzer Lebensmittelgroßmärkte AG
     '''
     print(pd.read_sql_query(
         ''' SELECT UnitPrice,CompanyName 
             FROM Product as P
             LEFT JOIN Supplier as S
-            ON P.ID = S.ID 
+            ON P.SupplierID = S.ID 
             ORDER BY UnitPrice DESC
-            LIMIT 10            
+            LIMIT 10             
         ''',
         conn)
     )
