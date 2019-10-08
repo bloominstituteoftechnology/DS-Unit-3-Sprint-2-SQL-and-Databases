@@ -24,7 +24,7 @@ cur7.execute("SELECT * FROM armory_weapon")
 weaponrows = cur7.fetchall()
 print(f'There are {len(weaponrows)} weapons in total')
 # First 20 characters' number of item
-print("First 20 characters' number of items")
+print("First 20 characters' number of items:")
 cur8 = conn.cursor()
 for i in range(20):
     cur8.execute(f"SELECT COUNT(*) FROM charactercreator_character_inventory \
@@ -32,7 +32,7 @@ for i in range(20):
     inven = cur8.fetchall()
     print(inven[0][0])
 # First 20 characters' number of weapons
-print("First 20 characters' number of weapons")
+print("First 20 characters' number of weapons:")
 cur9 = conn.cursor()
 for i in range(20):
     cur9.execute(f"SELECT COUNT(*) FROM charactercreator_character_inventory \
