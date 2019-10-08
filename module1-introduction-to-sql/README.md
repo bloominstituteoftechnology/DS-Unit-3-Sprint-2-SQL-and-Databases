@@ -52,11 +52,68 @@ Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
 - How many total Characters are there?
+####302 characters
 - How many of each specific subclass?
+####mage- 108
+  #####necromancer-11
+####theif- 51
+####cleric- 75
+####fighter- 68
+
 - How many total Items?
+####174 items
 - How many of the Items are weapons? How many are not?
+####37 weapons, 137 non weapons
 - How many Items does each character have? (Return first 20 rows)
+
+| character_id | item_id |
+|--------------|---------|
+| 1            | 58      |
+| 1            | 20      |
+| 1            | 85      |
+| 2            | 115     |
+| 2            | 93      |
+| 2            | 133     |
+| 3            | 8       |
+| 3            | 43      |
+| 4            | 82      |
+| 4            | 21      |
+| 4            | 85      |
+| 4            | 135     |
+| 5            | 96      |
+| 5            | 145     |
+| 5            | 140     |
+| 5            | 7       |
+| 6            | 93      |
+| 7            | 38      |
+| 7            | 42      |
+| 7            | 123     |
+
 - How many Weapons does each character have? (Return first 20 rows)
+
+| character_id | item_id |
+|--------------|---------|
+| 1            | 58      |
+| 1            | 20      |
+| 1            | 85      |
+| 2            | 115     |
+| 2            | 93      |
+| 2            | 133     |
+| 3            | 8       |
+| 3            | 43      |
+| 4            | 82      |
+| 4            | 21      |
+| 4            | 85      |
+| 4            | 135     |
+| 5            | 96      |
+| 5            | 145     |
+| 5            | 140     |
+| 5            | 7       |
+| 6            | 93      |
+| 7            | 38      |
+| 7            | 42      |
+| 7            | 123     |
+
 - On average, how many Items does each Character have?
 - On average, how many Weapons does each character have?
 
