@@ -52,18 +52,18 @@ Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
 - How many total Characters are there?
-####302 characters
+  -302 characters
 - How many of each specific subclass?
-####mage- 108
-  #####necromancer-11
-####theif- 51
-####cleric- 75
-####fighter- 68
+  -mage: 108
+    -necromancer-11
+  -theif: 51
+  -cleric: 75
+  -fighter: 68
 
 - How many total Items?
-####174 items
+  -174 items
 - How many of the Items are weapons? How many are not?
-####37 weapons, 137 non weapons
+  -37 weapons, 137 non weapons
 - How many Items does each character have? (Return first 20 rows)
 
 | character_id | item_id |
