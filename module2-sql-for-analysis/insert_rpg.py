@@ -31,6 +31,7 @@ pg_curs.fetchall()
 #relabelling it properly
 #!mv 'rpg_db.sqlite3?raw=true' rpg_db.sqlite3
 
+# For this SQLite3 file, we'll make a new connection and cursor object
 #loading the sqlite3 file via sqlite3 connection object
 sl_conn = sqlite3.connect('rpg_db.sqlite3')
 
@@ -46,6 +47,7 @@ sl_curs.execute('PRAGMA table_info(charactercreator_character);').fetchall()
 #using the schema information above, creating the schema in elephentsql
 #for the file transfer
 # You simply follow each column and its output, (integer, float, whole number, etc)
+# Triple quotes are needed for multi-line text (queries)
 create_character_table = """
   CREATE TABLE charactercreator_character(
   character_id SERIAL PRIMARY KEY,
