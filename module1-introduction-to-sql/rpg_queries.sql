@@ -40,6 +40,18 @@ WHERE item_id IN (SELECT item_ptr_id FROM armory_weapon)
 LIMIT 20;
 
 --On average, how many Items does each Character have?
-
+SELECT AVG(count_items)\
+FROM (\
+SELECT COUNT(cci.item_id ) AS count_items\
+FROM charactercreator_character_inventory AS cci\
+GROUP BY cci.character_id);
 --On average, how many Weapons does each character have?
-
+SELECT AVG(weapon_count)\
+FROM (SELECT cci.character_id, \
+SUM (CASE WHEN cci.item_id IN (\
+SELECT ai.item_id FROM armory_item AS ai, \
+armory_weapon AS aw \
+WHERE ai.item_id = aw.item_ptr_id)\
+THEN 1 ELSE 0 END) AS weapon_count\
+FROM charactercreator_character_inventory AS cci\
+GROUP BY cci.character_id );
