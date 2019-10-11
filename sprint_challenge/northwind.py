@@ -34,6 +34,7 @@ LEFT JOIN Supplier ON SupplierID
 ORDER BY UnitPrice DESC LIMIT 10;
 '''
 q1a = r.execute(q1).fetchall()
+print(q1a)
 # What is the average age of an employee at the time of their hiring?
 # (Hint: a lot of arithmetic works with dates.)
 
@@ -47,7 +48,8 @@ ORDER BY count(distinct Product.Id) DESC \
 LIMIT 1;""").fetchall())
 
 # print 10 most expensive products and their respective suppliers
-print(r.execute("""SELECT Product.ProductName, Product.UnitPrice, Supplier.CompanyName \
+print(r.execute(
+    """SELECT Product.ProductName, Product.UnitPrice, Supplier.CompanyName \
 FROM Product \
 INNER JOIN Supplier on Product.SupplierID=Supplier.Id \
 ORDER BY UnitPrice DESC \

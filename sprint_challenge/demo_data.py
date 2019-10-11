@@ -23,9 +23,9 @@ VALUES ('g',3,9),('v',5,7),('f',8,7)
 r.execute(insert_data)
 
 # Executing these queries can be done either this way
-q1 = ("""SELECT COUNT(*) FROM demo""")
-q1a = r.execute(q1)
-print(q1a.fetchall())
+q1 = """SELECT COUNT(*) FROM demo""")
+q1a = r.execute(q1).fetchall()
+print(q1a)
 
 # or can be don this way. They have to be text though
 print(r.execute("SELECT COUNT(*) FROM demo WHERE x >= 5 AND y >= 5").fetchall())
