@@ -130,10 +130,29 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+- The `Employee` and `Territory` tables are set up with a many-to-many 
+  relationship. This makes logical sense, as employees can be in multiple
+  territories and territories can have multiple employees in them. This
+  necessitates the existence of the `EmployeeTerritory` table as a 
+  linking table to handle the relationship.
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+- MongoDB and other non-relational database solutions are generally apropriate in
+  situations with large, diverse, or frequently-changing databases. For example,
+  large web scrapes done by Google or other major corporations are too large for
+  relational databases to handle easily, and lack the interconnectedness that
+  relational databases excel at. On the other hand, small databases about a single
+  topic make most sense as relational databases. A small company's list of 
+  transactions, employees, or other major business elements makes most sense as a 
+  relational database, but this may become impractical as the business scales up.
 - What is "NewSQL", and what is it trying to achieve?
-
+  NewSQL is, or is trying to be, a new generation of database software that
+  allows for larger-scale databases to retain the ACID guarantees. Current
+  SQL-based relational database software can struggle when the database
+  becomes very large, and require expensive hardware to retain acceptable
+  performance. NewSQL is designed for use on distributed computing networks
+  rather than a single server, and is able to achieve much better results in
+  that mode of operation than traditional SQL software.
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
 file with your answers to part 4, to your weekly repo
