@@ -130,13 +130,18 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  
   MANY TO MANY
+
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
-  In a situation where you have lots of data, and the rate in which the data is requested is low is an appropriate use of MongoDB. A missuse of the service would be when you have a small amount of data and the format of the data needs to be in a specific format, being requested or used frequently.
+ 
+ In a situation where you have lots of data, and the rate in which the data is requested is low is an appropriate use of MongoDB. A missuse of the service would be when you have a small amount of data and the format of the data needs to be in a specific format, being requested or used frequently.
+ 
 - What is "NewSQL", and what is it trying to achieve?
-    NewSQL is a class of relational database management systems that seek to provide the scalability of NOSQL systems for processing transactions, while also striving to have a traditional database system using ACID. NewSQL systems can be split into three categories:
-        New archetectures, SQL engines, Transparent shading.
+    
+NewSQL is a class of relational database management systems that seek to provide the scalability of NOSQL systems for processing transactions, while also striving to have a traditional database system using ACID. NewSQL systems can be split into three categories:
+New archetectures, SQL engines, Transparent shading.
 
 
 ### Part 5 - Turn it in!
