@@ -130,9 +130,13 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+   There are several different employees that each represent several different territories.
+  This is not a one to many or many to one, but rather a many to many relationship
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  It depends on how you scale with your current business model. How you scale also depends on the level of growth your company has. A bigger company who is an established competitor in their industry, who probably not use mongodb and instead opt for SQL for vertical scalability. HEre, you just buy a bigger (more expensive) machine and your database will scale that way. MongoDB is better suited for agile, startup phase where you can scale horizontally by just getting more machines and distributing information across all of them.
 - What is "NewSQL", and what is it trying to achieve?
+It's trying to give the best of both worlds. NewSQL is defined by its maintaing a relational database type while also using horizontal scaling typical of databases that are nonrelational (MongoDB).
 
 ### Part 5 - Turn it in!
 Add all the files you wrote (`demo_data.py`, `northwind.py`), as well as this
