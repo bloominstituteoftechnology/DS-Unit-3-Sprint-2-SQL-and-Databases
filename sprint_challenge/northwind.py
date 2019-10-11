@@ -33,12 +33,11 @@ q1 = ''' SELECT ProductName, UnitPrice, CompanyName FROM Product
 LEFT JOIN Supplier ON SupplierID
 ORDER BY UnitPrice DESC LIMIT 10;
 '''
-
+q1a = r.execute(q1).fetchall()
 # What is the average age of an employee at the time of their hiring?
 # (Hint: a lot of arithmetic works with dates.)
-q1a = r.execute(q1).fetchall()
-print(r.execute("""SELECT AVG(HireDate - BirthDate) from Employee;""").fetchall())
 
+print(r.execute("""SELECT AVG(HireDate - BirthDate) from Employee;""").fetchall())
 
 # PART 3
 print(r.execute("""SELECT Category.CategoryName, COUNT(distinct Product.Id) \
