@@ -25,14 +25,13 @@ r.execute(insert_data)
 # Executing these queries can be done either this way
 q1 = ("""SELECT COUNT(*) FROM demo""")
 q1a = r.execute(q1)
-print("row count: " + str(query1_a))
+print(q1a.fetchall())
 
 # or can be don this way. They have to be text though
-q2a = r.execute("SELECT COUNT(*) FROM demo WHERE x >= 5 AND y >= 5")
-print("Rows where X and Y are AT LEAST 5: " + str(q2a))
+print(r.execute("SELECT COUNT(*) FROM demo WHERE x >= 5 AND y >= 5").fetchall())
 
-q3a = r.execute("SELECT COUNT(DISTINCT y) FROM demo")
-print("Distinctive Y: " + str(q3a))
+print(r.execute("SELECT COUNT(DISTINCT y) FROM demo").fetchall())
+
 
 
 conn.commit()
