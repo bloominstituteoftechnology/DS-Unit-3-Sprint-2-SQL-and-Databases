@@ -23,21 +23,22 @@ VALUES
 curs.execute(createtbl)
 curs.execute(inserttbl)
 
+#Counts the amount of rows
 count_row = """
 SELECT COUNT(s)
 FROM demo;
 """
 #Returns 3
 
-
+#counts how many instances that both x and y contain 5
 atleast_five = """
 SELECT COUNT(*)
 FROM demo
-WHERE X = 5 AND Y = 5;
+WHERE x = 5 AND y = 5;
 """
 #Returns 0
 
-
+#counts the number of unique values in y
 unique = """
 SELECT COUNT(DISTINCT y)
 FROM demo;
