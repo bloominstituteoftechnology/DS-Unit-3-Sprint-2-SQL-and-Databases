@@ -38,17 +38,17 @@ print(r.execute("""SELECT AVG(HireDate - BirthDate) from Employee;""").fetchall(
 
 
 # PART 3
-print(r.execute("""select Category.CategoryName, COUNT(distinct Product.Id) \
+print(r.execute("""SELECT Category.CategoryName, COUNT(distinct Product.Id) \
 FROM Product \
 INNER JOIN Category on Product.CategoryID=Category.Id \
 ORDER BY count(distinct Product.Id) DESC \
 LIMIT 1;""").fetchall())
 
 # print 10 most expensive products and their respective suppliers
-print(c.execute("""select Product.ProductName, Product.UnitPrice, Supplier.CompanyName \
+print(c.execute("""SELECT Product.ProductName, Product.UnitPrice, Supplier.CompanyName \
 FROM Product \
-inner join Supplier on Product.SupplierID=Supplier.Id \
-order by UnitPrice DESC \
+INNER JOIN Supplier on Product.SupplierID=Supplier.Id \
+ORDER BY UnitPrice DESC \
 limit 10;""").fetchall())
 
 # print the name of the category with the most products
