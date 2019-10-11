@@ -131,7 +131,7 @@ interview screening questions (a form you fill when applying for a job):
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
   
-  MANY TO MANY
+  MANY TO MANY - Since EmployeeID has a TerritoryID to match and Region, Address, City, PostalCode, etc. from Employees coresponds to ReigionID. 
 
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
