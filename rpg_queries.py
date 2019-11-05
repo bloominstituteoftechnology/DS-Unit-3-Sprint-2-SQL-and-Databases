@@ -1,5 +1,5 @@
 """Code for querying rpg_db.sqlite3"""
-import sqlite3
+
 """
 Questions:
 How many total characters are there?
@@ -23,9 +23,9 @@ On average, how many items does each character have?
 On average, how many weapons does each character have?
 
 """
+import sqlite3
 
-
-conn = sqlite3.connect('rpg_db.sqlite3')
+conn = sqlite3.connect('C:/Users/Phatdeluxe/lamdata/DS-Unit-3-Sprint-2-SQL-and-Databases/module1-introduction-to-sql/rpg_db.sqlite3')
 
 curs = conn.cursor()
 
@@ -45,6 +45,19 @@ item_count = 'SELECT count(*) FROM armory_item;'
 
 weapons_count = 'SELECT count(*) FROM armory_weapon'
 
-non_weapon_count = 'SELECT ai.item_id, aw.item_ptr_id FROM armory_item as ai, armory_weapon as aw GROUP BY ai.item_id HAVING ai.item_id = aw.item_ptr_id;' 
+non_weapon_count = '''SELECT COUNT(*) 
+FROM(SELECT item_id 
+FROM armory_item 
+EXCEPT 
+SELECT item_ptr_id 
+FROM armory_weapon);'''
+
+char_items = 'SELECT character_id, COUNT(*) FROM charactercreator_character_inventory GROUP BY character_id HAVING COUNT(*) >= 0 LIMIT 20;'
+
+char_weapons = 'SELECT character_id, item_id FROM charactercreator_character_inventory FULL OUTER JOIN armory_weapon ON item_id = item_ptr_id'
 
 curs.execute(total_chars)
+curs.execute(non_weapon_count)
+curs.execute(char_weapons)
+report = curs.fetchall()
+print(report)
