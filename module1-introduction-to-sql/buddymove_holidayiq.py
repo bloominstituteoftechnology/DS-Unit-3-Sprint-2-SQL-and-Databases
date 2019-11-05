@@ -104,8 +104,14 @@ FROM review;"""
 
 # %% Run query 3 and print the result
 query3_result = cur.execute(query3).fetchall()
+query3_colnames = cur.description
 
-print(query3_result)
-
+for i in range(len(query3_result[0])):
+    print(f"{query3_colnames[i][0]}: {query3_result[0][i]}")
+    print()
 
 # %%
+cur.close()
+
+# %%
+conn.close()
