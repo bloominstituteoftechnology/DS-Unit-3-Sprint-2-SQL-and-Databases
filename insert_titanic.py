@@ -5,7 +5,7 @@ import sqlite3
 import pandas as pd
 df = pd.read_csv('C:/Users/Phatdeluxe/lamdata/DS-Unit-3-Sprint-2-SQL-and-Databases/module2-sql-for-analysis/titanic.csv')
 
-df['Name'] = df['Name'].replace(to_replace={".": " "})
+df['Name'] = df['Name'].replace(to_replace={"'": " "}, regex=True)
 
 df['Name'].head()
 
@@ -13,7 +13,7 @@ sl_conn = sqlite3.connect('titanic_dataset.sqlite3')
 sl_curs = sl_conn.cursor()
 
 
-df.to_sql('var11', con=sl_conn)
+df.to_sql('var12', con=sl_conn)
 
 
 dbname = 'qpjhbufi'
@@ -26,7 +26,7 @@ pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=hos
 pg_curs = pg_conn.cursor()
 
 
-titanic_pass = sl_curs.execute('SELECT * FROM var11;').fetchall()
+titanic_pass = sl_curs.execute('SELECT * FROM var12;').fetchall()
 
 titanic_pass[6]
 
