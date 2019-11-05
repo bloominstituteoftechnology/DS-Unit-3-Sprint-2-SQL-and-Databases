@@ -26,14 +26,14 @@ curs.execute('SELECT count(mage_ptr_id) FROM charactercreator_necromancer;').fet
 #%%
 
 # How many total Items?
-curs.execute('SELECT count(item_id) FROM charactercreator_character_inventory;').fetchall()
+curs.execute('SELECT count(item_id) FROM armory_item;').fetchall()
 #%%
 
 # How many of the Items are weapons? How many are not?
 curs.execute('SELECT count(item_id) FROM armory_item as ai, armory_weapon as aw WHERE ai.item_id = aw.item_ptr_id;').fetchall()
 #%%
 
-curs.execute('')
+curs.execute('SELECT count(item_id) FROM armory_item WHERE item_id NOT IN(SELECT item_ptr_id FROM armory_weapon);').fetchall()
 #%%
 
 # How many Items does each character have? (Return first 20 rows)
