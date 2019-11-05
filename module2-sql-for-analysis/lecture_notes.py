@@ -10,9 +10,9 @@ import sqlite3
 #help(psycopg2.connect)
 
 #DB Connection info from Elephent SQL
-dbname = 'clfidagv'
-user = 'clfidagv'
-password = 'wasMdZHPBbnq_hfIsWYPvtyQDmO28ML9' #update with password here
+dbname = 'oqsgenkt'
+user = 'oqsgenkt'
+password = 'mwI4YXJFcNUVaDyQ7TjGP7KhXEIkZ-U9' #update with password here
 host = 'salt.db.elephantsql.com'
 
 #creating the connection object from our login credentials above
