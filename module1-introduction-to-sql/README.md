@@ -139,9 +139,9 @@ Using the standard `sqlite3` module:
 
 Then write the following queries (also with `sqlite3`) to test:
 
-- Count how many rows you have - it should be 249!
+- Count how many rows you have - it should be 249! # 249
 - How many users who reviewed at least 100 `Nature` in the category also
-  reviewed at least 100 in the `Shopping` category?
+  reviewed at least 100 in the `Shopping` category? # 78 users
 - (*Stretch*) What are the average number of reviews for each category?
 
 Your code (to reproduce all above steps) should be saved in
