@@ -13,7 +13,8 @@ host = 'salt.db.elephantsql.com'
 df = pd.read_csv('titanic.csv')
 
 # clean column names
-df.columns = [c.lower().replace('/', '_').replace(' ', '_') for c in df.columns]
+df.columns = [c.lower().replace('/', '_').replace(' ', '_')
+              for c in df.columns]
 
 # connect to database
 connection_details = f'postgresql://{user}:{password}@{host}/{dbname}'
