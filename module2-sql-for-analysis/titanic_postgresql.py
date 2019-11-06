@@ -6,3 +6,6 @@ be useful. Once it is set up, write a `insert_titanic.py` script that uses
 `psycopg2` to connect to and upload the data from the csv, and add the file to
 your repo. Then start writing PostgreSQL queries to explore the data!
 """
+
+import psycopg2
+import sqlite3
