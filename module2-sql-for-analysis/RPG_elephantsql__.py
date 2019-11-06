@@ -10,6 +10,7 @@ Original file is located at
 pip install psycopg2-binary
 
 import psycopg2
+import sqlite3
 
 dbname = 'username' #same than user
 user = 'username' #same than dbname
@@ -22,20 +23,14 @@ pg_conn
 
 pg_curs = pg_conn.cursor()
 
-pg_curs.execute('SELECT * FROM test_table;')
-
 #fetchall needs to be done in a separate cell
 pg_curs.fetchall()
 
 """# charactercreator_character"""
 
-wget https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/rpg_db.sqlite3?raw=true
-
 ls -alh
 
 mv 'rpg_db.sqlite3?raw=true' rpg_db.sqlite3
-
-import sqlite3
 
 sl_conn = sqlite3.connect('rpg_db.sqlite3')
 
@@ -116,8 +111,8 @@ pg_curs = pg_conn.cursor()
 pg_curs.execute('SELECT * FROM charactercreator_character;')
 pg_characters = pg_curs.fetchall()
 
+# testing our first row in both tables
 characters[0]
-
 pg_characters[0]
 
 for character, pg_character in zip(characters, pg_characters):
@@ -194,8 +189,8 @@ pg_curs = pg_conn.cursor()
 pg_curs.execute('SELECT * FROM armory_item;')
 pg_items = pg_curs.fetchall()
 
+# testing our first row in both tables
 items[0]
-
 pg_items[0]
 
 for item, pg_item in zip(items, pg_items):
@@ -271,8 +266,8 @@ pg_curs = pg_conn.cursor()
 pg_curs.execute('SELECT * FROM armory_weapon;')
 pg_weapons = pg_curs.fetchall()
 
+# testing our first row in both tables
 weapons[0]
-
 pg_weapons[0]
 
 for weapon, pg_weapon in zip(weapons, pg_weapons):
@@ -350,8 +345,8 @@ pg_curs = pg_conn.cursor()
 pg_curs.execute('SELECT * FROM charactercreator_character_inventory;')
 pg_ids = pg_curs.fetchall()
 
+# testing our first row in both tables
 ids[0]
-
 pg_ids[0]
 
 for identification, pg_identification in zip(ids, pg_ids):
@@ -424,8 +419,8 @@ pg_curs = pg_conn.cursor()
 pg_curs.execute('SELECT * FROM charactercreator_mage;')
 pg_mages = pg_curs.fetchall()
 
+# testing our first row in both tables
 mages[0]
-
 pg_mages[0]
 
 for mage, pg_mage in zip(mages, pg_mages):
@@ -500,8 +495,8 @@ pg_curs = pg_conn.cursor()
 pg_curs.execute('SELECT * FROM charactercreator_thief;')
 pg_thieves = pg_curs.fetchall()
 
+# testing our first row in both tables
 thieves[0]
-
 pg_thieves[0]
 
 for thief, pg_thief in zip(thieves, pg_thieves):
@@ -574,8 +569,8 @@ pg_curs = pg_conn.cursor()
 pg_curs.execute('SELECT * FROM charactercreator_cleric;')
 pg_clerics = pg_curs.fetchall()
 
+# testing our first row in both tables
 clerics[0]
-
 pg_clerics[0]
 
 for cleric, pg_cleric in zip(clerics, pg_clerics):
@@ -648,8 +643,8 @@ pg_curs = pg_conn.cursor()
 pg_curs.execute('SELECT * FROM charactercreator_fighter;')
 pg_fighters = pg_curs.fetchall()
 
+# testing our first row in both tables
 fighters[0]
-
 pg_fighters[0]
 
 for fighter, pg_fighter in zip(fighters, pg_fighters):
@@ -721,8 +716,8 @@ pg_curs = pg_conn.cursor()
 pg_curs.execute('SELECT * FROM charactercreator_necromancer;')
 pg_nmcs = pg_curs.fetchall()
 
+# testing our first row in both tables
 nmcs[0]
-
 pg_nmcs[0]
 
 for nmc, pg_nmc in zip(nmcs, pg_nmcs):
