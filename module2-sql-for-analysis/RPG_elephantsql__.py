@@ -18,7 +18,6 @@ password = 'pass'
 host = 'host' #from SERVER type
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
-
 pg_conn
 
 pg_curs = pg_conn.cursor()
