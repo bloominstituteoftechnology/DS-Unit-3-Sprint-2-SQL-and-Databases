@@ -91,3 +91,22 @@ query_total_items_character__weapons = """
 total_items_character__weapons = curs.execute(
     query_total_items_character__weapons).fetchmany(20)
 print(total_items_character__weapons)
+
+query_avg_items = """
+    SELECT avg(counts) as avg_item_count 
+    FROM (SELECT count(*) as counts 
+    FROM charactercreator_character_inventory GROUP BY character_id);
+    """
+avg_items = curs.execute(query_avg_items).fetchall()
+print(avg_items)
+
+query_avg_items__weapons = """
+    SELECT avg(counts) as avg_item_count 
+    FROM (SELECT count(*) as counts 
+    FROM charactercreator_character_inventory as cci,
+    armory_weapon as aw
+    WHERE cci.item_id=aw.item_ptr_id
+    GROUP BY character_id);
+    """
+avg_items__weapons = curs.execute(query_avg_items__weapons).fetchall()
+print(avg_items__weapons)
