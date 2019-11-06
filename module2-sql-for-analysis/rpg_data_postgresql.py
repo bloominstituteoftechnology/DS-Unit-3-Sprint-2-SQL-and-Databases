@@ -8,7 +8,7 @@ import psycopg2
 import sqlite3
 
 pg_conn = psycopg2.connect("dbname=postgres user=postgres password={secret}")
-pg_curs = conn.cursor()
+pg_curs = pg_conn.cursor()
 
 # I cut out local username for security reasons
 sl_conn = sqlite3.connect(('rpg_db.sqlite3')
