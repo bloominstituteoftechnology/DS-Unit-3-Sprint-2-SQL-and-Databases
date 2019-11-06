@@ -15,17 +15,10 @@ def pg_query(query, print_out=True):
 def make_insert_string(row):
     row = "(" + ", ".join([str(i) if not type(i) == str else "'" + i.replace("'", "") + "'" for i in row]) + ")"
     return """INSERT INTO titanic (index, Survived, Pclass, Name, Sex, Age, "Siblings/Spouses", "Parents/Children", Fare) VALUES {};""".format(row)
-    
 
-print(ELE_DBNAME)
 
-pg_conn = psycopg2.connect(dbname=ELE_DBNAME,
-                           user=ELE_USER,
-                           password=ELE_PASS,
-                           host=ELE_HOST)
-print(pg_conn)
+pg_conn = psycopg2.connect(dbname=ELE_DBNAME, user=ELE_USER, password=ELE_PASS, host=ELE_HOST)
 pg_curs = pg_conn.cursor()
-
 
 df = pd.read_csv(DF_URL) # Load dataframe
 if os.path.exists(DB_URL): # Delete DB if exists
@@ -39,15 +32,8 @@ sl_conn.commit()
 db_exists = pg_query("SELECT * FROM information_schema.tables WHERE table_name ='titanic';", print_out=False)
 
 if not db_exists:
-    qry_creator = """CREATE TABLE titanic (index SERIAL PRIMARY KEY,
-                                       Survived INT,
-                                       Pclass INT,
-                                       Name TEXT,
-                                       Sex TEXT,
-                                       Age REAL,
-                                       "Siblings/Spouses" INT,
-                                       "Parents/Children" INT,
-                                       Fare REAL);"""
+    qry_creator = """CREATE TABLE titanic (index SERIAL PRIMARY KEY, Survived INT, Pclass INT, Name TEXT,
+                                           Sex TEXT, Age REAL, "Siblings/Spouses" INT, "Parents/Children" INT, Fare REAL);"""
     pg_query(qry_creator, print_out=False)
 
 
