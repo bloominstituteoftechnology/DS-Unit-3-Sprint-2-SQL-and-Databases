@@ -5,7 +5,6 @@ import psycopg2
 dbname = 'nsvybuvb'
 user = 'nsvybuvb' # same as dbname
 password= 'ZSQQPpNjrb78uZJLGrGliTLdiTaWCAK5' # not my real password
-password = 'MFDDCcAweo78hMWYTeTyvGYqvGnJPNX5'
 host = 'salt.db.elephantsql.com'
 
 pg_conn = psycopg2.connect(dbname = dbname, user = user, 
