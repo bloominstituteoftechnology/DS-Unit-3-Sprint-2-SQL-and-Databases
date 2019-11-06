@@ -7,7 +7,7 @@ import pandas as pd
 #elephantsql conventions
 dbname = 'ijpwepjo'
 user = 'ijpwepjo'
-password = 'ucEObTZwD7mDk9sa2lmT428Vy3NhwtMn'
+password = ''
 host = 'salt.db.elephantsql.com'
 
 #elephantsql conventions
