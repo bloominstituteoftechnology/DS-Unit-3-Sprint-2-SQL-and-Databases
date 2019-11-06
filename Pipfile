@@ -11,6 +11,8 @@ pycodestyle = "*"
 pylint = "*"
 pandas = "*"
 psycopg2 = "*"
+pymongo = "*"
+dnspython = "*"
 
 [requires]
 python_version = "3.7"
