@@ -16,36 +16,38 @@ import os
 db_user = os.environ["DB_USER"]
 db_pass = os.environ["DB_PASS"]
 
-rpg_db_host = os.environ["RPG_DB_URL"]
-rpg_db_host = os.environ["RPG_DB_NAME"]
+rpg_db_url = os.environ["RPG_DB_URL"]
+rpg_db_name = os.environ["RPG_DB_NAME"]
 rpg_db_host = os.environ["RPG_DB_HOST"]
 
 # %% Create postgres connection
-pg_conn = psycopg2.connect(
-    dbname=db_name, user=db_user, password=db_pass, host=db_host
-)
+# Using the database URI string
+pg_conn = psycopg2.connect(rpg_db_url)
+
+# Using the separate parameters
+# pg_conn = psycopg2.connect(
+#     dbname=db_name, user=db_user, password=db_pass, host=db_host
+# )
+
+# TODO: collect database interactions into function(s)
+# TODO: use the `with <connection>` syntax
 
 # %% Create the postgres cursor
 pg_cur = pg_conn.cursor()
-
-# %% Execute test query
-test_query = "SELECT * FROM testing_table;"
-
-# Execute the query then fetch the data; separate steps
-pg_cur.execute(test_query)
-pg_cur.fetchall()
 
 # %% Connect to the sqlite3 database
 path1 = "/Users/Tobias/workshop/dasci/sprints/10-SQL_and_Databases"
 path2 = "DS-Unit-3-Sprint-2-SQL-and-Databases/module2-sql-for-analysis"
 dir_path = os.path.join(path1, path2)
 
+# Specify the location of the db in the filesystem
 filename = "rpg_db.sqlite3"
 file_path = os.path.join(dir_path, filename)
 
+# Create the connection
 lite_conn = sqlite3.connect(file_path)
 
-# %% Create the sqlite3 cursor
+# Create the sqlite3 cursor
 lite_cur = lite_conn.cursor()
 
 # %% Execute test query
@@ -56,15 +58,15 @@ FROM charactercreator_character;"""
 characters = lite_cur.execute(lite_query1).fetchall()
 characters
 
-# %%
-lite_query_info = """PRAGMA table_info(charactercreator_character);"""
+# %% Get the sqlite table information
+# PRAGMA is sqlite-specific syntax
+lite_table_info = """PRAGMA table_info(charactercreator_character);"""
+lite_cur.execute(lite_table_info).fetchall()
 
-lite_cur.execute(lite_query_info).fetchall()
-
-# %% Create table-creation query for postgres
+# %% Create 'character' table in postgres
 create_char_table = """
 --- Create postgres table from sqlite3
-CREATE TABLE charactercreator_character (
+CREATE TABLE character (
     character_id SERIAL PRIMARY KEY,
     name VARCHAR(30),
     level INT,
@@ -78,6 +80,20 @@ CREATE TABLE charactercreator_character (
 """
 
 pg_cur.execute(create_char_table)
+
+# %% Look at postgres table
+show_tables = """
+--- Show the postgres table
+SELECT
+    *
+FROM character
+WHERE
+    schemaname != 'pg_catalog'
+    AND schemaname != 'information_schema';
+"""
+
+pg_cur.execute(show_tables)
+pg_cur.fetchall()
 
 # %% Look at postgres table
 show_tables = """
