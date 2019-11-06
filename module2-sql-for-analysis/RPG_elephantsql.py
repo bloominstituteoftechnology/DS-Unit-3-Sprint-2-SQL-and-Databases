@@ -11,10 +11,10 @@ Original file is located at
 
 import psycopg2
 
-dbname = 'rzivbomq' #same than user
-user = 'rzivbomq' #same than dbname
-password = 'toHi2VGNeZnh_deVMOSAGGsiYYIe-O7K' #Don't commit this to github
-host = 'salt.db.elephantsql.com' #from SERVER type
+dbname = 'user' #same than user
+user = 'user' #same than dbname
+password = 'pass' #Don't commit this to github
+host = 'host' #from SERVER type
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
 
