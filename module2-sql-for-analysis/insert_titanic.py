@@ -37,7 +37,7 @@ def get_data(csv=None):
 
 dbname = 'titanic'
 user = 'asherg1'
-password = 'Tashek21'
+password = '*******'
 host = 'localhost'
 port = '5432'
 
