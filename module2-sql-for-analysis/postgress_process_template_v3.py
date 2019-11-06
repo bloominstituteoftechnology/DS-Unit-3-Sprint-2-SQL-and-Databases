@@ -27,7 +27,7 @@ help(psycopg2.connect)
 # mask
 dbname = 'nhxdkzlk' #same as user here
 user = 'nhxdkzlk' # same as dbbase here
-password = 'KT9iAxwS5ix36ZnNS_w1cGXW7a0nkgVV' # don't commit this to github!
+password = 'xxx' # don't commit this to github!
 host = 'otto.db.elephantsql.com' #
 
 # 
