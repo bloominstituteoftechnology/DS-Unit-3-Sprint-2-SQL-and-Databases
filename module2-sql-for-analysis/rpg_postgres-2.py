@@ -1,11 +1,15 @@
-# %% SQLite3 -> PostgreSQL
-# A Python script by Tobias Reaper
-# --- version 2.0 ---
-# Connects and interacts with databases
-# - SQLite3
-# - PostgreSQL
-#
-# Copies data from sqlite to postgres.
+"""
+SQLite3 -> PostgreSQL
+A Python script by Tobias Reaper
+
+--- Version 2.0 ---
+
+Connects and interacts with databases
+- SQLite3
+- PostgreSQL
+
+Copies data from sqlite to postgres.
+"""
 
 # %% Imports
 from pprint import pprint
