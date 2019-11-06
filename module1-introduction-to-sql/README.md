@@ -51,14 +51,54 @@ randomized, the numeric and boolean fields were left as defaults.
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
-- How many total Characters are there?
-- How many of each specific subclass?
-- How many total Items?
-- How many of the Items are weapons? How many are not?
+- How many total Characters are there?    # There are 302 diffrent Characters.
+- How many of each specific subclass?     # cleric=75, fighter=68, mage=108 11=necro, and 51 theifs.
+- How many total Items?   # 174.
+- How many of the Items are weapons? How many are not? # 37 are weapons : 137 are not weapons.
 - How many Items does each character have? (Return first 20 rows)
+163
+341
+51
+323
+388
+93
+454
+210
+379
+512
+320
+306
+269
+208
+248
+87
+512
+293
+170
+156
 - How many Weapons does each character have? (Return first 20 rows)
-- On average, how many Items does each Character have?
-- On average, how many Weapons does each character have?
+285
+166
+158
+156
+164
+160
+149
+477
+327
+138
+142
+160
+331
+449
+343
+311
+318
+147
+168
+161
+- On average, how many Items does each Character have? # AVG(sum_items): 274.15
+- On average, how many Weapons does each character have? # AVG(sum_weapons): 235.5
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
@@ -99,9 +139,9 @@ Using the standard `sqlite3` module:
 
 Then write the following queries (also with `sqlite3`) to test:
 
-- Count how many rows you have - it should be 249!
+- Count how many rows you have - it should be 249! # 249
 - How many users who reviewed at least 100 `Nature` in the category also
-  reviewed at least 100 in the `Shopping` category?
+  reviewed at least 100 in the `Shopping` category? # 78 users
 - (*Stretch*) What are the average number of reviews for each category?
 
 Your code (to reproduce all above steps) should be saved in
