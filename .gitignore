@@ -103,3 +103,4 @@ venv.bak/
 # mypy
 .mypy_cache/
 module2-sql-for-analysis/psycopg_info.py
+module3-nosql-and-document-oriented-databases/credentials.py
