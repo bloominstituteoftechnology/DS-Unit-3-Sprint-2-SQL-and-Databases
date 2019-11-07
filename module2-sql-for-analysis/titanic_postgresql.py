@@ -15,18 +15,19 @@ pg_conn = psycopg2.connect("dbname=postgres user=postgres password={secret}")
 pg_curs = pg_conn.cursor()
 
 df = pd.read_csv("titanic.csv")
+df.Name = df.Name.replace("'", '', regex=True)
 
 query_create_table="""
     CREATE TABLE titanic (
     character_id SERIAL PRIMARY KEY,
-    survived BOOLEAN,
+    survived INT,
     pclass INT,
-    name VARCHAR(50),
+    name VARCHAR(100),
     sex VARCHAR(10),
     age INT,
-    siblings_spouses_aboard BOOLEAN,
-    parents_children_aboard BOOLEAN,
-    fare DECIMAL(10, 10)
+    siblings_spouses_aboard INT,
+    parents_children_aboard INT,
+    fare FLOAT(10)
     );
     """
 pg_curs.execute(query_create_table)
@@ -40,12 +41,11 @@ show_tables="""
 pg_curs.execute(show_tables)
 pg_curs.fetchall()
 
-for i in range(len(df)): 
-    insert_row="""
-    INSERT INTO titanic
-    (survived, pclass, name, sex, age, siblings_spouses_aboard, parents_children_aboard, fare)
-    VALUES """ + str(df.loc[i,:]) + ";"
-    pg_curs.execute(insert_row)
+passengers = df.values.tolist()
 
-for i in range(len(df)) : 
-  print(df.loc[i,:])
+for passenger in passengers:
+    insert_row="""
+        INSERT INTO titanic
+        (survived, pclass, name, sex, age, siblings_spouses_aboard, parents_children_aboard, fare)
+        VALUES ("""+str(passenger)[1:-1]+");"
+    pg_curs.execute(insert_row)
