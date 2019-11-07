@@ -17,7 +17,8 @@ df.to_sql('titanic', con=engine)
 # Creating a dataabase connection to elephantsql
 dbname = 'clfidagv'
 user = 'clfidagv'
-password = 'TODO' #password goes here
+password = 'wasMdZHPBbnq_hfIsWYPvtyQDmO28ML9' #password goes here
+# wasMdZHPBbnq_hfIsWYPvtyQDmO28ML9
 host = 'salt.db.elephantsql.com'
 
 #creating connection to interact
