@@ -50,3 +50,6 @@ into your MongoDB cluster.
 Push MongoDB - it is flexible and can support fast iteration. Design your own
 database to save some key/value pairs for an application you'd like to work on
 or data you'd like to analyze, and build it out as much as you can!
+
+## Response
+I prefer the way MongoDB handles syntax WAY MUCH MORE than PostgreSQL and SQLite3.  I like dealing with raw JSON files in both uploading and querying data.
