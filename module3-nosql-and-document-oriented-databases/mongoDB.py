@@ -80,9 +80,6 @@ print(db.test.find(armory_weapon))
 query4 = 'SELECT * FROM charactercreator_character_inventory;'
 stocks = sl_curs.execute(query4).fetchall()
 
-query4 = 'SELECT * FROM charactercreator_character_inventory;'
-stocks = sl_curs.execute(query4).fetchall()
-
 # my dictionary for charactercreator_character_inventory table
 charactercreator_character_inventory = {}
 for stock in stocks:
