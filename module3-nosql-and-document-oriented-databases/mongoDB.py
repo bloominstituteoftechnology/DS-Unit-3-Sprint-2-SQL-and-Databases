@@ -77,7 +77,7 @@ db.test.insert_one(armory_weapon)
 # Confirm that table was added in mongoDB
 print(db.test.find(armory_weapon))
 
-query4 = 'SELECT * FROM charactercreator_inventory;'
+query4 = 'SELECT * FROM charactercreator_character_inventory;'
 stocks = sl_curs.execute(query4).fetchall()
 
 query4 = 'SELECT * FROM charactercreator_character_inventory;'
