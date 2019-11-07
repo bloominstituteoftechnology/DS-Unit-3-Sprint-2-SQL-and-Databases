@@ -51,14 +51,49 @@ randomized, the numeric and boolean fields were left as defaults.
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
-- How many total Characters are there?
+- How many total Characters are there? 302
+SELECT character_id, COUNT(*)
+FROM charactercreator_character
+
 - How many of each specific subclass?
-- How many total Items?
-- How many of the Items are weapons? How many are not?
+
+
+- How many total Items? 174
+SELECT item_id, count(*)
+FROM armory_item
+
+- How many of the Items are weapons? 138 How many are not? 174 - 138
+SELECT item_ptr_id, count(*)
+FROM armory_weapon
+
 - How many Items does each character have? (Return first 20 rows)
+SELECT character_id, count(item_id)
+FROM charactercreator_character_inventory 
+GROUP BY character_id
+LIMIT 20
+
 - How many Weapons does each character have? (Return first 20 rows)
-- On average, how many Items does each Character have?
-- On average, how many Weapons does each character have?
+SELECT character_id, count(a.item_id)
+FROM charactercreator_character_inventory as a,
+armory_item as b, 
+armory_weapon as c
+WHERE a.item_id = b.item_id
+AND b.item_id = c.item_ptr_id
+GROUP BY a.character_id
+LIMIT 20
+
+- On average, how many Items does each Character have? ~ 89
+SELECT avg(item_id) avg_item
+FROM charactercreator_character_inventory
+
+- On average, how many Weapons does each character have? ~ 157
+SELECT avg(c.item_ptr_id)
+FROM charactercreator_character_inventory as a,
+armory_item as b, 
+armory_weapon as c
+WHERE a.item_id = b.item_id
+AND b.item_id = c.item_ptr_id
+
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
