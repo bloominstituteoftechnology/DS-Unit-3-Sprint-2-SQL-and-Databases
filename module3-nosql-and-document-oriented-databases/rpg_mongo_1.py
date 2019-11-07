@@ -58,11 +58,42 @@ for row in rpg_data:
     rpg_models[f'{row["model"].split(".")[1]}'][row["pk"]] = row["fields"]
 
 # %% Connect to the cluster
-# Password is URL-encoded
-client = pymongo.MongoClient()
+# Password is a URL-encoded string saved as an environment variable
+client = pymongo.MongoClient(os.environ["MONGO_URI"])
+
+# %% Create the database
 db = client.rpg_db
 
-# %% Count documents
-db.rpg_db.count_documents({"x": 1})
+# %% Loop through models and rows
+# Write each row to its corresponding model
+# In MongoDB terms: insert each document into its collection
+
+for d in rpg_models:
+    print(f"Model: {d}")  # Visual confirmation of model names
+
+    # Create a collection (table) for each rpg_data model
+    coll = db[f"{d}"]
+
+    insert_list = []  # List to hold records of each model
+
+    # Loop through the records in each model, appending to the list
+    for k, v in rpg_models[d].items():
+        # Insert the key into value dict as "pk"
+        # This way, "pk" will be included in each record
+        v["pk"] = k
+        insert_list.append(v)
+
+    # Insert the contents of 'insert_list' into collection
+    coll.insert_many(insert_list)
+
+    # Print the insert list just as visual confirmation
+    pprint(insert_list)
+
+# %% Look at one document from each collection
+for d in rpg_models:
+    print(f"Collection: {d}")  # Collection title
+    # Count the number of docs by passing empty query
+    print(f"  Doc count: {db[f'{d}'].count_documents({})}")
+    # pprint(db[f"{d}"].find_one())  # Pretty print the first doc
 
 # %%
