@@ -1,9 +1,9 @@
 import psycopg2
 
-dbname = 'yjbbntkp'
-user = 'yjbbntkp'
-password = 'euAG1JE7Wa6Fb_K9FVhQaU1Y3uLPgj9B'
-host = 'salt.db.elephantsql.com' 
+dbname = 'yjbdfssdfsdbntkp'
+user = 'yjbbntdfsdfdsfkp'
+password = 'euAG1JE7WadsfdssQaU1Y3uLPgj9B'
+host = 'sasdas.com' 
 
 # PostgresQL setup
 pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
