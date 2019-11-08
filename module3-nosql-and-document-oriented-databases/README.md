@@ -35,7 +35,15 @@ Reproduce (debugging as needed) the live lecture task of setting up and
 inserting the RPG data into a MongoDB instance, and add the code you write to do
 so here. Then answer the following question (can be a comment in the top of your
 code or in Markdown) - "How was working with MongoDB different from working with
-PostgreSQL? What was easier, and what was harder?"
+PostgreSQL? 
+Mongo is more flexible in terms of the way it allows information to be formatted.
+The queries are very general. Because of this information returned may be
+formatted in a variety of ways.
+
+What was easier, and what was harder?"
+It was harder to learn the query style, jsut because SQL
+queries are more common. It was easier to get Mongo to accept data. By comparison
+having an apostrophe in the name was a dealbreaker for SQLite3. 
 
 There is no other required tasks to turn in, but it is suggested to then revisit
 the first two modules, rework/complete things as needed, and just check out with
