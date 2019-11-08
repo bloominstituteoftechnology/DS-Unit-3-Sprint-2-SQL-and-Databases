@@ -1,3 +1,13 @@
+# FOR ASSIGNMENT:
+
+I reproduced the lecture code in [live_lecture_task.py](https://github.com/davidanagy/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module2-sql-for-analysis/live_lecture_task.py).
+
+I uploaded all the other RPG data datasets into my ElephantSQL database using the code in [assignment_1.py](https://github.com/davidanagy/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module2-sql-for-analysis/assignment_1.py).
+
+I uploaded the Titanic dataset into my Elephant SQL database using the code in [insert_titanic.py](https://github.com/davidanagy/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module2-sql-for-analysis/insert_titanic.py).
+
+The original README is below.
+
 # SQL for Analysis
 
 SQL is simple, but surprisingly powerful - many data pipelines start, and even
