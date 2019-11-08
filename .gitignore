@@ -105,3 +105,4 @@ venv.bak/
 
 module2-sql-for-analysis/lectureNotebook.ipynb
 .DS_Store
+module4-acid-and-database-scalability-tradeoffs/titanicQuestions.ipynb
