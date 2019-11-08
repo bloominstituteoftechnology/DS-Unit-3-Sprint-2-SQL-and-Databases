@@ -1,5 +1,7 @@
 import sqlite3
 
+"""Note SQL syntax of final function."""
+
 CONN = sqlite3.connect('northwind_small.sqlite3')
 
 def run_queries():
@@ -41,15 +43,12 @@ def run_queries():
             LIMIT 1
             ;
             """
-    emp_most_territory = """SELECT Employee.FirstName,
-                Employee.LastName,
-                COUNT(EmployeeTerritory.TerritoryId)
-                FROM Employee
-                INNER JOIN EmployeeTerritory
-                ON Employee.Id=EmployeeTerritory.EmployeeId
-                GROUP BY EmployeeTerritory.EmployeeId
-                ORDER BY COUNT(EmployeeTerritory.TerritoryId) DESC
-                LIMIT 1;
+    emp_most_territory = """SELECT e.Id, e.FirstName, e.LastName, COUNT(DISTINCT t.Id)
+                FROM Territory t, Employee e, EmployeeTerritory et
+                WHERE e.Id= et.EmployeeId AND t.id = et.TerritoryId
+                GROUP BY 1, 2, 3
+                ORDER BY 4 DESC
+                LIMIT 1;        
                 """     
 
     queries = (expensive_items, avg_age, avg_age_city,
