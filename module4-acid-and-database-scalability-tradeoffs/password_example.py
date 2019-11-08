@@ -2,6 +2,6 @@
 Example password for uploading data to MongoDB
 """
 
-mongo_password = 'YsRcHpqB3tWtOSKL'
+mongo_password = 'mongo_password_here'
 
-postgre_password = '6HcjHf63iY4YYO_Dqs558PUyrDORRVNs'
+postgre_password = 'postgre_password_here'
