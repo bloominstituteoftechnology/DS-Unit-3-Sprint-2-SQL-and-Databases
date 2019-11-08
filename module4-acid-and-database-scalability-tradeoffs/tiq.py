@@ -137,19 +137,32 @@ ORDER BY
     pclass,
     survived;"""
 
+# Create list of the above queries
+qez = [
+    count_survived,
+    count_class,
+    count_class_survived,
+    avg_age_survived,
+    avg_age_class,
+    avg_fare,
+    avg_spouse,
+    avg_parent_child,
+]
+
 same_name = """--- Do any passengers have the same name?
 SELECT
-    name,
+    split_part(name, ' ', 2) AS first_name,
     COUNT(*) AS count
 FROM passengers
-GROUP BY name
+GROUP BY first_name
 HAVING COUNT(*) > 1;"""
-# TODO: also look for same first names
 
 all_with_sib_spouse = """
 --- How many married couples were aboard the Titanic?
---- Final result to be calculated with Python
-SELECT *
+SELECT
+    reverse(split_part(reverse(name), ' ', 1)) AS last_name,
+    COUNT(*) AS count
 FROM passengers
-WHERE siblings_spouses_aboard > 0;"""
+WHERE siblings_spouses_aboard >= 1
+GROUP BY last_name;"""
 

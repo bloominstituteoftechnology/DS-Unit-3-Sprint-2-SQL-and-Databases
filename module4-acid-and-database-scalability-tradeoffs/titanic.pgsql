@@ -3,21 +3,21 @@
 --- in an environment with syntax highlighting
 --- and other useful tools.
 
---- Create titanic passengers table in postgres
-CREATE TABLE passengers (
-    id SERIAL PRIMARY KEY,
-    survived INT,
-    pclass INT,
-    name VARCHAR(88),
-    sex VARCHAR(8),
-    age FLOAT,
-    siblings_spouses_aboard INT,
-    parents_children_aboard INT,
-    fare FLOAT
-);
+-- --- Create titanic passengers table in postgres
+-- CREATE TABLE passengers (
+--     id SERIAL PRIMARY KEY,
+--     survived INT,
+--     pclass INT,
+--     name VARCHAR(88),
+--     sex VARCHAR(8),
+--     age FLOAT,
+--     siblings_spouses_aboard INT,
+--     parents_children_aboard INT,
+--     fare FLOAT
+-- );
 
---- Drop passengers table to start over
-DROP TABLE passengers;
+-- --- Drop passengers table to start over
+-- DROP TABLE passengers;
 
 
 --- ====== Queries for Questions ======
@@ -105,13 +105,19 @@ ORDER BY
 
 --- Do any passengers have the same name?
 SELECT
-    name,
+    split_part(name, ' ', 2) AS first_name,
     COUNT(*) AS count
 FROM passengers
-GROUP BY name
+GROUP BY first_name
 HAVING COUNT(*) > 1;
 
 --- How many married couples were aboard the Titanic? Assume that two people (one `Mr.` and one `Mrs.`) with the same last name and with at least 1 sibling/spouse aboard are a married couple.
-SELECT *
+SELECT
+    reverse(split_part(reverse(name), ' ', 1)) AS last_name,
+    COUNT(*) AS count
 FROM passengers
-WHERE siblings_spouses_aboard > 0;
+WHERE siblings_spouses_aboard >= 1
+GROUP BY last_name;
+
+--- Simple select
+SELECT * FROM passengers;

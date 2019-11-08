@@ -1,5 +1,6 @@
 """
-Titanic Postgres :: Loads titanic.csv into local Postgres instance.
+Titanic Postgres :: Runs queries against titanic data in 
+local Postgres instance.
 """
 
 # %% Imports
@@ -16,16 +17,19 @@ os.chdir(cwd)
 print(os.getcwd())
 
 # %% Local imports
-# I will be putting all of my queries and functions in a package 'tiq'
+# queries and functions are inside 'tiq'
 import tiq
 
-# %% Queries
+# %% Postgres URI
+titanic_uri = os.environ["TIT_DB_URI"]
 
-# Standard select statement
-select = """
-    SELECT
-        *
-    FROM
-        passengers;"""
+# %% The Easier Queries
+# Executes list of easy queries
+with psycopg2.connect(titanic_uri) as conn:
+    for q in tiq.qez:
+        pprint(q.split("\n")[0])
+        tiq.quarry(conn, q)
+        print()
 
-# %%
+# %% tiq.same_name
+"""Do any passengers have the same name?"""
