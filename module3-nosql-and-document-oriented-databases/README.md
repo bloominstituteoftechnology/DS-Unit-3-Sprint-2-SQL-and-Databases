@@ -37,6 +37,10 @@ so here. Then answer the following question (can be a comment in the top of your
 code or in Markdown) - "How was working with MongoDB different from working with
 PostgreSQL? What was easier, and what was harder?"
 
+The difference was that you used more json style for inserting data with MongoDB. It was easier
+to setup MongoDB. jSON was a little easier to undestand than the SQL commands. The easyness or difficulty did not seem
+much different after the setup however.
+
 There is no other required tasks to turn in, but it is suggested to then revisit
 the first two modules, rework/complete things as needed, and just check out with
 fresh eyes the SQL approach. Compare and contrast, and come with questions
