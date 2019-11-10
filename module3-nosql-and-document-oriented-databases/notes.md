@@ -1,0 +1,1 @@
+- MongoDB can host a ton of data. Much moreso than sqlite and postgresql.
