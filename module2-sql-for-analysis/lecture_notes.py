@@ -2,10 +2,10 @@
 # help(psycopg2.connect) -- create a new database connection
 import psycopg2
 
-dbname = 'lyffzgke'       #same as user
-user = 'lyffzgke'         #same as dbbase
-password = 'QpSUCqCg37ebtRrzKxvzTOMfbzMhKyV0'     #don't commit this to github!
-host = 'salt.db.elephantsql.com'         #from SERVER type this in as string
+dbname = '********'       #same as user
+user = '********'         #same as dbbase
+password = '********'     #don't commit this to github!
+host = '********'         #from SERVER type this in as string
 
 pg_conn = psycopg2.connect(database=dbname, user=user, password=password, host=host)
 # pg because it's made through postgress, not sqllite.
@@ -103,6 +103,7 @@ for character in characters:
 # print(insert_character)
 pg_curs.execute('SELECT * FROM charactercreator_character;')
 pg_curs.fetchall()
+
 
 pg_curs.close()
 pg_conn.commit()

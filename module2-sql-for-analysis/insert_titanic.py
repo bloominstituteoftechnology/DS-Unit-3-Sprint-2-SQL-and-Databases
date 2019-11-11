@@ -13,10 +13,10 @@ import pandas as pd
 import psycopg2
 dir(psycopg2)
 
-dbname = 'rdjpfgmw'
-user = 'rdjpfgmw'
-password = 'sOgSY9YW6zJMg9KqExR-TTC0WKfXAxup'
-host = 'salt.db.elephantsql.com'
+dbname = 'TODO'
+user = 'TODO'
+password = 'TODO'
+host = 'TODO'
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
 
