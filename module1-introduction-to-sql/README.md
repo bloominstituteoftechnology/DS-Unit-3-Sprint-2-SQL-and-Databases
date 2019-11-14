@@ -54,18 +54,25 @@ following questions:
 - How many total Characters are there? 302 total characters
 - How many of each specific subclass?
 
-  Cleric = 75 
+  Cleric =  75
   Fighter = 68
-  Mage = 108
+  Mage = 97
   Necromancer = 11
   Thief = 51
   
 - How many total Items? 174
-- How many of the Items are weapons? 37 How many are not?
+
+- How many of the Items are weapons? 37 How many are not? 137
+
 - How many Items does each character have? (Return first 20 rows)
+OUTPUT: [(3,), (3,), (2,), (4,), (4,), (1,), (5,), (3,), (4,), (4,), (3,), (3,), (4,), (4,), (4,), (1,), (5,), (5,), (3,), (1,)]
+
 - How many Weapons does each character have? (Return first 20 rows)
-- On average, how many Items does each Character have?
-- On average, how many Weapons does each character have?
+OUTPUT: [(2,), (1,), (1,), (1,), (1,), (1,), (1,), (3,), (2,), (1,), (1,), (1,), (2,), (3,), (2,), (2,), (2,), (1,), (1,), (1,)]
+
+- On average, how many Items does each Character have? 2.9735099337748343
+
+- On average, how many Weapons does each character have? 1.3096774193548386
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
