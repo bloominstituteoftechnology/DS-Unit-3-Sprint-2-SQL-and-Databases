@@ -65,9 +65,11 @@ following questions:
 - How many of the Items are weapons? 37 How many are not? 137
 
 - How many Items does each character have? (Return first 20 rows)
+
 OUTPUT: [(3,), (3,), (2,), (4,), (4,), (1,), (5,), (3,), (4,), (4,), (3,), (3,), (4,), (4,), (4,), (1,), (5,), (5,), (3,), (1,)]
 
 - How many Weapons does each character have? (Return first 20 rows)
+
 OUTPUT: [(2,), (1,), (1,), (1,), (1,), (1,), (1,), (3,), (2,), (1,), (1,), (1,), (2,), (3,), (2,), (2,), (2,), (1,), (1,), (1,)]
 
 - On average, how many Items does each Character have? 2.9735099337748343
