@@ -1,24 +1,12 @@
 # Import
 import sqlite3
-
-# Load the data
 conn = sqlite3.connect('rpg_db.sqlite3')
-
-# Create a cursor object
 curs = conn.cursor()
 
 # Character count
-
-# Write the Query
 query = '''SELECT COUNT(name) FROM charactercreator_character;'''
-
-# Execute Cury
 curs.execute(query)
-
-# Fetches all (or all remaining) rows of a query result set
 results = curs.fetchall()
-
-# Print Output
 print('\n------------RPG-QUERIES------------')
 print('How many total characters are there?')
 print(results[0][0])
@@ -141,3 +129,9 @@ curs.execute(query)
 print('\nOn average how many weapons does each character have?')
 print(curs.fetchall()[0][0])
 curs.close
+
+
+
+
+
+
