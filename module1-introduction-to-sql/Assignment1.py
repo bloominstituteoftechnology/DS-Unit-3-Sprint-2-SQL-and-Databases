@@ -1,11 +1,12 @@
 import sqlite3
+
 conn = sqlite3.connect('rpg_db.sqlite3')
 cur = conn.cursor()
 
 # Total characters
 print('How many total Characters are there?')
 cur.execute('SELECT * FROM charactercreator_character')
-result = cur.fetchall()
+result = cur.fetchone()
 print(f'There are {len(result)} characters.\n')
 
 # Total of each subclass
@@ -19,7 +20,7 @@ cur.execute('''
     ON character_id = character_ptr_id
     WHERE character_ptr_id IS NOT NULL
     ''')
-result = cur.fetchall()
+result = cur.fetchone()
 print(f'There are {len(result)} clerics.')
 
 # fighters
@@ -30,7 +31,7 @@ cur.execute('''
     ON character_id = character_ptr_id
     WHERE character_ptr_id IS NOT NULL
     ''')
-result = cur.fetchall()
+result = cur.fetchone()
 print(f'There are {len(result)} fighters.')
 
 # mages
@@ -41,7 +42,7 @@ cur.execute('''
     ON character_id = character_ptr_id
     WHERE character_ptr_id IS NOT NULL
     ''')
-result = cur.fetchall()
+result = cur.fetchone()
 print(f'There are {len(result)} mages.')
 
 # necromancers
@@ -52,7 +53,7 @@ cur.execute('''
     ON character_id = mage_ptr_id
     WHERE mage_ptr_id IS NOT NULL
     ''')
-result = cur.fetchall()
+result = cur.fetchone()
 print(f'There are {len(result)} necromancers.')
 
 # thiefs
@@ -63,13 +64,13 @@ cur.execute('''
     ON character_id = character_ptr_id
     WHERE character_ptr_id IS NOT NULL
     ''')
-result = cur.fetchall()
+result = cur.fetchone()
 print(f'There are {len(result)} thieves.\n')
 
 # total items
 print('How many total Items?')
 cur.execute('SELECT * FROM armory_item')
-result = cur.fetchall()
+result = cur.fetchone()
 print(f'There are {len(result)} items.\n')
 
 # Items as weapons
@@ -81,7 +82,7 @@ cur.execute('''
     ON item_id = item_ptr_id
     WHERE item_ptr_id IS NOT NULL
 ''')
-result = cur.fetchall()
+result = cur.fetchone()
 print(f'{len(result)} items are weapons.')
 cur.execute('''
     SELECT *
@@ -90,5 +91,22 @@ cur.execute('''
     ON item_id = item_ptr_id
     WHERE item_ptr_id IS NULL
 ''')
-result = cur.fetchall()
-print(f'{len(result)} items are not.')
+result = cur.fetchone()
+print(f'{len(result)} items are not.\n')
+
+# How many items for each character
+# I'm not sure I'm doing this one right... RETURN TO THIS ONE!
+print('How many Items does each character have? (Return first 20 rows)')
+cur.execute('''
+    SELECT * FROM charactercreator_character
+    INNER JOIN armory_item
+    ON character_id = item_id
+    LIMIT 20
+''')
+result = cur.fetchone()
+result
+
+print('There is 1 item per person')
+
+# How many weapons per character?
+print('How many Weapons does each character have? (Return first 20 rows)')
