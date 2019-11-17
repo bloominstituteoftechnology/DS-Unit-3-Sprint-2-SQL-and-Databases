@@ -1,7 +1,3 @@
-import sqlite3
-!wget https://github.com/serinamarie/DS-Unit-3-Sprint-2-SQL-and-Databases/raw/master/module1-introduction-to-sql/rpg_db.sqlite3
-conn = sqlite3.connect('rpg_db.sqlite3')
-
 # How many total Characters are there? 302
 SELECT COUNT(character_id)
 FROM charactercreator_character
