@@ -1,10 +1,13 @@
 import sqlite3
 
-!wget https://github.com/serinamarie/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/rpg_db.sqlite3?raw=true
-!mv 'rpg_db.sqlite3?raw=true' rpg_db.sqlite3
+import contextlib
+
+import os
+os.system("wget 'https://github.com/serinamarie/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/rpg_db.sqlite3?raw=true' ")
+os.rename("rpg_db.sqlite3?raw=true", "rpg_db.sqlite3")
 
 # connect to sqlite database
-conn = sqlite3.connect('')
+conn = sqlite3.connect("rpg_db.sqlite3")
 
 # How many total Characters are there? 302
 query_1 = '''
@@ -42,7 +45,7 @@ FROM charactercreator_thief;
 
 # How many total Items? 174
 query_7 = '''
-SELECT COUNT
+SELECT COUNT(item_id)
 FROM armory_item;
 '''
 
@@ -61,8 +64,7 @@ LIMIT 20;
 '''
 
 # How many Weapons does each character have?
-query_10 =
-'''
+query_10 = '''
 SELECT character_id, COUNT(item_id)
 FROM charactercreator_character_inventory cci
 JOIN armory_weapon
@@ -95,14 +97,53 @@ SELECT avg(c)
 	);
 	'''
 
-with closing(conn.cursor()) as cursor:
+with contextlib.closing(conn.cursor()) as cursor:
 	cursor.execute(query_1)
 	result_1 = cursor.fetchall()
-	print result_1
+	print("Query 1:", result_1)
 
 	cursor.execute(query_2)
 	result_2 = cursor.fetchall()
-	print result_2
+	print("Query 2:", result_2)
+
+	cursor.execute(query_3)
+	result_3 = cursor.fetchall()
+	print("Query 3:", result_3)
+
+	cursor.execute(query_4)
+	result_4 = cursor.fetchall()
+	print("Query 4:", result_4)
+
+	cursor.execute(query_5)
+	result_5 = cursor.fetchall()
+	print("Query 5:", result_5)
+
+	cursor.execute(query_6)
+	result_6 = cursor.fetchall()
+	print("Query 6:", result_6)
+
+	cursor.execute(query_7)
+	result_7 = cursor.fetchall()
+	print("Query 7:", result_7)
+
+	cursor.execute(query_8)
+	result_8 = cursor.fetchall()
+	print("Query 8:", result_8)
+
+	cursor.execute(query_9)
+	result_9 = cursor.fetchall()
+	print("Query 9:", result_9)
+
+	cursor.execute(query_10)
+	result_10 = cursor.fetchall()
+	print("Query 10:", result_10)
+
+	cursor.execute(query_11)
+	result_11 = cursor.fetchall()
+	print("Query 11:", result_11)
+
+	cursor.execute(query_12)
+	result_12 = cursor.fetchall()
+	print("Query 12:", result_12)
 
 conn.close()
-conn.commit()
