@@ -110,3 +110,13 @@ print('There is 1 item per person')
 
 # How many weapons per character?
 print('How many Weapons does each character have? (Return first 20 rows)')
+cur.execute('''
+    SELECT * FROM charactercreator_character_inventory cci
+    INNER JOIN charactercreator_character cc
+    USING (character_id)
+    ORDER BY character_id
+    LIMIT 20
+''')
+result = cur.fetchone()
+result
+print('There are anywhere from 1 to 4 for each character in the first 20 rows')
