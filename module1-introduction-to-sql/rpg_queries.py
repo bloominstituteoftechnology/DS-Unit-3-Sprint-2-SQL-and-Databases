@@ -147,5 +147,4 @@ with contextlib.closing(conn.cursor()) as cursor:
 	print("Query 12:", result_12)
 
 
-cursor.close()
 conn.close()
