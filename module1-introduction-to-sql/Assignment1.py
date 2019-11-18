@@ -98,25 +98,22 @@ print(f'{len(result)} items are not.\n')
 # I'm not sure I'm doing this one right... RETURN TO THIS ONE!
 print('How many Items does each character have? (Return first 20 rows)')
 cur.execute('''
-    SELECT * FROM charactercreator_character
-    INNER JOIN armory_item
-    ON character_id = item_id
-    LIMIT 20
-''')
-result = cur.fetchone()
-result
-
-print('There is 1 item per person')
-
-# How many weapons per character?
-print('How many Weapons does each character have? (Return first 20 rows)')
-cur.execute('''
-    SELECT * FROM charactercreator_character_inventory cci
+    SELECT name, character_id, COUNT(*) item_id
+    FROM charactercreator_character_inventory cci
     INNER JOIN charactercreator_character cc
-    USING (character_id)
+    USING (character_id) 
+    GROUP BY character_id
     ORDER BY character_id
-    LIMIT 20
+    LIMIT 20;
 ''')
 result = cur.fetchone()
 result
-print('There are anywhere from 1 to 4 for each character in the first 20 rows')
+print('There are anywhere from 1 to 5 items for each of the first 20 characters\n')
+
+# How many items are weapons?
+print('How many Weapons does each character have? (Return first 20 rows)')
+SELECT character_id, name, item_id
+FROM charactercreator_character_inventory cci
+INNER JOIN armory_item ai
+USING (item_id)
+ORDER BY item_id
