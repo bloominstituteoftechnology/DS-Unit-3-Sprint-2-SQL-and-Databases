@@ -10,12 +10,13 @@ df = pd.read_csv('titanic.csv')
 database = 'soegyzdx'
 user = 'soegyzdx'
 password = '5hH2U1n9Xj5lCEqPzDKS1iV18MHef2jS'
-host = 	'salt.db.elephantsql.com'
+host = 'salt.db.elephantsql.com'
 
-#connect to python postgresql db adapter
-pg_conn = psycopg2.connect(database=database, user=user, password=password, host=host)
+# connect to python postgresql db adapter
+pg_conn = psycopg2.connect(database=database, user=user, password=password,
+                           host=host)
 
-#create cursor obj
+# create cursor obj
 curs = pg_conn.cursor()
 
 # TABLE TO INSERT INTO
