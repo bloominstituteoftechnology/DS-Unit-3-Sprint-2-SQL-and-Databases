@@ -37,7 +37,7 @@ create_passenger_table = """
 
 curs.execute(create_passenger_table)
 
-pg_connect.commit()
+pg_conn.commit()
 '''
 
 db_string = 'postgres://soegyzdx:5hH2U1n9Xj5lCEqPzDKS1iV18MHef2jS@salt.db.elephantsql.com:5432/soegyzdx'
