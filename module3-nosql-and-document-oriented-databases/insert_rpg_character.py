@@ -3,6 +3,7 @@
 import pymongo
 import sqlite3
 import csv
+import pandas as pd
 
 # get full driver from mongodb (copied from 'full driver example') & db
 
@@ -25,8 +26,8 @@ with open('rpg_db.csv', 'w') as f:
     writer.writerows(csr)
 
 # read .csv to df
-import pandas as pd
 rpg = pd.read_csv('rpg_db.csv')
+
 
 '''Data to dictionary form for insertion in mongoDB'''
 
