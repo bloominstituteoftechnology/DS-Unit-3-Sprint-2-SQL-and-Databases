@@ -24,7 +24,7 @@ SELECT COUNT("Survived") FROM passengers
 WHERE "Survived" = 0
 GROUP BY "Pclass"
 '''
-What was the average age of survivors vs nonsurvivors?
+# What was the average age of survivors vs nonsurvivors?
 # Avg survivor age: 28.41
 '''
 SELECT avg("Age") FROM passengers
@@ -36,7 +36,7 @@ SELECT avg("Age") FROM passengers
 WHERE "Survived" = 0
 '''
 
-What was the average age of each passenger class?
+# What was the average age of each passenger class?
 
 '''
 SELECT avg("Age") FROM passengers
@@ -45,7 +45,7 @@ GROUP BY "Pclass"
 # Avg age
 # 1st: 38.79, 2nd: 25.19, 3rd: 29.87
 
-What was the average fare by passenger class? By survival?
+# What was the average fare by passenger class? By survival?
 # Avg fare:
 # 1st: 84.15, 2nd: 13.71, 3rd: 20.66
 '''
