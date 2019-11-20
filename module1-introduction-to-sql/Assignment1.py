@@ -107,13 +107,58 @@ cur.execute('''
     LIMIT 20;
 ''')
 result = cur.fetchone()
-result
 print('There are anywhere from 1 to 5 items for each of the first 20 characters\n')
 
 # How many items are weapons?
 print('How many Weapons does each character have? (Return first 20 rows)')
-SELECT character_id, name, item_id
-FROM charactercreator_character_inventory cci
-INNER JOIN armory_item ai
-USING (item_id)
-ORDER BY item_id
+cur.execute('''
+    SELECT character_id, name, item_id, item_ptr_id, COUNT(*) item_id
+    FROM charactercreator_character_inventory cci
+    INNER JOIN charactercreator_character cc
+    USING (character_id) 
+    INNER JOIN armory_weapon
+    ON item_id = item_ptr_id
+    GROUP BY character_id
+    ORDER BY character_id
+    LIMIT 20;
+''')
+result = cur.fetchone()
+print('There are 1 to 2 items per character that are weapons.\n')
+
+# Average number of items
+print('On average, how many items does each character have?')
+cur.execute('''
+    CREATE TABLE average_items AS
+	    SELECT name, character_id, COUNT(*) item_id
+	    FROM charactercreator_character_inventory cci
+	    INNER JOIN charactercreator_character cc
+	    USING (character_id)
+	    GROUP BY character_id
+	    ORDER BY character_id
+''')
+cur.execute('''
+    SELECT AVG(item_id)
+    FROM average_items
+''')
+result = cur.fetchall()
+print(f'There is an average of {result} items per character')
+
+# Average number of weapons
+print('On average, how many weapons does each character have?')
+cur.execute('''
+    CREATE TABLE average_weapon AS
+	    SELECT character_id, name, item_ptr_id, COUNT(*) item_id
+	    FROM charactercreator_character_inventory cci
+	    INNER JOIN charactercreator_character cc
+	    USING (character_id) 
+	    INNER JOIN armory_weapon aw
+	    ON item_id = item_ptr_id
+	    GROUP BY character_id
+	    ORDER BY character_id
+''')
+cur.execute('''
+    SELECT AVG(item_id)
+    FROM average_weapon
+''')
+result = cur.fetchall()
+print(f'There is an average of {result} weapons per character')
