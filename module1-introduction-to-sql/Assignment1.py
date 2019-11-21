@@ -6,7 +6,7 @@ cur = conn.cursor()
 # Total characters
 print('How many total Characters are there?')
 cur.execute('SELECT * FROM charactercreator_character')
-result = cur.fetchone()
+result = cur.fetchall()
 print(f'There are {len(result)} characters.\n')
 
 # Total of each subclass
@@ -20,7 +20,7 @@ cur.execute('''
     ON character_id = character_ptr_id
     WHERE character_ptr_id IS NOT NULL
     ''')
-result = cur.fetchone()
+result = cur.fetchall()
 print(f'There are {len(result)} clerics.')
 
 # fighters
@@ -31,7 +31,7 @@ cur.execute('''
     ON character_id = character_ptr_id
     WHERE character_ptr_id IS NOT NULL
     ''')
-result = cur.fetchone()
+result = cur.fetchall()
 print(f'There are {len(result)} fighters.')
 
 # mages
@@ -42,7 +42,7 @@ cur.execute('''
     ON character_id = character_ptr_id
     WHERE character_ptr_id IS NOT NULL
     ''')
-result = cur.fetchone()
+result = cur.fetchall()
 print(f'There are {len(result)} mages.')
 
 # necromancers
@@ -53,7 +53,7 @@ cur.execute('''
     ON character_id = mage_ptr_id
     WHERE mage_ptr_id IS NOT NULL
     ''')
-result = cur.fetchone()
+result = cur.fetchall()
 print(f'There are {len(result)} necromancers.')
 
 # thiefs
@@ -64,13 +64,13 @@ cur.execute('''
     ON character_id = character_ptr_id
     WHERE character_ptr_id IS NOT NULL
     ''')
-result = cur.fetchone()
+result = cur.fetchall()
 print(f'There are {len(result)} thieves.\n')
 
 # total items
 print('How many total Items?')
 cur.execute('SELECT * FROM armory_item')
-result = cur.fetchone()
+result = cur.fetchall()
 print(f'There are {len(result)} items.\n')
 
 # Items as weapons
@@ -82,7 +82,7 @@ cur.execute('''
     ON item_id = item_ptr_id
     WHERE item_ptr_id IS NOT NULL
 ''')
-result = cur.fetchone()
+result = cur.fetchall()
 print(f'{len(result)} items are weapons.')
 cur.execute('''
     SELECT *
@@ -91,7 +91,7 @@ cur.execute('''
     ON item_id = item_ptr_id
     WHERE item_ptr_id IS NULL
 ''')
-result = cur.fetchone()
+result = cur.fetchall()
 print(f'{len(result)} items are not.\n')
 
 # How many items for each character
@@ -106,7 +106,7 @@ cur.execute('''
     ORDER BY character_id
     LIMIT 20;
 ''')
-result = cur.fetchone()
+result = cur.fetchall()
 print('There are anywhere from 1 to 5 items for each of the first 20 characters\n')
 
 # How many items are weapons?
@@ -122,7 +122,7 @@ cur.execute('''
     ORDER BY character_id
     LIMIT 20;
 ''')
-result = cur.fetchone()
+result = cur.fetchall()
 print('There are 1 to 2 items per character that are weapons.\n')
 
 # Average number of items
