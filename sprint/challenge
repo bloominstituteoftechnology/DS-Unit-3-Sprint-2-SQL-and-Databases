@@ -130,9 +130,24 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+A: Employee and Territory tables are not connected directly in this database. 
+Instead there is a table between the two named EmployeeTerriory. Both Employee and
+Territory table connect to this intemidiary table on one to one basis. Key which
+connects the Employee table to it is EmployeeId. Key which connects Territory to
+EmployeeTerritory is TerritoryId.
+  
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+A: Generally speaking MongoDB is good in application development and not so good
+to be used in day to day datascience projects. MongoDB is object-oriented and
+scalable NoSQL database. It normally uses JSON or BSON documents to store data.
+It was built for the cloud which allows for high performance. On the bad side
+most solutions within these type of DBs are not ACID-compliant.
+
 - What is "NewSQL", and what is it trying to achieve?
+NewSQL is a type of relaional database which is trying to achieve balance between
+high performace and scalaiblity of NoSQL DBs (aka MongoDB) while maintainig the
+ACID guarantees of traditional SQL databases. 
 
 ### Part 5 - Turn it in!
 Provide all the files you wrote (`demo_data.py`, `northwind.py`), as well as
