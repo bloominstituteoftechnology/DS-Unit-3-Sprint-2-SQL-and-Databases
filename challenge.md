@@ -54,9 +54,12 @@ Make sure to `commit()` so your data is saved! The file size should be non-zero.
 Then write the following queries (also with `sqlite3`) to test:
 
 - Count how many rows you have - it should be 3!
+  -- got it!
 - How many rows are there where both `x` and `y` are at least 5?
+  -- 2 rows
 - How many unique values of `y` are there (hint - `COUNT()` can accept a keyword
   `DISTINCT`)?
+  -- 2 unique values
 
 Your code (to reproduce all above steps) should be saved in `demo_data.py` and
 added to the repository along with the generated SQLite database.
@@ -102,9 +105,26 @@ particular table, but it's a good lesson in the danger of keyword conflicts.
 Answer the following questions (each is from a single table):
 
 - What are the ten most expensive items (per unit price) in the database?
+  -- [('Côte de Blaye', 263.5),
+  ('Thüringer Rostbratwurst', 123.79),
+  ('Mishi Kobe Niku', 97),
+  ("Sir Rodney's Marmalade", 81),
+  ('Carnarvon Tigers', 62.5),
+  ('Raclette Courdavault', 55),
+  ('Manjimup Dried Apples', 53),
+  ('Tarte au sucre', 49.3),
+  ('Ipoh Coffee', 46),
+  ('Rössle Sauerkraut', 45.6)]
+ 
 - What is the average age of an employee at the time of their hiring? (Hint: a
   lot of arithmetic works with dates.)
+  -- 37
 - (*Stretch*) How does the average age of employee at hire vary by city?
+  -- [('Kirkland', 29),
+  ('London', 32),
+  ('Redmond', 56),
+  ('Seattle', 40),
+   ('Tacoma', 40)]
 
 Your code (to load and query the data) should be saved in `northwind.py`, and
 added to the repository. Do your best to answer in purely SQL, but if necessary
@@ -119,9 +139,24 @@ Using `sqlite3` in `northwind.py`, answer the following:
 
 - What are the ten most expensive items (per unit price) in the database *and*
   their suppliers?
+  -- [('Côte de Blaye', 263.5, None),
+  ('Thüringer Rostbratwurst', 123.79, "Forêts d'érables"),
+  ('Mishi Kobe Niku', 97, 'PB Knäckebröd AB'),
+  ("Sir Rodney's Marmalade", 81, 'Leka Trading'),
+  ('Carnarvon Tigers', 62.5, 'Aux joyeux ecclésiastiques'),
+  ('Raclette Courdavault', 55, None),
+  ('Manjimup Dried Apples', 53, None),
+   ('Tarte au sucre', 49.3, None),
+  ('Ipoh Coffee', 46, None),
+  ('Rössle Sauerkraut', 45.6, 'Gai pâturage')]
+ 
 - What is the largest category (by number of unique products in it)?
+  -- [(69, None)]
+  -- NOTE: I did this because by in large, most had the category of 'None' and count won't accept that unless I count all the CategoryNames then subtract the  unique ones (i.e. non-null values), meaning that 69 had no category name.
+  
 - (*Stretch*) Who's the employee with the most territories? Use `TerritoryId`
   (not name, region, or other fields) as the unique identifier for territories.
+  -- [('King', 'Robert', 10)]
 
 ### Part 4 - Questions (and your Answers)
 
@@ -130,9 +165,12 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  -- 
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  -- 
 - What is "NewSQL", and what is it trying to achieve?
+  -- 
 
 ### Part 5 - Turn it in!
 Provide all the files you wrote (`demo_data.py`, `northwind.py`), as well as
