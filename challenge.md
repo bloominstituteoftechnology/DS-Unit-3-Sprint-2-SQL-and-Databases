@@ -150,13 +150,13 @@ Using `sqlite3` in `northwind.py`, answer the following:
   ('Ipoh Coffee', 46, None),
   ('Rössle Sauerkraut', 45.6, 'Gai pâturage')]
  
-- What is the largest category (by number of unique products in it)?
+- What is the largest category (by number of unique products in it)?:
   -- [(69, None)]
-  -- NOTE: I did this because by in large, most had the category of 'None' and count won't accept that unless I count all the CategoryNames then subtract the  unique ones (i.e. non-null values), meaning that 69 had no category name.
+  -- NOTE: I did this because by in large, most had the category of 'None' and count won't accept that unless I count all the CategoryNames then subtract the  unique ones (i.e. non-null values), meaning that 69 had no category name.:
   
 - (*Stretch*) Who's the employee with the most territories? Use `TerritoryId`
-  (not name, region, or other fields) as the unique identifier for territories.
-  -- [('King', 'Robert', 10)]
+  (not name, region, or other fields) as the unique identifier for territories.:
+  -- [('95060', 10)]
 
 ### Part 4 - Questions (and your Answers)
 
@@ -164,15 +164,15 @@ Answer the following questions, baseline ~3-5 sentences each, as if they were
 interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
-  `Employee` and `Territory` tables?
+  `Employee` and `Territory` tables?:
   -- It is a one to many relationship. While EmployeeID is the key in the Employee table, it relates to many others and actually has to essentially "go through" a separate table (EmployeeTerritory) to even get to the Territory table. The Territory table relates to many others including the Employee table. 
   
 - What is a situation where a document store (like MongoDB) is appropriate, and
-  what is a situation where it is not appropriate?
+  what is a situation where it is not appropriate?:
   -- If your data schema is subject to frequent changes or if there is a huge subset of data and you need quicker aggregation, it doesn't make sense to be using regular SQL as a JSON-like document store is much easier and quicker to update or access. YOu can expressely limit the views and decide what data you want to be getting back more efficiently. 
   
-- What is "NewSQL", and what is it trying to achieve?
-  -- 
+- What is "NewSQL", and what is it trying to achieve?:
+  -- Essentially, it is a type of relational system that can support a lot of short transactions, are easier to deploy and learn, and may even have fewer features than others, but are specifically developed for cloud and web based systems via clustering. It should be noted that NewSQL follows ACID transaction guidelines. 
 
 ### Part 5 - Turn it in!
 Provide all the files you wrote (`demo_data.py`, `northwind.py`), as well as
