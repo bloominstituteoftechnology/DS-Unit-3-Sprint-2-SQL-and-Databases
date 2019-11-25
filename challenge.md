@@ -134,6 +134,17 @@ interview screening questions (a form you fill when applying for a job):
   what is a situation where it is not appropriate?
 - What is "NewSQL", and what is it trying to achieve?
 
+```
+Question 1:
+In the Northwind database there exists a one-to-many relationship between the Employee and Territory tables. That is, a single territory can map to multiple employees.
+
+Question 2:
+Document stores like MongoDB are appropriate when dealing with unstructured data. We can store the data as self-contained documents rather than specifying a database schema, which allows for ease of access. Documents can be stored accross multiple servers with their keys and values specified within the documents. It is not appropriate to use document stores when we have highly coupled data and a large amount of transactions occuring.
+
+Question 3:
+It seems to be that NewSQL is attempting to bridge the gap between NoSQL and databases with high transactional workloads. It also reduces the complexity of written applications and allows the use of traditional SQL processing. 
+```
+
 ### Part 5 - Turn it in!
 Provide all the files you wrote (`demo_data.py`, `northwind.py`), as well as
 this file with your answers to part 4, directly to your TL. You're also
