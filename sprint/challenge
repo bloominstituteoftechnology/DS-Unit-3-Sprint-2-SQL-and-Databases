@@ -145,7 +145,7 @@ It was built for the cloud which allows for high performance. On the bad side
 most solutions within these type of DBs are not ACID-compliant.
 
 - What is "NewSQL", and what is it trying to achieve?
-NewSQL is a type of relaional database which is trying to achieve balance between
+A: NewSQL is a type of relaional database which is trying to achieve balance between
 high performace and scalaiblity of NoSQL DBs (aka MongoDB) while maintainig the
 ACID guarantees of traditional SQL databases. 
 
