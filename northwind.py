@@ -83,3 +83,5 @@ curs.execute("""
     ORDER BY count DESC
     LIMIT 1;
 """).fetchall()
+curs.close()
+conn.commit()
