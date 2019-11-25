@@ -108,7 +108,7 @@ def question_five():
 	print(items_df.head(20))
 
 
-def question_six():
+def question_six_to_eight():
 	query_char_weapons = """
 	SELECT COUNT(item_id), character_id
 	FROM charactercreator_character_inventory
@@ -128,14 +128,14 @@ def question_six():
 	print(weapons_df.head(20))
 
 
-def question_seven():
+
 	item_count = list(zip(*items_per_char))[0]
 	avg_items_per_char = sum(item_count)/ total_characters[0][0]
 	
 	print(f'There are an average of {avg_items_per_char} items per character')
 
 
-def question_eight():
+
 	weapon_count = list(zip(*weapons_per_char))[0]
 	avg_weapons_per_char = sum(weapon_count)/total_characters[0][0]
 	
@@ -146,6 +146,4 @@ question_two()
 question_three()
 question_four()
 question_five()
-question_six()
-question_seven()
-question_eight()
+question_six_to_eight()
