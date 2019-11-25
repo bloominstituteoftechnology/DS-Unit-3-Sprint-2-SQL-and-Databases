@@ -26,7 +26,8 @@ LIMIT 10
 answerQ1 = curs.execute(queryQ1).fetchall()
 
 print('These are the ten most expensive items in this DB.\n')
-answerQ1
+print(answerQ1)
+print('\n')
 
 # Answer to Question 2a.
 # I was not sure what was meant by this question.
@@ -39,6 +40,7 @@ FROM Employee e
 answerQ2a = curs.execute(queryQ2a).fetchall()
 
 print(f'Average age at the time of hire is {round(answerQ2a[0][0], 2)}')
+print('\n')
 
 # Answer to Question 2b.
 # I was not sure what was meant by this question.
@@ -51,7 +53,8 @@ FROM Employee e
 answerQ2b = curs.execute(queryQ2b).fetchall()
 
 print('This was age of each employ at the time of hire.\n')
-answerQ2b
+print(answerQ2b)
+print('\n')
 
 # Answer to Question 3.
 
@@ -63,7 +66,8 @@ GROUP BY City
 answerQ3 = curs.execute(queryQ3).fetchall()
 
 print('This is average age per city at the time of hire.\n')
-answerQ3
+print(answerQ3)
+print('\n')
 
 """## **Questions to Part 3**
 
@@ -87,7 +91,8 @@ LIMIT 10
 answerQ4 = curs.execute(queryQ4).fetchall()
 
 print('Ten most expensive items in this DB and their suppliers.\n')
-answerQ4
+print(answerQ4)
+print('\n')
 
 # Answer to Question 5.
 
@@ -103,6 +108,7 @@ answerQ5 = curs.execute(queryQ5).fetchall()
 
 print(f'Largest category of {answerQ5[0][0]} has {answerQ5[0][1]}' +
       ' products in it.')
+print('\n')
 
 # Answer to Question 6.
 
@@ -118,3 +124,4 @@ answerQ6 = curs.execute(queryQ6).fetchall()
 
 print(f'Employee with most ({answerQ6[0][2]}) territories is' +
       f' {answerQ6[0][0]} {answerQ6[0][1]}.')
+print('\n')
