@@ -165,10 +165,12 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
-  -- 
+  -- It is a one to many relationship. While EmployeeID is the key in the Employee table, it relates to many others and actually has to essentially "go through" a separate table (EmployeeTerritory) to even get to the Territory table. The Territory table relates to many others including the Employee table. 
+  
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
-  -- 
+  -- If your data schema is subject to frequent changes or if there is a huge subset of data and you need quicker aggregation, it doesn't make sense to be using regular SQL as a JSON-like document store is much easier and quicker to update or access. YOu can expressely limit the views and decide what data you want to be getting back more efficiently. 
+  
 - What is "NewSQL", and what is it trying to achieve?
   -- 
 
