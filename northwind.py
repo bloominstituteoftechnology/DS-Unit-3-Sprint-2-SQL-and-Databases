@@ -60,8 +60,10 @@ curs.execute(part_3_query)
 '''
 
 most_unique_products ='''
-SELECT CategoryId, count(*) as cnt
+SELECT Category.CategoryName, count(*) as cnt
 FROM Product
+JOIN Category
+ON Category.Id = Product.CategoryId
 GROUP BY CategoryId
 ORDER BY COUNT(distinct ProductName) DESC
 LIMIT 1'''
@@ -69,5 +71,5 @@ LIMIT 1'''
 curs.execute(most_unique_products)
 
 '''
-[(3, 13)]
+[(Confections, 13)]
 '''
