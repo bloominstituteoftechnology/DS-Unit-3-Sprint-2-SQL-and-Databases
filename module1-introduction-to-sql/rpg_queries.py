@@ -51,4 +51,29 @@ print('Total Number of Weapons:', weapon_total)
 print('Total Number of Items:', nonweapon_total)
 print('____')
 
-#question 5:
+#question 5: How many items does each character have *** FIXME
+for i in range(0, 20):
+    #need to fix bucket and ques
+    bucket = []
+    question5_query = 'SELECT COUNT(armory_item) FROM charactercreator_character AS CC, armory_item AS AI, charactercreator_character_inventory AS CCI WHERE CC.character_id = CCI.character_id AND AI.item_id = CCI.item_id ORDER BY item_id LIMIT 20; '
+    question5_total = cursor.execute(question5_query).fetchall()
+    print('Question 5:')
+    print('Total Number Items/User (Max 20:)', question5_total)
+    print ('____')
+
+#question 6: How many weapons does each character have *** FIXME
+    question6_query = 'SELECT COUNT(armory_weapon) FROM charactercreator_character AS CC, armory_item AS AI, charactercreator_character_inventory AS CCI WHERE CC.character_id = CCI.character_id AND AI.item_id = CCI.item_id ORDER BY item_id LIMIT 20; '
+    questio65_total = cursor.execute(question6_query).fetchall()
+    print('Question 6:')
+    print('Total Number Weapons/User (Max 20:)', question5_total)
+    print ('____')
+
+# question 7: On average, how many items does each Character Have?
+
+
+#question 8: On average, how many weapons does each Character have?
+
+
+
+##### PART 2: MAKING AND POPULATING DB #####
+## BuddyMove DataSet ##
