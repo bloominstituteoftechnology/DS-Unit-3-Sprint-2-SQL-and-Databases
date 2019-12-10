@@ -5,10 +5,11 @@ import sqlite3
 
 conn = sqlite3.connect('buddymove_holidayiq.sqlite3')
 
+"""
 df = pd.read_csv('https://raw.githubusercontent.com/EvidenceN/DS-Unit-3-Sprint-2-SQL-and-Databases/master/module1-introduction-to-sql/buddymove_holidayiq.csv')
 
 query = df.to_sql(name='buddy', con=conn)
-
+"""
 curs = conn.cursor()
 
 curs.execute('SELECT * FROM buddy').fetchall()
@@ -34,9 +35,6 @@ avg_sports
 
 avg_religious = curs.execute('select round(avg(Religious), 0) from buddy').fetchall()
 avg_religious
-
-avg_sports = curs.execute('select round(avg(Sports), 0) from buddy').fetchall()
-avg_sports
 
 avg_Nature = curs.execute('select round(avg(Nature), 0) from buddy').fetchall()
 avg_Nature
@@ -126,7 +124,7 @@ weapons
 
 # - On average, how many Items does each Character have?
 
-avg_items = curs2.execute('select character_id, avg(item_id) from charactercreator_character_inventory group by character_id').fetchall()
+avg_items = curs2.execute('select character_id, ROUND (AVG(item_id), 0) from charactercreator_character_inventory group by character_id LIMIT 20;').fetchall()
 avg_items
 
 # - On average, how many Weapons does each character have?
@@ -136,3 +134,5 @@ avg_weapons
 
 curs2.close()
 conn2.commit()
+
+
