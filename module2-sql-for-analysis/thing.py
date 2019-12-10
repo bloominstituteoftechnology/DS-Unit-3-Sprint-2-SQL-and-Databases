@@ -1,4 +1,4 @@
-import psycopg2-binary
+import psycopg2
 
 dbname = 'qtfmqnbz'
 user = 'qtfmqnbz'
@@ -7,3 +7,7 @@ host = 'rajje.db.elephantsql.com'
 
 pg_conn = psycopg2.connect(dbname= dbname, user=user, password=password, host=host)
 
+pg_curs = pg_conn.cursor()
+
+pg_curs.execute('SELECT * FROM test_table;')
+pg_curs.fetchall()
