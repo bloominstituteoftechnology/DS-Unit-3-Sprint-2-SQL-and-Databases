@@ -1,0 +1,4 @@
+SELECT character_id, name, wisdom 
+FROM charactercreator_character
+ORDER BY 2 DESC, 1 ASC
+LIMIT 10;
