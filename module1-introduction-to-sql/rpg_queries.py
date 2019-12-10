@@ -22,3 +22,5 @@ print(f" How many total Items? Answer: {result_7}")
 # How many of the Items are weapons? How many are not?
 result_8 = cur.execute(" SELECT COUNT(*) FROM armory_item, armory_weapon WHERE item_id == item_ptr_id; ").fetchall()[0][0]
 print(f" How many of the Items are weapons? Answer: {result_8}")
+
+#
