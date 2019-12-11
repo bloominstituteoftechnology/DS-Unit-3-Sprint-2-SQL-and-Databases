@@ -15,5 +15,3 @@ How many users who reviewed at least 100 Nature in the category also reviewed
 at least 100 in the Shopping category?
 """
 print(pd.read_sql_query('SELECT COUNT(*) FROM df WHERE Nature >= 100 AND Shopping >=100;', conn))
-
-"""
