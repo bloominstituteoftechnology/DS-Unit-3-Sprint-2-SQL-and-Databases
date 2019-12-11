@@ -9,5 +9,45 @@ pg_conn = psycopg2.connect(dbname= dbname, user=user, password=password, host=ho
 
 pg_curs = pg_conn.cursor()
 
-pg_curs.execute('SELECT * FROM test_table;')
-pg_curs.fetchall()
+import sqlite3
+sl_conn = sqlite3.connect('rpg_db.sqlite3')
+sl_curs = sl_conn.cursor()
+
+create_char_table = """
+    CREATE TABLE charactercreator_character (
+        character_id SERIAL PRIMARY KEY,
+        name VARCHAR(30),
+        level INT,
+        exp INT,
+        hp INT,
+        strength INT,
+        intelligence INT,
+        dexterity INT,
+        wisdom INT
+    );
+"""
+
+try:
+    pg_curs.execute(create_char_table)
+
+    characters = sl_curs.execute('SELECT * from charactercreator_character').fetchall()
+
+    for char in characters:
+        insert_character = """
+            INSERT INTO charactercreator_character
+            (name, level, exp, hp ,strength, intelligence, dexterity, wisdom)
+            VALUES """ + str(row)+";"
+        pg_curs.execute(insert_character)
+except:
+    pass
+
+pg_curs.close()
+pg_conn.commit()
+
+pg_curs = pg_conn.cursor()
+pg_curs.execute('SELECT * FROM charactercreator_character;')
+pg_characters = pg_curs.fetchall()
+print(pg_characters)
+
+pg_curs.close()
+pg_conn.commit()
