@@ -4,6 +4,11 @@ import psycopg2
 #user : admin
 #pass : 12TPzLpCVUkL3Lvh
 
+"""
+I felt working with mongoDB was different because with mongo, you didnt have cursors or connections to worry about, all you had to do was reference the client itself. This made it easier because you didn't have to worry about opening, closing, or commiting the changes to your work. However, what made it more difficult was that all inputs had to be in a dictionary form.
+
+"""
+
 client = pymongo.MongoClient("mongodb+srv://admin:12TPzLpCVUkL3Lvh@ds9-unit3-module3-k1toc.mongodb.net/test?retryWrites=true&w=majority")
 db = client.rpg_data
 
