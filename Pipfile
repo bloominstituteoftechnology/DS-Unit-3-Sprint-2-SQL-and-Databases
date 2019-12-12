@@ -9,6 +9,9 @@ verify_ssl = true
 pandas = "*"
 psycopg2-binary = "*"
 wget = "*"
+windows-curses = "*"
+pymongo = "*"
+dnspython = "*"
 
 [requires]
 python_version = "3.7"

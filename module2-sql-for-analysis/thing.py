@@ -36,7 +36,7 @@ try:
         insert_character = """
             INSERT INTO charactercreator_character
             (name, level, exp, hp ,strength, intelligence, dexterity, wisdom)
-            VALUES """ + str(row)+";"
+            VALUES """ + str(char[1:])+";"
         pg_curs.execute(insert_character)
 except:
     pass
