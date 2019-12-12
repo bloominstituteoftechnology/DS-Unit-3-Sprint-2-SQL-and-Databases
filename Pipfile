@@ -10,6 +10,9 @@ numpy = "*"
 pandas = "*"
 psycopg2-binary = "*"
 wget = "*"
+pymongo = "*"
+dnspython = "*"
+ssl = "*"
 
 [requires]
 python_version = "3.7"
