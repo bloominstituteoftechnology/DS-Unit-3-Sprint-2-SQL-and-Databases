@@ -20,7 +20,7 @@ curs.execute("""
     FROM Employee;
 """)
 answer = curs.fetchall()
-print(f'The average age at hiring is {answer}.\n')
+print(f'The average hiring age is {answer}.\n')
 
 #Ten most expensive products and their suppliers
 curs.execute("""
@@ -43,7 +43,7 @@ curs.execute("""
     ORDER BY CategoryName DESC;
 """)
 answer = curs.fetchall()
-print(f'The largest category based on unique products is {a}\n')
+print(f'The largest category by unique products is {answer}\n')
 
 # Closing connection and committing
 curs.close()
