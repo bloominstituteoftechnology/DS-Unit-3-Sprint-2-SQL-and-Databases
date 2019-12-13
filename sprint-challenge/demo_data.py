@@ -43,7 +43,7 @@ print(f'There are {answer} rows with values of at least 5.\n')
 #How many unique values of y are there?
 cur.execute("""
     SELECT COUNT(DISTINCT y) 
-    FROM demo
+    FROM demo;
 """)
 answer = cur.fetchall()
 print(f"There are {answer} unique values of 'y'.")
