@@ -1,0 +1,8 @@
+In the Northwind database, what is the type of relationship between the Employee and Territory tables?
+The relationship is one to one. 	
+
+What is a situation where a document store (like MongoDB) is appropriate, and what is a situation where it is not appropriate?
+Appropriate when processing multi-document transactions.  
+
+What is "NewSQL", and what is it trying to achieve?
+NewSQL is a new class of relational database management systems created to achieve the  same scalability as NoSQL systems for online transaction processing workloads.
