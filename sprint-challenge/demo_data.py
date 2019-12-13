@@ -46,7 +46,7 @@ cur.execute("""
     FROM demo;
 """)
 answer = cur.fetchall()
-print(f"There are {answer} unique values of 'y'.")
+print(f'There are {answer} unique values of y.')
 
 #Closing connection and committing
 cur.close()
