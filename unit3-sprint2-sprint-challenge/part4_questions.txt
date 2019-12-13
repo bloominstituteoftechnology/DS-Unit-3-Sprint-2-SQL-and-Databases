@@ -1,0 +1,18 @@
+Question #1
+The relationship between ‘Employee’ table and ‘Territory’ table is one-to-many.
+That is one record in the Employee table can be associated with one or more
+records in Territory table.
+
+Question #2
+Document store like Mongo DB, which is a type of NoSQL database,
+is appropriate for dealing with unstructured data.
+Data can be stored in JSON like documents that can very in structure
+offering a dynamic, flexible schema. However, it is not appropriate to use with
+highly coupled data and for companies such as banks with a large amount of
+transactions occurring.
+
+Question #3
+NewSQL is blend of traditional SQL and NoSQL databases. It tends to get best of
+both sides of traditional SQL and NoSQL. That is to say it is trying to achieve
+the balance between high performance and scalability of NoSQL databases while
+maintaining the ACID guarantees of traditional SQL databases.
