@@ -134,6 +134,16 @@ interview screening questions (a form you fill when applying for a job):
   what is a situation where it is not appropriate?
 - What is "NewSQL", and what is it trying to achieve?
 
+#### Part 4.1 - Question Answers
+
+Q1: The relationship between `Employee` and `Territory` tables is one to many, as
+one employee handles many territories.
+
+Q2: A document store (like MongoDB) would be appropriate in use as a wiki. Somewhere that it would not be appropriate is in an employee log or corporate hierarchy storage.
+
+Q3: NewSQL is a new database system that combines the benefits of NoSQL systems
+with relational technology. The goal is to provide a system that delivers ACID transactions.
+
 ### Part 5 - Turn it in!
 Provide all the files you wrote (`demo_data.py`, `northwind.py`), as well as
 this file with your answers to part 4, directly to your TL. You're also
