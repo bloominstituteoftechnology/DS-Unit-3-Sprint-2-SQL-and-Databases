@@ -1,7 +1,5 @@
 import sqlite3
 
-!wget https://github.com/jonathanmendoza-tx/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/northwind_small.sqlite3?raw=true -O northwind_small.sqlite3
-
 #create connection
 conn = sqlite3.connect('northwind_small.sqlite3')
 cur = conn.cursor()
