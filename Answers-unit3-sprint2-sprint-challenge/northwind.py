@@ -55,7 +55,7 @@ query(avg_age)
 # idea is to calculate the (average age - the age) for each city. 
 
 avg_age_city = """SELECT City,
-          (ROUND(AVG(HireDate - BirthDate),1)) - ROUND((HireDate - BirthDate),1)
+          ROUND(AVG(HireDate - BirthDate),1)
           from employee 
           GROUP BY City"""
 query(avg_age_city) 
@@ -79,64 +79,39 @@ expensive_suppliers = """SELECT
                 """
 query(expensive_suppliers)
 
-# What is the largest category (by number of unique products in it). Basically, which category has the most unique products in it. 
+# What is the largest category (by number of unique products in it). 
 
-query('PRAGMA table_info (category);')
+#Basically, which category has the most unique products in it. 
+
+query('PRAGMA table_info (category);') #still no clue what question is asking
 
 category_product = """SELECT 
-                c.CategoryName, p.CategoryId,
+                c.CategoryName,
                 COUNT(DISTINCT p.ProductName)
                 FROM product as p
-                LEFT JOIN category as c
-                ON p.CategoryId = p.Id;
+                INNER JOIN category as c
+                ON p.CategoryId = c.Id
+                GROUP BY c.CategoryName
+                ORDER BY COUNT(DISTINCT p.ProductName) DESC
+                LIMIT 1;
                     """
 query(category_product)
 
-# ALTERNATIVE TO THE QUESTION ABOVE 
-
-category_product_2 = """SELECT 
-                c.CategoryName, p.CategoryId,
-                COUNT(DISTINCT p.ProductName)
-                FROM product as p
-                INNER JOIN category as c
-                ON p.CategoryId = p.Id;
-                    """
-query(category_product_2)
-
-# ALTERNATIVE TO THE QUESTION ABOVE 
-
-category_product_3 = """SELECT 
-                c.CategoryName, p.CategoryId,
-                COUNT(DISTINCT p.ProductName)
-                FROM product as p
-                INNER JOIN category as c
-                ON p.CategoryId = p.Id
-                GROUP BY c.CategoryName;
-                    """
-query(category_product_3)
-
-# ALTERNATIVE TO THE QUESTION ABOVE 
-
-category_product_4 = """SELECT 
-                c.CategoryName, p.CategoryId,
-                COUNT(DISTINCT p.ProductName)
-                FROM product as p
-                LEFT JOIN category as c
-                ON p.CategoryId = p.Id
-                GROUP BY c.CategoryName;
-                    """
-query(category_product_4)
 
 # (*Stretch*) Who's the employee with the most territories?
 query('PRAGMA table_info (territory);')
 
-employee_territory = """SELECT e.FirstName, e.LastName, 
-                        max(t.id)
+employee_territory = """SELECT e.id, 
+                        e.FirstName, e.LastName, 
+                        COUNT(DISTINCT t.id)
                         FROM employee as e,
                         territory as t,
                         employeeterritory as et
                         WHERE e.id = et.employeeid AND 
-                        et.TerritoryId = t.id                        
+                        et.TerritoryId = t.id
+                        GROUP BY e.id 
+                        ORDER BY 4 DESC
+                        LIMIT 1;
 """
 
 query(employee_territory)
