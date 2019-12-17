@@ -99,3 +99,6 @@ print('Each character has', average, 'items on average.')
 #On average, how many Weapons does each character have?
 average = sum(weapons_df['total_weapons']) / len(weapons_df)
 print('Each character has', average, 'weapons on average.')
+
+curs.close()
+conn.commit()
