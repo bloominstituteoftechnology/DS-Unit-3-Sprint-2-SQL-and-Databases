@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import psycopg2
+import sqlite3
+
 
 dbname = 'nhworfxj'
 user = 'nhworfxj'
@@ -12,7 +14,36 @@ pg_conn = psycopg2.connect(dbname = dbname, user = user,
 
 pg_curs = pg_conn.cursor()
 
-import sqlite3
+create_table_statement = """
+CREATE TABLE test_table (
+  id        SERIAL PRIMARY KEY,
+  name  varchar(40) NOT NULL,
+  data    JSONB
+);
+"""
+
+pg_curs.execute(create_table_statement)
+pg_conn.commit()
+
+insert_statement = """
+INSERT INTO test_table (name, data) VALUES
+(
+  'A row name',
+  null
+),
+(
+  'Another row, with JSON',
+  '{ "a": 1, "b": ["dog", "cat", 42], "c": true }'::JSONB
+);
+"""
+
+pg_curs.execute(insert_statement)
+pg_conn.commit()
+
+query = "SELECT * FROM test_table;"
+pg_curs.execute(query)
+print(pg_curs.fetchall())
+
 
 sl_conn = sqlite3.connect('rpg_db.sqlite3')
 
