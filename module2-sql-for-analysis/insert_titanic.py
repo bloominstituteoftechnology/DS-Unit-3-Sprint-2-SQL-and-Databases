@@ -67,5 +67,26 @@ pg_conn.commit()
 pg_curs.execute('SELECT * FROM titanic')
 print(pg_curs.fetchall())
 
+survival_rate_children = """
+SELECT sex, pclass, ROUND(AVG(survived), 4) 
+FROM titanic
+WHERE age < 16
+GROUP BY sex, pclass
+ORDER BY sex, pclass;
+"""
+pg_curs.execute(survival_rate_children)
+print(pg_curs.fetchall())
+
+survival_rate_adults = """
+SELECT sex, pclass, ROUND(AVG(survived), 4) 
+FROM titanic
+WHERE age >= 16
+GROUP BY sex, pclass
+ORDER BY sex, pclass;
+"""
+pg_curs.execute(survival_rate_adults)
+print(pg_curs.fetchall())
+
+
 pg_curs.close()
 pg_conn.commit()
