@@ -25,3 +25,10 @@ for table in table_names:
     rows = sl_curs.execute(f"SELECT * FROM {table}").fetchall()
     for row in rows:
         db.test.insert_one(dict(zip(column_names, row)))
+
+# How was working with MongoDB different from working with PostgreSQL? What was easier, and what was harder?
+'''
+Mongo has a somewhat simpler method for adding data, considering that there are no table to concern youself with.
+Not needing to determine schema meant you could just dump data in through the lid at the top of the container.
+I would say that querying is more difficult in some ways using Mongo, but insertion was much easier than PostgreSQL.
+'''
