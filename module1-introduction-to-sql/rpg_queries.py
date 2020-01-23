@@ -92,3 +92,4 @@ for key in report.keys():
         print(key)
         for item in report[key]:
             print(item)
+    print('\n')
