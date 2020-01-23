@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 
+"""
+QUESTION: "How was working with MongoDB different from working with PostgreSQL? What was easier, and what was harder?"
+ANSWER: "Data input into MongoDB is easier than into PostgreSQL, as it works with dictionaries. Data analysis in MongoDB
+is more complicated, because you can not use SQL commands."
+"""
+
 import pymongo
 import sqlite3
 
-client = pymongo.MongoClient("mongodb+srv://Okocha:qoH3DyAYDe8KREAC@cluster0-5sv8d.mongodb.net/test?retryWrites=true&w=majority")
+client = pymongo.MongoClient(
+    "mongodb+srv://Okocha:qoH3DyAYDe8KREAC@cluster0-5sv8d.mongodb.net/test?retryWrites=true&w=majority")
 db = client.rpg
 
 conn = sqlite3.connect('rpg_db.sqlite3')
