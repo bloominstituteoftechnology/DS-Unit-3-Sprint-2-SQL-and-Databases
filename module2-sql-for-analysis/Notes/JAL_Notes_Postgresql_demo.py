@@ -13,7 +13,7 @@ Notebook for your helpful reference - the assignment still requires writing .py 
 
 #pip install psycopg2-binary
 
-#import psycopg2
+import psycopg2
 
 dir(psycopg2)
 
