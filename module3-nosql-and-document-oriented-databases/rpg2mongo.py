@@ -36,3 +36,4 @@ for character in characters:
     db.charactercreator_character.insert_one(insert_character)
 
 print(db.charactercreator_character.find_one())
+print(db.charactercreator_character.countDocuments())
