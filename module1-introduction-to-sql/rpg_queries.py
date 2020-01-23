@@ -81,8 +81,9 @@ print(items_df.head(20))
 #How many Weapons does each character have? (Return first 20 rows)
 curs.execute("""
     SELECT COUNT(item_ptr_id), character_id
-    FROM armory_weapon as aw, charactercreator_character_inventory as cci 
-    WHERE aw.item_ptr_id = cci.item_id
+    FROM charactercreator_character_inventory
+    LEFT JOIN armory_weapon
+    ON item_ptr_id = item_id
     GROUP BY character_id;
     """)
 weap_per_char = curs.fetchall()
