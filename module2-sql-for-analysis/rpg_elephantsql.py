@@ -3,7 +3,7 @@ import sqlite3
 
 dbname = 'lsustohi'
 user = 'lsustohi'
-#password = '?'
+password = '?'
 host = 'rajje.db.elephantsql.com'
 
 

@@ -2,7 +2,7 @@ import psycopg2
 
 dbname = 'lsustohi'
 user = 'lsustohi'
-#password = ?
+password = '?'
 host = 'rajje.db.elephantsql.com'
 
 #Create connection and cursor
