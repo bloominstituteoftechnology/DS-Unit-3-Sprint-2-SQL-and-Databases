@@ -4,7 +4,7 @@ import pandas as pd
 
 dbname = 'taymbqyq'
 user = 'taymbqyq'
-password = 'JOslYoz4AmPe2QkmWYVlOpHUWziadEzM'
+#password = ?
 host = 'rajje.db.elephantsql.com'
 
 
