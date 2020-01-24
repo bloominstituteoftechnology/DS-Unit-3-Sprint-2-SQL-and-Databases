@@ -50,6 +50,7 @@ curs.execute("""
 answer = curs.fetchall()[0][0]
 print(f'There are {answer} unique values of y.')
 
-#Closing connection and committing
+
+#Close connection and commit
 curs.close()
 conn.commit()
