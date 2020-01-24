@@ -133,7 +133,8 @@ interview screening questions (a form you fill when applying for a job):
 	The relationship is many to many.
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
-	Appropriate when processing multi-document transactions.
+	Appropriate managing social networking sites.  Not appropriate when 
+	processing multi-document transactions.
 - What is "NewSQL", and what is it trying to achieve?
 	NewSQL is a new system of databases management created to achieve the same 
 	benefits as NoSQL systems while also providing ACID transactions.

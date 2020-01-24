@@ -41,13 +41,14 @@ print(f'The ten most expensive products and their suppliers are: \n{answer}\n')
 
 #What is the largest category by number of unique products?
 curs.execute("""
-    SELECT CategoryName, COUNT(*) - COUNT(DISTINCT CategoryName) 
+    SELECT COUNT(CategoryId), CategoryName
     FROM Product AS p
-    LEFT JOIN Category AS c
-    ON p.ID = c.ID
-    ORDER BY CategoryName DESC;
+    INNER JOIN Category As c
+    ON p.CategoryId = c.Id
+    GROUP By CategoryName
+    ORDER By COUNT(CategoryId) DESC;
 """)
-answer = curs.fetchall()[0][0]
+answer = curs.fetchall()[0][1]
 print(f'The largest category by unique products is {answer}\n')
 
 
