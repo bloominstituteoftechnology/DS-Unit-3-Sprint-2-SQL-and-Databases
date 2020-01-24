@@ -19,8 +19,8 @@ CREATE TABLE test_table (
   data    JSONB
 );
 """
-pg_curs.execute(create_table_statement)
-pg_conn.commit()
+#pg_curs.execute(create_table_statement)
+#pg_conn.commit()    Only Once
 
 
 #Insert data into table
@@ -35,8 +35,8 @@ INSERT INTO test_table (name, data) VALUES
   '{ "a": 1, "b": ["dog", "cat", 42], "c": true }'::JSONB
 );
 """
-pg_curs.execute(insert_statement)
-pg_conn.commit()
+#pg_curs.execute(insert_statement)
+#pg_conn.commit()   Only Once
 
 
 #Query the table and data
