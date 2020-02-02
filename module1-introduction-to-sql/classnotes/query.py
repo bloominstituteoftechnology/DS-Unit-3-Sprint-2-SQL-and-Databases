@@ -1,8 +1,8 @@
 import os
 import sqlite3
-# DB_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "data", "chinook.db")
+DB_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "data", "chinook.db")
 #conn = sqlite3.connect('rpg_db.sqlite3')
-conn = sqlite3.connect('chinook.db')
+conn = sqlite3.connect(DB_FILEPATH)
 # h/t: https://kite.com/python/examples/3884/sqlite3-use-a-row-factory-to-access-values-by-column-name
 conn.row_factory = sqlite3.Row
 curs = conn.cursor()
