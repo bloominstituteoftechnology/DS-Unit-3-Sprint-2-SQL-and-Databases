@@ -2,8 +2,13 @@ import sqlite3
 import os
 
 # loaded database file name
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_file = os.path.join(BASE_DIR, "rpg_db.sqlite3")
+
+"""
 db_file = os.path.join(os.path.dirname(__file__),
               "..", "rpg_db.sqlite3")
+"""
 
 def create_connection(db_file):
   """Create a database connection to SQLite specified by db_file"""
@@ -200,7 +205,7 @@ def main():
 
   # Weapons Totals
   weapons_count = get_weapon_count(CONN)
-  for k,v in item_count.items():
+  for k,v in weapons_count.items():
     print(f'{k} : {v}')
   print (f'Total : {sum(weapons_count.values())}')
 
