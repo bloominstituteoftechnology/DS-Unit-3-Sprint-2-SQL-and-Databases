@@ -3,9 +3,9 @@ import sqlite3
 
 
 #connect to Mongo
-password = 'ZZsHm5ottkHCa3bT'
+password = '?'
 client = pymongo.MongoClient(
-    "mongodb+srv://admin:ZZsHm5ottkHCa3bT@cluster0-0ct2c.mongodb.net/test?retryWrites=true&w=majority")
+    "mongodb+srv://admin:<password>@cluster0-0ct2c.mongodb.net/test?retryWrites=true&w=majority")
 db = client.test
 
 
