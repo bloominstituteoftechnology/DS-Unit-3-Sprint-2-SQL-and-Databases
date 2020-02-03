@@ -1,14 +1,15 @@
-# packages and imports
-from psycopg2.extras import execute_values
-import json
-import os
-!pip install psycopg2-binary
-!pip install python-dotenv
 import pandas as pd
 import psycopg2
+import json
+import os
+import sqlite3
+from psycopg2.extras import execute_values
 from dotenv import load_dotenv
+!pip install psycopg2-binary
+!pip install python-dotenv
 
-load_dotenv() # looks inside the .env file for some env vars
+
+load_dotenv()  # looks inside the .env file for some env vars
 # passes env var values to python var
 DB_HOST = os.getenv("DB_HOST", default="OOPS")
 DB_NAME = os.getenv("DB_NAME", default="OOPS")
@@ -28,23 +29,21 @@ pc = connection.cursor()
 
 # Pull the titanic csv from github
 df = pd.read_csv('https://raw.githubusercontent.com/iesous-kurios/'
-                'DS-Unit-3-Sprint-2-SQL-and-Databases/master/'
-                'module2-sql-for-analysis/titanic.csv')
+                 'DS-Unit-3-Sprint-2-SQL-and-Databases/master/'
+                 'module2-sql-for-analysis/titanic.csv')
 
 # replace ' with " " and use regex to pull info
 df = df.replace("'", " ", regex=True)
 
 
-import sqlite3
-
-# Establish the connection
+#  Establish the connection
 sql_conn = sqlite3.connect('titanic.sqlite3')
 
 # create sqlite specific cursor
 sql_curs = sql_conn.cursor()
 
 # insert the data into a new table called "titanic" in the database
-df.to_sql(name = 'titanic', con = sql_conn)
+df.to_sql(name='titanic', con=sql_conn)
 
 # Execute command from cursor to count how many rows in the table
 sql_curs.execute('SELECT COUNT (*) FROM titanic;').fetchall()
@@ -78,12 +77,13 @@ str(passengers[1][1:])
 
 # insert all passengers from sqlite3 to elephantSQL
 
-for index,row in df.iterrows():
-  insert_record =  """ 
-    INSERT INTO titanic
-    (survived, pclass, name, sex, age, siblings_spouses_aboard, parents_children, fare)
-    VALUES """ + str(tuple(row.values)) + ';'
-  pc.execute(insert_record)
+for index, row in df.iterrows():
+    insert_record = """
+        INSERT INTO titanic
+        (survived, pclass, name, sex, age, siblings_spouses_aboard,
+        parents_children, fare)
+        VALUES """ + str(tuple(row.values)) + ';'
+    pc.execute(insert_record)
 
 pc.execute('SELECT * FROM titanic;')
 pc.fetchall()
