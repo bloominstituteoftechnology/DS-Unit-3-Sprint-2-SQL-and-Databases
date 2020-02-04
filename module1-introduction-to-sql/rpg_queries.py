@@ -220,7 +220,7 @@ def main():
    print(wpc)
 
   #Average Items per Character
-  items_avg = get_weapon_avg(CONN)
+  items_avg = get_item_avg(CONN)
   print(f'The average number of items per character is {items_avg:.2f}')
 
   # Average Weapons per Character
