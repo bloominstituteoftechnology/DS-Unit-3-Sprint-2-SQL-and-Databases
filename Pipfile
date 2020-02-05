@@ -7,6 +7,8 @@ verify_ssl = true
 
 [packages]
 sqlite3 = "*"
+psycopg2 = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.8"
