@@ -42,4 +42,78 @@ print('Total number of weapons:', num_weapons[0][0])
 print('Total number of non-weapons:', num_items[0][0] - num_weapons[0][0])
 
 # Get number of character items for first 20 characters
+query = '''SELECT
+	chars.character_id
+	,chars.name
+	,COUNT(inv.item_id) AS item_count
+FROM charactercreator_character AS chars
+LEFT JOIN charactercreator_character_inventory AS inv
+	ON chars.character_id = inv.character_id
+GROUP BY 1
+LIMIT 20'''
+num_char_items = curs.execute(query).fetchall()
+print('Items per character for first 20 characters:')
+for char in range(len(num_char_items)):
+    print(num_char_items[char][1],
+            "-",
+            num_char_items[char][2])
 
+# Get number of weapons for first 20 characters
+query = '''
+SELECT
+	chars.character_id
+	,chars.name
+	,COUNT(DISTINCT weap.item_ptr_id) as weapon_count
+FROM charactercreator_character AS chars
+LEFT JOIN charactercreator_character_inventory AS inv
+	ON chars.character_id = inv.character_id
+LEFT JOIN armory_weapon AS weap
+	ON inv.item_id = weap.item_ptr_id
+GROUP BY 1
+LIMIT 20
+'''
+num_char_weapons = curs.execute(query).fetchall()
+print('Weapons per character for first 20 characters:')
+for char in range(len(num_char_weapons)):
+    print(num_char_weapons[char][1],
+            "-",
+            num_char_weapons[char][2])
+
+# Get average items
+query = '''
+SELECT
+	AVG(item_count) as avg_items_per_char
+FROM (
+SELECT
+	chars.character_id
+	,chars.name
+	,COUNT(inv.item_id) AS item_count
+FROM charactercreator_character AS chars
+LEFT JOIN charactercreator_character_inventory AS inv
+	ON chars.character_id = inv.character_id
+GROUP BY 1
+LIMIT 20
+)
+'''
+avg_items = curs.execute(query).fetchone()
+print('Average items per character:', avg_items[0])
+
+# Get average weapons
+query = '''
+SELECT
+	AVG(weapon_count) as avg_weapons_per_char
+FROM (
+SELECT
+	chars.character_id
+	,chars.name
+	,COUNT(DISTINCT weap.item_ptr_id) as weapon_count
+FROM charactercreator_character AS chars
+LEFT JOIN charactercreator_character_inventory AS inv
+	ON chars.character_id = inv.character_id
+LEFT JOIN armory_weapon AS weap
+	ON inv.item_id = weap.item_ptr_id
+GROUP BY 1
+)
+'''
+avg_weapons = curs.execute(query).fetchone()
+print('Average weapons per character:', avg_weapons[0])
