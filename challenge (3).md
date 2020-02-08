@@ -131,12 +131,12 @@ interview screening questions (a form you fill when applying for a job):
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
   
-  They have a many to many relationship.
+  They have a many to many relationship since an employee can have more than one territory and vice versa. The relationship is diplayed in the EmployeeTerritory table through a JOIN. 
   
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
   
-  A document store is useful when working with unstructured, flexible data. Since there is no schema needed, this may not be appropiate when ACID is desired
+  A document store is useful when working with unstructured, flexible data. It's also useful for large amounts of data which are not transactional. Since there is no schema needed, this may not be appropiate when ACID is desired. When working with transacational data, for example, a relational database may be more desirable since it is ACID (Atomicity, Consistency, Isolation, Durability) compliant.
   
 - What is "NewSQL", and what is it trying to achieve?
 
