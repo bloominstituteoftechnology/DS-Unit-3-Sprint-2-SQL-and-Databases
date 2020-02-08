@@ -1,6 +1,6 @@
 import sqlite3
 
-sl_conn = sqlite3.connect('rpg_db.sqlite3')
+sl_conn = sqlite3.connect('module1-introduction-to-sql/rpg_db.sqlite3')
 sl_cur = sl_conn.cursor()
 
 # Number of characters -- 302
@@ -44,3 +44,15 @@ print('\nTotal number of items:')
 query = "SELECT COUNT(item_id) FROM armory_item"
 sl_items_table = sl_cur.execute(query).fetchall()
 print(sl_items_table[0][0])
+
+# Number of weapons
+print('\nNumber of weapons:')
+query = "SELECT COUNT(item_ptr_id) FROM armory_weapon"
+sl_weapons_table = sl_cur.execute(query).fetchall()
+print(sl_weapons_table[0][0])
+
+# Number of items that aren't weapons
+# print("\nNumber of items that aren't weapons:")
+# query = ""
+# sl_nonweapons_table = sl_cur.execute(query).fetchall()
+# print(sl_nonweapons_table[0][0])
