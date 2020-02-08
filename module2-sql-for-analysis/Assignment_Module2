@@ -1,0 +1,353 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Unit 3 Sprint 2 Assignment",
+      "provenance": [],
+      "private_outputs": true,
+      "authorship_tag": "ABX9TyOFUpZxdUj8uQDzQf1WQMGU",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rubyclaguna/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/Unit_3_Sprint_2_Assignment.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "q5NIS9WeKQJd",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "!pip install psycopg2-binary"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "zXJKGfnLKcBQ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "import psycopg2\n",
+        "dir(psycopg2)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yLS-sJIwKeMX",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "dbname = 'ackwnmjs'\n",
+        "user ='ackwnmjs'\n",
+        "password = 'E6grIn0HkM3DlvOc83CfhaE1gxSUYKIY'\n",
+        "host = 'rajje.db.elephantsql.com'"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_XzKKUkaK0Im",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ZHO_VWjVK4bn",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "pg_conn"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "UFHTLZUpK66F",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "pg_curs = pg_conn.cursor()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "8Begb6ddK9rz",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "!wget https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/rpg_db.sqlite3?raw=true"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "VEZqMx3xLJ_3",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "!mv 'rpg_db.sqlite3?raw=true' rpg_db.sqlite3"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Hp3CJp9gLDJt",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "!ls "
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "xV5NsDvuLGZy",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "import sqlite3\n",
+        "sl_conn = sqlite3.connect('rpg_db.sqlite3')\n",
+        "sl_curs = sl_conn.cursor()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6gWjdACbLUk7",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "sl_curs.execute('SELECT COUNT(*) FROM charactercreator_character').fetchall()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "P5Q02g2JLXnb",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "characters = sl_curs.execute('SELECT * from charactercreator_character;').fetchall()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "B5JP3nQ_LbRL",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "characters[0]"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "GUqeiYv0Ldns",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "characters[200]"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "1Z1yOGCCLhK-",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "len(characters)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "V-lKN6zbLjWi",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "sl_curs.execute('PRAGMA table_info(charactercreator_character);').fetchall()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "PwuK6HSYLmMQ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "create_character_table = \"\"\"\n",
+        "  CREATE TABLE charactercreator_character (\n",
+        "    character_id SERIAL PRIMARY KEY,\n",
+        "    name VARCHAR(30),\n",
+        "    level INT,\n",
+        "    exp INT,\n",
+        "    hp INT,\n",
+        "    strength INT,\n",
+        "    intelligence INT,\n",
+        "    dexterity INT,\n",
+        "    wisdom INT\n",
+        "  );\n",
+        "\"\"\"\n",
+        "pg_curs.execute(create_character_table)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "w6gmhCtdL1ZV",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "show_tables = \"\"\"\n",
+        "SELECT *\n",
+        "FROM pg_catalog.pg_tables\n",
+        "WHERE schemaname != 'pg_catalog'\n",
+        "AND schemaname != 'information_schema';\n",
+        "\"\"\" \n",
+        "\n",
+        "\n",
+        "pg_curs.execute(show_tables)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "gaZ-thFtL6hR",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "example_insert = \"\"\"\n",
+        "INSERT INTO charactercreator_character\n",
+        "(name, level, exp, hp, strength, intelligence, dexterity, wisdom)\n",
+        "VALUES \"\"\" + str(characters[0][1:]) + ';'\n",
+        "\n",
+        "print(example_insert)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "RrN37NCrMA2q",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "for character in characters:\n",
+        "  insert_character = \"\"\"\n",
+        "    INSERT INTO charactercreator_character\n",
+        "    (name, level, exp, hp, strength, intelligence, dexterity, wisdom)\n",
+        "    VALUES \"\"\" + str(character[1:]) + ';'\n",
+        "  pg_curs.execute(insert_character)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yeEZ6adMMMPv",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "pg_curs.execute('SELECT * FROM charactercreator_character;')\n",
+        "pg_curs.fetchall()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "sSbyQkE6MOZZ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "pg_conn.commit()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}

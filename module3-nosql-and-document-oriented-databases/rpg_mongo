@@ -1,0 +1,216 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "rpg_mongo",
+      "provenance": [],
+      "private_outputs": true,
+      "authorship_tag": "ABX9TyN0dzmy2kQ9ghwuOAK/Oyfc",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rubyclaguna/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/rpg_mongo.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "v1fhv5Udaleh",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "!pip install pymongo"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "xsgJYwMdasaA",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "import pymongo\n",
+        "import sqlite3 \n",
+        "import pandas as pd"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "a07KMc1vadAO",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "client = pymongo.MongoClient(\"mongodb://rubyl:rubyl@cluster0-shard-00-00-mbsw0.mongodb.net:27017,cluster0-shard-00-01-mbsw0.mongodb.net:27017,cluster0-shard-00-02-mbsw0.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority\")\n",
+        "db = client.test\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "1Cbok6cVbHku",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "db"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ryFnf4Csislk",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "!wget https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/raw/master/module1-introduction-to-sql/rpg_db.sqlite3?raw=true"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "NuEwwRuSjCAs",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "!ls"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "j1V4D0_njckf",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "!mv 'rpg_db.sqlite3?raw=true' rpg_db.sqlite3"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "dRy8xdHqiuTH",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "sl_conn = sqlite3.connect('rpg_db.sqlite3')\n",
+        "sl_curs = sl_conn.cursor()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "A2VllSjnjvtI",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "entries = ('SELECT * FROM charactercreator_character')\n",
+        "data = sl_curs.execute(entries).fetchall()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "q2IR6Cj_kQIT",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "data"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "GNiBFZlRka6Q",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "db = client.rpg\n",
+        "db"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_XsqaXUKkclk",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# make dict \n",
+        "for entries in data:\n",
+        "  db.characters.insert_one({\n",
+        "      'id': entries[0],\n",
+        "      'name': entries[1],\n",
+        "      'level': entries[2],\n",
+        "      'exp': entries[3],\n",
+        "      'hp': entries[4],\n",
+        "      'strength': entries[5],\n",
+        "      'intelligence': entries[6],\n",
+        "      'dexterity': entries[7],\n",
+        "      'wisdom': entries[8],\n",
+        "  })"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "h0e5pTG4oCkQ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "list(db.characters.find())"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
