@@ -153,7 +153,7 @@ def avg_weapons_per_character():
     select
         cast(count(armory_weapon.item_ptr_id) as float) / count(distinct character_id) as avg_weapon_inv
     from charactercreator_character_inventory
-    inner join armory_weapon on armory_weapon.item_ptr_id = charactercreator_character_inventory.item_id
+    left join armory_weapon on armory_weapon.item_ptr_id = charactercreator_character_inventory.item_id
     """
 
     results = curs.execute(average_items_per_character).fetchall()
