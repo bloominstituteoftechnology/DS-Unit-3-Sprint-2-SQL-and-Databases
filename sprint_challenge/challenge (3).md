@@ -130,10 +130,31 @@ interview screening questions (a form you fill when applying for a job):
 
 - In the Northwind database, what is the type of relationship between the
   `Employee` and `Territory` tables?
+  ANSWER: This is a one to many type of relationship. Each employee can be
+  assigned to multiple territories, however only one employee can be assigned to
+  assigned to a territory. You can tell this is the case because null values are
+  not allowed in the Territories table, which has 53 records, but there are only
+  9 employees at the company.
 - What is a situation where a document store (like MongoDB) is appropriate, and
   what is a situation where it is not appropriate?
+  ANSWER: MongoDB and other document oriented databases are great options for
+  unstructured data, or overall flexibility on what can be stored in each
+  collection. An excellent situation to use a document oriented database is for
+  content management systems or social networks, or anywhere where the data
+  structures might evolve over time. Document oriented databases are not the
+  best option for working with high transactional systems (especially write
+  intensive programs), or for systems where the data model is defined up front.
 - What is "NewSQL", and what is it trying to achieve?
-
+  NewSQL is a class of databases that seeks to combine the ACID compliant
+  properties of relationship based databases and the flexibility/scalability of
+  NoSQL databases. NewSQL targets online transactional processing (OLTP)
+  workloads, wherein there is a high volume of both read and write operations
+  more suited for a traditional SQL database. Currently (because NewSQL is still
+  an new and evolving technology) organizations that require high volume OLTP of
+  a RDBMS and the scalability of a NoSQL system require higher infrastructure
+  investments and/or the development of custom middleware to make a traditional
+  database architecture fit their needs.
+  
 ### Part 5 - Turn it in!
 Provide all the files you wrote (`demo_data.py`, `northwind.py`), as well as
 this file with your answers to part 4, directly to your TL. You're also
