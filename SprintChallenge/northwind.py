@@ -1,19 +1,63 @@
 import sqlite3
 
 # Create connection and cursor
-sl_conn = sqlite3.connect('northwind_small.sqlite3')
+sl_conn = sqlite3.connect('SprintChallenge/northwind_small (2).sqlite3')
 sl_cur = sl_conn.cursor()
 
-curs.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;").fetchall()
-[('Category',), ('Customer',), ('CustomerCustomerDemo',),
-('CustomerDemographic',), ('Employee',), ('EmployeeTerritory',), ('Order',),
-('OrderDetail',), ('Product',), ('Region',), ('Shipper',), ('Supplier',),
-('Territory',)]
+# 10 most expensive products
+print('Most expensive products:')
+query = f'''
+SELECT ProductName, UnitPrice
+FROM Product
+ORDER BY UnitPrice DESC
+LIMIT 10;'''
+high_cost = sl_cur.execute(query).fetchall()
+print(high_cost)
 
-curs.execute('SELECT sql FROM sqlite_master WHERE name="Customer";').fetchall()
-[('CREATE TABLE "Customer" \n(\n  "Id" VARCHAR(8000) PRIMARY KEY, \n
-"CompanyName" VARCHAR(8000) NULL, \n  "ContactName" VARCHAR(8000) NULL, \n
-"ContactTitle" VARCHAR(8000) NULL, \n  "Address" VARCHAR(8000) NULL, \n  "City"
-VARCHAR(8000) NULL, \n  "Region" VARCHAR(8000) NULL, \n  "PostalCode"
-VARCHAR(8000) NULL, \n  "Country" VARCHAR(8000) NULL, \n  "Phone" VARCHAR(8000)
-NULL, \n  "Fax" VARCHAR(8000) NULL \n)',)]
+# Average employee age at time of hiring
+print('\nAverage employee age at time of hiring:')
+query = f'SELECT AVG(HireDate - BirthDate) FROM Employee;'
+avg_age = sl_cur.execute(query).fetchall()
+print(avg_age[0][0])
+
+# Average employee age at time of hiring by city
+print('\nAverage employee age at time of hiring by city:')
+query = f'''
+SELECT AVG(HireDate - BirthDate)
+FROM Employee
+GROUP BY PostalCode'''
+age_by_city = sl_cur.execute(query).fetchall()
+print(age_by_city)
+
+# 10 most expensive products with corresponding suppliers
+print('\nMost expensive products and their suppliers:')
+query = f'''
+SELECT ProductName, UnitPrice, CompanyName
+FROM Product
+JOIN Supplier ON SupplierId
+ORDER BY UnitPrice DESC
+LIMIT 10;'''
+prod_supp = sl_cur.execute(query).fetchall()
+print(prod_supp)
+
+# Largest category (by number of unique products in it)
+print('\nLargest category (by number of unique products):')
+query = f'''
+SELECT CategoryName
+FROM Category
+JOIN Product ON CategoryId
+ORDER BY CategoryId, ProductName
+LIMIT 1;'''
+large_cat = sl_cur.execute(query).fetchall()
+print(large_cat[0][0])
+
+# Employee with the most territories
+print('\nEmployee with the most territories:')
+query = f'''
+SELECT FirstName, LastName
+FROM Employee
+JOIN EmployeeTerritory ON EmployeeId
+ORDER BY EmployeeId, TerritoryId DESC
+LIMIT 1;'''
+most_terr = sl_cur.execute(query).fetchall()
+print(most_terr[0])
