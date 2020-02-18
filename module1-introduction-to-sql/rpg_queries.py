@@ -66,15 +66,13 @@ print("-----------------")
 
 # How many Weapons does each character have? (Return first 20 rows)
 query = """
-    SELECT name, COUNT(item_id) as total_items
-    FROM charactercreator_character_inventory cci
-        JOIN charactercreator_character cc
-        ON cci.character_id=cc.character_id
-    WHERE item_id IN (
-        SELECT DISTINCT item_ptr_id
-        FROM armory_weapon
-    )
-    GROUP BY name
+    SELECT cc.name, COUNT(aw.power)
+    FROM charactercreator_character cc
+        LEFT JOIN charactercreator_character_inventory cci
+            ON cc.character_id=cci.character_id
+        LEFT JOIN armory_item ai ON cci.item_id=ai.item_id
+        LEFT JOIN armory_weapon aw ON ai.item_id=aw.item_ptr_id
+    GROUP BY cc.name
     LIMIT 20
     """
 result = cursor.execute(query).fetchall()
@@ -99,17 +97,15 @@ print("-----------------")
 
 # On average, how many Weapons does each character have?
 query = """
-   SELECT AVG(total_items)
+   SELECT AVG(total_weapons)
    FROM (
-    SELECT name, COUNT(item_id) as total_items
-    FROM charactercreator_character_inventory cci
-        JOIN charactercreator_character cc
-        ON cci.character_id=cc.character_id
-    WHERE item_id IN (
-        SELECT DISTINCT item_ptr_id
-        FROM armory_weapon
-    )
-    GROUP BY name)
+    SELECT cc.name, COUNT(aw.power) as total_weapons
+    FROM charactercreator_character cc
+        LEFT JOIN charactercreator_character_inventory cci
+            ON cc.character_id=cci.character_id
+        LEFT JOIN armory_item ai ON cci.item_id=ai.item_id
+        LEFT JOIN armory_weapon aw ON ai.item_id=aw.item_ptr_id
+    GROUP BY cc.name)
     """
 result = cursor.execute(query).fetchall()
 print(f'On average, each character has {result[0][0]:.2f} weapons')
