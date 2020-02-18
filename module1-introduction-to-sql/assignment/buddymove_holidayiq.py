@@ -11,7 +11,8 @@ import pandas as pd
 
 CSV_FILE = os.path.join(os.path.dirname(__file__), '..',
                         'buddymove_holidayiq.csv')
-DB_FILE = 'buddymove_holidayiq.sqlite3'
+DB_FILE = os.path.join(os.path.dirname(__file__), '..',
+                       'buddymove_holidayiq.sqlite3')
 
 df = pd.read_csv(CSV_FILE)
 # verify expected dataframe
