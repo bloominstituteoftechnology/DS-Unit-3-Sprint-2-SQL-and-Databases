@@ -8,6 +8,8 @@ autopep8 = "*"
 
 [packages]
 pandas = "*"
+python-dotenv = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"
