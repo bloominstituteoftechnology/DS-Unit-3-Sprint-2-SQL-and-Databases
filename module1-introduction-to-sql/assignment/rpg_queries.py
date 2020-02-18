@@ -12,131 +12,81 @@ conn = sqlite3.connect(DB_FILE)
 conn.row_factory = sqlite3.Row
 curs = conn.cursor()
 
+
+def answer(question, query):
+    """Print question and answer based on SQL query."""
+    print(question)
+    result = conn.execute(query).fetchall()
+    answer = [
+        {key: result[row][key] for key in result[row].keys()}
+        for row in range(len(result))
+    ]
+    for a in answer:
+        print(a)
+
+
 # How many total Characters are there?
 query = """
 SELECT
     COUNT(DISTINCT character_id) AS character_count
 FROM charactercreator_character;
 """
-result = curs.execute(query).fetchall()
-answer = result[0]['character_count']
-print('How many total Characters are there?')
-print(answer)
+answer('How many total Characters are there?', query)
 
 # How many of each specific subclass?
-answer = {}
 query = """
 SELECT
-    COUNT(DISTINCT character_ptr_id) as cleric_count
-FROM charactercreator_cleric;
+    *
+FROM
+    (SELECT COUNT(DISTINCT character_ptr_id) AS Cleric FROM charactercreator_cleric)
+    ,(SELECT COUNT(DISTINCT character_ptr_id) AS Fighter FROM charactercreator_fighter)
+    ,(SELECT COUNT(DISTINCT character_ptr_id) AS Mage FROM charactercreator_mage)
+    ,(SELECT COUNT(DISTINCT mage_ptr_id) AS Necromancer FROM charactercreator_necromancer)
+    ,(SELECT COUNT(DISTINCT character_ptr_id) AS Thief FROM charactercreator_thief);
 """
-result = curs.execute(query).fetchall()
-answer['cleric'] = result[0]['cleric_count']
-
-query = """
-SELECT
-    COUNT(DISTINCT character_ptr_id) as fighter_count
-FROM charactercreator_fighter;
-"""
-result = curs.execute(query).fetchall()
-answer['fighter'] = result[0]['fighter_count']
-
-query = """
-SELECT
-    COUNT(DISTINCT character_ptr_id) as mage_count
-FROM charactercreator_mage;
-"""
-result = curs.execute(query).fetchall()
-answer['mage'] = result[0]['mage_count']
-
-query = """
-SELECT
-    COUNT(DISTINCT mage_ptr_id) as necromancer_count
-FROM charactercreator_necromancer;
-"""
-result = curs.execute(query).fetchall()
-answer['necromancer'] = result[0]['necromancer_count']
-
-query = """
-SELECT
-    COUNT(DISTINCT character_ptr_id) as thief_count
-FROM charactercreator_thief;
-"""
-result = curs.execute(query).fetchall()
-answer['thief'] = result[0]['thief_count']
-
-print('How many of each specific subclass?')
-print(answer)
+answer('How many of each specific subclass?', query)
 
 # How many total Items?
 query = """
 SELECT
-    COUNT(DISTINCT item_id) as item_count
+    COUNT(DISTINCT item_id) AS item_count
 FROM armory_item;
 """
-result = conn.execute(query).fetchall()
-answer = result[0]['item_count']
-print('How many total Items?')
-print(answer)
+answer('How many total Items?', query)
 
 # How many of the Items are weapons? How many are not?
-answer = {'total_items': answer}
 query = """
 SELECT
-    COUNT(DISTINCT item_ptr_id) as weapon_count
-FROM armory_weapon;
+    weapon_count AS weapon
+    ,(item_count - weapon_count) AS non_weapon
+FROM (
+    SELECT
+        COUNT(DISTINCT item_id) AS item_count
+        ,COUNT(DISTINCT armory_weapon.item_ptr_id) AS weapon_count
+    FROM armory_item
+    LEFT JOIN armory_weapon ON
+        armory_weapon.item_ptr_id = armory_item.item_id
+)
 """
-result = curs.execute(query).fetchall()
-answer['weapons'] = result[0]['weapon_count']
-answer['not_weapons'] = answer['total_items'] - answer['weapons']
-del answer['total_items']
-
-print('How many of the Items are weapons? How many are not?')
-print(answer)
+answer('How many of the Items are weapons? How many are not?', query)
 
 # How many Items does each character have? (Return first 20 rows)
-query = """
-SELECT
-    character.character_id
-    ,COUNT(inventory.item_id) as item_count
-FROM charactercreator_character character
-LEFT JOIN charactercreator_character_inventory inventory ON
-    inventory.character_id = character.character_id
-GROUP BY character.character_id
-LIMIT 20;
-"""
-result = curs.execute(query).fetchall()
-
-print('How many Items does each character have? (Return first 20 rows)')
-for row in result:
-    output = {}
-    for key in row.keys():
-        output[key] = row[key]
-    print(output)
-
 # How many Weapons does each character have? (Return first 20 rows)
 query = """
 SELECT
-    character.character_id
-    ,COUNT(weapon.item_ptr_id) as weapon_count
-FROM charactercreator_character character
-LEFT JOIN charactercreator_character_inventory inventory ON
-    inventory.character_id = character.character_id
-LEFT JOIN armory_weapon weapon ON
-    weapon.item_ptr_id == inventory.item_id
-GROUP BY character.character_id
-LIMIT 20
+    inventory.character_id AS character_id
+    ,COUNT(inventory.item_id) AS item_count
+    ,COUNT(armory_weapon.item_ptr_id) AS weapon_count
+FROM charactercreator_character_inventory inventory
+LEFT JOIN armory_weapon ON
+    armory_weapon.item_ptr_id = inventory.item_id
+GROUP BY inventory.character_id
+LIMIT 20;
 """
-result = curs.execute(query).fetchall()
-
-print('How many Weapons does each character have? (Return first 20 rows)')
-for row in result:
-    output = {}
-    for key in row.keys():
-        output[key] = row[key]
-    print(output)
+answer('How many Items and Weapons does each character have?', query)
 
 # On average, how many Items does each Character have?
+# On average, how many Weapons does each character have?
 query = """
 SELECT 
     AVG(item_count) AS avg_items
@@ -154,11 +104,4 @@ FROM (
     GROUP BY character.character_id
 )
 """
-result = curs.execute(query).fetchall()
-
-print('On average, how many Items does each Character have?')
-print(row[0]['avg_items'])
-
-# On average, how many Weapons does each character have?
-print('On average, how many Weapons does each character have?')
-print(row[0]['avg_weapons'])
+answer('On average, how many Items and weapons does each Character have?', query)
