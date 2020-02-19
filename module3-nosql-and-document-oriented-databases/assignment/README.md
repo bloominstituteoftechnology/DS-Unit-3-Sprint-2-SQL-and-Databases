@@ -1,5 +1,5 @@
 # How was working with MongoDB different from working with PostgreSQL?
-# What was easier, and what was harder?"
+# What was easier, and what was harder?
 
 Working with MongoDB was much easier than working the PostgreSQL.
 
