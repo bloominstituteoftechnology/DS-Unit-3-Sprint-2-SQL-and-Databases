@@ -10,6 +10,7 @@ autopep8 = "*"
 pandas = "*"
 python-dotenv = "*"
 psycopg2-binary = "*"
+pymongo = {extras = ["gssapi", "snappy", "srv", "tls"],version = "*"}
 
 [requires]
 python_version = "3.7"
