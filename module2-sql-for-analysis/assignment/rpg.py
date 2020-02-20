@@ -5,12 +5,12 @@ relative to this file.
 """
 
 import os
+import sqlite3
 
 import pandas as pd
 import psycopg2
-import sqlite3
-
 from dotenv import load_dotenv
+from psycopg2.errors import UndefinedTable
 
 assert load_dotenv() == True, 'Failed to load .env'
 DB_NAME = os.getenv('DB_NAME')
@@ -28,20 +28,37 @@ DB_FILE = os.path.join(os.path.dirname(__file__),
 assert os.path.exists(DB_FILE), \
     '../../module1-introduction-to-sql/rpg_db.sqlite3 NOT FOUND'
 
-INSERT = 'INSERT INTO titanic (survived, pclass, name, sex, age, '
-INSERT += 'sib_spouse_count, parent_child_count, fare) VALUES '
-VALUES = "({0}, {1}, '{2}', '{3}', {4}, {5}, {6}, {7})"
-
 
 def fix_create_query(query):
-    """Make a PostgreSql CREATE query from a SQLite CREATE query."""
+    """Return a PostgreSql CREATE query from a SQLite CREATE query."""
     query = query.replace(
         'integer NOT NULL PRIMARY KEY AUTOINCREMENT',
         'SERIAL NOT NULL PRIMARY KEY')
     query = query.replace(' datetime ', ' text ')
     query = query.replace('(name,seq)', '(name text, seq int)')
     query = query.replace(' unsigned ', ' ')
+    query = query.strip() + ';'
     return query
+
+
+def get_max_referenced_index(references, names):
+    """Return the largest index referenced in a pandas.Series.
+
+    Parameters:
+
+    references: list of names that are in a pandas.Series (names)
+
+    names: pandas.Series to get indexes for a matched name
+
+    Returns:
+    largest index of [ref in references] in names
+    """
+    if len(references) == 0:
+        return 0
+    return max([
+        names[names==ref].index[0]
+        for ref in references
+    ])
 
 
 conn_sql = sqlite3.connect(DB_FILE)
@@ -59,19 +76,32 @@ try:
         conn_sql
     )
     drop_tables = 'DROP TABLE IF EXISTS ' + ','.join(df_tables['name']) + ';'
-    create_queries = [fix_create_query(sql) for sql in df_tables['sql']]
-    no_refs = []
-    has_refs = []
-    for query in create_queries:
-        if 'REFERENCES' in query:
-            has_refs.append(query)
-        else:
-            no_refs.append(query)
-    print('Dropping any tables that are present')
+    print('Dropping known tables, if present')
     cursor.execute(drop_tables)
-    print('Creating tables')
-    cursor.execute(';'.join(no_refs + has_refs[::-1]))
 
+    # create PostgreSQL CREATE queries from SQL CREATE queries
+    df_tables['sql'] = df_tables['sql'].apply(fix_create_query)
+
+    # sorting for table creation, to ensure tables with references
+    # are created after the tables they reference
+    #
+    # create lists of tables referenced in sql queries
+    df_tables['references'] = df_tables['sql'].str.findall(
+        ' REFERENCES "?([^\s"]+)"?'
+    )
+    # create column to sort on
+    df_tables['max_ref_index'] = df_tables['references'].apply(
+        get_max_referenced_index,
+        names=df_tables['name']
+    )
+    df_tables = df_tables.sort_values(by='max_ref_index')
+
+    # create tables
+    print('Creating tables')
+    for query in df_tables['sql']:
+        cursor.execute(query)
+
+    # insert data into tables
     for table in df_tables['name']:
         print(f'Copying table data: {table}')
         df = pd.read_sql_query(f'SELECT * FROM {table};', conn_sql)
