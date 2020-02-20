@@ -15,6 +15,8 @@ pg_curs = pg_conn.cursor()
 
 titanic_db = pd.read_csv('/Users/josephbell/Desktop/sql-practice/titanic.csv')
 
+titanic_db['Name'] = titanic_db['Name'].str.replace("'", "")
+
 sl_conn = sqlite3.connect('titanic.sqlite3')
 sl_curs = sl_conn.cursor()
 
