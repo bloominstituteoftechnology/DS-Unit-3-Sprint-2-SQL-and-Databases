@@ -64,22 +64,11 @@ for table in table_names:
     # values -> row entries
     for row in table_rows:
         mongo_entry={}
+        mongo_entry['table_name'] = table
         for i in range(len(column_names)):
             key = column_names[i]
             values = row[i]
             mongo_entry[key] = values
     
         # Insert the data
-        db[table].insert_one(mongo_entry)
-
-#------ Confirmation --------
-# Print all collections
-print("----------------")
-print("COLLECTIONS:")
-print(db.list_collection_names())
-
-# Count all documents for a collection
-print("----------------")
-collection = db.armory_item
-print("COUNT ALL DOCUMENTS FOR armory_item COLLECTION:")
-print(collection.count_documents({})) # Should be 174
+        db.rpg.insert_one(mongo_entry)
