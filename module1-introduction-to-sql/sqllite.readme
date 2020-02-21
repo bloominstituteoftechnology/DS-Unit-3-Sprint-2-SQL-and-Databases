@@ -1,0 +1,13 @@
+sudo apt-get install sqlitebrowser
+
+sqlitebrowser
+
+python
+import sqlite3
+dir(sqlite3)
+conn = sqlite3.connect('rpg_db.sqlite3')
+curs = conn..cursor()
+query='''  '''
+result=curs.execute(query)
+curs.fetchone()
+curs.fetchall()
