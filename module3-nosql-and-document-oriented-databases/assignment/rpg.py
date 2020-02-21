@@ -7,7 +7,6 @@ import os
 import sqlite3
 
 import pandas as pd
-
 from dotenv import load_dotenv
 from pymongo import MongoClient
 
@@ -57,11 +56,11 @@ def sqlite_to_dict_of_dataframes(conn):
         for table in df_tables['name']
     }
 
+# connect to sqlite database
+conn = sqlite3.connect(DB_FILE)
+# connect to MongeDB server
+client = MongoClient(MONGO_URL)
 try:
-    # connect to sqlite database
-    conn = sqlite3.connect(DB_FILE)
-    # connect to MongeDB server
-    client = MongoClient(MONGO_URL)
     # remove existing Mongo database
     if DB_NAME in client.list_database_names():
         print(f'Dropping existing database: {DB_NAME}')
