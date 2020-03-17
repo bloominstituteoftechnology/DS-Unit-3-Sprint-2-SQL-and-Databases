@@ -36,18 +36,35 @@ print(f'Weapon Count: {execute(query)[0][0]}')
 print(f'Non-Weapon Item Count: {execute(query3)[0][0]}\n')
 
 # Items per character
-query = 'SELECT character_id ' \
-        'FROM charactercreator_character_inventory LIMIT 20'
-counts = {f'Character Id: {i[0]}': f'Item Count: {execute(query).count(i)}'
+query = """
+SELECT charactercreator_character.character_id, 
+COUNT(charactercreator_character_inventory.item_id)
+FROM charactercreator_character
+LEFT JOIN charactercreator_character_inventory
+ON charactercreator_character_inventory.character_id =
+charactercreator_character.character_id
+GROUP BY charactercreator_character.character_id
+LIMIT 20
+"""
+counts = {f'Character Id: {i[0]}': f'Item Count: {i[1]}'
           for i in execute(query)}
 print(counts)
 
 # Weapons per character
-query = 'SELECT character_id FROM charactercreator_character_inventory ' \
-        'LEFT JOIN armory_weapon ON armory_weapon.item_ptr_id = ' \
-        'charactercreator_character_inventory.item_id WHERE item_id = ' \
-        'armory_weapon.item_ptr_id LIMIT 20'
-counts = {f'Character Id: {i[0]}': f'Item Count: {execute(query).count(i)}'
+query = """
+SELECT
+  charactercreator_character.character_id,
+  COUNT(armory_weapon.item_ptr_id)
+FROM charactercreator_character
+LEFT JOIN charactercreator_character_inventory
+ ON charactercreator_character_inventory.character_id =
+  charactercreator_character.character_id
+LEFT JOIN armory_weapon on charactercreator_character_inventory.item_id =
+ armory_weapon.item_ptr_id
+GROUP BY charactercreator_character.character_id
+LIMIT 20
+"""
+counts = {f'Character Id: {i[0]}': f'Weapon Count: {i[1]}'
           for i in execute(query)}
 print(f'{counts}\n')
 
