@@ -70,20 +70,38 @@ counts = {f'Character Id: {i[0]}': f'Weapon Count: {i[1]}'
 print(pd.DataFrame.from_dict(data=counts, orient='index'))
 
 # Average items per character
-query = 'SELECT COUNT(*) FROM charactercreator_character_inventory'
-query2 = 'SELECT COUNT(*) FROM charactercreator_character'
-div = tuple(x / y for x, y in zip(execute(query)[0], execute(query2)[0]))
-print(f'Average Items Per Character: {div[0]}')
+query = """
+SELECT AVG(count)
+FROM
+(
+SELECT charactercreator_character.character_id, 
+COUNT(charactercreator_character_inventory.item_id) AS count
+FROM charactercreator_character
+LEFT JOIN charactercreator_character_inventory
+ON charactercreator_character_inventory.character_id =
+charactercreator_character.character_id
+GROUP BY charactercreator_character.character_id
+)
+"""
+print(f'Average Items Per Character: {execute(query)[0][0]}')
 
 # Average Weapons Per Character
 query = """
-SELECT COUNT(*) FROM charactercreator_character_inventory
+SELECT AVG(count)
+FROM
+(
+SELECT charactercreator_character.character_id,
+COUNT(armory_weapon.item_ptr_id) AS count
+FROM charactercreator_character
+LEFT JOIN charactercreator_character_inventory
+ON charactercreator_character_inventory.character_id =
+charactercreator_character.character_id
 LEFT JOIN armory_weapon 
-ON armory_weapon.item_ptr_id =
-charactercreator_character_inventory.item_id 
-WHERE item_id =
-armory_weapon.item_ptr_id 
+ON charactercreator_character_inventory.item_id =
+armory_weapon.item_ptr_id
+GROUP BY charactercreator_character.character_id
+)
 """
-query2 = 'SELECT COUNT(*) FROM charactercreator_character'
-div = tuple(x / y for x, y in zip(execute(query)[0], execute(query2)[0]))
-print(f'Average Weapons Per Character: {div[0]}')
+print(f'Average Weapons Per Character: {execute(query)[0][0]}')
+
+
