@@ -103,5 +103,3 @@ GROUP BY charactercreator_character.character_id
 )
 """
 print(f'Average Weapons Per Character: {execute(query)[0][0]}')
-
-
