@@ -1,9 +1,6 @@
 import pandas as pd
 import sqlite3
 
-url = 'https://raw.githubusercontent.com/jacobpad/DS-Unit-3-Sprint-2-SQL-and-Databases/master/module1-introduction-to-sql/buddymove_holidayiq.csv'
-df = pd.read_csv(url)
-
 DB_FILE_PATH = 'rpg_db.sqlite3'
 connection = sqlite3.connect(DB_FILE_PATH)
 curs = connection.cursor()
