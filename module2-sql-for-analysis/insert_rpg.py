@@ -23,9 +23,6 @@ print(sl_curs.execute(row_count).fetchall())
 get_characters = 'SELECT * FROM charactercreator_character'
 characters = sl_curs.execute(get_characters).fetchall()
 
-print(sl_curs.execute(
-    'PRAGMA table_info(charactercreator_character)').fetchall())
-
 create_character_table = """
 CREATE TABLE charactercreator_character (
     character_id SERIAL PRIMARY KEY,

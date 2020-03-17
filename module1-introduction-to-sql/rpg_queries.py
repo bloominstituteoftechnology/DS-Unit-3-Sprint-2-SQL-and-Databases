@@ -1,4 +1,5 @@
 import sqlite3
+import pandas as pd
 
 conn = sqlite3.connect('rpg_db.sqlite3')
 
@@ -48,7 +49,7 @@ LIMIT 20
 """
 counts = {f'Character Id: {i[0]}': f'Item Count: {i[1]}'
           for i in execute(query)}
-print(counts)
+print(pd.DataFrame.from_dict(data=counts, orient='index'))
 
 # Weapons per character
 query = """
@@ -66,7 +67,7 @@ LIMIT 20
 """
 counts = {f'Character Id: {i[0]}': f'Weapon Count: {i[1]}'
           for i in execute(query)}
-print(f'{counts}\n')
+print(pd.DataFrame.from_dict(data=counts, orient='index'))
 
 # Average items per character
 query = 'SELECT COUNT(*) FROM charactercreator_character_inventory'
