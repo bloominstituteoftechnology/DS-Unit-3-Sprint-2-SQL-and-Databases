@@ -10,18 +10,56 @@ DB_PASSWORD = os.getenv('DB_PASSWORD', default='OOPS')
 DB_HOST = os.getenv('DB_HOST', default='OOPS')
 
 ### Connect to ElephantSQL-hosted PostgreSQL
-conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER,
+connection = psycopg2.connect(dbname=DB_NAME, user=DB_USER,
                         password=DB_PASSWORD,
                         host=DB_HOST)
-print("CONNECTION: ", conn)
+print("CONNECTION: ", connection)
 
 ### A "cursor", a structure to iterate over db records to perform queries
-cur = conn.cursor()
-print('CURSOR: ', cur)
+cursor = connection.cursor()
+print('CURSOR: ', cursor)
 
+#
+### TABLE CREATION
+#
+# query = '''
+# CREATE TABLE test_table (
+#   id        SERIAL PRIMARY KEY,
+#   name  varchar(40) NOT NULL,
+#   data    JSONB
+# );
+# '''
+# cursor.execute(query)
 
-### An example query
-cur.execute('SELECT * from test_table;')
+# Test query
+cursor.execute('SELECT * from test_table;')
 ### Note - nothing happened yet! We need to actually *fetch* from the cursor
-result = cur.fetchone()
-print('RESULT: ', result)
+result = cursor.fetchall()
+print('RESULT: ', len(result))
+
+#
+### DATA INSERTION
+#
+
+insertion_query = '''
+INSERT INTO test_table (name, data) VALUES
+(
+  'A row name',
+  null
+),
+(
+  'Another row, with JSON',
+  '{ "a": 1, "b": ["dog", "cat", 42], "c": true }'::JSONB
+);
+'''
+
+cursor.execute(insertion_query)
+
+# Test query
+cursor.execute('SELECT * from test_table;')
+### Note - nothing happened yet! We need to actually *fetch* from the cursor
+result = cursor.fetchall()
+print('RESULT: ', len(result))
+
+# ACTUALLY SAVE THE TRANSACTIONS ACCORDING TO MIKE
+connection.commit()
