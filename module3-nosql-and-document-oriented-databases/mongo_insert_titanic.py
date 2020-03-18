@@ -1,5 +1,3 @@
-# module2-sql-for-analysis/titanic.csv
-
 import pymongo
 import os
 from dotenv import load_dotenv
