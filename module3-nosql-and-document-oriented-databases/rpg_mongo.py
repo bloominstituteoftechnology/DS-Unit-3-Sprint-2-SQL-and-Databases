@@ -1,3 +1,10 @@
+# Compared to PostgreSQL, I think the code used for mongo is more
+# simple and easier to read. PostgreSQL was harder because you had
+# to deal with the syntax of psyocopg and SQL at the same time. Mongo
+# had a somewhat similar format but it's in a easier readable format
+# since you don't have to mess with SQL (Unless you are importing data
+# from a sql database)
+
 import pymongo
 import os
 from dotenv import load_dotenv
