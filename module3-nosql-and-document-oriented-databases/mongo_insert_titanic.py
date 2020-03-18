@@ -17,7 +17,7 @@ db = client.titanic
 df = pd.read_csv('../module2-sql-for-analysis/titanic.csv')
 df.index = df.index.map(str)
 
-passengers = [df.to_dict(orient='index')]
+passengers = df.to_dict(orient='records')
 
 collection = db.passengers
 collection.insert_many(passengers)
