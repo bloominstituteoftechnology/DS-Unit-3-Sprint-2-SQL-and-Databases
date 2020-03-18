@@ -1,3 +1,7 @@
+# My experience with mongodb vs postgres definitely left me with the impression
+# that the flexibility of mongodb makes it a lot faster and simpler to
+# implement, at the cost of ease and complexity of querying
+
 import pymongo
 import os
 from dotenv import load_dotenv
@@ -8,7 +12,9 @@ load_dotenv()
 DB_USER = os.getenv("DB_USER")
 DB_PASS = os.getenv("DB_PASS")
 
-client = pymongo.MongoClient(f'mongodb+srv://{DB_USER}:{DB_PASS}@lambda-qip5e.mongodb.net/test?retryWrites=true&w=majority')
+client = pymongo.MongoClient(
+    f'mongodb+srv://{DB_USER}:{DB_PASS}'
+    f'@lambda-qip5e.mongodb.net/test?retryWrites=true&w=majority')
 
 db = client.rpg
 
@@ -19,5 +25,3 @@ for model in df['model'].unique():
     data_as_list = data['fields'].tolist()
     collection = db[f'{model}']
     collection.insert_many(data_as_list)
-
-
