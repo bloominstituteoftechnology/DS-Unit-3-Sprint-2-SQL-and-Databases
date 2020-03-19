@@ -18,18 +18,13 @@ curs = conn.cursor()
 # passengers survived and died
 query = """
 SELECT COUNT(*) FROM titanic
-WHERE survived = 1
-"""
-query2 = """
-SELECT COUNT(*) FROM titanic
-WHERE survived = 0
+GROUP BY survived
+ORDER BY survived
 """
 curs.execute(query)
-survived = curs.fetchall()[0][0]
-curs.execute(query2)
-died = curs.fetchall()[0][0]
-print(f'Passengers who survived: {survived}\n'
-      f'Passengers who died: {died}\n')
+survived = curs.fetchall()
+print(f'Passengers who survived: {survived[1][0]}\n'
+      f'Passengers who died: {survived[0][0]}\n')
 
 # passengers in each class
 query = """
@@ -81,11 +76,11 @@ GROUP BY passenger_class
 ORDER BY passenger_class
 """
 curs.execute(query)
-pclass = curs.fetchall()
+age_by_pclass = curs.fetchall()
 print(f'Average Age By Class:\n'
-      f'Class: {pclass[0][1]} == Age: {round(pclass[0][0])}\n'
-      f'Class: {pclass[1][1]} == Age: {round(pclass[1][0])}\n'
-      f'Class: {pclass[2][1]} == Age: {round(pclass[2][0])}\n')
+      f'Class: {age_by_pclass[0][1]} == Age: {round(age_by_pclass[0][0])}\n'
+      f'Class: {age_by_pclass[1][1]} == Age: {round(age_by_pclass[1][0])}\n'
+      f'Class: {age_by_pclass[2][1]} == Age: {round(age_by_pclass[2][0])}\n')
 
 # average fare by class
 query = """
@@ -97,11 +92,14 @@ GROUP BY passenger_class
 ORDER BY passenger_class
 """
 curs.execute(query)
-pclass = curs.fetchall()
+fare_by_class = curs.fetchall()
 print(f'Average Fare By Class:\n'
-      f'Class: {pclass[0][1]} == Fare: {round(pclass[0][0], 2)}\n'
-      f'Class: {pclass[1][1]} == Fare: {round(pclass[1][0], 2)}\n'
-      f'Class: {pclass[2][1]} == Fare: {round(pclass[2][0], 2)}\n')
+      f'Class: {fare_by_class[0][1]} == '
+      f'Fare: {round(fare_by_class[0][0], 2)}\n'
+      f'Class: {fare_by_class[1][1]} == '
+      f'are: {round(fare_by_class[1][0], 2)}\n'
+      f'Class: {fare_by_class[2][1]} == '
+      f'Fare: {round(fare_by_class[2][0], 2)}\n')
 
 # average fare by survival
 query = """
@@ -113,10 +111,10 @@ GROUP BY survived
 ORDER BY survived
 """
 curs.execute(query)
-pclass = curs.fetchall()
+fare_by_survival = curs.fetchall()
 print(f'Average Fare By Survival:\n'
-      f'Died: {pclass[0][1]} == Fare: {round(pclass[0][0], 2)}\n'
-      f'Survived: {pclass[1][1]} == Fare: {round(pclass[1][0], 2)}\n')
+      f'Avg. Fare Of Fatalities: {round(fare_by_survival[0][0], 2)}\n'
+      f'Avg. Fare Of Survivors: {round(fare_by_survival[1][0], 2)}\n')
 
 # average siblings/spouses, by class
 query = """
@@ -128,11 +126,14 @@ GROUP BY passenger_class
 ORDER BY passenger_class
 """
 curs.execute(query)
-pclass = curs.fetchall()
+sibs_spouses_by_class = curs.fetchall()
 print(f'Average # Of Siblings/Spouses By Class:\n'
-      f'Class: {pclass[0][1]} == Family: {round(pclass[0][0], 2)}\n'
-      f'Class: {pclass[1][1]} == Family: {round(pclass[1][0], 2)}\n'
-      f'Class: {pclass[2][1]} == Family: {round(pclass[2][0], 2)}\n')
+      f'Class: {sibs_spouses_by_class[0][1]} == '
+      f'Family: {round(sibs_spouses_by_class[0][0], 2)}\n'
+      f'Class: {sibs_spouses_by_class[1][1]} == '
+      f'Family: {round(sibs_spouses_by_class[1][0], 2)}\n'
+      f'Class: {sibs_spouses_by_class[2][1]} == '
+      f'Family: {round(sibs_spouses_by_class[2][0], 2)}\n')
 
 # average # Of Siblings/Spouses By Survival
 query = """
@@ -144,10 +145,12 @@ GROUP BY survived
 ORDER BY survived
 """
 curs.execute(query)
-pclass = curs.fetchall()
+sibs_spouses_by_survival = curs.fetchall()
 print(f'Average # Of Siblings/Spouses By Survival:\n'
-      f'Died: {pclass[0][1]} == Family: {round(pclass[0][0], 2)}\n'
-      f'Survived: {pclass[1][1]} == Family: {round(pclass[1][0], 2)}\n')
+      f'Avg. Family Of Fatalities: '
+      f'{round(sibs_spouses_by_survival[0][0], 2)}\n'
+      f'Avg. Family Of Survivors: '
+      f'{round(sibs_spouses_by_survival[1][0], 2)}\n')
 
 # average parents/children, by class
 query = """
@@ -159,11 +162,14 @@ GROUP BY passenger_class
 ORDER BY passenger_class
 """
 curs.execute(query)
-pclass = curs.fetchall()
+parents_kids_by_class = curs.fetchall()
 print(f'Average # Of Parents/Children By Class:\n'
-      f'Class: {pclass[0][1]} == Family: {round(pclass[0][0], 2)}\n'
-      f'Class: {pclass[1][1]} == Family: {round(pclass[1][0], 2)}\n'
-      f'Class: {pclass[2][1]} == Family: {round(pclass[2][0], 2)}\n')
+      f'Class: {parents_kids_by_class[0][1]} == '
+      f'Family: {round(parents_kids_by_class[0][0], 2)}\n'
+      f'Class: {parents_kids_by_class[1][1]} == '
+      f'Family: {round(parents_kids_by_class[1][0], 2)}\n'
+      f'Class: {parents_kids_by_class[2][1]} == '
+      f'Family: {round(parents_kids_by_class[2][0], 2)}\n')
 
 # average # Of parents/children By Survival
 query = """
@@ -175,10 +181,12 @@ GROUP BY survived
 ORDER BY survived
 """
 curs.execute(query)
-pclass = curs.fetchall()
+parents_kids_by_survival = curs.fetchall()
 print(f'Average # Of Parents/Children By Survival:\n'
-      f'Died: {pclass[0][1]} == Family: {round(pclass[0][0], 2)}\n'
-      f'Survived: {pclass[1][1]} == Family: {round(pclass[1][0], 2)}\n')
+      f'Avg. Family Of Fatalities: '
+      f'{round(parents_kids_by_survival[0][0], 2)}\n'
+      f'Avg. Family Of Survivors: '
+      f'{round(parents_kids_by_survival[1][0], 2)}\n')
 
 # duplicate names
 query = """
