@@ -19,17 +19,17 @@ print("CONNECTION: ", connection)
 cursor = connection.cursor()
 print('CURSOR: ', cursor)
 
-#
-### TABLE CREATION
-#
-# query = '''
-# CREATE TABLE test_table (
-#   id        SERIAL PRIMARY KEY,
-#   name  varchar(40) NOT NULL,
-#   data    JSONB
-# );
-# '''
-# cursor.execute(query)
+
+## TEST TABLE CREATION
+
+query = '''
+CREATE TABLE IF NOT EXISTS test_table (
+  id        SERIAL PRIMARY KEY,
+  name  varchar(40) NOT NULL,
+  data    JSONB
+);
+'''
+cursor.execute(query)
 
 # Test query
 cursor.execute('SELECT * from test_table;')
@@ -57,7 +57,7 @@ cursor.execute(insertion_query)
 
 # Test query
 cursor.execute('SELECT * from test_table;')
-### Note - nothing happened yet! We need to actually *fetch* from the cursor
+# Note - nothing happened yet! We need to actually *fetch* from the cursor
 result = cursor.fetchall()
 print('RESULT: ', len(result))
 
