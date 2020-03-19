@@ -1,5 +1,4 @@
 import warnings
-import pandas as pd
 import psycopg2 as pg
 import os
 from dotenv import load_dotenv
@@ -52,9 +51,12 @@ ORDER BY survived, passenger_class
 """
 curs.execute(query)
 survived = curs.fetchall()
-print(f'First Class Passengers Survived/Died: {survived[3][0]}/{survived[0][0]}\n'
-      f'Second Class Passengers Survived/Died: {survived[4][0]}/{survived[1][0]}\n'
-      f'Third Class Passengers Survived/Died: {survived[5][0]}/{survived[2][0]}\n')
+print(f'First Class Passengers Survived/Died: '
+      f'{survived[3][0]}/{survived[0][0]}\n'
+      f'Second Class Passengers Survived/Died: '
+      f'{survived[4][0]}/{survived[1][0]}\n'
+      f'Third Class Passengers Survived/Died: '
+      f'{survived[5][0]}/{survived[2][0]}\n')
 
 # average age of survivors vs died
 query = """
