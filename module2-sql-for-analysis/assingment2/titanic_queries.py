@@ -66,4 +66,5 @@ execute_values(cursor, insertion_query, rows)
 
 
 # ACTUALLY SAVE THE TRANSACTIONS
+# for when you're creating tables or adding rows
 connection.commit()
