@@ -1,3 +1,0 @@
-# hi
-
-import sqlite3
