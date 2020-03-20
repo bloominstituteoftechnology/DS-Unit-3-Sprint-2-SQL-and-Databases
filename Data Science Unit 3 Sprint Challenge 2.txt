@@ -82,8 +82,17 @@ Part 4 - Questions (and your Answers)
 Answer the following questions, baseline ~3-5 sentences each, as if they were interview screening questions (a form you fill when applying for a job):
 
 In the Northwind database, what is the type of relationship between the Employee and Territory tables?
+
+This is a many-to-many relationship. One employee can belong to >1 territory, and a territory can belong to multiple employees. This is the reason there needs to be an EmployeeTerritory table in between the two. This is confirmed by the fact that all three tables have different numbers of rows: 9 employees, 53 territories, 49 matches in the central key table.
+
 What is a situation where a document store (like MongoDB) is appropriate, and what is a situation where it is not appropriate?
+
+A document store is appropriate with massive datasets. It doesn't demand a hard-and-fast schema like the relational approach does. It is also more appropriate where things don't need to be perfect -- banking is an inappropriate application, while a massive consumer database like Facebook, used for marketing insights, might be appropriate.
+
 What is "NewSQL", and what is it trying to achieve?
+
+NewSQL is a new attempt to get the best of both worlds from SQL and NoSQL, relational and document oriented approaches. SQL gives us ACID (atomicity, consistency, isolation, durability) guarantees, while NoSQL does not. NewSQL attempts to have it all: these guarantees, and the scalability benefits of NoSQL document-oriented storage.
+
 Part 5 - Turn it in!
 Provide all the files you wrote (demo_data.py, northwind.py), as well as this file with your answers to part 4, directly to your TL. You're also encouraged to include the output from your queries as docstring comments, to facilitate grading and feedback. Thanks for your hard work!
 
