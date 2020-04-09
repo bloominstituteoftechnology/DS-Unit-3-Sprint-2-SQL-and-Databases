@@ -104,13 +104,33 @@ print('Did I count correctly?', total == character_count)
 print('----------------------------------------------------------')
 
 #How many total Items?
-#TODO
+q7 = '''
+SELECT count(distinct inv.id) as item_count
+FROM charactercreator_character_inventory as inv
+'''
 
-#How many of the items are weapons?
-#TODO
+item_count = cur.execute(q7).fetchone()['item_count']
 
-#How many of the items are not weapons?
-#TODO
+print('There are', item_count, 'total items')
+
+#How many of the items are weapons? - lets do with a join
+q8 = '''
+SELECT count(distinct inv.id) as weapon_count
+FROM charactercreator_character_inventory as inv
+RIGHT JOIN armory_weapon as wpn
+ON inv.item_id = wpn.item_ptr_id
+WHERE inv.item_id IS NULL
+'''
+
+weapon_count = cur.execute(q8).fetchone()['item']
+#How many of the items are not weapons? - lets do with a 
+q9 = '''
+SELECT count(distinct inv.id) as not_weapon_count
+FROM charactercreator_character_inventory as inv
+LEFT JOIN armory_weapon as wpn
+ON inv.item_id = wpn.item_ptr_id
+WHERE wpn.item_ptf_id IS NULL
+'''
 
 #How many items does each character have? First 20 rows
 #TODO
