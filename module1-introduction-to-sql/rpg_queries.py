@@ -64,19 +64,23 @@ def run_queries(c):
     # _______________ how many Items does each Character have? ____________
     #  
     query1 = '''
-    SELECT  cc.name,
-        count(item.item_id) as item_count,
-        count(weapon.item_ptr_id) as weapon_count
-        FROM charactercreator_character AS cc
-        LEFT JOIN charactercreator_character_inventory AS inventory
-          ON cc.character_id = inventory.character_id
-        LEFT JOIN armory_item AS item
-          ON inventory.item_id = item.item_id
-        LEFT JOIN armory_weapon weapon
-          ON weapon.item_ptr_id = item.item_id
-        WHERE UPPER(cc.name) LIKE "D%"
-        GROUP BY cc.name
-        LIMIT 15;
+    SELECT *
+    FROM (
+         SELECT  cc.name,
+            count(item.item_id) as item_count,
+            count(weapon.item_ptr_id) as weapon_count
+            FROM charactercreator_character AS cc
+            LEFT JOIN charactercreator_character_inventory AS inventory
+            ON cc.character_id = inventory.character_id
+            LEFT JOIN armory_item AS item
+            ON inventory.item_id = item.item_id
+            LEFT JOIN armory_weapon weapon
+            ON weapon.item_ptr_id = item.item_id
+            GROUP BY cc.name
+            ORDER BY item_count DESC
+            LIMIT 15
+         )
+    WHERE item_count > 0;
     '''
     print('Character  -->  Items / Weapons')
     print('-----------------------------')
@@ -84,7 +88,7 @@ def run_queries(c):
     for row in rows:
         name = row[0]
         print(name, '-->', row[1], '/', row[2])
-    print('--------------------')
+    print('-----------------------------')
 
     # _____ On average, how many Items does each Character have? _________
     #   nested query
@@ -122,7 +126,7 @@ def run_queries(c):
     rows = c.execute(query1)
     for row in rows:
         print(row[0], '-->', row[1], ':', row[2])
-    print('--------------------')
+    print('------------------------------')
 
     query1 = '''
     SELECT cc.name, COUNT(item.name)
@@ -137,12 +141,13 @@ def run_queries(c):
         ORDER BY cc.name
         LIMIT 5;
     '''
+    print()
     print('Character  -->  Weapon Count')
     print('------------------------------')
     rows = c.execute(query1)
     for row in rows:
         print(row[0], '-->', row[1])
-    print('--------------------')
+    print('------------------------------')
 
     # ____ On average, how many Weapons does each Character have? ___________
     query2 = '''
