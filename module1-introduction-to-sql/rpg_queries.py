@@ -72,7 +72,7 @@ def run_queries(c):
         JOIN armory_item AS item
           ON inventory.item_id = item.item_id
         GROUP BY cc.name
-        LIMIT 5;
+        LIMIT 20;
     '''
     print('Character  -->  Item')
     print('--------------------')
@@ -111,13 +111,33 @@ def run_queries(c):
         JOIN armory_weapon weapon
           ON weapon.item_ptr_id = item.item_id
         ORDER BY cc.name
-        LIMIT 5;
+        LIMIT 20;
     '''
-    print('Character  -->  Weapon:Power')
+    print('Character  --> Weapon:Power')
     print('------------------------------')
     rows = c.execute(query1)
     for row in rows:
         print(row[0], '-->', row[1], ':', row[2])
+    print('--------------------')
+
+    query1 = '''
+    SELECT cc.name, COUNT(item.name)
+        FROM charactercreator_character AS cc
+        JOIN charactercreator_character_inventory AS inventory
+          ON cc.character_id = inventory.character_id
+        JOIN armory_item AS item
+          ON inventory.item_id = weapon.item_ptr_id
+        JOIN armory_weapon weapon
+          ON weapon.item_ptr_id = item.item_id
+        GROUP BY cc.name
+        ORDER BY cc.name
+        LIMIT 20;
+    '''
+    print('Character  -->  Weapon Count')
+    print('------------------------------')
+    rows = c.execute(query1)
+    for row in rows:
+        print(row[0], '-->', row[1])
     print('--------------------')
 
     # ____ On average, how many Weapons does each Character have? ___________
@@ -136,6 +156,11 @@ def run_queries(c):
     '''
     for i in c.execute(query2):
         print('Each character has average of', i[0], 'weapons\n')
+
+    # ___ Use cursor object fetch method ___
+    print('There are a total of', c.execute("SELECT COUNT(item_id) FROM armory_item").fetchone()[0], 'items')
+
+    # --bye --
     return
 
 
