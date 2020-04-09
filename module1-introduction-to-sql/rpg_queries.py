@@ -1,9 +1,9 @@
-"""
-----------------------------------------------------------------
+"""-------------------------------------------------------------
              RPG DataBase Queries
 ----------------------------------------------------------------
 """
 import sqlite3
+import os
 
 
 # ___ instantiate and return connection obj _________
@@ -54,6 +54,7 @@ def run_queries(c):
     # _______________ How many Total Items _________________________________
     for i in c.execute('SELECT COUNT(item_id) FROM armory_item'):
         print('There are a total of', i[0], 'items')
+    
     # _______________ How many of Weapons and Non-Weapons ________________
     for w in c.execute('SELECT COUNT(item_ptr_id) FROM armory_weapon'):
         print(w[0], 'Weapons')
@@ -61,14 +62,16 @@ def run_queries(c):
     print()
 
     # _______________ how many Items does each Character have? ____________
+    #  inner joins
     query1 = '''
-    SELECT character.name, count(item.item_id) as item_count
-        FROM charactercreator_character AS character,
+    SELECT  cc.name,
+        count(item.item_id) as item_count
+        FROM charactercreator_character AS cc
         JOIN charactercreator_character_inventory AS inventory
-          ON character.character_id = inventory.character_id
+          ON cc.character_id = inventory.character_id
         JOIN armory_item AS item
           ON inventory.item_id = item.item_id
-        GROUP BY character.name
+        GROUP BY cc.name
         LIMIT 5;
     '''
     print('Character  -->  Item')
@@ -80,17 +83,18 @@ def run_queries(c):
     print('--------------------')
 
     # _____ On average, how many Items does each Character have? _________
+    #   nested query
     query2 = '''
     SELECT AVG(item_count)
     FROM (
-        SELECT character.name, count(item.item_id) as item_count
+        SELECT c.name, count(i.item_id) as item_count
         FROM charactercreator_character AS c,
              charactercreator_character_inventory AS i,
              armory_item AS t
         WHERE c.character_id = i.character_id
           AND i.item_id = t.item_id
-        GROUP BY character.name
-        ORDER BY character.name
+        GROUP BY c.name
+        ORDER BY c.name
         );
     '''
     for i in c.execute(query2):
@@ -98,22 +102,22 @@ def run_queries(c):
 
     # _____ how many WEAPONS does each Character have? ___________________
     query1 = '''
-    SELECT character.name, item.name, weapon.power
-        FROM charactercreator_character character
-        JOIN charactercreator_character_inventory inventory 
-          ON character.character_id = inventory.character_id
-        JOIN armory_item item 
+    SELECT cc.name, item.name, weapon.power
+        FROM charactercreator_character AS cc
+        JOIN charactercreator_character_inventory AS inventory
+          ON cc.character_id = inventory.character_id
+        JOIN armory_item AS item
           ON inventory.item_id = weapon.item_ptr_id
-        JOIN armory_weapon weapon 
+        JOIN armory_weapon weapon
           ON weapon.item_ptr_id = item.item_id
-        ORDER BY character.name
+        ORDER BY cc.name
         LIMIT 5;
     '''
-    print('Character  -->  WEAPON')
-    print('--------------------')
+    print('Character  -->  Weapon:Power')
+    print('------------------------------')
     rows = c.execute(query1)
     for row in rows:
-        print(row[0], '-->', row[1], '  ', row[2])
+        print(row[0], '-->', row[1], ':', row[2])
     print('--------------------')
 
     # ____ On average, how many Weapons does each Character have? ___________
@@ -132,16 +136,18 @@ def run_queries(c):
     '''
     for i in c.execute(query2):
         print('Each character has average of', i[0], 'weapons\n')
-
     return
 
 
 def main():
-    conn = conx_sqlite('rpg_db.sqlite3')
+    #  DB filepath = current directory
+    DB_FILEPATH = os.path.join(os.path.dirname(__file__), "rpg_db.sqlite3")
+    conn = conx_sqlite(DB_FILEPATH)  # create connection 
+    conn.row_factory = sqlite3.Row  # Use row objects per Mike Rossetti
     cur = conn.cursor()  # create cursor
     run_queries(cur)
-    cur.close()
-    conn.close()   # Close the connection
+    cur.close()   # close cursor
+    conn.close()  # close connection
     return
 
 #  Launched from the command line

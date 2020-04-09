@@ -4,6 +4,8 @@ import sqlite3
 import psycopg2
 from sqlalchemy import create_engine
 from sqlite3 import dbapi2 as sqlite
+import dotenv
+import os
 
 
 def verify_output(pgres_engine, table_name):

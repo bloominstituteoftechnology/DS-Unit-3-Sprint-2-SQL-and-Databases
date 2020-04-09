@@ -12,7 +12,7 @@ def db_connect():
     host = os.getenv("DS_DB_HOST")
     passw = os.getenv("DS_DB_PASSWORD")
     pgres_str = 'postgresql+psycopg2://'+user+':'+passw+'@'+host+'/'+dbname
-    pgres_engine = create_engine(pgres_str)
+    pgres_engine = DB.create_engine('sqlite3:')
     return pgres_engine
 
 def insert_titanic(engine):

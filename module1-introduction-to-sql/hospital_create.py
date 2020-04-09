@@ -5,11 +5,9 @@
 """
 import sqlite3
 
-
 def conx_sqlite(db_filename):
     conn = sqlite3.connect(db_filename)
     return conn
-
 
 def create_tables(c, conn):
     # ___ Create table ____________________________________________
@@ -204,7 +202,6 @@ def create_tables(c, conn):
     c.execute(create_script)
     conn.commit()  #  save the changes
 
-
 def insert_data(c, conn):
     # ___ Insert data ______________________________________
     file = open('insert_data.sql', 'r')
@@ -215,13 +212,11 @@ def insert_data(c, conn):
     conn.commit()
     return
 
-
 def verify_output(cur):
     # ___ Print out a List __________________________________________
     for row in cur.execute('SELECT * FROM Physician'):
         print(row[1])
     return
-
 
 def main():
     # ____ connect to db ____
