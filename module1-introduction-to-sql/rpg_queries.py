@@ -18,6 +18,7 @@ print('Cursor:', cur)
 print('----------------------------------------------------------')
 
 #How may total Characters are there?
+#TODO stretch: make this section a single query
 q1 = '''
 SELECT count(distinct c.character_id) as character_count
 FROM charactercreator_character as c
@@ -26,7 +27,6 @@ FROM charactercreator_character as c
 a1 = cur.execute(q1).fetchone()
 
 print('There are', a1['character_count'], 'total Characters in the db')
-print('----------------------------------------------------------')
 
 character_count = a1['character_count']
 
@@ -104,6 +104,7 @@ print('Did I count correctly?', total == character_count)
 print('----------------------------------------------------------')
 
 #How many total Items?
+#TODO stretch: make this section a single query
 q7 = '''
 SELECT count(distinct inv.id) as item_count
 FROM charactercreator_character_inventory as inv
@@ -113,33 +114,72 @@ item_count = cur.execute(q7).fetchone()['item_count']
 
 print('There are', item_count, 'total items')
 
-#How many of the items are weapons? - lets do with a join
+#How many of the items are weapons? - inner join makes this pretty easy
 q8 = '''
 SELECT count(distinct inv.id) as weapon_count
 FROM charactercreator_character_inventory as inv
-RIGHT JOIN armory_weapon as wpn
+INNER JOIN armory_weapon as wpn
 ON inv.item_id = wpn.item_ptr_id
-WHERE inv.item_id IS NULL
 '''
 
-weapon_count = cur.execute(q8).fetchone()['item']
+weapon_count = cur.execute(q8).fetchone()['weapon_count']
+
 #How many of the items are not weapons? - lets do with a 
 q9 = '''
 SELECT count(distinct inv.id) as not_weapon_count
 FROM charactercreator_character_inventory as inv
 LEFT JOIN armory_weapon as wpn
 ON inv.item_id = wpn.item_ptr_id
-WHERE wpn.item_ptf_id IS NULL
+WHERE wpn.item_ptr_id IS NULL
 '''
 
-#How many items does each character have? First 20 rows
-#TODO
+not_weapon_count = cur.execute(q9).fetchone()['not_weapon_count']
 
+print(f'{weapon_count} of which are weapons and {not_weapon_count} are not')
+print('----------------------------------------------------------')
+
+#How many items does each character have? First 20 rows
 #How many Weapons does each character have? First 20 rows
-#TODO
+q10 = '''
+SELECT 
+    cha.character_id
+	,cha.name
+	,count(distinct item_id) as total_items
+	,count(distinct item_ptr_id) as total_weapons
+FROM charactercreator_character as cha
+LEFT JOIN charactercreator_character_inventory as inv ON cha.character_id = inv.character_id
+LEFT JOIN armory_weapon as wpn ON inv.item_id = wpn.item_ptr_id
+GROUP BY cha.character_id
+LIMIT 20
+'''
+
+response = cur.execute(q10).fetchall()
+
+for row in response:
+    id = row['character_id']
+    items = row['total_items']
+    weapons = row['total_weapons']
+
+    #Names make for very ugly printing.  I'm using IDs, since names weren't
+    #mentioned in the requirements.
+    print(f'Character {id} has {items} items, {weapons} of which are weapons')
+
+print('----------------------------------------------------------')
 
 #Average, how many items does each Character have?
-#TODO
-
 #Average, how many weapons does each character have?
-#TODO
+#Lets use a subquery to do this
+
+q11 = '''
+SELECT
+    avg(total_items) as average_items
+    ,avg(total_weapons)as average_weapons
+FROM (''' + q10.replace('LIMIT 20', '') + ')'
+
+#weird flex but ok.  Probably would have been better off actually writing
+#out the whole query for readability.  Oh well it works now lol.
+resp2 = cur.execute(q11).fetchone()
+
+print('Each characters has an average of', resp2['average_items'], 'items')
+print('Each character has an average of', resp2['average_weapons'], 'weapons')
+print('----------------------------------------------------------')
