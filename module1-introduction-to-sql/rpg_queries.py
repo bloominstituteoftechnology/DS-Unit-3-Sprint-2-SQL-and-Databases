@@ -62,24 +62,28 @@ def run_queries(c):
     print()
 
     # _______________ how many Items does each Character have? ____________
-    #  inner joins
+    #  
     query1 = '''
     SELECT  cc.name,
-        count(item.item_id) as item_count
+        count(item.item_id) as item_count,
+        count(weapon.item_ptr_id) as weapon_count
         FROM charactercreator_character AS cc
-        JOIN charactercreator_character_inventory AS inventory
+        LEFT JOIN charactercreator_character_inventory AS inventory
           ON cc.character_id = inventory.character_id
-        JOIN armory_item AS item
+        LEFT JOIN armory_item AS item
           ON inventory.item_id = item.item_id
+        LEFT JOIN armory_weapon weapon
+          ON weapon.item_ptr_id = item.item_id
+        WHERE UPPER(cc.name) LIKE "D%"
         GROUP BY cc.name
-        LIMIT 20;
+        LIMIT 15;
     '''
-    print('Character  -->  Item')
-    print('--------------------')
+    print('Character  -->  Items / Weapons')
+    print('-----------------------------')
     rows = c.execute(query1)
     for row in rows:
         name = row[0]
-        print(name, '-->', row[1])
+        print(name, '-->', row[1], '/', row[2])
     print('--------------------')
 
     # _____ On average, how many Items does each Character have? _________
@@ -111,7 +115,7 @@ def run_queries(c):
         JOIN armory_weapon weapon
           ON weapon.item_ptr_id = item.item_id
         ORDER BY cc.name
-        LIMIT 20;
+        LIMIT 5;
     '''
     print('Character  --> Weapon:Power')
     print('------------------------------')
@@ -123,15 +127,15 @@ def run_queries(c):
     query1 = '''
     SELECT cc.name, COUNT(item.name)
         FROM charactercreator_character AS cc
-        JOIN charactercreator_character_inventory AS inventory
+        LEFT JOIN charactercreator_character_inventory AS inventory
           ON cc.character_id = inventory.character_id
-        JOIN armory_item AS item
+        LEFT JOIN armory_item AS item
           ON inventory.item_id = weapon.item_ptr_id
-        JOIN armory_weapon weapon
+        INNER JOIN armory_weapon weapon
           ON weapon.item_ptr_id = item.item_id
         GROUP BY cc.name
         ORDER BY cc.name
-        LIMIT 20;
+        LIMIT 5;
     '''
     print('Character  -->  Weapon Count')
     print('------------------------------')
