@@ -9,7 +9,19 @@ query_q2_mage = "SELECT count(character_ptr_id) FROM charactercreator_mage"
 query_q2_necromancer = "SELECT count(mage_ptr_id) FROM charactercreator_necromancer"
 query_q2_thief = "SELECT count(character_ptr_id) FROM charactercreator_thief"
 query_q3 = "SELECT count(item_id) FROM armory_item"
-query_q4 = 'SELECT count(item_ptr_id) FROM armory_weapon'
+query_q4 = "SELECT count(item_ptr_id) FROM armory_weapon"
+
+query_q7 = ("""select avg(item_count) as avg_items
+from (
+    select
+      c.character_id
+      ,c."name" as character_name\
+      ,count(distinct inv.item_id) as item_count
+    from charactercreator_character c
+    left join charactercreator_character_inventory inv ON c.character_id = inv.character_id
+    group by 1, 2
+) subq
+""")
 
 
 #########################################################################################
@@ -37,5 +49,8 @@ print("RESULTS_Q3", results_q3)
 
 results_q4 = curs.execute(query_q4).fetchall()
 print("RESULTS_Q4", results_q4)
+
+results_q7 = curs.execute(query_q7).fetchall()
+print("RESULTS_Q7", results_q7)
 
 ########################################################################################
