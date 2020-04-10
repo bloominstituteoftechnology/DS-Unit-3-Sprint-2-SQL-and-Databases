@@ -150,5 +150,5 @@ print("Number of Weapons per character:  ", result9)
 result10 = curs1.execute(average_items_per_char).fetchall()
 print("Average number of items per character: ", result10)
 
-result11 = curs.execute(average_num_weapons).fetchall()
+result11 = curs1.execute(average_num_weapons).fetchall()
 print("Average number of weapons per character: ", result11)
