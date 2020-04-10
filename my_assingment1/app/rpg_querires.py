@@ -84,6 +84,41 @@ LIMIT 20
 """
 
 
+average_num_weapons = """
+	SELECT 
+	count(DISTINCT armory_weapon.item_ptr_id)/
+	count(distinct charactercreator_character.character_id) --as Average_weapons_per_char
+	
+	
+from  charactercreator_character
+inner JOIN charactercreator_character_inventory on
+	charactercreator_character.character_id = 
+	charactercreator_character_inventory.character_id
+LEFT JOIN armory_item on 
+	charactercreator_character_inventory.character_id = 
+	armory_item.item_id
+Left Join armory_weapon on 
+	armory_item.item_id = armory_weapon.item_ptr_id
+"""
+
+average_items_per_char = """
+
+	SELECT --*
+	count(DISTINCT armory_item.item_id)/
+	count(distinct charactercreator_character.character_id) --as Average_weapons_per_char
+	
+	
+from  charactercreator_character
+inner JOIN charactercreator_character_inventory on
+	charactercreator_character.character_id = 
+	charactercreator_character_inventory.character_id
+LEFT JOIN armory_item on 
+	charactercreator_character_inventory.character_id = 
+	armory_item.item_id
+Left Join armory_weapon on 
+	armory_item.item_id = armory_weapon.item_ptr_id	
+"""
+
 result1 = curs1.execute(totalChars_query).fetchall()
 print("First Query", result1)
 
@@ -112,3 +147,8 @@ print("Number of items per character:  ", results8)
 result9 = curs1.execute(numWeapons_per_character).fetchall()
 print("Number of Weapons per character:  ", result9)
 
+result10 = curs1.execute(average_items_per_char).fetchall()
+print("Average number of items per character: ", result10)
+
+result11 = curs.execute(average_num_weapons).fetchall()
+print("Average number of weapons per character: ", result11)
