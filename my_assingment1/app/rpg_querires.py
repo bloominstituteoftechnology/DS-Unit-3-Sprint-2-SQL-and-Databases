@@ -17,27 +17,22 @@ totalChars_query = """
 	count(distinct(character_id))
 FROM charactercreator_character_inventory;
 """
-numThiefs = """
-    SELECT
-	count(DISTINCT(charactercreator_thief.character_ptr_id))
-FROM charactercreator_thief
-"""
-numClerics = """
-    SELECT
-	count(DISTINCT(charactercreator_cleric.character_ptr_id))
-FROM charactercreator_cleric
-"""
-numMage = """
-    SELECT
-	count(DISTINCT(charactercreator_mage.character_ptr_id))
-FROM charactercreator_mage
+subclass_amounts = """
+	SELECT --*
+
+	count(DISTINCT f.character_ptr_id) as fighter_count
+	,count(DISTINCT c.character_ptr_id) as cleric_count
+	, count(DISTINCT t.character_ptr_id) as thief_count
+	,count(DISTINCT m.character_ptr_id) as mage_count
+	
+FROM charactercreator_character cc
+LEFT JOIN charactercreator_fighter f on f.character_ptr_id = cc.character_id
+LEFT JOIN charactercreator_cleric c on c.character_ptr_id = cc.character_id
+LEFT JOIN charactercreator_thief t on t.character_ptr_id = cc.character_id
+LEFT JOIN charactercreator_mage m on m.character_ptr_id = cc.character_id
+	
 """
 
-numFighter = """
-    SELECT
-	count(DISTINCT(charactercreator_fighter.character_ptr_id))
-FROM charactercreator_fighter
-"""
 
 numItems = """
     SELECT
@@ -85,60 +80,56 @@ LIMIT 20
 
 
 average_num_weapons = """
-	SELECT 
-	count(DISTINCT armory_weapon.item_ptr_id)/
-	count(distinct charactercreator_character.character_id) --as Average_weapons_per_char
+	-- On average, how many Weapons does each character have?
+-- There are 302 characters 
+-- subquery will need to be a separate character per row and the count of
+-- weapons per character(item_ptr_id)
+SELECT AVG(number_weapons)
+
+FROM(
+	SELECT --*
+		cc.character_id
+		,cc.name
+		,count(distinct item_ptr_id) number_weapons
 	
-	
-from  charactercreator_character
-inner JOIN charactercreator_character_inventory on
-	charactercreator_character.character_id = 
-	charactercreator_character_inventory.character_id
-LEFT JOIN armory_item on 
-	charactercreator_character_inventory.character_id = 
-	armory_item.item_id
-Left Join armory_weapon on 
-	armory_item.item_id = armory_weapon.item_ptr_id
+	FROM charactercreator_character cc
+	LEFT JOIN charactercreator_character_inventory cci on cc.character_id = cci.character_id
+	LEFT JOIN armory_item a on cci.item_id = a.item_id
+	LEFT JOIN armory_weapon w on a.item_id = w.item_ptr_id
+	group by 1,2
+)subQuery
 """
 
 average_items_per_char = """
 
+	-- On average, how many Items does each Character have?
+-- return a single number
+SELECT avg(num_items_per_char) as average_items_per_character
+from (
 	SELECT --*
-	count(DISTINCT armory_item.item_id)/
-	count(distinct charactercreator_character.character_id) --as Average_weapons_per_char
+		cc.character_id
+		,cc.name
+		,count(DISTINCT cci.item_id) as num_items_per_char
 	
-	
-from  charactercreator_character
-inner JOIN charactercreator_character_inventory on
-	charactercreator_character.character_id = 
-	charactercreator_character_inventory.character_id
-LEFT JOIN armory_item on 
-	charactercreator_character_inventory.character_id = 
-	armory_item.item_id
-Left Join armory_weapon on 
-	armory_item.item_id = armory_weapon.item_ptr_id	
+	FROM charactercreator_character cc
+	LEFT JOIN charactercreator_character_inventory cci on cc.character_id = cci.character_id
+	group by 1, 2
+)previous	
 """
 
 result1 = curs1.execute(totalChars_query).fetchall()
 print("First Query", result1)
 
-result2 = curs1.execute(numThiefs).fetchall()
-print("Total Thieves:", result2)
+result2 = curs1.execute(subclass_amounts).fetchall()
+print("The amounts in each of the subclasses are:\n", result2)
 
-result3 = curs1.execute(numClerics).fetchall()
-print("Total Clerics:", result3)
 
-result4 = curs1.execute(numMage).fetchall()
-print("Total Mage", result4)
-
-result5 = curs1.execute(numFighter).fetchall()
-print("Total Fighter:", result5)
 
 result6 = curs1.execute(numItems).fetchall()
 print("Number of items: ", result6)
 
 results7 = curs1.execute(nunItems_with_weapons).fetchall()
-print("Number of items that are weapons and not: ",results7)
+print("Number of items that are weapons and not:\n ",results7)
 
 results8 = curs1.execute(numItems_per_char).fetchall()
 print("Number of items per character:  ", results8)
