@@ -80,9 +80,9 @@ def run_queries(c):
             ORDER BY item_count DESC
             LIMIT 15
          )
-    WHERE item_count > 0;
+    ;
     '''
-    print('Character  -->  Items / Weapons')
+    print('Character  -->  Items  / Weapons')
     print('-----------------------------')
     rows = c.execute(query1)
     for row in rows:
@@ -119,7 +119,7 @@ def run_queries(c):
         JOIN armory_weapon weapon
           ON weapon.item_ptr_id = item.item_id
         ORDER BY cc.name
-        LIMIT 5;
+        LIMIT 15;
     '''
     print('Character  --> Weapon:Power')
     print('------------------------------')
@@ -139,7 +139,7 @@ def run_queries(c):
           ON weapon.item_ptr_id = item.item_id
         GROUP BY cc.name
         ORDER BY cc.name
-        LIMIT 5;
+        LIMIT 15;
     '''
     print()
     print('Character  -->  Weapon Count')
