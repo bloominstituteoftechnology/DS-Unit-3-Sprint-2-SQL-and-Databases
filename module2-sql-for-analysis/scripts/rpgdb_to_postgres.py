@@ -153,7 +153,7 @@ for tab in tables:
     table_copier(tab)
 
 #commented out for testing
-#con.commit()
+#post_con.commit()
 post_cur.close()
 post_con.close()
 lite_cur.close()
