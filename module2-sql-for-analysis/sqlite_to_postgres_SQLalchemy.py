@@ -6,11 +6,12 @@ from sqlalchemy import create_engine
 from sqlite3 import dbapi2 as sqlite
 import dotenv
 import os
+ 
 
-
-def verify_output(pgres_engine, table_name):
+def verify_output(pgres_engine, table_name, schema_name):
     # ______  verify output-table contents ____
-    query = 'SELECT * FROM ' + table_name + ' LIMIT 10;'
+    #   ElephantSQL requires FROM "schema".table_name   format
+    query = 'SELECT * FROM ' + '"' + schema_name + '"' +  '.' + table_name + ' LIMIT 10;'
     for row in pgres_engine.execute(query).fetchall():
         print(row)
     return
@@ -18,7 +19,7 @@ def verify_output(pgres_engine, table_name):
 
 def run_conversion(pgres_engine):
     # ___ process tables ____
-    # - WARNING!  schema must already exist
+    # - WARNING!  FOR AWS : schema must already exist
     schema_name = 'lambdaRPG'
     tables = ['charactercreator_character',
               'charactercreator_character_inventory',
@@ -40,8 +41,10 @@ def run_conversion(pgres_engine):
         df = pd.read_sql_table(table_name,
                                con=lite_engine)
 
-        #  BUG ALERT! drop the dataframe index column
-        #             before executing .to_sql()
+        #  To avoid an extra SQL table column,
+        #  set dataframe index to 1st column
+        #  before executing .to_sql()
+        df.set_index(df.columns[0], inplace=True)
 
         # ___ Convert to postgres DB____
         df.to_sql(table_name,
@@ -49,8 +52,8 @@ def run_conversion(pgres_engine):
                   con=pgres_engine,
                   schema=schema_name,
                   method='multi')
-        verify_output(pgres_engine, table_name)
 
+        verify_output(pgres_engine, table_name, schema_name)
     return
 
 
@@ -60,7 +63,7 @@ def main():
     user = ''
     host = ''
     password = ''
-    file = open('aws.pwd', 'r')
+    file = open('elephant.pwd', 'r')
     ctr = 1
     for line in file:
         line = line.replace('\n', '')
