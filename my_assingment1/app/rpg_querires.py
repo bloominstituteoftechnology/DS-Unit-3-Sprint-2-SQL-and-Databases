@@ -1,5 +1,7 @@
 import sqlite3
 import os
+import pandas as pd
+from sqlalchemy import create_engine
 
 DB_filepath = os.path.join(os.path.dirname(__file__), "..", "data", "rpg_db.sqlite3")
 
@@ -129,7 +131,7 @@ result6 = curs1.execute(numItems).fetchall()
 print("Number of items: ", result6)
 
 results7 = curs1.execute(nunItems_with_weapons).fetchall()
-print("Number of items that are weapons and not:\n ",results7)
+print("Number of items that are not weapons and are weapons is:\n ",results7)
 
 results8 = curs1.execute(numItems_per_char).fetchall()
 print("Number of items per character:  ", results8)
@@ -143,3 +145,46 @@ print("Average number of items per character: ", result10)
 
 result11 = curs1.execute(average_num_weapons).fetchall()
 print("Average number of weapons per character: ", result11)
+
+
+# Now will be loading the pandas dataframe to a sql and then will save it
+# first will load the data with pandas to a csv and then 
+# will change that to a sqlite and load it into the database
+
+# my file path
+CSV_Path = os.path.join(os.path.dirname(__file__), "..", "data", "buddymove_holidayiq.csv")
+
+
+df = pd.read_csv(CSV_Path)
+
+#engine = create_engine('sqlite://', echo=False)
+conn =sqlite3.connect("buddymove_holidayiq.sqlite3")
+# putting the data into the database
+df.to_sql("reviews", con=conn, if_exists="replace" )
+
+# Creating a row factory
+conn.row_factory = sqlite3.Row
+
+cursor1 = conn.cursor()
+
+theQuery = """
+	Select  *
+		
+
+	From reviews
+	
+"""
+
+
+cursor1.execute(theQuery)
+#engine.execute(theQuery)
+
+
+
+result = cursor1.fetchone()
+#result = cursor1.fetchall()
+print("The rows in the columns in the data are:", result.keys())
+
+
+
+
