@@ -3,6 +3,9 @@
 
 import sqlite3
 import psycopg2 as pg
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Get the data from sqlite3
 sl_conn = sqlite3.connect('rpg_db.sqlite3')
