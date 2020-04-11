@@ -53,24 +53,6 @@ for i in range(len(res)):
     else:
         tables.append(res[i][0])
 
-#i want to extract the column names from the table
-#I'm doing it this way because sqlite doesn't use schema
-#that I can query, like other sql implementations do
-# def get_cols(name):
-
-#     query = 'PRAGMA table_info(' + name + ');'
-
-#     res = lite_cur.execute(query).fetchall()
-
-#     columns = []
-
-#     for i in range(len(res)):
-#         columns.append((res[i][1], res[i][0])
-    
-#     return columns
-
-# print(get_cols(tables[0]))
-
 #okay I have a list of tables, and a way to get column names
 #so I need to:
 
