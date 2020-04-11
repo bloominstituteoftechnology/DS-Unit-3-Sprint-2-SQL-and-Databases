@@ -8,29 +8,11 @@ DB_FILEPATH = "../../module1-introduction-to-sql/rpg_db.sqlite3"
 DB_SLT_TABLE = "charactercreator_character"
 
 # Connection details for the Postgres database
-DB_PG_HOST = os.getenv("DB_PG_HOST", default="missing")
-DB_PG_NAME = os.getenv("DB_PG_NAME", default="missing")
-DB_PG_USER = os.getenv("DB_PG_USER", default="missing")
-DB_PG_PASSWORD = os.getenv("DB_PG_PASSWORD", default="missing")
+DB_PG_HOST = "localhost"
+DB_PG_NAME = "lambda_dev"
+DB_PG_USER = ""
+DB_PG_PASSWORD = ""
 print(f'{DB_PG_HOST}\n{DB_PG_NAME}\n{DB_PG_USER}\n{DB_PG_PASSWORD}\n')
-
-conn = sqlite3.connect(DB_FILEPATH)
-
-# Test that have connected to the database
-rslts = conn.execute("SELECT 1").fetchall()
-
-# Test the sqlite connection
-if rslts[0][0] == 1:
-    print(f'\nINFO: You have connected successfully to {DB_FILEPATH}\n')
-else:
-    print(f'ERROR: A connection error occurred\n')
-    quit()
-
-# Read a sqlite database table into a python object
-csr = conn.cursor()                         # Create a cursor object
-query = f'SELECT * FROM {DB_SLT_TABLE}'     # Define a query string 
-csr.execute(query)                          # Execute the query
-rows = csr.fetchall()                       # Fetch all of the rows from the query
 
 # Connect to the Postgres database
 conn_pg = psycopg2.connect(
