@@ -163,15 +163,15 @@ conn =sqlite3.connect("buddymove_holidayiq.sqlite3")
 df.to_sql("reviews", con=conn, if_exists="replace" )
 
 # Creating a row factory
-conn.row_factory = sqlite3.Row
+#conn.row_factory = sqlite3.Row
 
 cursor1 = conn.cursor()
 
 theQuery = """
-	Select  *
+	Select  count(*)
 		
 
-	From reviews
+	From reviews;
 	
 """
 
@@ -181,9 +181,9 @@ cursor1.execute(theQuery)
 
 
 
-result = cursor1.fetchone()
-#result = cursor1.fetchall()
-print("The rows in the columns in the data are:", result.keys())
+#result = cursor1.fetchone()
+result = cursor1.fetchall()
+print("The rows in the columns in the data are:", result)
 
 
 
