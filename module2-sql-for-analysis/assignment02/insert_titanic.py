@@ -9,7 +9,7 @@ DB_PG_DBNAME = os.getenv("DB_PG_DBNAME", default="missing")
 DB_PG_USER = os.getenv("DB_PG_USER", default="missing")
 DB_PG_PASSWORD = os.getenv("DB_PG_PASSWORD", default="missing")
 
-# Define some transformation function
+# Define a dataframe data transformation function
 def trans_num_bool(val):
     if val == 1:
         return "True"
@@ -44,14 +44,15 @@ def transform_df(df_in):
     return df_out
 
 # Read in the titanic csv dataset
-print(f'Starting processing...\nImporting data from "titanic.csv"\n')
+print(f'\n**************\nINFO: Starting processing...')
+print(f'INFO: Importing data from "titanic.csv"')
 df_csv = pd.read_csv("../titanic.csv")
 
 # Transform the dataframe
 df_trn = transform_df(df_csv)
 
 # Connect to the Postgres database
-print(f'Connecting to the Postgres database\n')
+print(f'INFO: Connecting to the Postgres database...')
 conn_pg = psycopg2.connect(
     dbname=DB_PG_DBNAME, 
     user=DB_PG_USER, 
@@ -66,9 +67,9 @@ rslts_pg = csr_pg.fetchall()
 
 # Test the Postgres connection
 if rslts_pg[0][0] == 1:
-    print(f'You have connected successfully to server: {DB_PG_HOST} database: {DB_PG_DBNAME}\n')
+    print(f'INFO: You have connected successfully to server: {DB_PG_HOST} database: {DB_PG_DBNAME}')
 else:
-    print(f'ERROR: A connection error occurred\n')
+    print(f'ERROR: A connection error occurred\nExiting...')
     quit()
 
 # SQL used to create a titanic table in Postgres
@@ -88,6 +89,7 @@ CREATE TABLE titanic_data (
 """
 
 # Drop the intended table if it exists
+print(f'INFO: Drop and create a new Postgres db table...')
 csr_pg.execute("DROP TABLE IF EXISTS titanic_data")
 conn_pg.commit()      # commit the create transaction
 
@@ -107,7 +109,7 @@ records = df_trn.to_records(index=False)
 rows = list(records)
 
 # Insert the rows exported from the sqlite database into the Postgres database table 
-print(f'Inserting the "titanic.csv" data into the Postgres database\n')
+print(f'INFO: Insert the transformed titanic.csv data into the Postgres db...')
 execute_values(
     csr_pg, 
     PG_INSERT, 
@@ -117,5 +119,5 @@ conn_pg.commit()
 # Count the number of rows in the the newly imported table
 csr_pg.execute("SELECT count(*) FROM titanic_data")
 rslts_pg = csr_pg.fetchone()
-print(f'The number of rows imported into Postgres (expecting: {len(df_trn.index)}) is: {rslts_pg[0]}')
-print(f'Process complete\n')
+print(f'INFO: The number of rows imported into Postgres (expecting: {len(df_trn.index)}) is: {rslts_pg[0]}')
+print(f'INFO: Processing complete\n**************\n')

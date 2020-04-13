@@ -13,28 +13,31 @@ DB_PG_HOST = os.getenv("DB_PG_HOST", default="missing")
 DB_PG_DBNAME = os.getenv("DB_PG_DBNAME", default="missing")
 DB_PG_USER = os.getenv("DB_PG_USER", default="missing")
 DB_PG_PASSWORD = os.getenv("DB_PG_PASSWORD", default="missing")
-print(f'{DB_PG_HOST}\n{DB_PG_DBNAME}\n{DB_PG_USER}\n{DB_PG_PASSWORD}\n')
 
 # Connect to the sqlite3 database
+print(f'\n**************\nINFO: Processing starting...')
 conn_sl = sqlite3.connect(DB_FILEPATH)
 
 # Test that the script has connected to the sqlite3 database
+print(f'INFO: Test the sqlite3 db connection...')
 rslts_sl = conn_sl.execute("SELECT 1").fetchall()
 
 # Test the sqlite connection
 if rslts_sl[0][0] == 1:
-    print(f'\nINFO: You have connected successfully to {DB_FILEPATH}\n')
+    print(f'INFO: You have connected successfully to {DB_FILEPATH}')
 else:
-    print(f'ERROR: A connection error occurred\n')
+    print(f'ERROR: A connection error occurred. Exiting...')
     quit()
 
 # Read a sqlite database table into a python object
+print(f'INFO: Read the sqlite3 db table into a Python object')
 csr_sl = conn_sl.cursor()                   # Create a cursor object
 query_sl = f'SELECT * FROM {DB_SLT_TABLE}'  # Define a query string 
 csr_sl.execute(query_sl)                    # Execute the query
 rows = csr_sl.fetchall()                    # Fetch all of the rows from the query
 
 # Connect to the Postgres database
+print(f'INFO: Test the Postgres db connection...')
 conn_pg = psycopg2.connect(
     dbname=DB_PG_DBNAME, 
     user=DB_PG_USER, 
@@ -49,9 +52,9 @@ rslts_pg = csr_pg.fetchall()
 
 # Test the Postgres connection
 if rslts_pg[0][0] == 1:
-    print(f'INFO: You have connected successfully to server: {DB_PG_HOST} database: {DB_PG_DBNAME}\n')
+    print(f'INFO: You have connected successfully to server: {DB_PG_HOST} database: {DB_PG_DBNAME}')
 else:
-    print(f'ERROR: A connection error occurred\n')
+    print(f'ERROR: A connection error occurred.\nExiting...')
     quit()
 
 PG_DROP_TABLE = "DROP TABLE IF EXISTS charactercreator_character"
@@ -71,6 +74,7 @@ CREATE TABLE charactercreator_character (
 """
 
 # Drop the Postgres table if it exists (so we can create it)
+print(f'INFO: Drop and create a new Postgres db table...')
 csr_pg.execute(PG_DROP_TABLE)
 conn_pg.commit()                 # commit the drop transaction
 
@@ -86,6 +90,7 @@ INSERT INTO charactercreator_character
 """
 
 # Insert the rows exported from the sqlite database into the Postgres database table 
+print(f'INFO: Import the Python object data records into the Postgres db...')
 execute_values(
     csr_pg, 
     PG_INSERT, 
@@ -95,9 +100,10 @@ conn_pg.commit()
 # What's the count of the newly imported rows
 csr_pg.execute("SELECT count(*) FROM charactercreator_character")
 rslts_pg = csr_pg.fetchone()
-print(f'Number of rows in the Postgres charactercreator_character table (expecting 302): {rslts_pg[0]}')
+print(f'DBUG: Number of rows in the Postgres charactercreator_character table (expecting 302): {rslts_pg[0]}')
 
 # Close the sqlite3 and Postgres cursors
+print(f'INFO: Clean up the various database connections...')
 csr_sl.close()
 csr_pg.close()
 
@@ -105,4 +111,4 @@ csr_pg.close()
 conn_sl.close()
 conn_pg.close()
 
-
+print(f'INFO: Processing complete\n**************\n')
