@@ -50,8 +50,53 @@ results7 = curs.execute(query7).fetchone()
 
 print ("total items: ", results7)
 
-query8 = "SELECT COUNT(*) from armory_weapon - COUNT(*) from armory_item"
+# " - How many of the Items are weapons? How many are not? "
+
+query8 = "SELECT COUNT(*) from armory_weapon"
 
 results8 = curs.execute(query8).fetchone()
 
 print ("total weapons: ", results8) 
+
+print ("non-weapon items: ",results7[0] - results8[0])
+
+# "How many Items does each character have? (Return first 20 rows)"
+
+query9 = """
+SELECT character_id, 
+    COUNT(item_id)
+FROM charactercreator_character_inventory
+GROUP BY character_id
+LIMIT 20
+"""
+
+results9 = curs.execute(query9).fetchall()
+print ("--------------------------------------------------------------")
+print("How many items does each character have? (Return first 20 rows)")
+print ("--------------------------------------------------------------")
+for i in results9:
+    print("Character ID:",i[0], "# of Items:", i[1])
+# print ("total items per character: ", results9)
+
+
+print ("----------------------------------------------------------------")
+
+# How many Weapons does each character have? (Return first 20 rows)
+
+query10 = """
+SELECT character_id, 
+    COUNT(item_id)
+FROM charactercreator_character_inventory
+WHERE item_id > 137 and item_id < 175
+GROUP BY character_id
+LIMIT 20
+"""
+
+results10 = curs.execute(query10).fetchall()
+
+print("How many Weapons does each character have? (Return first 20 rows)")
+print ("----------------------------------------------------------------")
+for i in results10:
+    print("Character ID:",i[0], "# of Weapons:", i[1])
+
+
