@@ -51,13 +51,81 @@ randomized, the numeric and boolean fields were left as defaults.
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
+
 - How many total Characters are there?
+A: 297 distinct names but 299 character_id's 
 - How many of each specific subclass?
+Cleric: 74
+Mage: 107
+  Necromancer: subclass of mage: 11
+Fighter:67
+Theif: 51
 - How many total Items?
+172 distince item names versus 174 distinct item ids
+total in game: 898 items(amount in character inventory)
 - How many of the Items are weapons? How many are not?
+203 weapons in player's inventory
+37 unique weapons. 
+172-37 = 135 non-weapons 
 - How many Items does each character have? (Return first 20 rows)
+| character_id | count(inventory.item_id) |
+|--------------|--------------------------|
+|            7 | 5                        |
+|           17 | 5                        |
+|           18 | 5                        |
+|            4 | 4                        |
+|            5 | 4                        |
+|            9 | 4                        |
+|           10 | 4                        |
+|           13 | 4                        |
+|           14 | 4                        |
+|           15 | 4                        |
+|            1 | 3                        |
+|            2 | 3                        |
+|            8 | 3                        |
+|           11 | 3                        |
+|           12 | 3                        |
+|           19 | 3                        |
+|            3 | 2                        |
+|            6 | 1                        |
+|           16 | 1                        |
+|           20 | 1                        |
+
 - How many Weapons does each character have? (Return first 20 rows)
+| character_id | count(inventory.item_id) |
+|--------------|--------------------------|
+|           27 | 3                        |
+|           36 | 3                        |
+|            5 | 2                        |
+|           29 | 2                        |
+|           35 | 2                        |
+|           37 | 2                        |
+|           38 | 2                        |
+|           39 | 2                        |
+|            7 | 1                        |
+|           11 | 1                        |
+|           20 | 1                        |
+|           22 | 1                        |
+|           23 | 1                        |
+|           26 | 1                        |
+|           30 | 1                        |
+|           32 | 1                        |
+|           34 | 1                        |
+|           40 | 1                        |
+|           41 | 1                        |
+|           47 | 1                        |
+
 - On average, how many Items does each Character have?
+2.9735
+<!-- SELECT Avg(count)
+	FROM(
+		SELECT
+	inventory.character_id,
+	COUNT(inventory.item_id) as count 
+FROM charactercreator_character_inventory AS inventory
+-- JOIN armory_weapon ON inventory.item_id = armory_weapon.item_ptr_id
+GROUP BY 1) -->
+
 - On average, how many Weapons does each character have?
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
