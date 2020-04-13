@@ -1,6 +1,6 @@
 
 import pandas as  pd
-from my_second_assignment.app.helper import create_and_load_table , load_from
+from my_second_assignment.app.helper import create_and_load_table , load_from, insert_apostrophe
 from dotenv import load_dotenv
 import os
 import psycopg2
@@ -14,6 +14,10 @@ load_dotenv()
 TITANIC_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "titanic.csv")
 # getting the titanic df
 df = pd.read_csv(TITANIC_PATH)
+
+# changing the column name to add apostrophes
+# where needed
+df["Name"] = df["Name"].apply(insert_apostrophe)
 
 # creating the sqlite3 conncetion
 connection = sqlite3.connect("titanic.sqlite3")
@@ -41,7 +45,7 @@ quer_titanic_create = """
                         id_num        SERIAL PRIMARY KEY,
                         survived INT,	
                         pclass	INT,
-                        name VARCHAR(60),
+                        name VARCHAR(80),
                         sex  gender,
                         age INT,	
                         siblings_spouses_aboard INT,

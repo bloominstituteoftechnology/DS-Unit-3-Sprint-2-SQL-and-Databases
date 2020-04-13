@@ -4,6 +4,21 @@ import sqlite3
 
 
 
+# This is a method that will add apostrophe 
+# into the strings where an apostrophe already resides
+def insert_apostrophe(obj):
+    s = str(obj)
+    #looping through adding apostrophe 
+    #to each location where an apostrophe
+    # is already found.
+    startPoint = 0
+    while(True):
+        ind = s.find("\'", startPoint)
+        if ind == -1:
+            return s
+        else:
+            s = s[:ind] + "\'" + s[ind:]
+            startPoint = ind + 2 
 
 
 # Method to check if the table is found in the tuples
