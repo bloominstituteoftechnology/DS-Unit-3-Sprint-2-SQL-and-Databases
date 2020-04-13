@@ -143,9 +143,9 @@ print('----------------------------------------------------------')
 q10 = '''
 SELECT 
     cha.character_id
-	,cha.name
-	,count(distinct item_id) as total_items
-	,count(distinct item_ptr_id) as total_weapons
+    ,cha.name
+    ,count(distinct item_id) as total_items
+    ,count(distinct item_ptr_id) as total_weapons
 FROM charactercreator_character as cha
 LEFT JOIN charactercreator_character_inventory as inv ON cha.character_id = inv.character_id
 LEFT JOIN armory_weapon as wpn ON inv.item_id = wpn.item_ptr_id
