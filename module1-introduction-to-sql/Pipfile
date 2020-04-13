@@ -7,6 +7,8 @@ verify_ssl = true
 pylint = "*"
 
 [packages]
+pandas = "*"
+sqlalchemy = "*"
 
 [requires]
 python_version = "3.8"
