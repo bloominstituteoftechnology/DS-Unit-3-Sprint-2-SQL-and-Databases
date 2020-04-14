@@ -6,7 +6,7 @@ import sqlite3
 
 # This is a method that will add apostrophe 
 # into the strings where an apostrophe already resides
-def insert_apostrophe(obj):
+def remove_apostrophe(obj):
     s = str(obj)
     #looping through adding apostrophe 
     #to each location where an apostrophe
@@ -17,8 +17,8 @@ def insert_apostrophe(obj):
         if ind == -1:
             return s
         else:
-            s = s[:ind] + "\'" + s[ind:]
-            startPoint = ind + 2 
+            s = s[:ind] + " " +  s[ind+1:]
+            startPoint = ind  
 
 
 # Method to check if the table is found in the tuples

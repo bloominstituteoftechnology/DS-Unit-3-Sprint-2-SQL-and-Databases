@@ -1,12 +1,19 @@
 
 import pandas as  pd
-from my_second_assignment.app.helper import create_and_load_table , load_from, insert_apostrophe
+from my_second_assignment.app.helper import create_and_load_table , load_from, remove_apostrophe
 from dotenv import load_dotenv
 import os
 import psycopg2
 import sqlite3
 
 load_dotenv()
+
+
+# Creating the postgresql connection
+DB_HOST = os.getenv("DB_HOST")
+DB_USER = os.getenv("DB_USER")
+DB_NAME = os.getenv("DB_NAME")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 # first will get the data of the csv of the titanic
 
@@ -17,9 +24,10 @@ df = pd.read_csv(TITANIC_PATH)
 
 # changing the column name to add apostrophes
 # where needed
-df["Name"] = df["Name"].apply(insert_apostrophe)
+df["Name"] = df["Name"].apply(remove_apostrophe)
 
 # creating the sqlite3 conncetion
+# saving the database but just in memory
 connection = sqlite3.connect("titanic.sqlite3")
 # will change the titancic df to sql
 df.to_sql("titanic", con=connection, if_exists='replace' )
@@ -45,7 +53,7 @@ quer_titanic_create = """
                         id_num        SERIAL PRIMARY KEY,
                         survived INT,	
                         pclass	INT,
-                        name VARCHAR(80),
+                        name VARCHAR(120),
                         sex  gender,
                         age INT,	
                         siblings_spouses_aboard INT,
@@ -65,19 +73,27 @@ quer_insert = """
         """
 
 
-# Creating the postgresql connection
-DB_HOST = os.getenv("DB_HOST")
-DB_USER = os.getenv("DB_USER")
-DB_NAME = os.getenv("DB_NAME")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 
+#creating the connection
 p_connection = psycopg2.connect(dbname=DB_NAME , password=DB_PASSWORD , user=DB_USER , host=DB_HOST )
 
 # Using the create and the load function 
 # to make the table on the postgresql if needed
-#create_and_load_table(p_connection, titanic_Table, quer_titanic_create, quer_insert, "titanic", load_only=True)
+create_and_load_table(p_connection, titanic_Table, quer_titanic_create, quer_insert, "titanic")
 
-#h.load_data(p_connection, p_connection.cursor(), titanic_Table, quer_insert)
 
-load_from(p_connection, titanic_Table, quer_insert, 363)
+# Checking the see the number of rows that are now in the 
+# dataBase
+cursor = p_connection.cursor()
+cursor.execute("SELECT count(*) FROM titanic;")
+result = cursor.fetchall()
+print("The number of rows that are in the titanic table is:", result)
+
+
+# This returning the First 34 names
+
+cursor.execute("SELECT titanic.name FROM titanic LIMIT 34")
+result = cursor.fetchall()
+print("\n")
+print("These are the 34 first names in the table titanic", result)
