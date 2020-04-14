@@ -1,8 +1,10 @@
 # app/elephant_queries.py
 
 import os
+import json
 from dotenv import load_dotenv
 import psycopg2
+
 
 load_dotenv()
 
