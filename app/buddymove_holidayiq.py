@@ -6,7 +6,7 @@ import os
 # construct a path to wherever your database exists
 CSV_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "module1-introduction-to-sql", "buddymove_holidayiq.csv")
 data = pandas.read_csv(CSV_FILEPATH)
-
+data = data.rename(columns={'User Id': 'user_id'})
 print(data.shape)
 
 # create a connection to the 'buddymove_holidayiq.splite3' file path
@@ -21,11 +21,13 @@ data.to_sql('buddymove_holidayiq', connection, if_exists='replace')
 cursor = connection.cursor()
 
 
-#query = "total number of characters;"
+#query = "total number of rows;"
 query = """
-SELECT *
+SELECT count(user_id) as user_id
 FROM buddymove_holidayiq
 """
 
 result = cursor.execute(query).fetchall()
-print(result)
+for row in result:
+    print(row["user_id"])
+
