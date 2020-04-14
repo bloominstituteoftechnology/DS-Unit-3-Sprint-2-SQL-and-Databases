@@ -144,3 +144,23 @@ for i in results12:
 print ("Average items of each character: ", total2/len(results12))
 
 print ("-------------------------------------------------------")
+
+
+
+CREATE TABLE test_table (
+  id        SERIAL PRIMARY KEY,
+  name  varchar(40) NOT NULL,
+  data    JSONB
+);
+
+
+
+INSERT INTO test_table (name, data) VALUES
+(
+  'A row name',
+  null
+),
+(
+  'Another row, with JSON',
+  '{ "a": 1, "b": ["dog", "cat", 42], "c": true }'::JSONB
+);
