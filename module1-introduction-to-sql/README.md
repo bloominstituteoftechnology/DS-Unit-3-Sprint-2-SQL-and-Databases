@@ -57,9 +57,34 @@ note: I'm going to save the query with the answer
 SELECT count(name) FROM charactercreator_character
 302
 - How many of each specific subclass?
+Mages
+Select count(charactercreator_mage.character_ptr_id) FROM charactercreator_mage
+108
+
+Clerics: 75
+same code structure from mages
+
+Fighters: 68
+
+Theifs: 51
+
+Necromancers: 11
+
+
 - How many total Items?
+SELECT count(item_id) from armory_item
+174
+
 - How many of the Items are weapons? How many are not?
+SELECT count(item_ptr_id) FROM armory_weapon
+37 are weapons
+140 are not 
+
 - How many Items does each character have? (Return first 20 rows)
+SELECT character_id, count(item_id) from charactercreator_character_inventory GROUP BY character_id ORDER BY count(item_id) DESC LIMIT 20
+
+All top 20 have 5
+
 - How many Weapons does each character have? (Return first 20 rows)
 - On average, how many Items does each Character have?
 - On average, how many Weapons does each character have?
