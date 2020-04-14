@@ -100,3 +100,47 @@ for i in results10:
     print("Character ID:",i[0], "# of Weapons:", i[1])
 
 
+# On average, how many Items does each Character have?
+# Need to take # of weapons column and add every value
+# then divide by the total number of values.
+
+query11 = """
+SELECT character_id, 
+    COUNT(item_id)
+FROM charactercreator_character_inventory
+WHERE item_id > 137 and item_id < 175
+GROUP BY character_id
+"""
+
+
+print ("-------------------------------------------------------")
+results11 = curs.execute(query11).fetchall()
+
+total = 0
+for i in results11:
+    total += i[1]
+
+print ("Average weapons of each character: ", total/len(results11))
+print ("-------------------------------------------------------")
+
+
+# On average, how many Items does each Character have?
+
+
+
+query12 = """
+SELECT character_id, 
+    COUNT(item_id)
+FROM charactercreator_character_inventory
+GROUP BY character_id
+"""
+
+results12 = curs.execute(query12).fetchall()
+
+total2 = 0
+for i in results12:
+    total2 += i[1]
+
+print ("Average items of each character: ", total2/len(results12))
+
+print ("-------------------------------------------------------")
