@@ -38,7 +38,7 @@ df = pd.read_csv(TITANIC_PATH)
 # not sure how to do this programmatically, so I'm just going to hard
 # code it.  Less than ideal.
 create_table = '''
-CREATE TABLE passengers (
+CREATE TABLE IF NOT EXISTS passengers (
     survived INTEGER
     ,pclass INTEGER
     ,name VARCHAR(100)
@@ -71,7 +71,6 @@ INSERT INTO passengers (
 # data types, so I have to register the np.int64 data type so it knows how to
 # handle it. For my future self, just run a bunch of insertion queries, or just
 # append the database using .to_sql() from the data frame.
-from psycopg2.extensions import register_adapter, AsIs
 psycopg2.extensions.register_adapter(np.int64, psycopg2._psycopg.AsIs)
 
 # prep dataframe for execute_values.  Should be a list of tuples
