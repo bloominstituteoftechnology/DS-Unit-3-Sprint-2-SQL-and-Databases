@@ -1,11 +1,14 @@
 
 
 import psycopg2
+import dotenv
 
-DB_NAME = 'idxmbhro'
-DB_PW = 'DQIxtzVagU-jSEK44j7YJjPimqsEyOOV'
-DB_HOST = 'drona.db.elephantsql.com'
-DB_USER = 'idxmbhro'
+DB_NAME = os.getenv("DB_NAME")
+DB_PW = os.getenv("DB_PW")
+DB_HOST = os.getenv("DB_HOST")
+DB_USER = os.getenv("DB_USER")
+
+load_dotenv()
 
 ### Connect to ElephantSQL-hosted PostgreSQL
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER,
