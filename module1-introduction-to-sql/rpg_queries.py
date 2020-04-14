@@ -1,10 +1,13 @@
 import os
 import sqlite3
 
-connection = sqlite3.connect("rpg_db.sqlite3")
-connection.row_factory = sqlite3.Row
+DB_FILEPATH = os.path.join(os.path.dirname(__file__),"rpg_db.sqlite3")
 
-cursor = connection.cursor()
+conn = sqlite3.connect(DB_FILEPATH)
+
+# conn.row_factory = sqlite3.Row
+
+cursor = conn.cursor()
 
 #comment queries with what they're doing
 query = "SELECT count(distinct character_id) FROM charactercreator_character"
