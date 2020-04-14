@@ -5,7 +5,7 @@ DB_FILEPATH = os.path.join(os.path.dirname(__file__),"rpg_db.sqlite3")
 
 conn = sqlite3.connect(DB_FILEPATH)
 
-# conn.row_factory = sqlite3.Row
+conn.row_factory = sqlite3.Row
 
 cursor = conn.cursor()
 
