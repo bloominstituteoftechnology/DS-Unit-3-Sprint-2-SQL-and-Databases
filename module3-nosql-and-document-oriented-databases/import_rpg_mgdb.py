@@ -3,6 +3,33 @@ import sys
 import sqlite3
 import pymongo
 
+# ********************************************************************
+# QUESTION: "How was working with MongoDB different from working with
+#    PostgreSQL? What was easier, and what was harder?"
+#
+# Most of my database experience actually has been with MongoDB so I may not
+# provide a fair or unbiased answer.  However from my general experience
+# I like MongoDB and NoSQL database structures because they are very flexible to update.
+# If you need a new field (column) or collection (table), your code can literally
+# just add it on the fly and MongoDB will create it.  This is very helpful 
+# when doing new or "greenfield" development while the database schema is being "discovered".
+#
+# A strength of RDBMS are foreign key references and the ability to normalize
+# data and subsequently query data relationships via joins.  Because database schemas aren't set
+# in NoSQL databases such as MongoDB, oftentimes data needs to be duplicated in multiple 
+# places which can lead to higher storage requirements and the potential for stale or
+# confusing states of data.
+# 
+# MongoDB has a javascript like shell in which ad hoc querying and other database interactions
+# can be executed. However, the user needs to learn a new and unwieldy syntax.  I sometimes just
+# miss the capability to whip out a handy "SELECT x FROM y WHERE z;" command!  If a user
+# comes to NoSQL from the RDBMS world, they can't easily leverage their knowledge of standard SQL,
+# well understood database concepts, and common tooling which have been in use for decades.
+#
+# As a weekend hacker and programming newbie, I didn't have to relearn SQL knowledge
+# or ignore long held practices and conventions.  I was a good candidate for a NoSQL neophyte! :)
+# ********************************************************************
+
 # Connection details for the sqlite3 database
 DB_FILEPATH = "./rpg_db.sqlite3"
 DB_SLT_TABLES = [
