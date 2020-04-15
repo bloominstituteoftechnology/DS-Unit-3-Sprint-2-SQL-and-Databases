@@ -11,6 +11,9 @@ python-dotenv = "*"
 psycopg2-binary = "*"
 psycopg2 = "*"
 psychopg2-binary = "*"
+sqlalchemy = "*"
+pandas = "*"
+psychopg-binary = "*"
 
 [requires]
 python_version = "3.8"
