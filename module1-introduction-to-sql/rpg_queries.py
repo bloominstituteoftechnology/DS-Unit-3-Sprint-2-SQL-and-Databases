@@ -14,7 +14,7 @@ query_q4 = "SELECT count(item_ptr_id) FROM armory_weapon"
 query_q7 = ("""select avg(item_count) as avg_items
 from (
     select
-      c.character_id
+       c.character_id
       ,c."name" as character_name\
       ,count(distinct inv.item_id) as item_count
     from charactercreator_character c
