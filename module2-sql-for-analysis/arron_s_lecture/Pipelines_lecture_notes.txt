@@ -1,0 +1,23 @@
+ETL Data Pipeline
+Extract Transform Load pipeline
+kind of similar to an iol pipeline where one end is connnected to a pump, then it goes down a pipe and at the end of the pip it 
+dumps into a resevor thats the EL part of ETL
+allot of the nuance is in the T step where you transof the data beween the steps,
+
+Extracting data from a csv pd.to_csv
+minimum transformation is getting it to fit into the destination database
+Put it into a sql database
+
+Lots of changes possible
+
+there are best practice to building a pipeline but there are no hard
+this is how you do xzy
+
+there are ETL's where the distination is a smaller datastructure
+in that instance then you would have to reduce the data to fit the destination
+
+Production Database: Database that is being used for Live Work Right Now. websites,services,big money being lost
+the right way to do something is to take a full copy of the production database as an anallist database.
+
+usally there is not ML happing in a pipeline, that happends after everything in a ETL pipeline.
+
