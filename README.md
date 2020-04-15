@@ -3,4 +3,4 @@ SQL and Databases for Data Science
 
 
 # 
-class note 
+SQL engineering and analysis 
