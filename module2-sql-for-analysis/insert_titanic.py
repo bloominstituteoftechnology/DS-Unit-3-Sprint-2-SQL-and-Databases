@@ -38,10 +38,3 @@ cur.close()
 conn.close()
 
 
-# f_contents = open('titanic.csv', 'r')
-# cur.copy_from(f_contents, "titable", columns=('Survived', 'Pclass','Name', 'Sex', 'Age', 'Sibling', 'Parents', 'Fare'), sep=",")
-
-# with open('titanic.csv', 'r') as f:
-#     next(f) # Skip the header row.
-# cur.copy_from(f, 'titable', sep=',')
-# conn.commit()
