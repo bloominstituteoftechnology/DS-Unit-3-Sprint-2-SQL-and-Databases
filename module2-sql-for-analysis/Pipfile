@@ -15,6 +15,7 @@ sqlalchemy = "*"
 pandas = "*"
 psychopg-binary = "*"
 numpy = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.8"

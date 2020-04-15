@@ -49,10 +49,10 @@ df = pd.read_csv(CSV_FILEPATH)
 # print(df.head())
 
 # INSERT THE DATA INTO THE TABLE
+insertion_query = "INSERT INTO passengers (id, survived, pclass, name, gender, age, sib_spouse_count, parent_child_count, fare) VALUES %s"
 rows_to_insert = list(df.to_records(index=False)
+# execute
+psycopg2.extras.execute_values(cursor, insertion_query, rows_to_insert)
 
-insertion_query = "INSERT INTO passengers (survived, pclass, name, gender, age, sib_spouse_count, parent_child_count, fare) VALUES %s"
-execute_values(cursor, insertion_query, rows_to_insert)
-
-# SAVE THE TRANSACTIONS
+# SAVE THE TRANSACTIONs
 connection.commit()
