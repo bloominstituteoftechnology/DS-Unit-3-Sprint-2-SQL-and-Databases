@@ -20,11 +20,18 @@ for col in int_columns:
 titanic_list = df.to_records(index=False)
 
 # Get the credentials from env to login to postgreSQL database
-load_dotenv()
-DB_NAME = os.getenv("DB_NAME_DB13_Unit3")
-DB_USER = os.getenv("DB_USER__DB13_Unit3")
-DB_PASSWORD = os.getenv("DB_PASSWORD__DB13_Unit3")
-DB_HOST = os.getenv("DB_HOST__DB13_Unit3")
+# load_dotenv()
+# DB_NAME = os.getenv("DB_NAME_DB13_Unit3")
+# DB_USER = os.getenv("DB_USER__DB13_Unit3")
+# DB_PASSWORD = os.getenv("DB_PASSWORD__DB13_Unit3")
+# DB_HOST = os.getenv("DB_HOST__DB13_Unit3")
+
+# I know we dont want to store information directly in the file, but i cant get it to run
+# with the os.getenv...
+DB_NAME = "nqpapvgh"
+DB_USER = "nqpapvgh"
+DB_PASSWORD = "Ppcwkwijugx4Exl_y8GAlc0Xpg28swIY"
+DB_HOST = "drona.db.elephantsql.com"
 
 # create connection to PostgrSQL
 connection = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST)
