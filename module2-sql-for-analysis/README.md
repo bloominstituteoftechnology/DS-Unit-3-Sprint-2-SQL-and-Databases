@@ -18,7 +18,7 @@ facilitate larger databases, but it is not necessary for the daily tasks.
 You can also install [pgAdmin](https://www.pgadmin.org/), which (like the DB
 Browser for SQLite) lets you connect to, explore, and query databases using a
 GUI tool. This is optional, but can be pretty handy.
-
+ 
 ## Live Lecture Task
 
 Yesterday we used a simple local workflow with SQLite - today, we'll work on
@@ -49,7 +49,7 @@ your repo. Then start writing PostgreSQL queries to explore the data!
 PostgreSQL is a real true powerful production database - explore the [official
 documentation](https://www.postgresql.org/docs/) as well as larger hosted
 offerings such as [Amazon RDS](https://aws.amazon.com/rds/postgresql/).
- 
+
 Try to install and use the actual [psycopg2](https://pypi.org/project/psycopg2/)
 package (as opposed to `psycop2-binary`) - this builds from source, so there are
 [prerequisites](http://initd.org/psycopg/docs/install.html#install-from-source)

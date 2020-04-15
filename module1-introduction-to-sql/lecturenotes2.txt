@@ -1,0 +1,90 @@
+
+-- what are all customers who live in the US,
+-- what are their email addresses
+SELECT 
+		--2 CustomerId,
+		--2FirstName,
+		--2LastName,
+		--2Country,
+		--2Email
+	-- count(CustomerId) as RowCount, -- deminatrating arrgrgate functions
+	count(DISTINCT CustomerId) as CustomerCount
+FROM customers
+
+-- using the in op
+-- WHERE Country in ("USA","Brazil")
+-- using logic ops
+WHERE (Country = "USA" or Country = "Brazil")
+
+-- sql for not operator
+-- WHERE Country <> "USA"
+-- sql for equals
+-- WHERE Country = "USA"
+
+-- ORDER BY Country ASC, LastName DESC -- Grouping the output buy certian columns
+
+-- 2 how many customer's live in the us or brazil?
+
+/*
+SELECT 
+	PlaylistId,
+	Name as playlist_name
+FROM playlists
+WHERE playlist_name LIKE "Classical%"
+*/
+
+/*
+-- home many customers live in each country
+-- going to want two columns one for country and one for customer count
+SELECT
+	--count(DISTINCT Country) as CountryCount
+	Country,
+	count(DISTINCT CustomerId) as CustomerCount
+FROM customers
+GROUP BY Country
+ORDER BY CustomerCount DESC
+*/
+/*
+-- do the same thing but only return the top 5
+SELECT
+	--count(DISTINCT Country) as CountryCount
+	Country,
+	count(DISTINCT CustomerId) as CustomerCount
+FROM customers
+GROUP BY Country
+ORDER BY CustomerCount DESC
+LIMIT 5
+*/
+
+/*
+
+--working with multiple tables
+-- row per track (3,503)
+-- SELECT * FROM genres
+SELECT 
+	tracks.TrackId,
+	tracks.Name as TrackName,
+	tracks.GenreId,
+	genres.Name as GenreName
+FROM tracks
+JOIN genres ON tracks.GenreId = genres.GenreId
+-- WHERE GenreId IS NULL -- there are no rows with null genres
+
+*/
+
+/*
+-- for each artist, how many albumns do they have?
+-- rows per artist (275 rows)
+-- columns for artist id, artist name, count of albumns
+-- SELECT * FROM artists
+-- SELECT * FROM albums
+
+SELECT
+	r.ArtistId,
+	r.Name as ArtistName,
+	l.Title as AlbumTitle
+FROM artists as r
+LEFT JOIN albums as l on r.ArtistId = l.ArtistId --LEFT JOIN == keeping everything ffrom the origin db
+GROUP BY 1,2
+ORDER BY 1
+*/

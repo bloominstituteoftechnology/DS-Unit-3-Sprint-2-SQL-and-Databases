@@ -37,6 +37,18 @@ so here. Then answer the following question (can be a comment in the top of your
 code or in Markdown) - "How was working with MongoDB different from working with
 PostgreSQL? What was easier, and what was harder?"
 
+# Assignment - Answer
+### I feel that Mongo is deffinitly alot diffrent then a postgres just because
+### of it's structure it acts more as a composite image of databases which
+### can be nice depending on the task at hand, also the mongoDB scales really
+### well because of this composit of servers handling data.
+### I think in general using a postgreSQL data base is easier just because
+### there are easier ways to connect to the db itself and there seems like alot
+### of hoop jumping to get the mongodb to work properly.
+### that being said i think that mongo is a better overall DB technology because
+### of how it interacts with oop and JSON I think that it is more flexible esspecially
+### in our feild of study.
+
 There is no other required tasks to turn in, but it is suggested to then revisit
 the first two modules, rework/complete things as needed, and just check out with
 fresh eyes the SQL approach. Compare and contrast, and come with questions

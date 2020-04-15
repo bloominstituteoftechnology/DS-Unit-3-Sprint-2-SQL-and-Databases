@@ -1,0 +1,9 @@
+/*
+-- this is a comment double dash and a space
+SELECT 
+	PlaylistId,
+	Name as playlistName
+from playlists
+*/
+-- multi line comments is star slash and slach start
+
