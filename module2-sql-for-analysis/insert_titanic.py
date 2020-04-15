@@ -14,10 +14,6 @@ TITANIC_DB_HOST = os.getenv("TITANIC_DB_HOST")
 TITANIC_DB_USER = os.getenv("TITANIC_DB_USER")
 
 
-
-
-
-
 ### Connect to ElephantSQL-hosted PostgreSQL
 
 conn = psycopg2.connect(dbname=TITANIC_DB_NAME, user=TITANIC_DB_USER,
