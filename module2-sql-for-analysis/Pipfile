@@ -14,6 +14,7 @@ psychopg2-binary = "*"
 sqlalchemy = "*"
 pandas = "*"
 psychopg-binary = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.8"
