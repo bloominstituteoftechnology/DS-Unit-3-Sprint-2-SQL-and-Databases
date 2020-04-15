@@ -18,38 +18,43 @@ print(type(connection)) #> <class 'psycopg2.extensions.connection'>
 cursor = connection.cursor()
 print(type(cursor)) #> <class 'psycopg2.extensions.cursor'>
 
+
+# cursor.execute("SELECT * from ")
+
+# print("------------")
+# results = cursor.fetchall()
+# print(results)
+
+
 #insertion_query = """
-#INSERT INTO test_table (name, data) VALUES
+# INSERT INTO test_table (name, data) VALUES
 #('A row name', null),
 #('Another row, with JSON', '{ "a": 1, "b": ["dog", "cat", 42], "c": true }'::JSONB);
 #"""
 #cursor.execute(insertion_query)
 
-my_dict = { "a": 1, "b": ["dog", "cat", 42], "c": 'true' }
+# my_dict = { "a": 1, "b": ["dog", "cat", 42], "c": 'true' }
 #insertion_query = "INSERT INTO test_table (name, data) VALUES (%s, %s)"
 #cursor.execute(insertion_query,
 #  ('A rowwwww', 'null')
 #)
+
 #cursor.execute(insertion_query,
 #  ('Another row, with JSONNNNN', json.dumps(my_dict))
 #)
 
-rows_to_insert = [
-    ('A rowwwww', 'null'),
-    ('Another row, with JSONNNNN', json.dumps(my_dict))
-] # list of tuples
+# rows_to_insert = [
+#     ('A rowwwww', 'null'),
+#     ('Another row, with JSONNNNN', json.dumps(my_dict))
+# ] # list of tuples
 
-# h/t: https://stackoverflow.com/questions/8134602/psycopg2-insert-multiple-rows-with-one-query
-insertion_query = "INSERT INTO test_table (name, data) VALUES %s"
-execute_values(cursor, insertion_query, rows_to_insert)
+# # h/t: https://stackoverflow.com/questions/8134602/psycopg2-insert-multiple-rows-with-one-query
+# insertion_query = "INSERT INTO test_table (name, data) VALUES %s"
+# execute_values(cursor, insertion_query, rows_to_insert)
 
-cursor.execute("SELECT * from test_table;")
-#first_result = cursor.fetchone()
-#print(first_result)
-print("--------")
-all_results = cursor.fetchall()
-print(all_results)
+# cursor.execute("SELECT * from test_table;")
 
-# ACTUALLY SAVE THE TRANSACTIONS
-# if creating tables or inserting data (changing db)
-connection.commit()
+
+# # ACTUALLY SAVE THE TRANSACTIONS
+# # if creating tables or inserting data (changing db)
+# # connection.commit()
