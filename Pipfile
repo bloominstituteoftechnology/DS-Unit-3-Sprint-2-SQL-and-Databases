@@ -8,6 +8,8 @@ pylint = "*"
 
 [packages]
 pandas = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
