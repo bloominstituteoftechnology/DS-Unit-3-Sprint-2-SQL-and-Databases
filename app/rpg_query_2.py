@@ -5,15 +5,32 @@ import json
 import psycopg2
 from dotenv import load_dotenv
 from psycopg2.extras import execute_values
+import sqlite3
+import pandas as pd
+import numpy as np
+
+DB_FILEPATH = os.path.join(os.path.dirname(__file__), '..','data', 'rpg_db.sqlite3')
+
+connection = sqlite3.connect(DB_FILEPATH)
+
+psycopg2.extensions.register_adapter(np.int64, psycopg2._psycopg.AsIs)
 
 load_dotenv()
 
-DB_NAME = os.getenv("DB_NAME")
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_HOST = os.getenv("DB_HOST")
+RPG_NAME = os.getenv("RPG_NAME")
+RPG_USER = os.getenv("RPG_USER")
+RPG_PASSWORD = os.getenv("RPG_PASSWORD")
+RPG_HOST = os.getenv("RPG_HOST")
 
-connection = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST)
+connection = psycopg2.connect(dbname=RPG_NAME, user=RPG_USER, password=RPG_PASSWORD, host=RPG_HOST)
+print(type(connection))
+
+cursor = connection.cursor()
+print("CURSOR", cursor)
+
+
+
+connection = psycopg2.connect(dbname=RPG_NAME, user=RPG_USER, password=RPG_PASSWORD, host=RPG_HOST)
 
 cursor = connection.cursor()
 print(type(cursor))
@@ -64,3 +81,5 @@ for query in queries:
 #ON i.item_id = w.item_ptr_id
 #GROUP BY c.character_id
 #LIMIT 20
+
+connection.commit()
