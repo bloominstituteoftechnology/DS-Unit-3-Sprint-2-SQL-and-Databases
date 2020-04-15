@@ -11,7 +11,11 @@ load_dotenv()
 TITANIC_DB_NAME = os.getenv("TITANIC_DB_NAME")
 TITANIC_DB_PW = os.getenv("TITANIC_DB_PW")
 TITANIC_DB_HOST = os.getenv("TITANIC_DB_HOST")
-TITANIC_DB_USER = os.getenv(TITANIC_"DB_USER")
+TITANIC_DB_USER = os.getenv("TITANIC_DB_USER")
+
+
+
+
 
 
 ### Connect to ElephantSQL-hosted PostgreSQL
@@ -23,11 +27,21 @@ conn = psycopg2.connect(dbname=TITANIC_DB_NAME, user=TITANIC_DB_USER,
 
 cur = conn.cursor()
 
-import psycopg2
-conn = psycopg2.connect("host=localhost dbname=postgres user=postgres")
-cur = conn.cursor()
-with open('user_accounts.csv', 'r') as f:
-# Notice that we don't need the `csv` module.
-next(f) # Skip the header row.
-cur.copy_from(f, 'users', sep=',')
+titanic_csv = os.path.join(os.path.dirname(__file__), 'titanic.csv')
+
+with open(titanic_csv, 'r') as titanic:
+    next(titanic)
+    cur.copy_from(titanic, 'titable', sep=',')
+
 conn.commit()
+cur.close()
+conn.close()
+
+
+# f_contents = open('titanic.csv', 'r')
+# cur.copy_from(f_contents, "titable", columns=('Survived', 'Pclass','Name', 'Sex', 'Age', 'Sibling', 'Parents', 'Fare'), sep=",")
+
+# with open('titanic.csv', 'r') as f:
+#     next(f) # Skip the header row.
+# cur.copy_from(f, 'titable', sep=',')
+# conn.commit()
