@@ -6,8 +6,6 @@ import json
 import pandas as pd
 from sqlalchemy import create_engine
 
-load_dotenv()
-
 CSV_filepath = os.path.join(os.path.dirname(__file__), "..", "module2-sql-for-analysis", "titanic.csv")
 df = pd.read_csv(CSV_filepath)
 print(df.head())
@@ -36,6 +34,7 @@ cursor = connection.cursor()
 
 # create the query to create a new titanic table in database
 query = """
+DROP TABLE IF EXISTS titanic_table;
 CREATE TABLE IF NOT EXISTS titanic_table(
   id SERIAL PRIMARY KEY,
   Survived INT CHECK (Survived = 0 OR Survived = 1),
