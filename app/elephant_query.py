@@ -6,6 +6,7 @@ import psycopg2
 from dotenv import load_dotenv
 from psycopg2.extras import execute_values
 
+
 # adds the contents of the .env file to our environment
 # looking in the .env file for env vars
 load_dotenv()
