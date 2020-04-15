@@ -16,8 +16,9 @@ def main():
     #connecting to the client
     client = pymongo.MongoClient(uri)
 
-    #naming and creating the database. Future Me: This is the only call you 
-    #need, and you can choose what ever name you want. I chose rpg_db
+    #naming and creating the database. Future Me: this is different for the
+    # default database object. i'd just go client['rpg_db'] and similarly for
+    # collections
     db = SqliteToMongo(client = client, name = 'rpg_db')
 
     print('Sanity Checks')
@@ -46,7 +47,7 @@ def main():
     print('Sanity Check for 1:1 tables to collection creation')
     print('-------------------------------------------------------------------')
     print('SQLite number of tables:', cur.execute(qry).fetchone()[0])
-    print('MongoDB number of tables:', len(db.list_collection_names()))
+    print('MongoDB number of collections:', len(db.list_collection_names()))
     print('-------------------------------------------------------------------')
 
     for tab in db.tables:
@@ -55,8 +56,8 @@ def main():
 
         qry = 'SELECT count(*) as row_count FROM ' + tab + ';'
 
-        print('SQLite number of tables:', cur.execute(qry).fetchone()[0])
-        print('MongoDB number of tables:', db[tab].count_documents({}))
+        print('SQLite number of rows:', cur.execute(qry).fetchone()[0])
+        print('MongoDB number of documents:', db[tab].count_documents({}))
 
 class SqliteToMongo(pymongo.database.Database):
 
