@@ -8,7 +8,7 @@ load_dotenv() #> loads contents of the .env file into the script's environment
 
 DB_NAME = "pujosgiv"
 DB_USER = "pujosgiv"
-DB_PASSWORD = "***REMOVED***"
+DB_PASSWORD = ""
 DB_HOST = "drona.db.elephantsql.com"
 
 connection = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST)
