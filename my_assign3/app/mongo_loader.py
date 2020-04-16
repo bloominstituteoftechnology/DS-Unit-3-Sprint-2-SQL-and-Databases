@@ -46,6 +46,7 @@ class Mongo_loader:
         self.client = client
         self.sql_connection = sql_connection
         self.sql_cursor = {}
+        self.collections = {}
         self.postgres_connection = postgres_connection
 
         self.sql_tables = {}
@@ -70,11 +71,16 @@ class Mongo_loader:
         return self.client
     
     # This method will make the database and will just use a 
-    def make_database(self, name):
-        db = self.client[name]
-        return db 
+    def make_collection_database(self, name):
+        collection_db = self.client[name]
+        self.collections[name] = collection_db
+        return collection_db 
     #def make_database(self, name):
         
+
+    # This is a method that will return the collection asked for
+    def get_collection(name):
+        return self.collections.get(name, "Nope")
         
     # This is a method that will get the data
     # from an sql and store it in memory
@@ -106,8 +112,10 @@ class Mongo_loader:
 
     # This method will get the sql tables that are stored in the 
     # dictionary for the
-    def get_stored_sql_table(self, table):
-        return self.sql_tables.get("table", "Table not found")
+    def get_stored_sql_table(self, table_name):
+        
+        return self.sql_tables.get(table_name, "Table not found")
+        
 
 
     # This method will be able to get the multiple
@@ -122,14 +130,67 @@ class Mongo_loader:
 
     # This method will return the column names of the 
     # tables for sql
-    def get_column_names_sql_table(self, table):
+    
+    def get_column_names_sql_table(self, table_name):
         if self.sql_cursor == None:
-            print("There is no cursor to use this method")
+            print("There is no cursor to use this method or you didn't pass in the table you wanted to use")
         columns = []
-        for column  in self.sql_cursor.get(table).description:
+        for column  in self.sql_cursor.get(table_name).description:
             columns.append(column[0])
         return columns
     
+    # This is a method that will turn the table int
+    # a list of dictionaries.
+    # Each row will be a new dictionary
+
+    def __make_table_list(self, table_name):
+        table_row_dict_list = []
+        table_columms  =  self.get_column_names_sql_table(table_name)
+        table_tuple_list =self.get_stored_sql_table(table_name)
+
+        if table_tuple_list == "Table not found":
+            print("This table is not found")
+            return
+            
+        for the_tuple in table_tuple_list:
+            list_of_tuples = []
+            for i in range(len(the_tuple)):
+                list_of_tuples.append((table_columms[i], the_tuple[i]))
+            the_dict = self.__make_list_tuples(list_of_tuples)
+            table_row_dict_list.append(the_dict)
+        
+        return table_row_dict_list
+
+    
+
+    # This method will load the table into the mongodb
+    # It internally will call the __make_table_list method then use the
+    # client to insert_many
+    def load_data_from_sql_table(self, table_name):
+        table_row_dict_list = self.__make_table_list(table_name)
+
+        the_collection = self.collections.get(table_name, "Nope")
+        
+        if the_collection == "Nope":
+            the_collection = self.make_collection_database(table_name)
+        
+        # using the collection
+        the_collection.insert_many()
+
+        self.client.
+
+
+
+    def __make_list_tuples(self, list_tup):
+        the_dict = {}
+        for k, v in list_tup:
+            the_dict[k] = v
+        return the_dict
+
+                
+        
+
+
     # them in a 
     # This method will make a connection and then return 
     # it when called.
