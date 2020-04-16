@@ -10,6 +10,8 @@ pandas = "*"
 python-dotenv = "*"
 psycopg2-binary = "*"
 sqlalchemy = "*"
+pymongo = "*"
+dnspython = "*"
 
 [requires]
 python_version = "3.7"
