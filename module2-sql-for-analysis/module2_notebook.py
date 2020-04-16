@@ -17,10 +17,12 @@ print("CONNECTION:", connection)
 cursor = connection.cursor()
 print("CURSOR:", cursor)
 
-cursor.execute('SELECT * from test_table;')
-result = cursor.fetchall()
-print("RESULT:", type(result))
-print(result)
+# cursor.execute('SELECT * from test_table;')
+# result = cursor.fetchall()
+# print("RESULT:", type(result))
+# print(result)
+
+# connection.commit()
 
 # create_table_statement = '''
 # CREATE TABLE test_table (
@@ -30,7 +32,26 @@ print(result)
 # );
 # '''
 
+# insert_statement = '''
+# INSERT INTO test_table (name, data) VALUES
+# (
+#   'A row name',
+#   null
+# ),
+# (
+#   'Another row, with JSON',
+#   '{ "a": 1, "b": ["dog", "cat", 42], "c": true }'::JSONB
+# );
+# '''
 
+# cursor.execute(insert_statement)
+
+# connection.commit()
+
+cursor.execute('SELECT * from test_table;')
+result = cursor.fetchall()
+print("RESULT:", type(result))
+print(result)
 
 # # module2-sql-for-analysis/module2_notebook.py
 
