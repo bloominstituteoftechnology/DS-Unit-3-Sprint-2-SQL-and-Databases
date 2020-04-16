@@ -58,7 +58,8 @@ For the following section, give a brief explanation of each of the SQL commands.
 13. **AS** - The AS command is used to rename a column or table with an alias.
 ​
 ## Starting From Scratch
-Create a file named `study_part1.py` and complete the exercise below. The only library you should need to import is `sqlite3`. Don't forget to be PEP8 compliant!
+Create a file named `study_part1.py` and complete the exercise below. 
+The only library you should need to import is `sqlite3`. Don't forget to be PEP8 compliant!
 1. Create a new database file call `study_part1.sqlite3`
 2. Create a table with the following columns
 ```
