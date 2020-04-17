@@ -8,7 +8,7 @@ import os
 
 m = Mongo_loader()
 
-#m.make_database("cat")
+m.make_database("rpg")
 
 # Will be getting the path for the sql connection
 rpg_path = os.path.join(os.path.dirname(__file__), "..", 
@@ -16,10 +16,14 @@ rpg_path = os.path.join(os.path.dirname(__file__), "..",
 
 m.make_sql_connection(rpg_path)
 
-m.get_sql_data("charactercreator_character")
-m.get_sql_data("armory_item")
+m.sql_to_list_of_tuples_data("charactercreator_character")
+m.sql_to_list_of_tuples_data("armory_item")
 
 m.get_column_names_sql_table("charactercreator_character")
 cols = m.get_column_names_sql_table("armory_item")
 
-print(cols)
+m.load_data_from_sql_table("charactercreator_character", "rpg", "charactercreator_character")
+
+char_creator = m.get_collection("charactercreator_character")
+
+print(char_creator.count_documents({})) # Trying to find the

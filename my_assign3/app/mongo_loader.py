@@ -46,13 +46,13 @@ class Mongo_loader:
         self.client = client
         self.sql_connection = sql_connection
         self.sql_cursor = {}
-        self.collections = {}
+        self.databases = {}
         self.postgres_connection = postgres_connection
 
         self.sql_tables = {}
 
         # These are the databases that the 
-        self.databases = {"num_databases":0}
+        #self.databases = {"num_databases":0}
 
         
             
@@ -70,29 +70,30 @@ class Mongo_loader:
     def get_client(self):
         return self.client
     
-    # This method will make the database and will just use a 
-    def make_collection_database(self, name):
-        collection_db = self.client[name]
-        self.collections[name] = collection_db
-        return collection_db 
+    # This method will make collection object and will just use a 
+    def make_database(self, name):
+        db = self.client[name]
+        self.databases[name] = db
+        #print(db)
+        return db 
     #def make_database(self, name):
         
 
     # This is a method that will return the collection asked for
-    def get_collection(name):
-        return self.collections.get(name, "Nope")
+    def get_database(self, name):
+        return self.databases.get(name, "Nope")
         
     # This is a method that will get the data
     # from an sql and store it in memory
     # If store is set to true then the instance 
     # of this class will store the table in a 
     # dictionary
-    def get_sql_data(self, table, store=True):
+    def sql_to_list_of_tuples_data(self, table_name, store=True):
         if self.sql_connection == None:
             return "There is no sql connection"
         s_curs = self.sql_connection.cursor()
-        self.sql_cursor[table] = s_curs
-        select_all_quer = "SELECT * FROM  " + table
+        self.sql_cursor[table_name] = s_curs
+        select_all_quer = "SELECT * FROM  " + table_name
         s_curs.execute(select_all_quer)
         the_table = s_curs.fetchall()
         #checking to see if this will work
@@ -100,7 +101,7 @@ class Mongo_loader:
         #print(f"This is the length {len(the_table)}")
         #add to the dictionary
         if store == True:
-            self.sql_tables[table] = the_table
+            self.sql_tables[table_name] = the_table
         return the_table
 
     # This is a method that will make the connection for the
@@ -122,11 +123,13 @@ class Mongo_loader:
     # tables and then store them in a dictionary.
     # The tables are passed in as a list of strings
     # will return a list with the tables in it
-    def get_sql_data_multiple_tables(self, table_names_list):
+    def sql_to_list_of_tuples_data_multiple_tables(self, table_names_list):
         table_list = []
         for i in range(len(table_names_list)):
-            table_list.append(self.get_sql_data(table_names_list[i]))
+            table_list.append(self.sql_to_list_of_tuples_data(table_names_list[i]))
         return table_list    
+
+
 
     # This method will return the column names of the 
     # tables for sql
@@ -139,11 +142,49 @@ class Mongo_loader:
             columns.append(column[0])
         return columns
     
-    # This is a method that will turn the table int
-    # a list of dictionaries.
-    # Each row will be a new dictionary
 
-    def __make_table_list(self, table_name):
+
+
+    def get_collection(self, collection_name, db_name=None):
+        """
+        This method will retun the collection.  If it is 
+        found.  if the db name is not passed in it will return the 
+        first found collection with the name specified.  
+        This will not guarrantee from which db the collection 
+        is comming from.
+        """
+        if db_name == None:
+            for db_name in self.databases:
+                ans = self.databases.get(db_name, "Nope")
+                if ans != "Nope":
+                    break
+        else:
+            ans = self.databases.get(db_name, "Nope")  
+
+        if ans == "Nope":
+            return None
+        # Getting the list of the collections in the 
+        # database
+        collection_list = ans.list_collection_names()
+        if collection_name in collection_list:
+            coll = ans.get_collection(collection_name)
+            return coll
+        
+
+            
+
+    # 
+    # 
+    # 
+
+    def __make_list_of_dict(self, table_name):
+        """
+            This is a method that will turn the table into
+            a list of dictionaries.
+            Each row will be a new dictionary.
+            tables will need to already be processed into list_of_tuples
+            before this method can be used.
+        """
         table_row_dict_list = []
         table_columms  =  self.get_column_names_sql_table(table_name)
         table_tuple_list =self.get_stored_sql_table(table_name)
@@ -156,32 +197,49 @@ class Mongo_loader:
             list_of_tuples = []
             for i in range(len(the_tuple)):
                 list_of_tuples.append((table_columms[i], the_tuple[i]))
-            the_dict = self.__make_list_tuples(list_of_tuples)
+            the_dict = self.__each_row_as_dict(list_of_tuples)
             table_row_dict_list.append(the_dict)
         
         return table_row_dict_list
 
     
 
-    # This method will load the table into the mongodb
-    # It internally will call the __make_table_list method then use the
-    # client to insert_many
-    def load_data_from_sql_table(self, table_name):
-        table_row_dict_list = self.__make_table_list(table_name)
+    # 
+    # 
+    # 
+    def load_data_from_sql_table(self, collection_name, db_name, table_name):
+        """
+        This method will load the table into the mongodb
+        It internally will call the __make_list_of_dict method 
+        then use the client to insert_many. Tables will need to 
+        be already stored into the class using 
+        "sql_to_list_of_tuples_data_multiple_tables()" or "sql_to_list_of_tuples_data()" 
+        inorder to use this method.
 
-        the_collection = self.collections.get(table_name, "Nope")
+        """
+        table_row_dict_list = self.__make_list_of_dict(table_name)
+
+        db = self.databases.get(db_name, "Nope")
         
-        if the_collection == "Nope":
-            the_collection = self.make_collection_database(table_name)
-        
+        if db == "Nope":
+            db = self.make_database(db_name)
+        # Need to now make the collection that will hold
+        # The documents
+        collection = db[collection_name]
+
         # using the collection
-        the_collection.insert_many()
+        collection.insert_many(table_row_dict_list)
 
-        self.client.
+        #self.client.
 
 
-
-    def __make_list_tuples(self, list_tup):
+    #  as a 
+    # 
+    def __each_row_as_dict(self, list_tup):
+        """
+            Inner method that will make each row of the table
+            dictionary
+        """
         the_dict = {}
         for k, v in list_tup:
             the_dict[k] = v
@@ -189,6 +247,68 @@ class Mongo_loader:
 
                 
         
+    def delete(self, query, collection_name=None, many=False, db_name=None, collection=None):
+        """
+            This method is to delete from collections.
+            You can specify if you want to use the delete_many
+            or the delete_one call from pymongo by using the 
+            many flag which is default False, so it will use
+            the delete_one call.  You can pass in the database name 
+            if there are two tables on different databases with 
+            the same name.  If there is only one then you can leave 
+            db_name as None. 
+        """
+        if collection == None:
+            collection = self.get_collection(collection_name=collection_name, db_name=db_name)
+        if many == False:
+            collection.delete_one(query)
+        else:
+            collection.delete_many(query)
+
+    
+
+
+
+    def load_if_not_exist(self, collection_name, db_name, table_name, max_rows=None):
+        """
+        This method will load the table into the mongo database only if the 
+        if the database is not present. If the database is present if the
+        collection not made or empty.  Or if you give a row count which the 
+        collection must not be over in the number of documents.
+        Max rows means the number of rows that if the document has then the 
+        program should not load documents to the collection
+        """
+        build = False
+        collection = None
+
+        db = self.get_database(db_name) 
+        if db == "Nope":
+            # Need to create the database
+            db = self.make_database(db_name)
+            build = True
+
+        if build == False:
+            # Need to check if there is a collection
+            collection = self.get_collection(collection_name, db_name=db_name ) 
+        
+
+        if collection == None:
+            build = True
+        else:
+            # Will only get in here if there is a collection
+            # Need to check the number of rows
+            number = collection.count_documents({})
+            if max_rows == None:
+                max_rows = 1
+            if number < max_rows:
+                build = True
+        # Now loading to the database
+        if build == True:
+            self.load_data_from_sql_table(collection_name, db_name , table_name)
+        
+        return         
+
+
 
 
     # them in a 
