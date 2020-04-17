@@ -25,13 +25,13 @@ CREATE TABLE IF NOT EXISTS student_table (
 # FOR INSERTING THE VALUES INTO TABLE/
 # ONLY RUN ONCE UNLESS YOU WANT DUPLICATES:
 
-# insert = '''
-# INSERT OR REPLACE INTO student_table
-#  VALUES('Lion-O', 'True', 85, 24, 'Male'),
-#        ('Cheetara', 'True', 95, 22, 'Female'),
-#        ('Mumm-Ra', 'False', 65, 153, 'Male'),
-#        ('Snarf', 'False', 70, 15, 'Male'),
-#        ('Panthro', 'True', 80, 30, 'Male')'''
+insert = '''
+INSERT OR REPLACE INTO student_table
+ VALUES('Lion-O', 'True', 85, 24, 'Male'),
+       ('Cheetara', 'True', 95, 22, 'Female'),
+       ('Mumm-Ra', 'False', 65, 153, 'Male'),
+       ('Snarf', 'False', 70, 15, 'Male'),
+       ('Panthro', 'True', 80, 30, 'Male')'''
 
 
 # IF YOU NEED TO DELETE THE VALUES FROM TABLE:
