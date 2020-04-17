@@ -8,7 +8,6 @@ import os
 
 m = Mongo_loader()
 
-m.make_database("rpg")
 
 # Will be getting the path for the sql connection
 rpg_path = os.path.join(os.path.dirname(__file__), "..", 
@@ -16,14 +15,21 @@ rpg_path = os.path.join(os.path.dirname(__file__), "..",
 
 m.make_sql_connection(rpg_path)
 
-m.sql_to_list_of_tuples_data("charactercreator_character")
-m.sql_to_list_of_tuples_data("armory_item")
+rpg_list = ["armory_item", "armory_weapon", "charactercreator_character", "charactercreator_character_inventory",
+            "charactercreator_cleric", "charactercreator_fighter", "charactercreator_mage",
+            "charactercreator_necromancer", "charactercreator_thief" ]
 
-m.get_column_names_sql_table("charactercreator_character")
-cols = m.get_column_names_sql_table("armory_item")
+m.sql_to_list_of_tuples_if_not_exist(rpg_list)
 
-m.load_data_from_sql_table("charactercreator_character", "rpg", "charactercreator_character")
 
+
+# This will not load again if already loaded
+m.load_sql_to_mongo_many('rpg', rpg_list)
+
+
+
+
+
+# Telling the number of characters in the collection charactercreator_character
 char_creator = m.get_collection("charactercreator_character")
-
-print(char_creator.count_documents({})) # Trying to find the
+print(char_creator.count_documents({})) # Trying to find the number or rows

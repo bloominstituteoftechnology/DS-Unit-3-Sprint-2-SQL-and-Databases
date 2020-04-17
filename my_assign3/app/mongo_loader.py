@@ -6,6 +6,7 @@ import pymongo
 import os
 from dotenv import load_dotenv
 import sqlite3
+from pymongo.errors import BulkWriteError
 
 #client = pymongo.MongoClient("mongodb+srv://user_byu:<password>@cluster0-bj6wb.mongodb.net/test?retryWrites=true&w=majority")
 #db = client.test
@@ -39,7 +40,7 @@ class Mongo_loader:
             # Mongo database.
             con_uri = self.__get_connection_string(MONGO_USER=MONGO_USER, MONGO_PASSWORD=MONGO_PASSWORD,
                                                         CLUSTER_NAME=CLUSTER_NAME)
-
+        
             client = pymongo.MongoClient(con_uri)
         
         # Storing the client in this instance
@@ -58,13 +59,24 @@ class Mongo_loader:
             
 
         
-    # This method is an inner method the will get the string 
-    # for the connnction to the mongo database.
-    def __get_connection_string(self, MONGO_USER, MONGO_PASSWORD, CLUSTER_NAME):
-       # "mongodb+srv://user_byu:<password>@cluster0-bj6wb.mongodb.net/test?retryWrites=true&w=majority"
-       con_uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASSWORD}@{CLUSTER_NAME}.mongodb.net/test?retryWrites=true&w=majority"
-       return con_uri
-           
+    
+    # Method to get all the table names from the sql database
+    def get_sql_table_names(self):
+        query = """
+
+            SELECT name FROM sqlite_master
+            WHERE type='table'
+            ORDER BY name;
+        """      
+        curs = self.sql_connection.cursor()
+        curs.execute(query)
+        result = curs.fetchall()
+        # name is first in a tuple in list
+        the_list = []
+        for t in result:
+            the_list.append(t[0])
+         
+        return the_list
 
     # Method to return the client 
     def get_client(self):
@@ -82,7 +94,9 @@ class Mongo_loader:
     # This is a method that will return the collection asked for
     def get_database(self, name):
         return self.databases.get(name, "Nope")
-        
+
+
+
     # This is a method that will get the data
     # from an sql and store it in memory
     # If store is set to true then the instance 
@@ -97,12 +111,12 @@ class Mongo_loader:
         s_curs.execute(select_all_quer)
         the_table = s_curs.fetchall()
         #checking to see if this will work
-        #print(f"This the table type of {table} {type(the_table)}")
-        #print(f"This is the length {len(the_table)}")
+        
         #add to the dictionary
         if store == True:
             self.sql_tables[table_name] = the_table
         return the_table
+
 
     # This is a method that will make the connection for the
     # sql on sqlite3    
@@ -111,23 +125,46 @@ class Mongo_loader:
         self.sql_connection = connection
         return connection
 
+
     # This method will get the sql tables that are stored in the 
     # dictionary for the
     def get_stored_sql_table(self, table_name):
         
-        return self.sql_tables.get(table_name, "Table not found")
+        return self.sql_tables.get(table_name, "Nope")
         
 
 
-    # This method will be able to get the multiple
-    # tables and then store them in a dictionary.
-    # The tables are passed in as a list of strings
-    # will return a list with the tables in it
+   
     def sql_to_list_of_tuples_data_multiple_tables(self, table_names_list):
+        """ 
+        This method will be able to get the multiple
+        tables and then store them in a dictionary.
+        The tables are passed in as a list of strings
+        will return a list with the tables in it
+
+        """
         table_list = []
         for i in range(len(table_names_list)):
             table_list.append(self.sql_to_list_of_tuples_data(table_names_list[i]))
         return table_list    
+
+
+
+    def sql_to_list_of_tuples_if_not_exist(self, table_name_or_list_tables):
+        """
+        This method will store the table data as a list of tuples.
+        It will pull it out of the sql and prepare it to be ready to be added to the 
+        mongodb.
+
+        It uses internally the sql_to_list_of_tuples_data_multiple_tables
+        """
+        if isinstance(table_name_or_list_tables, str):
+            table_name_or_list_tables = list(table_name_or_list_tables)
+        for table in table_name_or_list_tables:
+            the_table = self.get_stored_sql_table(table)
+            
+            if the_table == "Nope":
+                self.sql_to_list_of_tuples_data(table)
 
 
 
@@ -170,43 +207,11 @@ class Mongo_loader:
             coll = ans.get_collection(collection_name)
             return coll
         
-
-            
-
-    # 
-    # 
-    # 
-
-    def __make_list_of_dict(self, table_name):
-        """
-            This is a method that will turn the table into
-            a list of dictionaries.
-            Each row will be a new dictionary.
-            tables will need to already be processed into list_of_tuples
-            before this method can be used.
-        """
-        table_row_dict_list = []
-        table_columms  =  self.get_column_names_sql_table(table_name)
-        table_tuple_list =self.get_stored_sql_table(table_name)
-
-        if table_tuple_list == "Table not found":
-            print("This table is not found")
-            return
-            
-        for the_tuple in table_tuple_list:
-            list_of_tuples = []
-            for i in range(len(the_tuple)):
-                list_of_tuples.append((table_columms[i], the_tuple[i]))
-            the_dict = self.__each_row_as_dict(list_of_tuples)
-            table_row_dict_list.append(the_dict)
-        
-        return table_row_dict_list
-
+  
+    
     
 
-    # 
-    # 
-    # 
+    
     def load_data_from_sql_table(self, collection_name, db_name, table_name):
         """
         This method will load the table into the mongodb
@@ -218,7 +223,7 @@ class Mongo_loader:
 
         """
         table_row_dict_list = self.__make_list_of_dict(table_name)
-
+        
         db = self.databases.get(db_name, "Nope")
         
         if db == "Nope":
@@ -226,27 +231,17 @@ class Mongo_loader:
         # Need to now make the collection that will hold
         # The documents
         collection = db[collection_name]
-
+       
         # using the collection
         collection.insert_many(table_row_dict_list)
 
         #self.client.
 
 
-    #  as a 
-    # 
-    def __each_row_as_dict(self, list_tup):
-        """
-            Inner method that will make each row of the table
-            dictionary
-        """
-        the_dict = {}
-        for k, v in list_tup:
-            the_dict[k] = v
-        return the_dict
-
+  
                 
-        
+
+
     def delete(self, query, collection_name=None, many=False, db_name=None, collection=None):
         """
             This method is to delete from collections.
@@ -271,6 +266,8 @@ class Mongo_loader:
 
     def load_if_not_exist(self, collection_name, db_name, table_name, max_rows=None):
         """
+        THIS METHOD WILL CREATE THE DATABASE AND THE COLLECTION IF THEY DON'T EXIST.
+
         This method will load the table into the mongo database only if the 
         if the database is not present. If the database is present if the
         collection not made or empty.  Or if you give a row count which the 
@@ -309,12 +306,60 @@ class Mongo_loader:
         return         
 
 
+    def load_sql_to_mongo_many(self, db_name, table_name_list):
+        """
+        This method will load more than one table to the mongo database in their 
+        own collection.  If the the table already is in then, it will not be loaded
+        with this method. 
+        """
+        for table in table_name_list:
+            self.load_if_not_exist(collection_name=table, db_name=db_name, table_name=table)
+
+    # Inner method
+    def __each_row_as_dict(self, list_tup):
+        """
+            Inner method that will make each row of the table
+            dictionary
+        """
+        the_dict = {}
+        for k, v in list_tup:
+            the_dict[k] = v
+        return the_dict
 
 
-    # them in a 
-    # This method will make a connection and then return 
-    # it when called.
-    #def makeConnection(self):
 
+    
+    # Inner method 
+    def __make_list_of_dict(self, table_name):
+        """
+            This is a method that will turn the table into
+            a list of dictionaries.
+            Each row will be a new dictionary.
+            tables will need to already be processed into list_of_tuples
+            before this method can be used.
+        """
+        table_row_dict_list = []
+        table_columms  =  self.get_column_names_sql_table(table_name)
+        table_tuple_list =self.get_stored_sql_table(table_name)
+
+        if table_tuple_list == "Table not found":
+            print("This table is not found")
+            return
+            
+        for the_tuple in table_tuple_list:
+            list_of_tuples = []
+            for i in range(len(the_tuple)):
+                list_of_tuples.append((table_columms[i], the_tuple[i]))
+            the_dict = self.__each_row_as_dict(list_of_tuples)
+            table_row_dict_list.append(the_dict)
+        
+        return table_row_dict_list
 
    
+
+   # This method is an inner method the will get the string 
+    # for the connnction to the mongo database.
+    def __get_connection_string(self, MONGO_USER, MONGO_PASSWORD, CLUSTER_NAME):
+       # "mongodb+srv://user_byu:<password>@cluster0-bj6wb.mongodb.net/test?retryWrites=true&w=majority"
+       con_uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASSWORD}@{CLUSTER_NAME}.mongodb.net/test?retryWrites=true&w=majority"
+       return con_uri
