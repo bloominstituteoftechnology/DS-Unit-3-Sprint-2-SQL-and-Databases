@@ -51,14 +51,75 @@ randomized, the numeric and boolean fields were left as defaults.
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
+note: I'm going to save the query with the answer. For the sake of preserving space, I'm going to store commands as the condensed form. This can be rendered into a readable form using the "Beautify" option on SQLite
+
 - How many total Characters are there?
+SELECT count(name) FROM charactercreator_character
+302
 - How many of each specific subclass?
+Mages
+Select count(charactercreator_mage.character_ptr_id) FROM charactercreator_mage
+108
+
+Clerics: 75
+same code structure from mages
+
+Fighters: 68
+
+Theifs: 51
+
+Necromancers: 11
+
+
 - How many total Items?
+SELECT count(item_id) from armory_item
+174
+
 - How many of the Items are weapons? How many are not?
+SELECT count(item_ptr_id) FROM armory_weapon
+37 are weapons
+140 are not 
+
 - How many Items does each character have? (Return first 20 rows)
+SELECT character_id, count(item_id) from charactercreator_character_inventory GROUP BY character_id ORDER BY count(item_id) DESC LIMIT 20
+
+All top 20 have 5
+
 - How many Weapons does each character have? (Return first 20 rows)
+SELECT c.character_id, c.name, count(w.item_ptr_id) from charactercreator_character as c JOIN charactercreator_character_inventory as i ON c.character_id = i.character_id LEFT JOIN armory_item as a ON i.item_id = a.item_id LEFT JOIN armory_weapon as w on a.item_id = w.item_ptr_id GROUP BY c.name ORDER BY count(w.item_ptr_id) DESC LIMIT 20
+
+27	Ab voluptas se	3
+55	Debit	3
+227	Dignissimos a	3
+142	Explicabo recusandae ma	3
+199	Illo en	3
+70	Perferendis commodi null	3
+63	Reprehenderit commodi eius	3
+36	Sint quibusdam ob	3
+194	Acc	2
+238	Aliqu	2
+183	Architecto repudian	2
+280	Asperi	2
+5	At id recusandae expl	2
+35	Autem mollitia fuga lauda	2
+128	Consequatur quis recusandae qu	2
+85	Culpa repellat unde	2
+59	Debitis sit ratione eos nam	2
+57	Deleniti qui quae quidem	2
+247	Dolorem quaerat sunt	2
+206	Dolores aliquid inv	2
+
+
 - On average, how many Items does each Character have?
+2.9735
+
+SELECT AVG(num_of_items) FROM( SELECT character_id, count(item_id) as num_of_items from charactercreator_character_inventory GROUP BY character_id ORDER BY count(item_id) DESC )
+
 - On average, how many Weapons does each character have?
+0.6835 weapons
+
+SELECT AVG(num_of_weapons) FROM ( SELECT c.character_id, c.name, count(w.item_ptr_id) as num_of_weapons from charactercreator_character as c JOIN charactercreator_character_inventory as i ON c.character_id = i.character_id LEFT JOIN armory_item as a ON i.item_id = a.item_id LEFT JOIN armory_weapon as w on a.item_id = w.item_ptr_id GROUP BY c.name ORDER BY count(w.item_ptr_id) DESC ) as subquery
+
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
