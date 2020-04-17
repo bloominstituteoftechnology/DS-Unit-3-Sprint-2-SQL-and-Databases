@@ -1,6 +1,6 @@
 import pandas as pd
 import sqlite3
-from sqlalchemy import create_engine
+
 
 
 df = pd.read_csv("buddymove_holidayiq.csv")
