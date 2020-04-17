@@ -8,8 +8,14 @@ from pprint import pprint
 load_dotenv()
 
 def main():
-    #mongo_queries()
+    print()
+    print('Mongo Queries')
+    print('------------------------------------------------------------------')
+    mongo_queries()
 
+    print()
+    print('Postgres Queries')
+    print('------------------------------------------------------------------')
     postgres_queries()
 
 def mongo_queries():
