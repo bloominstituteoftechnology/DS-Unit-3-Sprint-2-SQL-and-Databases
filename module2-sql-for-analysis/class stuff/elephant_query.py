@@ -12,6 +12,8 @@ DB_PASS = os.getenv("DB_PASS")
 DB_HOST = os.getenv("DB_HOST")
 """
 
+# for reference, here's the elephant link https://api.elephantsql.com/console/bb02e75f-0739-4555-9ae3-cf022a9af2a8/details?
+
 DBNAME = 'rsswtvhb'
 DBUSER = "rsswtvhb"
 DB_PASS = "qImj0x6_ofnmgQYeEY9VD2q-93dNW1pt"
