@@ -1,7 +1,7 @@
 import sqlite3
 
 # Create connection and cursor
-conn = sqlite3.connect('SprintChallenge/demo_data.sqlite3')
+conn = sqlite3.connect("demo_data.sqlite3")
 cur = conn.cursor()
 
 # Create table
