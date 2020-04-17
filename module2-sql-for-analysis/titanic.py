@@ -5,31 +5,47 @@ from psycopg2.extras import execute_values
 import json
 import pandas as pd
 from sqlalchemy import create_engine
-
-load_dotenv()
-
-
-DB_NAME = os.getenv("DB_NAME_DB13_Unit3")
-DB_USER = os.getenv("DB_USER__DB13_Unit3")
-DB_PASSWORD = os.getenv("DB_PASSWORD__DB13_Unit3")
-DB_HOST = os.getenv("DB_HOST__DB13_Unit3")
-
-connection = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST)
+import sqlite3
 
 
-# create the table for using the columns from the titanic dataset
-table_name = "test_table2"
+# construct a path to wherever your database exists
+CSV_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "module2-sql-for-analysis", "titanic.csv")
+data = pandas.read_csv(CSV_FILEPATH)
+data = data.rename(columns={'User Id': 'user_id'})
 
-query = """
-  CREATE TABLE IF NOT EXISTS table_name(
-    id SERIAL PRIMARY KEY,
-    Survived BOOLEAN,
-    Pclass INTEGER CHECK (Pclass > 0 AND Pclass <= 3 ),
-    Name VARCHAR(100),
-    Sex VARCHAR(10) CHECK (Sex in ('male', 'female')),
-    Age FLOAT(8),
-    Sibilings_Spouses_Aboard INTEGER,
-    Parents_Children_Aboard INTEGER,
-    Fare FLOAT(8)
-  );
-  """
+# create a connection to the 'buddymove_holidayiq.splite3' file path
+DB_FILEPATH = os.path.join(os.path.dirname(__file__), "..", 'data', "titanic.sqlite3")
+connection = sqlite3.connect(DB_FILEPATH)
+connection.row_factory = sqlite3.Row
+cursor = connection.cursor()
+
+
+# read the pandas dataframe to the 'titanic.sqlite3' database file
+data.to_sql('titanic_table', connection, if_exists='replace')
+
+
+average_fare_class_survived = """
+SELECT
+	CASE
+	WHEN survived = 1 THEN 'survived'
+	WHEN survived = 0 THEN 'Perished'
+	ELSE 'unknown'
+	END AS survived_or_perished
+	,CASE
+	WHEN pclass = 1 THEN 'first_class'
+	WHEN pclass = 2 THEN 'second_class'
+	WHEN pclass = 3 THEN 'third_class'
+	ELSE 'unknown'
+	END AS passenger_class
+	, AVG(fare)
+FROM titanic_table
+GROUP BY survived_or_perished, passenger_class
+"""
+
+result = cursor.execute(average_fare_class_survived).fetchall()
+for row in result:
+    print(row['survived_or_perished'])
+    print(row['passenger_class'])
+    print(row['AVG(fare)'])
+    print("_________")
+    print("\n")
