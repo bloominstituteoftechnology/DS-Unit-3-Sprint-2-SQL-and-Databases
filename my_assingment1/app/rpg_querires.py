@@ -157,8 +157,11 @@ CSV_Path = os.path.join(os.path.dirname(__file__), "..", "data", "buddymove_holi
 
 df = pd.read_csv(CSV_Path)
 
+# Making a path for the buddymove_holidayiq.sqlite3
+# that will be saved in the data folder
+Buddy_savePath = os.path.join(os.path.dirname(__file__), "..","data", "buddymove_holidayiq.sqlite3" )
 #engine = create_engine('sqlite://', echo=False)
-conn =sqlite3.connect("buddymove_holidayiq.sqlite3")
+conn =sqlite3.connect(Buddy_savePath)
 # putting the data into the database
 df.to_sql("reviews", con=conn, if_exists="replace" )
 
@@ -187,4 +190,16 @@ print("The rows in the columns in the data are:", result)
 
 
 
+# This is the query for the second question
+query = """
+	SELECT COUNT(*)
 
+
+
+	FROM reviews r
+	WHERE r.Nature >= 100 and r.Shopping >= 100
+"""
+
+cursor1.execute(query)
+result = cursor1.fetchall()
+print("\nThis is the answer to the second question", result)
