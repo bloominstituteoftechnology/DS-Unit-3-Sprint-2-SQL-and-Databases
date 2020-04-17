@@ -116,20 +116,112 @@ print ("------------------------------")
 # 6. Get the name of all Black Sabbath tracks and the albums they came off of
 
 query4 = """
-SELECT COUNT(*)
-FROM Track
+SELECT 
+	Track.Name as Track, 
+	Album.Title as Album_Title,
+	Artist.Name as Artist_Name
+FROM Track 
+INNER JOIN Album ON Album.AlbumId = Track.AlbumId
+INNER JOIN Artist ON Artist.ArtistId = Album.ArtistId
+WHERE Artist.Name in ('Black Sabbath');
 """
 
 result4 = conn.execute(query4).fetchall()
 
-print ("Number track rows: ", result4)
+print ("name of all Black Sabbath tracks and the albums they came off of: ", result4)
 
-print ("------------------------------")
+print ("---------------------------------------------------------------------------")
 
 
 # 7. What is the most popular genre by number of tracks?
 
 
+query5 = """
+SELECT
+	COUNT(Track.TrackId) as Track_Count,
+	Genre.GenreId,
+	Genre.Name
+FROM Track
+INNER JOIN Genre ON Genre.GenreId=Track.GenreId
+GROUP BY Genre.Name
+ORDER BY Track_Count DESC;
+"""
+
+result5 = conn.execute(query5).fetchall()
+
+print ("most popular genre by number of tracks: ", result5[0])
+
+print ("----------------------------------------------------")
+
+
+
 # 8. Find all customers that have spent over $45
-# 9. Find the first and last name, title, and the number of customers each employee has helped. If the customer count is 0 for an employee, it doesn't need to be displayed. Order the employees from most to least customers.
+
+
+query6 = """
+
+SELECT
+	Customer.FirstName AS FirstName,
+	Customer.LastName AS LastName,
+	SUM (Invoice.Total) AS Invoice_Total,
+	Customer.CustomerId
+From Customer
+INNER JOIN Invoice ON Invoice.CustomerId=Customer.CustomerId
+GROUP BY FirstName, LastName
+HAVING Invoice_Total > 45.00
+ORDER BY Invoice_Total DESC;
+"""
+
+result6 = conn.execute(query6).fetchall()
+
+print ("All customers that have spent over 45$: ", result6)
+
+print ("----------------------------------------------------")
+
+
+
+# 9. Find the first and last name, title, and the number of customers each employee has helped.
+
+
+query7 = """
+
+SELECT
+	Employee.FirstName,
+	Employee.LastName,
+	Employee.Title,
+	Employee.EmployeeId,
+	SUM(Customer.SupportRepId) as Customer_Support_Count
+FROM Employee
+INNER JOIN Customer ON (Employee.EmployeeId=Customer.SupportRepId)
+GROUP BY Employee.FirstName, Employee.LastName, Employee.Title
+ORDER BY Customer_Support_Count DESC;
+"""
+
+result7 = conn.execute(query7).fetchall()
+
+print ("Employees who helped customers: ", result7)
+
+print ("----------------------------------------------------")
+
+
+
 # 10. Return the first and last name of each employee and who they report to
+
+query8 = """
+
+SELECT m.firstname || ' ' || m.lastname AS 'Manager',
+       e.firstname || ' ' || e.lastname AS 'Direct report' 
+FROM employee e
+INNER JOIN employee m ON m.employeeid = e.reportsto
+GROUP BY Manager
+ORDER BY manager;
+"""
+
+result8 = conn.execute(query8).fetchall()
+
+print ("Employees report to these managers: ", result8)
+
+print ("----------------------------------------------------")
+
+
+

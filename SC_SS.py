@@ -116,11 +116,60 @@ Before we get started you'll need a few things.
 ​
 ## Questions of Understanding
 1. What is a document store?
+Document stores, also called document-oriented database systems, are characterized by their schema-free organization of data.
+
+That means:
+
+Records do not need to have a uniform structure, i.e. different records may have different columns.
+The types of the values â€‹â€‹of individual columns can be different for each record.
+Columns can have more than one value (arrays).
+Records can have a nested structure.
+
+
 2. What is a key:value pair? What datatype in Python uses Key:Value pairs?
-3. Give an example of when it would be best to use a SQL Database and when it would be best to use a NoSQL Database
+
+At the simplest level, a key-value pair is just two values, one of which you have 
+designated to be a "key" and the other you have designated to be the "value".
+
+Python uses dictionaries.
+
+3. Give an example of when it would be best to use a SQL Database and 
+when it would be best to use a NoSQL Database
+
+
+Here’s the key difference when comparing SQL vs. NoSQL scalability: 
+NoSQL engines are designed to scale out and leverage cloud computing. 
+When scaling out or horizontally we are adding resources to a single node 
+(a computer or server). We can have one database working on multiple nodes. 
+Scaling out (or back in) means we can easily add and remove nodes. 
+This makes NoSQL a perfect match for the cloud. Because it can scale out, 
+you will be maximizing the scalability benefits of the cloud. 
+You can run SQL on Azure, for example, but you will be limited in your ability to scale.
+
+NoSQL pairs well with fast paced, agile development teams. It allows for 
+rapid changes to the database schema as the scope evolves and requirements change.
+
+Again, this doesn’t mean SQL is slow. If your data is highly structured and 
+you anticipate minimal change then there’s probably no reason to use NoSQL. 
+
+
 4. What are some of the trade-offs between SQL and NoSQL?
+
+https://www.integrant.com/when-to-use-sql-vs-nosql/
+
 5. What does each letter in BASE stand for? Give an explanation for each and why they matter?
  - B
  - A
  - S
  - E
+
+ Basically Available, Soft state, Eventual consistency
+
+A BASE system gives up on consistency.
+
+Basically available indicates that the system does guarantee availability, 
+in terms of the CAP theorem.
+Soft state indicates that the state of the system may change over time, even without input. 
+This is because of the eventual consistency model.
+Eventual consistency indicates that the system will become consistent over time, given 
+that the system doesn't receive input during that time.
