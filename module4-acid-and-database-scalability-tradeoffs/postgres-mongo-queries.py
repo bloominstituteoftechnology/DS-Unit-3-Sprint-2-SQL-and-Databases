@@ -8,7 +8,7 @@ from pprint import pprint
 load_dotenv()
 
 def main():
-    mongo_queries()
+    #mongo_queries()
 
     postgres_queries()
 
@@ -91,10 +91,6 @@ def mongo_queries():
 
         print(f'Character {id} has {item_count} items, of which {weapon_count} are weapons')
 
-    # How many weapons does each character have? (first 20)
-    
-    # okay same concept, but now I need to search
-
     # Average, how many items does each character have?
     # TODO
 
@@ -103,38 +99,203 @@ def mongo_queries():
 
 def postgres_queries():
     #Connect to postgres
-    #TODO
-    pass
+    HOST = os.getenv('POST_HOST', default = 'oops')
+    NAME = os.getenv('POST_NAME', default = 'oops')
+    USER = os.getenv('POST_USER', default = 'oops')
+    PASSWORD = os.getenv('POST_PASSWORD', default = 'oops')
+
+    con = psycopg2.connect(dbname = NAME,
+                            user = USER,
+                            password = PASSWORD,
+                            host = HOST)
+
+    cur = con.cursor()
 
     # How many passengers survived, and how many died?
-    #TODO
+    q1 = '''
+    SELECT count(survived) as count
+    FROM passengers
+    WHERE survived = 1
+    '''
+
+    cur.execute(q1)
+
+    surv = cur.fetchone()[0]
+
+    print(f'There are a total of {surv} survivors')
 
     # How many passengers were in each class?
-    # TODO
+    q2 = '''
+    SELECT count(survived) as passengers
+        ,pclass as class
+    FROM passengers
+    GROUP BY pclass
+    ORDER BY pclass
+    '''
+
+    cur.execute(q2)
+    resp = cur.fetchall()
+
+    for row in resp:
+        print(str(row[0]) + ' passengers in ' + str(row[1]) + ' class')
 
     # How many passengers survived/died within each class?
-    # TODO
+    q3 = '''
+    SELECT count(survived) as survivors
+        ,pclass as class
+    FROM passengers
+    WHERE survived = 1
+    GROUP BY pclass
+    ORDER BY pclass
+    '''
+
+    cur.execute(q3)
+    resp = cur.fetchall()
+
+    for row in resp:
+        print(str(row[0]) + ' passengers in ' + str(row[1]) + ' class survived')
+
+    q4 = '''
+    SELECT count(survived) as survivors
+        ,pclass as class
+    FROM passengers
+    WHERE survived = 0
+    GROUP BY pclass
+    ORDER BY pclass
+    '''
+
+    cur.execute(q4)
+    resp = cur.fetchall()
+
+    for row in resp:
+        print(str(row[0]) + ' passengers in ' + str(row[1]) + ' class died')
 
     # What was the average age of survivors vs nonsurvivors?
-    # TODO
+    q5 = '''
+    SELECT avg(age) as avgerage_age
+        ,survived
+    FROM passengers
+    GROUP BY survived
+    ORDER BY survived
+    '''
 
-    # WHat was the average age of each passenger class?
-    # TODO
+    cur.execute(q5)
+    resp = cur.fetchall()
 
-    #What was the average fare by passenger class? By survival?
-    # TODO
+    print('The average age of survivors is', resp[0][0])
+    print('The average age of nonsurvivors is', resp[1][0])
 
+    # What was the average age of each passenger class?
+    q6 = '''
+    SELECT avg(age) as average_age
+        ,pclass as class
+    FROM passengers
+    GROUP BY pclass
+    ORDER BY pclass
+    '''
+
+    cur.execute(q6)
+    resp = cur.fetchall()
+
+    for row in resp:
+        print('The average age of ' + str(row[1]) + ' class passengers is ' + str(round(row[0])))
+
+    # What was the average fare by passenger class? By survival?
+    q7 = '''
+    SELECT avg(fare::numeric) as average_fare
+        ,pclass as class
+    FROM passengers
+    GROUP BY pclass
+    ORDER By pclass
+    '''
+
+    cur.execute(q7)
+    resp = cur.fetchall()
+
+    for row in resp:
+        print('The average fare of ' + str(row[1]) + ' class passengers is ' + str(round(row[0], 2)))
+
+    q8 = '''
+    SELECT avg(fare::numeric) as average_fare
+        ,survived
+    FROM passengers
+    GROUP BY survived
+    ORDER By survived
+    '''
+
+    cur.execute(q8)
+    resp = cur.fetchall()
+
+    print('The average fare of survivors is', round(resp[0][0], 2))
+    print('The average fare of nonsurvivors is', round(resp[1][0], 2))
+    
     # How many siblings/spouses aboard on average, by passenger class? by Survival?
-    # TODO
+    # ew, this is kinda ugly, I would probably never do it like this I'm just
+    # getting tired of writing queries
+    q9 = '''
+    SELECT *
+    FROM(SELECT avg(siblings_spouse) as avg_sib_spo
+            ,pclass
+        FROM passengers
+        GROUP BY pclass
+        ORDER BY pclass) c
+    FULL OUTER JOIN(SELECT avg(siblings_spouse) as avg_sib_spo
+            ,survived
+        FROM passengers
+        GROUP BY survived
+        ORDER BY survived) s ON s.avg_sib_spo = c.avg_sib_spo
+    '''
+
+    cur.execute(q9)
+    resp = cur.fetchall()
+
+    print('The average siblings/spouses for first class is', round(resp[0][0], 2))
+    print('The average siblings/spouses for first class is', round(resp[1][0], 2))
+    print('The average siblings/spouses for first class is', round(resp[2][0], 2))
+    print('The average siblings/spouses for survivors is', round(resp[3][2], 2))
+    print('The average siblings/spouses for survivors is', round(resp[4][2], 2))
 
     # How many paretns/children aboard on average, by passenger class? by survival?
-    # TODO
+    q10 = '''
+    SELECT *
+    FROM(SELECT avg(parents_children) as p_c
+            ,pclass
+        FROM passengers
+        GROUP BY pclass
+        ORDER BY pclass) c
+    FULL OUTER JOIN(SELECT avg(parents_children) as p_c
+            ,survived
+        FROM passengers
+        GROUP BY survived
+        ORDER BY survived) s ON s.p_c = c.p_c
+    '''
+
+    cur.execute(q10)
+    resp = cur.fetchall()
+
+    print('The average parents/children for first class is', round(resp[0][0], 2))
+    print('The average parents/children for first class is', round(resp[1][0], 2))
+    print('The average parents/children for first class is', round(resp[2][0], 2))
+    print('The average parents/children for survivors is', round(resp[3][2], 2))
+    print('The average parents/children for survivors is', round(resp[4][2], 2))
 
     # Do any passengers have the same name?
-    # TODO
+    q11 = '''
+    SELECT count(distinct name) as unique_names
+        ,count(name) as total_names
+    FROM passengers
+    '''
 
+    cur.execute(q11)
+    resp = cur.fetchone()
 
+    if resp[0] == resp[1]:
+        print('No passengers have the same name')
+    else:
+        print('Some passengers have the same name')
 
+    cur.close()
+    con.close()
 
 if __name__ == "__main__":
     main()
