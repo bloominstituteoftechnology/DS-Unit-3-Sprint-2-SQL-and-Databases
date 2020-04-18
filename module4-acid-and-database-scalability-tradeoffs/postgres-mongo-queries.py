@@ -98,10 +98,31 @@ def mongo_queries():
         print(f'Character {id} has {item_count} items, of which {weapon_count} are weapons')
 
     # Average, how many items does each character have?
-    # TODO
+    
+    #Okay I'll need to use an aggregation to get this
+    #After a few hours of research, i can't solve this with strictly aggregation
+    #and most help online advises using python code to do computation.
+
+    # For future self, I'm grouping by the character_id field, and counting how
+    # many times it occurs.
+    agr = [{'$group': {'_id': '$character_id', 'count': {'$sum': 1}}}]
+
+    resp = db['charactercreator_character_inventory'].aggregate(agr)
+
+    tot_char_items = 0
+    length = 0
+
+    for row in resp:
+        tot_char_items += row['count']
+        length += 1
+
+    avg_char_items = tot_char_items / length
+
+    print(f'Each character has {avg_char_items} items in inventory')
 
     # Average, how many Weapons does each character have?
-    # TODO
+    # this is so effin painful. Is this a lesson on "use the right database for
+    # the right data?" Because my god, lesson learned.
 
 def postgres_queries():
     #Connect to postgres
