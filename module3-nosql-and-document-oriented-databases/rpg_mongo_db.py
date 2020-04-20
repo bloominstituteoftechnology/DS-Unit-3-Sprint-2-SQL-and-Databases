@@ -37,31 +37,37 @@ client = pymongo.MongoClient(connection_uri)
 
 rpg_db = client['rpg_db'] # "test_database" or whatever you want to call it
 
-collection = rpg_db['game_data']
+with open(FILEPATH) as f:
+    file_data = json.load(f)
 
-all_docs = collection.inventory.find({})
+rpg_db.insert_many(file_data)
 
-print(all_docs)
+#---------------------------------------------------------------------------------------------
 
-
-# Code for deleting docs:
+# HOW TO DELETE ALL DOCUMENTS IN A COLLECTION
+# AND CHECK TO SEE HOW MANY WERE DELETED:
 
 # x = collection.delete_many({})
 
 # print(x.deleted_count, " documents deleted.")
 
-
 # Code for loading data
 
-# with open(FILEPATH) as f:
-#     file_data = json.load(f)
+# HOW TO DROP THE COLLECTION FROM THE DATABASE
 
+# rpg_db.collection.drop()
 
-# Code for inserting data
+# # HOW TO PRINT ALL EXISITING COLLECTIONS IN THE DATABASE
 
-# collection.insert_many(file_data)
+# all_coll = rpg_db.list_collection_names()
 
+# print(all_coll)
 
+# #---------------------------------------------------------------------------------------------
+
+client.close()
+
+# rpg_db.collection.find( { status: "D" } )
 
 # RUN THE QUERIES BELOW IN MONGODB QUERIES:
 # https://docs.mongodb.com/manual/tutorial/query-documents/
@@ -73,7 +79,7 @@ print(all_docs)
 
 # print ("total characters: ", results)
 
-rpg_db.collection.find( { status: "D" } )
+# rpg_db.collection.find( { status: "D" } )
 
 # query2 = "SELECT COUNT(*) from charactercreator_cleric"
 
