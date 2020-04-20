@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+
+[packages]
+python-dotenv = "*"
+psycopg2-binary = "*"
+psycopg2 = "*"
+psychopg2-binary = "*"
+sqlalchemy = "*"
+pandas = "*"
+psychopg-binary = "*"
+numpy = "*"
+pylint = "*"
+
+[requires]
+python_version = "3.8"
