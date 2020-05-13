@@ -15,16 +15,16 @@ print(df.head()) # print the head to ensure right format
 
 print("----------")
 # Open a connection to ElephantSQL postgreSQL database
-DB_NAME = os.getenv("DB_NAME2")
-DB_USER = os.getenv("DB_USER2")
-DB_PASSWORD = os.getenv("DB_PASSWORD2")
-DB_HOST = os.getenv("DB_HOST2")
-connection = psycopg2.connect(dbname=DB_NAME, user=DB_USER,
-                        password=DB_PASSWORD, host=DB_HOST)
-print("CONNECTION:", connection)
+DB_NAME = os.getenv('DB_NAME', default='OOPS')
+DB_USER = os.getenv('DB_USER', default='OOPS')
+DB_PASSWORD = os.getenv('DB_PASSWORD', default='OOPS')
+DB_HOST = os.getenv('DB_HOST', default='OOPS')
 
-cursor = connection.cursor()
-print("CURSOR", cursor)
+### Connect to ElephantSQL-hosted PostgreSQL
+connection = psycopg2.connect(dbname=DB_NAME, user=DB_USER,
+                        password=DB_PASSWORD,
+                        host=DB_HOST)
+print("CONNECTION: ", connection)
 
 # Create engine to use for df.to_sql
 #engine = create_engine('postgres://suerwyip:mNWaqz...@drona.db.elephantsql.com\
@@ -48,7 +48,7 @@ print('Total # of Survivors:', total_survivors[0])
 # How many passengers died?
 number_died_query = '''
 SELECT  count(survived) as count_died
-FROM    passengers
+FROM    titanic
 WHERE   survived = 0;
 '''
 total_dead = cursor.execute(number_died_query).fetchone()
