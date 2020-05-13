@@ -42,7 +42,6 @@ q1 = gres_curs.execute(query1)
 results = gres_curs.fetchall()
 
 print(results)
-
 # records = df.to_records(index=False)
 
 # result = list(records)
