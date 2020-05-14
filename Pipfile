@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pandas = "*"
+python-dotenv = "*"
+psycopg2-binary = "*"
+pymongo = "*"
+dnspython = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
