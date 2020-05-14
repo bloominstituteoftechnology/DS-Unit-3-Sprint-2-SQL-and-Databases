@@ -95,46 +95,18 @@ execute_values(cursor, insertion_query, list_of_tuples)
 #
 connection.commit()
 
-# titanic_queries.py
-
-#Imports
-import os
-from dotenv import load_dotenv
-import psycopg2
-from psycopg2.extras import execute_values
-import json
-import pandas as pd
-import sqlite3
-
-load_dotenv()
-
-# Set path to titanic data
-DATA_PATH = os.path.join(os.path.dirname(__file__), 'titanic.csv')
-
-
-DB_HOST = os.getenv("DB_HOST2", default="You Don't Belong Here")
-DB_NAME = os.getenv("DB_NAME2", default="You Don't Belong Here")
-DB_USER = os.getenv("DB_USER2", default="You Don't Belong Here")
-DB_PASSWORD = os.getenv("DB_PW2", default="You Don't Belong Here")
-
-connection = psycopg2.connect(dbname=DB_NAME, user=DB_USER, 
-                              password=DB_PASSWORD, host=DB_HOST)
-print(f"CONNECTION: {type(connection)}")
-
-# Create cursor
-cursor = connection.cursor()
-print(f"CURSOR {type(cursor)}")
-
 #
 # Perform some data exploration
 #
 
 
-get_survived = """
+get_survived_count = """
                      SELECT
-                        survived
+                        count(survived) as survived_count
                      FROM 
                         titanic_data
+                     WHERE
+                        survived = True;
                      """
 
 get_dead_count = """
@@ -152,7 +124,7 @@ get_1st_class_count = """
                       FROM
                           titanic_data
                       WHERE
-                          pclass = 1
+                          pclass = 1;
                       """
 
 get_2nd_class_count = """
@@ -161,7 +133,7 @@ get_2nd_class_count = """
                       FROM
                           titanic_data
                       WHERE
-                          pclass = 2
+                          pclass = 2;
                       """
 
 get_3rd_class_count = """
@@ -170,7 +142,7 @@ get_3rd_class_count = """
                       FROM
                           titanic_data
                       WHERE
-                          pclass = 3
+                          pclass = 3;
                       """
 
 get_male_count = """
@@ -179,7 +151,7 @@ get_male_count = """
                  FROM
                      titanic_data
                  WHERE
-                     sex = 'male'
+                     sex = 'male';
                  """
 
 get_female_count = """
@@ -188,31 +160,38 @@ get_female_count = """
                    FROM
                      titanic_data
                    WHERE
-                     sex = 'female'
+                     sex = 'female';
                    """
 
-survived = cursor.execute(get_survived).fetchall()
-dead_count = cursor.execute(get_dead_count).fetchall()
-first_class_count = cursor.execute(get_1st_class_count).fetchall()
-second_class_count = cursor.execute(get_2nd_class_count).fetchall()
-third_class_count = cursor.execute(get_3rd_class_count).fetchall()
-male_counts = cursor.execute(get_male_count).fetchall()
-female_counts = cursor.execute(get_female_count).fetchall()
+cursor.execute(get_survived_count)
+survive_count = cursor.fetchall()
+cursor.execute(get_dead_count)
+dead_count = cursor.fetchall()
+cursor.execute(get_1st_class_count)
+first_class_count = cursor.fetchall()
+cursor.execute(get_2nd_class_count)
+second_class_count = cursor.fetchall()
+cursor.execute(get_3rd_class_count)
+third_class_count = cursor.fetchall()
+cursor.execute(get_male_count)
+male_counts = cursor.fetchall()
+cursor.execute(get_female_count)
+female_counts = cursor.fetchall()
 
-for row in survived:
-    print(f"Number of survivors: {row['survived']}")
+for row in survive_count:
+    print(f"Number of survivors: {row[0]}")
 for row in dead_count:
-    print(f"Number of non-survivors: {row['death_count']}")
+    print(f"Number of non-survivors: {row[0]}")
 for row in first_class_count:
-    print(f"Number of 1st class passengers: {row['first_class']}")
+    print(f"Number of 1st class passengers: {row[0]}")
 for row in second_class_count:
-    print(f"Number of 2nd class passengers: {row['second_class']}")
+    print(f"Number of 2nd class passengers: {row[0]}")
 for row in third_class_count:
-    print(f"Number of 3rd class passengers: {row['third_class']}")
+    print(f"Number of 3rd class passengers: {row[0]}")
 for row in male_counts:
-    print(f"Number of male passengers: {row['male_count']}")
+    print(f"Number of male passengers: {row[0]}")
 for row in female_counts:
-    print(f"Number of female passengers: {row['female_count']}")
+    print(f"Number of female passengers: {row[0]}")
     
 cursor.close()
 connection.close()
