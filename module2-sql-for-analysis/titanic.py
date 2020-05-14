@@ -12,7 +12,7 @@ load_dotenv()
 engine = create_engine('postgres://kmrqsesi:SI812NtEmOK6uLeEMethleIXjorohwUB@rajje.db.elephantsql.com:5432/kmrqsesi', echo=False)
 titanic = pd.read_csv('titanic.csv')
 #commented out to stop my computer from giving me aids by taking an hour per query
-#titanic.to_sql('titanic', con=engine, if_exists='replace', index=False)
+titanic.to_sql('titanic', con=engine, if_exists='replace', index=False)
 # df = pd.read_csv(r'./titanic.csv')
 # df['Fare'] = df['Fare'].astype(float)
 # df['Survived'] = df['Survived'].astype(float)
