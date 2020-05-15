@@ -84,12 +84,10 @@ print(db.list_collection_names())
 # approach 1
 records = json.loads(armory_items.T.to_json()).values()
 db.collection.insert(records)
+# prove that the db insert worked
 print(db.list_collection_names())
 
 # approach 2
 # records = json.loads(df.to_json(orient='records'))
 # db.collection.insert_many(df.to_dict('records'))
 
-
-# prove that the db insert worked
-print(db.list_collection_names())

@@ -29,18 +29,27 @@ lite_curs = lite_conn.cursor()
 # 1: HOW MANY TRACKS PER GENRE
 #-----------------------------------------------------------------------------------------------------------------------
 
-tracks_per_genre = '''
+tracks_per_album_per_genre = '''
 SELECT
     tracks.GenreId,
-    AVG(tracks.TrackId) as avg_tracks
+    genres.Name,
+    count(distinct albums.AlbumId) as album_count,
+    count(distinct tracks.TrackId) as track_count,
+    count(distinct tracks.TrackId) / count(distinct albums.AlbumId) as avg_tracks_per_album
 from
     tracks
-    left join genres on genres.GenreId = tracks.GenreId
+left join 
+    genres on genres.GenreId = tracks.GenreId,
+    albums on albums.AlbumId = tracks.AlbumId
 group BY
     tracks.GenreId
 '''
 
+q1 = lite_curs.execute(tracks_per_album_per_genre).fetchall()
+#print("Tracks per Album per Genre: ", q1)
 
+df_q1 = pd.read_sql(sql=tracks_per_album_per_genre, con=lite_conn)
+print(df_q1)
 
 #-----------------------------------------------------------------------------------------------------------------------
 # 2: HOW MANY TRACKS PER ALBUM PER GENRE
