@@ -141,20 +141,24 @@ select avg(item_num) from
 avg 3.3 items
 
 - On average, how many Weapons does each character have?
-avg 1.5 weapons
+
 
 ```sql
-select cc.name as character_name, cc.character_id, count(cci.id) as weapon_num
-from charactercreator_character cc 
-inner join charactercreator_character_inventory cci
-on cci.character_id = cc.character_id
-inner join armory_item ai
-on ai.item_id = cci.item_id
-inner join armory_weapon aw
-on aw.item_ptr_id = ai.item_id
-group by cc.character_id
-LIMIT 20
+select avg(weapon_num) from 
+	(
+		select cc.name as character_name, cc.character_id, count(cci.id) as weapon_num
+		from charactercreator_character cc 
+		inner join charactercreator_character_inventory cci
+		on cci.character_id = cc.character_id
+		inner join armory_item ai
+		on ai.item_id = cci.item_id
+		inner join armory_weapon aw
+		on aw.item_ptr_id = ai.item_id
+		group by cc.character_id
+		LIMIT 20
+	);
 ```
+avg 1.5 weapons
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
