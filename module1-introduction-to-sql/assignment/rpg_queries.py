@@ -55,20 +55,43 @@ result = cursor.execute(query).fetchall()
 print('\nEach character has the following number of items:')
 for each in result:
     print(f'Character {each[0]} has {each[1]} item(s).')
-'''
+
 # How many Weapons does each character have? (Return first 20 rows)
-query = ''
+query = '''
+    SELECT
+        charactercreator_character_inventory.character_id,
+        count(distinct item_ptr_id)
+    FROM
+        charactercreator_character_inventory
+        LEFT JOIN armory_weapon ON armory_weapon.item_ptr_id = charactercreator_character_inventory.item_id
+    GROUP BY
+        character_id
+    LIMIT
+        20
+'''
 result = cursor.execute(query).fetchall()
-print('Each character has the following number of weapons:')
-print(result)
+print('\nEach character has the following number of weapons:')
+for each in result:
+    print(f'Character {each[0]} has {each[1]} weapon(s).')
 
 # On average, how many Items does each Character have?
-query = ''
+query = '''
+    SELECT
+        COUNT(item_id) as a, count(distinct character_id) as b
+    FROM
+        charactercreator_character_inventory
+'''
 result = cursor.execute(query).fetchall()
-print(f'On average, each character has {result} items.')
+print(f'\nOn average, each character has {result[0][0] / result[0][1]} items.')
 
 # On average, how many Weapons does each character have?
-query = ''
-result = cursor.execute(query).fetchall()
-print(f'One average, each character has {result} items')
+query = '''
+    SELECT
+        COUNT(item_ptr_id) as a, count(distinct character_id) as b
+    FROM
+        charactercreator_character_inventory
+        LEFT JOIN armory_weapon ON armory_weapon.item_ptr_id = charactercreator_character_inventory.item_id
 '''
+result = cursor.execute(query).fetchall()
+print(f'\nOne average, each character has {result[0][0] / result[0][1]} weapons\n')
+
