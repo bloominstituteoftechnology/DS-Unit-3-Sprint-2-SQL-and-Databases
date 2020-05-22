@@ -6,7 +6,7 @@ c = conn.cursor()
 print("""
 -- How many total Characters are there?  """)
 c.execute("""
-    SELECT COUNT(cc.character_id)
+    SELECT COUNT(character_id)
     FROM charactercreator_character cc;
 """)
 print(c.fetchone())
@@ -17,7 +17,7 @@ print("""
 -- cleric """)
 c.execute("""
     SELECT COUNT(*)
-    FROM charactercreator_cleric cc;
+    FROM charactercreator_cleric ;
 """)
 print(c.fetchone())
 
@@ -61,8 +61,8 @@ print("""
 -- How many of the Items are weapons? How many are not?  """)
 c.execute("""
 SELECT COUNT(*)
-FROM charactercreator_character_inventory cci
-WHERE cci.item_id IN (
+FROM charactercreator_character_inventory 
+WHERE item_id IN (
 	SELECT aw.item_ptr_id
 	FROM armory_weapon aw
 );
@@ -72,8 +72,8 @@ print(c.fetchone())
 print("Not?")
 c.execute("""
     SELECT COUNT(*)
-    FROM charactercreator_character_inventory cci
-    WHERE cci.item_id NOT IN (
+    FROM charactercreator_character_inventory 
+    WHERE item_id NOT IN (
             SELECT aw.item_ptr_id
             FROM armory_weapon aw
     );
@@ -83,12 +83,12 @@ print(c.fetchone())
 print("""
 -- How many Items does each character have? (Return first 20 rows) """)
 c.execute("""
-    SELECT cci.character_id, COUNT(*)
-    FROM charactercreator_character_inventory cci
-    WHERE cci.item_id NOT IN (
+    SELECT character_id, COUNT(*)
+    FROM charactercreator_character_inventory 
+    WHERE item_id NOT IN (
             SELECT aw.item_ptr_id
             FROM armory_weapon aw
-    ) GROUP BY cci.character_id
+    ) GROUP BY character_id
     LIMIT 20;
 """)
 print(c.fetchall())
@@ -96,25 +96,25 @@ print(c.fetchall())
 print("""
 -- How many Weapons does each character have? (Return first 20 rows) """)
 c.execute("""
-    SELECT cci.character_id, COUNT(*)
+    SELECT character_id, COUNT(*)
     FROM charactercreator_character_inventory cci
-    WHERE cci.item_id IN (
+    WHERE item_id IN (
             SELECT aw.item_ptr_id
             FROM armory_weapon aw
-    ) GROUP BY cci.character_id
+    ) GROUP BY character_id
     LIMIT 20;
 """)
 print(c.fetchall())
 
 print("""
-7 -- On average, how many Items does each Character have?  """)
+ -- On average, how many Items does each Character have?  """)
 c.execute("""
 SELECT AVG(count_items)
 FROM
 (
-    SELECT cci.character_id, COUNT(*) AS count_items
+    SELECT character_id, COUNT(*) AS count_items
     FROM charactercreator_character_inventory cci
-    GROUP BY cci.character_id 
+    GROUP BY character_id 
 );
 """)
 print(c.fetchone())
@@ -125,12 +125,12 @@ c.execute("""
 SELECT AVG(count_items)
 FROM
 (
-    SELECT cci.character_id, COUNT(*) AS count_items
-    FROM charactercreator_character_inventory cci
-    WHERE cci.item_id IN (
+    SELECT character_id, COUNT(*) AS count_items
+    FROM charactercreator_character_inventory 
+    WHERE item_id IN (
             SELECT aw.item_ptr_id
             FROM armory_weapon aw
-    ) GROUP BY cci.character_id 
+    ) GROUP BY character_id 
 );
 """)
 print(c.fetchone())
