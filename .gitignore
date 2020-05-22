@@ -82,6 +82,7 @@ celerybeat-schedule
 *.sage.py
 
 # Environments
+# ignore secret credentials:
 .env
 .venv
 env/

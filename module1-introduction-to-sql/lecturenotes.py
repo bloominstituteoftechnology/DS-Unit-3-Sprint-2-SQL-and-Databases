@@ -27,3 +27,6 @@ result2 = cursor.execute(query).fetchall()
 for row in result2:
     #print(row[0], row[1], row[2])
     print(row["CustomerId"], row["FirstName"], row["LastName"])
+
+
+exit()
