@@ -9,6 +9,8 @@ autopep8 = "*"
 [packages]
 sqlite3 = "*"
 pandas = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
