@@ -7,7 +7,7 @@ print("""
 -- How many total Characters are there?  """)
 c.execute("""
     SELECT COUNT(character_id)
-    FROM charactercreator_character cc;
+    FROM charactercreator_character;
 """)
 print(c.fetchone())
 
@@ -17,7 +17,7 @@ print("""
 -- cleric """)
 c.execute("""
     SELECT COUNT(*)
-    FROM charactercreator_cleric ;
+    FROM charactercreator_cleric;
 """)
 print(c.fetchone())
 
@@ -64,19 +64,17 @@ SELECT COUNT(*)
 FROM charactercreator_character_inventory 
 WHERE item_id IN (
 	SELECT aw.item_ptr_id
-	FROM armory_weapon aw
-);
+	FROM armory_weapon aw);
 """)
 print(c.fetchone())
 
-print("Not?")
+print("How many are not?")
 c.execute("""
     SELECT COUNT(*)
     FROM charactercreator_character_inventory 
     WHERE item_id NOT IN (
             SELECT aw.item_ptr_id
-            FROM armory_weapon aw
-    );
+            FROM armory_weapon aw);
 """)
 print(c.fetchone())
 
@@ -97,7 +95,7 @@ print("""
 -- How many Weapons does each character have? (Return first 20 rows) """)
 c.execute("""
     SELECT character_id, COUNT(*)
-    FROM charactercreator_character_inventory cci
+    FROM charactercreator_character_inventory 
     WHERE item_id IN (
             SELECT aw.item_ptr_id
             FROM armory_weapon aw
@@ -114,8 +112,7 @@ FROM
 (
     SELECT character_id, COUNT(*) AS count_items
     FROM charactercreator_character_inventory cci
-    GROUP BY character_id 
-);
+    GROUP BY character_id );
 """)
 print(c.fetchone())
 
@@ -130,8 +127,7 @@ FROM
     WHERE item_id IN (
             SELECT aw.item_ptr_id
             FROM armory_weapon aw
-    ) GROUP BY character_id 
-);
+    ) GROUP BY character_id );
 """)
 print(c.fetchone())
 
