@@ -11,7 +11,6 @@ DB_USER = os.getenv("DB_USER", default="OOPS")
 DB_PW = os.getenv("DB_PW", default="OOPS")
 DB_HOST = os.getenv("DB_HOST", default="OOPS")
 
-#CSV_FILEPATH = "titanic.csv"
 CSV_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "module2-sql-for-analysis", "titanic.csv")
 
 connection = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PW, host=DB_HOST)
