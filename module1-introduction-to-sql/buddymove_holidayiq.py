@@ -19,8 +19,8 @@ print("""
 How many users who reviewed at least 100 Nature in the category also reviewed at least 100 in the Shopping category?""")
 c.execute("""
     SELECT COUNT(*)
-    FROM review r
-    WHERE r.Nature >= 100 AND r.Shopping >= 100
+    FROM review 
+    WHERE Nature >= 100 AND Shopping >= 100
 """)
 print(c.fetchone())
 
@@ -28,6 +28,6 @@ print("""
 (Stretch) What are the average number of reviews for each category? """)
 c.execute("""
     SELECT AVG(Sports), AVG(Religious), AVG(Nature), AVG(Theatre), AVG(Shopping), AVG(Picnic)
-    from review
+    FROM review
 """)
 print(c.fetchone())
