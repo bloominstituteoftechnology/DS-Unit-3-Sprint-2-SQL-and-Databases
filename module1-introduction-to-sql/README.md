@@ -106,6 +106,7 @@ FROM charactercreator_character
   LIMIT 20
 
 - On average, how many Items does each Character have?
+  
 - On average, how many Weapons does each character have?
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
