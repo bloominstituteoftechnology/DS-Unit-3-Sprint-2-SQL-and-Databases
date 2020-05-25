@@ -62,15 +62,9 @@ for table in table_names:
             each[1] = bool(each[1])
             new_result.append(each)
         execute_values(postgresql_cursor, insertion_query, new_result)
-    elif table[0] != 'sqlite_sequence':
-        execute_values(postgresql_cursor, insertion_query, result)
+    elif table[0] != 'sqlite_sequence': # not sure how to create this table with an unsigned data type
+        execute_values(postgresql_cursor, insertion_query, result)   
     
-        
-    # inserting the data into the elephant db
-    
-    
-
 postgresql_connection.commit()
-
 postgresql_cursor.close()
 postgresql_connection.close()
