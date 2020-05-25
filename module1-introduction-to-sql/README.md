@@ -106,8 +106,24 @@ FROM charactercreator_character
   LIMIT 20
 
 - On average, how many Items does each Character have?
-  
+  SELECT 
+	character_id
+	,COUNT(item_id) as 'No_of_Items'
+	,ROUND(AVG(item_id))
+  FROM charactercreator_character_inventory
+  GROUP BY character_id
+  ORDER BY character_id
+  LIMIT 20
+
 - On average, how many Weapons does each character have?
+  SELECT 
+  character_id
+	,count(item_id)
+	,round(avg(item_ptr_id))
+FROM charactercreator_character_inventory LEFT JOIN armory_weapon
+ON item_id = item_ptr_id
+GROUP BY character_id
+LIMIT 20
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
