@@ -39,20 +39,34 @@ query_create = """CREATE TABLE Titanic (
 """
 cur.execute(query_create)
 
+# test
+
+query = 'INSERT INTO Titanic VALUES (0, 3, \'Mr. Owen\', \'male\', 22.0, 1, 0, 7.25);'
+cur.execute(query)
+cur.execute('SELECT * FROM Titanic')
+print('first fetch', cur.fetchall())
+
+# for row in df.values:
+#     print('######')
+#     print(type(row))
+#     print(row)
+#     cur.execute("INSERT INTO Titanic (Survived, Pclass, Name, Sex, Age, SiblingsSpouses, ParentsChildren, Fare) VALUES %s;", tuple(row))
 
 # for Robert's code
 for row in df.values:
-    # print(tuple(row))
+    print('type', type(row))
+    print('row', row)
+    print('here', tuple(row))
     cur.execute("""
-        INSERT INTO Titanic
-        (Survived, Pclass, Name, Sex, Age, SiblingsSpouses, ParentsChildren, Fare)
-        VALUES %s;
+    INSERT INTO Titanic VALUES (%s);
     """, row)
+
 conn.commit()
 # print('@@@@\n')
 # print(tuple(df.values))
 # print('@@@@\n')
 # cur.executemany("""INSERT INTO Titanic VALUES %s;""",
 #                 (tuple(df.values)))
-print(cur.execute('SELECT * FROM Titanic'))
+cur.execute('SELECT * FROM Titanic')
+print('second fetch', cur.fetchall())
 # # df.to_sql('Titanic', conn, if_exists='replace', index=False)
