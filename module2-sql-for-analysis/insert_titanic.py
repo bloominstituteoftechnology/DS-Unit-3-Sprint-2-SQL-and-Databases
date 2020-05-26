@@ -1,18 +1,20 @@
 import os
 import pandas as pd
 import psycopg2
+from psycopg2 import extras
 from dotenv import load_dotenv
+import numpy as np
 load_dotenv()
+print(__file__)
+psycopg2.extensions.register_adapter(np.int64, psycopg2._psycopg.AsIs)
 
 # load csv to dataframe
 CSV_FILE_PATH = os.path.join(os.path.dirname(__file__), 'titanic.csv')
 df = pd.read_csv(CSV_FILE_PATH)
 # print(df.head())
 # print(df.columns)
-# print(df.dtypes)
 # print(df.values)
-# i'm not sure if I do some data cleansing before taking care of sql thing
-
+print('df.dtypes\n', df.dtypes)
 # Connect to ElephantSQL-hosted PostgreSQL
 conn = psycopg2.connect(
     dbname=os.getenv("dbname"),
@@ -39,20 +41,26 @@ query_create = """CREATE TABLE Titanic (
 """
 cur.execute(query_create)
 
+# test
 
-# for Robert's code
-for row in df.values:
-    # print(tuple(row))
-    cur.execute("""
-        INSERT INTO Titanic
-        (Survived, Pclass, Name, Sex, Age, SiblingsSpouses, ParentsChildren, Fare)
-        VALUES %s;
-    """, row)
+# query = 'INSERT INTO Titanic VALUES (0, 3, \'Mr. Owen\', \'male\', 22.0, 1, 0, 7.25);'
+# cur.execute(query)
+# cur.execute('SELECT * FROM Titanic')
+# print('first fetch', cur.fetchall())
+
+# this is a solution from Mike
+list_of_tuples = list(df.to_records(index=False))
+ins_query = 'INSERT INTO Titanic (Survived, Pclass, Name, Sex, Age, SiblingsSpouses, ParentsChildren, Fare) VALUES %s;'
+extras.execute_values(cur, ins_query, list_of_tuples)
+
+# this was my initial code but not working
+# for row in df.values:
+#     print('######')
+#     print(type(row))
+#     print(row)
+#     cur.execute("INSERT INTO Titanic (Survived, Pclass, Name, Sex, Age, SiblingsSpouses, ParentsChildren, Fare) VALUES %s;", tuple(row))
+
 conn.commit()
-# print('@@@@\n')
-# print(tuple(df.values))
-# print('@@@@\n')
-# cur.executemany("""INSERT INTO Titanic VALUES %s;""",
-#                 (tuple(df.values)))
-print(cur.execute('SELECT * FROM Titanic'))
-# # df.to_sql('Titanic', conn, if_exists='replace', index=False)
+
+cur.execute('SELECT * FROM Titanic')
+print('second fetch', cur.fetchall())
