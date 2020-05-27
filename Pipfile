@@ -8,6 +8,8 @@ python-dotenv = "*"
 psycopg2-binary = "*"
 pandas = "*"
 sqlalchemy = "*"
+pymongo = "*"
+dnspython = "*"
 
 [dev-packages]
 
