@@ -1,6 +1,18 @@
 # mongo_assignment.py
 
 
+# "How was working with MongoDB different from working with PostgreSQL? What was easier, and what was harder?"
+
+# Working with MongoDB was different from working with PostGreSQL in that Mongo is not as strict with inputs.
+# Also, working with PostGreSQL first prepared me with the general process of working with a database such as
+# setting up .env file for credentials, loading credentials, connecting to the database, and the adding data
+# to the database, so MongoDB seemed easier to work with after previous practice with PostgreSQL. Mongo syntax
+# is a bit different than PostgreSQL so that was a little bit of a challenge, however nothing too difficult with
+# good documentation and a proper tutorial. MongoDB Atlas is easy to work with, so much that I deployed a cluster
+# while in Unit 1. Besides the syntax difference of Mongo, converting a csv or db to JSON and loading it into MongoDB
+# was new to me.
+
+
 import os
 import json
 import pymongo
