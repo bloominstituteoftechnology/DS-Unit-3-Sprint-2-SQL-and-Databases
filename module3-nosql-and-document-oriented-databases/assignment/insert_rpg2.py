@@ -75,3 +75,5 @@ print("DOCS:", collection.count_documents({}))
 collection = db.charactercreator_mage
 collection.insert_many(charactercreator_mage_list)
 print("DOCS:", collection.count_documents({}))
+
+client.close()
