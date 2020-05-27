@@ -42,7 +42,7 @@ cursor.execute(query)
 # INSERT SOME DATA
 #
 
-my_dict = { "a": 1, "b": ["dog", "cat", 42], "c": 'true' }
+# my_dict = { "a": 1, "b": ["dog", "cat", 42], "c": 'true' }
 
 #insertion_query = f"INSERT INTO {table_name} (name, data) VALUES (%s, %s)"
 #cursor.execute(insertion_query,
