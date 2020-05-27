@@ -9,6 +9,9 @@ verify_ssl = true
 pandas = "*"
 python-dotenv = "*"
 psycopg2-binary = "*"
+pymongo = "*"
+dnspython = "*"
+json = "*"
 
 [requires]
 python_version = "3.7"
