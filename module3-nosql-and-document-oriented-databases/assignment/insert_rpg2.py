@@ -1,3 +1,8 @@
+'''
+I think the biggest difference between SQL and no SQL was that the SQL required a schema for the data and was more restrict
+NoSQL was slightly easier since it would take any type of data
+'''
+
 import pymongo
 import os
 from dotenv import load_dotenv
