@@ -61,13 +61,48 @@ for each in survived_result:
   elif each[0] == 2:
     print(f'In second class {each[1]} passengers survived and {dead_second} died.')
   else:
-    print(f'In third class {each[1]} passengers survived and {dead_third} died.')
-
-
+    print(f'In third class {each[1]} passengers survived and {dead_third} died.\n')
 
 # What was the average age of survivors vs nonsurvivors?
+query = '''
+SELECT
+	survived,
+	AVG(age)
+from
+    titanic
+GROUP BY
+	survived
+'''
+cursor.execute(query)
+result = cursor.fetchall()
+
+for each in result:
+  if each[0] == 1:
+    print(f'The average age of survivors is {each[1]}')
+  else:
+    print(f'The average age of nonsurvivors is {each[1]}')
+print('\n')
 
 # What was the average age of each passenger class?
+query = '''
+SELECT
+	pclass,
+	AVG(age)
+from
+    titanic
+GROUP BY
+	pclass
+'''
+cursor.execute(query)
+result = cursor.fetchall()
+
+for each in result:
+  if each[0] == 1:
+    print(f'The average age in first class is {each[1]}')
+  elif each[0] == 2:
+    print(f'The average age in second class is {each[1]}')
+  else:
+    print(f'The average age in third class is {each[1]}')
 
 # What was the average fare by passenger class? By survival?
 
