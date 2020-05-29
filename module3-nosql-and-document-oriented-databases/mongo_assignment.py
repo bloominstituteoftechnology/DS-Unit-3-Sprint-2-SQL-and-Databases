@@ -64,6 +64,7 @@ json_string = r'''[{"model": "charactercreator.character", "pk": 1, "fields": {"
 
 # Load the JSON String
 
+db.RPG_collection.drop()
 RPG = json.loads(json_string)
 collection.insert_many(RPG)
 print("DOCS:", collection.count_documents({}))
