@@ -19,12 +19,21 @@ client = pymongo.MongoClient(
     f"mongodb+srv://{mongo_username}:{mongo_password}@{mongo_host}/test?retryWrites=true&w=majority")
 db = client.test
 
-sql_query = 'SELECT * FROM charactercreator_character;'
+query_1 = 'SELECT * FROM charactercreator_character;'
+query_2 = 'SELECT * FROM charactercreator_inventory;'
+query_3 = 'SELECT * FROM charactercreator_cleric;'
+query_4 = 'SELECT * FROM charactercreator_fighter;'
+query_5 = 'SELECT * FROM charactercreator_mage;'
+query_6 = 'SELECT * FROM charactercreator_necromancer;'
+query_7 = 'SELECT * FROM charactercreator_thief;'
+query_8 = 'SELECT * FROM armory_item ai LEFT JOIN armory_weapon aw on ai.item_id = aw.item_ptr_id;'
 
-data_from_sql = curs.execute(sql_query).fetchall()
+data_1 = curs.execute(query_1).fetchall()
+data_1 = curs.execute(query_1).fetchall()
 
-list_data = []
-for row in data_from_sql:
+# migrate sqlite3 data to mongoDB
+list_character = []
+for row in data_1:
     obj = {
         'id': row[0],
         'name': row[1],
@@ -36,17 +45,27 @@ for row in data_from_sql:
         'dexterity': row[7],
         'wisdom': row[8],
     }
-    list_data.append(obj)
+    list_character.append(obj)
 # print(list_data)
 db['Character'].drop()
 db.create_collection('Character')
-db.Character.insert_many(list_data)
+db.Character.insert_many(list_character)
+
+breakpoint()
 
 # - How many total Characters are there? 302 chracters
-# - How many of each specific subclass? not sure what the question exactly means. i'd say 5 because there are cleric, fighter, mage, necromancer and thief.
+db['Character'].count_documents({})
+
+# - How many of each specific subclass?
+
 # - How many total Items? 174 items
+
 # - How many of the Items are weapons? How many are not? 37 items are weapon items and 137 items are not weapons
+
 # - How many Items does each character have? (Return first 20 rows)
+
 # - How many Weapons does each character have? (Return first 20 rows)
+
 # - On average, how many Items does each Character have?
+
 # - On average, how many Weapons does each character have?
