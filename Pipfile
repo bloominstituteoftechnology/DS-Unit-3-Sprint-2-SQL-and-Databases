@@ -9,7 +9,6 @@ verify_ssl = true
 pandas = "*"
 psycopg2-binary = "*"
 python-dotenv = "*"
-sqlite3 = "*"
 pymongo = "*"
 dnspython = "*"
 

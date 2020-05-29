@@ -5,21 +5,19 @@ import sqlite3
 from dotenv import load_dotenv
 load_dotenv()
 
-conn = sqlite3.connect('rpg_db.sqlite3')
+conn = sqlite3.connect(os.path.join(os.path.dirname(
+    __file__), 'rpg_db.sqlite3'))
 curs = conn.cursor()
 
 username = os.getenv('username')
 password = os.getenv('password')
-hostname = os.getenv('hostname')
+host = os.getenv('host')
 
-# print(username)
-# print(password)
-# print(
-#     f"mongodb+srv://{username}:{password}@cluster0-paxoc.mongodb.net/test?retryWrites=true&w=majority")
-# client = pymongo.MongoClient(
-#     f"mongodb+srv://{username}:{password}@{hostname}/test?retryWrites=true&w=majority")
-# db = client.test
-# print('db', db)
+print(host)
+client = pymongo.MongoClient(
+    f"mongodb+srv://{username}:{password}@{host}/test?retryWrites=true&w=majority")
+db = client.test
+print('db', db)
 
 # try:
 #     print('hahaha')
@@ -29,6 +27,6 @@ hostname = os.getenv('hostname')
 # except:
 #     print("Err")
 
-query_1 = 'SELECT * FROM armory_item;'
-ans_1 = curs.execute(query_1).fetchone()
-print(f'How many total Characters are there? {ans_1}')
+# query_1 = 'SELECT * FROM armory_item;'
+# ans_1 = curs.execute(query_1).fetchall()
+# print(f'How many total Characters are there? {ans_1}')
