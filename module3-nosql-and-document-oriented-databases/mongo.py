@@ -1,3 +1,11 @@
+# "How was working with MongoDB different from working with
+# PostgreSQL? What was easier, and what was harder?"
+
+# Answer: MongoDB is a lot simpler in terms of Inserting data.
+# I would not say one is easier than the other because they all
+# have different purpose, pros and cons
+
+
 import pymongo
 import os
 import sqlite3
@@ -12,21 +20,34 @@ curs = conn.cursor()
 username = os.getenv('username')
 password = os.getenv('password')
 host = os.getenv('host')
-
-print(host)
+print(
+    f"mongodb+srv://{username}:{password}@{host}/test?retryWrites=true&w=majority")
 client = pymongo.MongoClient(
     f"mongodb+srv://{username}:{password}@{host}/test?retryWrites=true&w=majority")
 db = client.test
-print('db', db)
+# print('db', db)
 
-# try:
-#     print('hahaha')
-#     result = db.test.insert_one({'stringy key': [2, 'thing', 3]})
-#     print(result.inserted_id)
-#     print(db.test.find_one({'stringy key': [2, 'thing', 3]}))
-# except:
-#     print("Err")
+sql_query = 'SELECT * FROM charactercreator_character;'
 
-# query_1 = 'SELECT * FROM armory_item;'
-# ans_1 = curs.execute(query_1).fetchall()
-# print(f'How many total Characters are there? {ans_1}')
+data_from_sql = curs.execute(sql_query).fetchall()
+# print(data_from_sql[0])
+
+list_data = []
+for row in data_from_sql:
+    obj = {
+        'id': row[0],
+        'name': row[1],
+        'level': row[2],
+        'exp': row[3],
+        'hp': row[4],
+        'strength': row[5],
+        'inteligence': row[6],
+        'dexterity': row[7],
+        'wisdom': row[8],
+    }
+    list_data.append(obj)
+# print(list_data)
+db['Character'].drop()
+db.create_collection('Character')
+# breakpoint()
+db.Character.insert_many(list_data)
