@@ -36,9 +36,34 @@ for each in result:
   elif each[0] == 2:
     print(f'{each[1]} passengers were in second class.')
   else:
-    print(f'{each[1]} were in third class.')
+    print(f'{each[1]} passengers were in third class.')
 
 # How many passengers survived/died within each class?
+query = "SELECT pclass, count(distinct id) from titanic WHERE survived = 1 GROUP BY pclass"
+cursor.execute(query)
+survived_result = cursor.fetchall()
+
+query = "SELECT pclass, count(distinct id) from titanic WHERE survived = 0 GROUP BY pclass"
+cursor.execute(query)
+died_result = cursor.fetchall()
+
+for each in died_result:
+  if each[0] == 1:
+    dead_first = each[1]
+  elif each[0] == 2:
+    dead_second = each[1]
+  else:
+    dead_third = each[1]
+
+for each in survived_result:
+  if each[0] == 1:
+    print(f'\nIn first class {each[1]} passengers survived and {dead_first} died.')
+  elif each[0] == 2:
+    print(f'In second class {each[1]} passengers survived and {dead_second} died.')
+  else:
+    print(f'In third class {each[1]} passengers survived and {dead_third} died.')
+
+
 
 # What was the average age of survivors vs nonsurvivors?
 
