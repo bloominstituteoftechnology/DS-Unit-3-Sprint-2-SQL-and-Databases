@@ -15,12 +15,28 @@ cursor = connection.cursor()
 
 
 # How many passengers survived, and how many died?
-query = "SELECT * from titanic"
+query = "SELECT survived, count(distinct id) from titanic GROUP BY survived"
 cursor.execute(query)
-print(cursor.fetchall())
+result = cursor.fetchall()
 
+for each in result:
+  if each[0] == 1:
+    print(f'{each[1]} passengers survived.')
+  else:
+    print(f'{each[1]} passengers died.')
 
 # How many passengers were in each class?
+query = "SELECT pclass, count(distinct id) from titanic GROUP BY pclass"
+cursor.execute(query)
+result = cursor.fetchall()
+
+for each in result:
+  if each[0] == 1:
+    print(f'\n{each[1]} passengers were in first class.')
+  elif each[0] == 2:
+    print(f'{each[1]} passengers were in second class.')
+  else:
+    print(f'{each[1]} were in third class.')
 
 # How many passengers survived/died within each class?
 
@@ -34,6 +50,7 @@ print(cursor.fetchall())
 
 # How many parents/children aboard on average, by passenger class? By survival?
 
+  
 # Do any passengers have the same name?
 
 '''
