@@ -19,6 +19,29 @@ result = collection.count_documents({})
 print(f'There are {result} total characters')
 
 # How many of each specific subclass?
+print('\n')
+collection = db.charactercreator_cleric
+result = collection.count_documents({})
+print(f'There are {result} clerics')
+
+collection = db.charactercreator_fighter
+result = collection.count_documents({})
+print(f'There are {result} fighters ')
+
+collection = db.charactercreator_mage
+result = collection.count_documents({})
+print(f'There are {result} mages')
+
+collection = db.charactercreator_necromancer
+result = collection.count_documents({})
+print(f'There are {result} necromancers')
+
+collection = db.charactercreator_thief
+result = collection.count_documents({})
+print(f'There are {result} thieves')
+
+
+
 
 # How many total Items?
 
