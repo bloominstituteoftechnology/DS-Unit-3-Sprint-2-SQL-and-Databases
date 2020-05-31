@@ -145,11 +145,97 @@ for each in survived_result:
     print(f'The average fare of nonsurvivors is {each[1]}')
 
 # How many siblings/spouses aboard on average, by passenger class? By survival?
+query = '''
+SELECT
+	pclass,
+	AVG(siblings_spouses_aboard)
+from
+    titanic
+GROUP BY
+	pclass
+'''
+cursor.execute(query)
+pclass_result = cursor.fetchall()
+
+query = '''
+SELECT
+	survived,
+	AVG(siblings_spouses_aboard)
+from
+    titanic
+GROUP BY
+	survived
+'''
+cursor.execute(query)
+survived_result = cursor.fetchall()
+print('\n')
+
+for each in pclass_result:
+  if each[0] == 1:
+    print(f'The average number of siblings and spouses aboard in first class is {each[1]}')
+  elif each[0] == 2:
+    print(f'The average number of siblings and spouses aboard in second class is {each[1]}')
+  else:
+    print(f'The average number of siblings and spouses aboard in third class is {each[1]}')
+
+for each in survived_result:
+  if each[0] == 1:
+    print(f'The average number of siblings and spouses aboard of survivors is {each[1]}')
+  else:
+    print(f'The average number of siblings and spouses aboard of nonsurvivors is {each[1]}')
 
 # How many parents/children aboard on average, by passenger class? By survival?
+query = '''
+SELECT
+	pclass,
+	AVG(parents_children_aboard)
+from
+    titanic
+GROUP BY
+	pclass
+'''
+cursor.execute(query)
+pclass_result = cursor.fetchall()
 
+query = '''
+SELECT
+	survived,
+	AVG(parents_children_aboard)
+from
+    titanic
+GROUP BY
+	survived
+'''
+cursor.execute(query)
+survived_result = cursor.fetchall()
+print('\n')
+
+for each in pclass_result:
+  if each[0] == 1:
+    print(f'The average number of parents and children aboard in first class is {each[1]}')
+  elif each[0] == 2:
+    print(f'The average number of parents and children aboard in second class is {each[1]}')
+  else:
+    print(f'The average number of parents and children aboard in third class is {each[1]}')
+
+for each in survived_result:
+  if each[0] == 1:
+    print(f'The average number of parents and children aboard of survivors is {each[1]}')
+  else:
+    print(f'The average number of parents and children aboard of nonsurvivors is {each[1]}')
   
 # Do any passengers have the same name?
+query = '''
+SELECT name, COUNT(*) FROM titanic GROUP BY name 
+'''
+cursor.execute(query)
+result = cursor.fetchall()
+print('\n')
+print('The following have the same name:')
+for each in result:
+  if each[1] > 1:
+    print(f'    {each[0]}')
+print('\n')
 
 '''
 (Bonus! Hard, may require pulling and processing with Python) How many married
