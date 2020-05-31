@@ -34,19 +34,28 @@ print(f'There are {result} mages')
 
 collection = db.charactercreator_necromancer
 result = collection.count_documents({})
-print(f'There are {result} necromancers')
+print(f'There are {result} necromancers (a subset of mages)')
 
 collection = db.charactercreator_thief
 result = collection.count_documents({})
 print(f'There are {result} thieves')
 
-
-
-
 # How many total Items?
+print('\n')
+collection = db.armory_item
+result = collection.count_documents({})
+print(f'There are {result} total items')
 
 # How many of the Items are weapons? How many are not?
+print('\n')
+collection = db.armory_weapon
+weapon_result = collection.count_documents({})
 
+collection = db.armory_item
+item_result = collection.count_documents({})
+
+print(f'There are {weapon_result} total weapons')
+print(f'There are {item_result - weapon_result} items that are not weapons')
 # How many Items does each character have? (Return first 20 rows)
 
 # How many Weapons does each character have? (Return first 20 rows)
