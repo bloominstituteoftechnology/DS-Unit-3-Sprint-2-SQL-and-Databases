@@ -17,28 +17,45 @@ with open(DATA_FILE_PATH) as f:
 
 charactercreator_thief_list = [x for x in rpg_data if x['model'] == 'charactercreator.thief']
 new_charactercreator_thief_list = [x['fields'] for x in charactercreator_thief_list]
+for i in range(len(new_charactercreator_thief_list)):
+    new_charactercreator_thief_list[i].update({'pk':charactercreator_thief_list[i]['pk']})
 
 charactercreator_necromancer_list = [x for x in rpg_data if x['model'] == 'charactercreator.necromancer']
 new_charactercreator_necromancer_list = [x['fields'] for x in charactercreator_necromancer_list]
+for i in range(len(new_charactercreator_necromancer_list)):
+    new_charactercreator_necromancer_list[i].update({'pk':charactercreator_necromancer_list[i]['pk']})
 
 armory_weapon_list = [x for x in rpg_data if x['model'] == 'armory.weapon']
 new_armory_weapon_list = [x['fields'] for x in armory_weapon_list]
+for i in range(len(new_armory_weapon_list)):
+    new_armory_weapon_list[i].update({'pk':armory_weapon_list[i]['pk']})
 
 charactercreator_cleric_list = [x for x in rpg_data if x['model'] == 'charactercreator.cleric']
 new_charactercreator_cleric_list = [x['fields'] for x in charactercreator_cleric_list]
+for i in range(len(new_charactercreator_cleric_list)):
+    new_charactercreator_cleric_list[i].update({'pk':charactercreator_cleric_list[i]['pk']})
 
 charactercreator_fighter_list = [x for x in rpg_data if x['model'] == 'charactercreator.fighter']
 new_charactercreator_fighter_list = [x['fields'] for x in charactercreator_fighter_list]
+for i in range(len(new_charactercreator_fighter_list)):
+    new_charactercreator_fighter_list[i].update({'pk':charactercreator_fighter_list[i]['pk']})
 
 charactercreator_character_list = [x for x in rpg_data if x['model'] == 'charactercreator.character']
 new_charactercreator_character_list = [x['fields'] for x in charactercreator_character_list]
+for i in range(len(new_charactercreator_character_list)):
+    new_charactercreator_character_list[i].update({'pk':charactercreator_character_list[i]['pk']})
 
 armory_item_list = [x for x in rpg_data if x['model'] == 'armory.item']
 new_armory_item_list = [x['fields'] for x in armory_item_list]
+for i in range(len(new_armory_item_list)):
+    new_armory_item_list[i].update({'pk':armory_item_list[i]['pk']})
 
 charactercreator_mage_list = [x for x in rpg_data if x['model'] == 'charactercreator.mage']
 new_charactercreator_mage_list = [x['fields'] for x in charactercreator_mage_list]
+for i in range(len(new_charactercreator_mage_list)):
+    new_charactercreator_mage_list[i].update({'pk':charactercreator_mage_list[i]['pk']})
 
+print(new_charactercreator_mage_list[0])
 
 DB_USER = os.getenv('MONGO_DB_USER', default='oops')
 DB_PASSWORD = os.getenv('MONGO_DB_PASSWORD', default='oops')

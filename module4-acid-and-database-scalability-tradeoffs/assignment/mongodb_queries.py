@@ -58,9 +58,12 @@ print(f'There are {weapon_result} total weapons')
 print(f'There are {item_result - weapon_result} items that are not weapons')
 
 # How many Items does each character have? (Return first 20 rows)
-print('\n')
 collection = db.charactercreator_character
-result = list(collection.find({'pk': 1}))
+result = list(collection.find({}))
+print(result[0])
+
+collection = db.armory_item
+result = list(collection.find({}))
 print(result[0])
 # How many Weapons does each character have? (Return first 20 rows)
 
