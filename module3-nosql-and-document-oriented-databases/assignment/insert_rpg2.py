@@ -16,13 +16,29 @@ with open(DATA_FILE_PATH) as f:
     rpg_data = json.load(f)
 
 charactercreator_thief_list = [x for x in rpg_data if x['model'] == 'charactercreator.thief']
+new_charactercreator_thief_list = [x['fields'] for x in charactercreator_thief_list]
+
 charactercreator_necromancer_list = [x for x in rpg_data if x['model'] == 'charactercreator.necromancer']
+new_charactercreator_necromancer_list = [x['fields'] for x in charactercreator_necromancer_list]
+
 armory_weapon_list = [x for x in rpg_data if x['model'] == 'armory.weapon']
+new_armory_weapon_list = [x['fields'] for x in armory_weapon_list]
+
 charactercreator_cleric_list = [x for x in rpg_data if x['model'] == 'charactercreator.cleric']
+new_charactercreator_cleric_list = [x['fields'] for x in charactercreator_cleric_list]
+
 charactercreator_fighter_list = [x for x in rpg_data if x['model'] == 'charactercreator.fighter']
+new_charactercreator_fighter_list = [x['fields'] for x in charactercreator_fighter_list]
+
 charactercreator_character_list = [x for x in rpg_data if x['model'] == 'charactercreator.character']
+new_charactercreator_character_list = [x['fields'] for x in charactercreator_character_list]
+
 armory_item_list = [x for x in rpg_data if x['model'] == 'armory.item']
+new_armory_item_list = [x['fields'] for x in armory_item_list]
+
 charactercreator_mage_list = [x for x in rpg_data if x['model'] == 'charactercreator.mage']
+new_charactercreator_mage_list = [x['fields'] for x in charactercreator_mage_list]
+
 
 DB_USER = os.getenv('MONGO_DB_USER', default='oops')
 DB_PASSWORD = os.getenv('MONGO_DB_PASSWORD', default='oops')
@@ -40,45 +56,47 @@ db = client.rpg_database
 print('----------')
 print('DB:', type(db), db)
 
+print(charactercreator_thief_list[0])
+print(new_charactercreator_thief_list[0])
 
 # charactercreator_thief
 collection = db.charactercreator_thief
-collection.insert_many(charactercreator_thief_list)
+collection.insert_many(new_charactercreator_thief_list)
 print("DOCS:", collection.count_documents({}))
 
 # charactercreator_necromancer
 collection = db.charactercreator_necromancer
-collection.insert_many(charactercreator_necromancer_list)
+collection.insert_many(new_charactercreator_necromancer_list)
 print("DOCS:", collection.count_documents({}))
 
 # armory_weapon
 collection = db.armory_weapon
-collection.insert_many(armory_weapon_list)
+collection.insert_many(new_armory_weapon_list)
 print("DOCS:", collection.count_documents({}))
 
 # charactercreator_cleric
 collection = db.charactercreator_cleric
-collection.insert_many(charactercreator_cleric_list)
+collection.insert_many(new_charactercreator_cleric_list)
 print("DOCS:", collection.count_documents({}))
 
 # charactercreator_fighter
 collection = db.charactercreator_fighter
-collection.insert_many(charactercreator_fighter_list)
+collection.insert_many(new_charactercreator_fighter_list)
 print("DOCS:", collection.count_documents({}))
 
 # charactercreator_character
 collection = db.charactercreator_character
-collection.insert_many(charactercreator_character_list)
+collection.insert_many(new_charactercreator_character_list)
 print("DOCS:", collection.count_documents({}))
 
 # armory_item
 collection = db.armory_item
-collection.insert_many(armory_item_list)
+collection.insert_many(new_armory_item_list)
 print("DOCS:", collection.count_documents({}))
 
 # charactercreator_mage
 collection = db.charactercreator_mage
-collection.insert_many(charactercreator_mage_list)
+collection.insert_many(new_charactercreator_mage_list)
 print("DOCS:", collection.count_documents({}))
 
 client.close()
