@@ -51,14 +51,114 @@ randomized, the numeric and boolean fields were left as defaults.
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
-- How many total Characters are there?
-- How many of each specific subclass?
-- How many total Items?
-- How many of the Items are weapons? How many are not?
+- How many total Characters are there? 302 chracters
+- How many of each specific subclass? not sure what the question exactly means. i'd say 5 because there are cleric, fighter, mage, necromancer and thief.
+- How many total Items? 174 items
+- How many of the Items are weapons? How many are not? 37 items are weapon items and 137 items are not weapons
 - How many Items does each character have? (Return first 20 rows)
+
+| character_name | charactoer id | num items |
+| --- | --- | --- |
+|Aliquid iste optio reiciendi |1|3|
+|Optio dolorem ex a|	2|	3|
+|Minus c	|3|	2|
+|Sit ut repr	|4|	4|
+|At id recusandae expl|	5|	4|
+|Non nobis et of|	6|	1|
+|Perferendis	|7|	5|
+|Accusantium amet quidem eve|	8|	3|
+|Sed nostrum inventore error m	|9|	4|
+|Harum repellendus omnis od	|10|	4|
+|Itaque ut commodi,	|11|	3|
+|Molestiae quis	|12|	3|
+|Ali|	13	|4|
+|Tempora quod optio possimus il	|14|	4|
+|Sed itaque beatae pari	|15	|4|
+|Quam dolor	|16|	1|
+|Molestias expedita	|17|	5|
+|Lauda	|18|	5|
+|Incidunt sint perferen	|19|	3|
+|Laboriosa	|20|	1|
+
+```sql
+select cc.name as character_name, cc.character_id, count(cci.id) as item_num from charactercreator_character cc 
+inner join charactercreator_character_inventory cci
+on cci.character_id = cc.character_id
+group by cc.character_id
+LIMIT 20;
+```
 - How many Weapons does each character have? (Return first 20 rows)
+
+| character_name                 | character_id | weapon_num |
+|--------------------------------|--------------|------------|
+| At id recusandae expl          | 5            | 2          |
+| Perferendis                    | 7            | 1          |
+| Itaque ut commodi,             | 11           | 1          |
+| Laboriosa                      | 20           | 1          |
+| Dolorum nam reic               | 22           | 1          |
+| Repellat ad numquam volu       | 23           | 1          |
+| Doloribus neque                | 26           | 1          |
+| Ab voluptas se                 | 27           | 3          |
+| In pariatur corpori            | 29           | 2          |
+| Possimus ad dignissimos vel, a | 30           | 1          |
+| Ad necess                      | 32           | 1          |
+| Voluptates sunt voluptas volu  | 34           | 1          |
+| Autem mollitia fuga lauda      | 35           | 2          |
+| Sint quibusdam ob              | 36           | 3          |
+| Rerum et o                     | 37           | 2          |
+| Doloribus dolore r             | 38           | 2          |
+| Eaque su                       | 39           | 2          |
+| Vel molestias numqua           | 40           | 1          |
+| Iste assumenda repellat q      | 41           | 1          |
+| Quod tempora                   | 47           | 1          |
+
+```sql
+select cc.name as character_name, cc.character_id, count(cci.id) as weapon_num
+from charactercreator_character cc 
+inner join charactercreator_character_inventory cci
+on cci.character_id = cc.character_id
+inner join armory_item ai
+on ai.item_id = cci.item_id
+inner join armory_weapon aw
+on aw.item_ptr_id = ai.item_id
+group by cc.character_id
+LIMIT 20;
+```
+
 - On average, how many Items does each Character have?
+
+```sql
+select avg(item_num) from 
+	(
+		select cc.name as character_name, cc.character_id, count(cci.id) as item_num
+		from charactercreator_character cc 
+		inner join charactercreator_character_inventory cci
+		on cci.character_id = cc.character_id
+		group by cc.character_id
+		LIMIT 20
+	);
+```
+avg 3.3 items
+
 - On average, how many Weapons does each character have?
+
+
+```sql
+select avg(weapon_num) from 
+	(
+		select cc.name as character_name, cc.character_id, count(cci.id) as weapon_num
+		from charactercreator_character cc 
+		inner join charactercreator_character_inventory cci
+		on cci.character_id = cc.character_id
+		inner join armory_item ai
+		on ai.item_id = cci.item_id
+		inner join armory_weapon aw
+		on aw.item_ptr_id = ai.item_id
+		group by cc.character_id
+		LIMIT 20
+	);
+```
+avg 1.5 weapons
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
