@@ -58,16 +58,27 @@ print(f'There are {weapon_result} total weapons')
 print(f'There are {item_result - weapon_result} items that are not weapons')
 
 # How many Items does each character have? (Return first 20 rows)
+print('\n')
 collection = db.charactercreator_character
 result = list(collection.find({}))
-print(result[0])
+for i in range(20):
+    character_number = result[i]['pk']
+    number_of_items = len(result[i]['inventory'])
+    print(f"Character {character_number} has {number_of_items} items")
 
-collection = db.armory_item
-result = list(collection.find({}))
-print(result[0])
 # How many Weapons does each character have? (Return first 20 rows)
+print('\n')
+collection = db.charactercreator_character
+inventory_result = list(collection.find({}))
+inventory_list = [x['inventory'] for x in inventory_result]
+print(inventory_list[0].drop(20))
 
 # On average, how many Items does each Character have?
+print('\n')
+collection = db.charactercreator_character
+result = list(collection.find({}))
+inventory_count = [len(x['inventory']) for x in result]
+print(f'On average, each character has {sum(inventory_count) / len(inventory_count)} items')
 
 # On average, how many Weapons does each character have?
 
