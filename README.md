@@ -1,2 +1,2 @@
-# DS-Unit-3-Sprint-2-SQL-and-Databases
+# Jean Fraga DS8-Unit-3-Sprint-2-SQL-and-Databases
 SQL and Databases for Data Science
