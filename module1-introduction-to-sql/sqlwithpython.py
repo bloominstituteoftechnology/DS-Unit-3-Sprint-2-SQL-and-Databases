@@ -9,7 +9,7 @@ connection = sqlite3.connect(DB_FILEPATH)
 
 cursor = connection.cursor()
 
-query = "SELECT DISTINCT name FROM charactercreator_character"
+query = "SELECT name FROM charactercreator_character"
 chars = cursor.execute(query).fetchall()
 q1 = len(chars)
 
@@ -95,5 +95,25 @@ for c in chars:
 print('\n # On average, how many Items does each Character have?')
 print(f'  On average, Character have {item/q1:.2f} items.')
 
+
+query10 = '''
+
+          SELECT AVG(weapon_count) as avg_weapons_per_char
+          FROM (
+            SELECT
+                c.character_id
+                -- ,c."name"
+                --,inv.*
+                --,w.*
+                ,count(distinct w.item_ptr_id) as weapon_count
+            FROM charactercreator_character c
+            LEFT JOIN charactercreator_character_inventory inv ON c.character_id = inv.character_id
+            LEFT JOIN armory_weapon w ON inv.item_id = w.item_ptr_id
+            GROUP BY c.character_id
+            ) subq
+          '''
+
+chars = cursor.execute(query10).fetchall()
+
 print('\n # On average, how many Weapons does each Character have?')
-print(f'  On average, Character have {weapons/q1:.2f} weapons.')
+print(f'  On average, Character have {chars[0][0]:.2f} weapons.')
