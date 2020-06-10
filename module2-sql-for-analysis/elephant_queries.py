@@ -2,6 +2,7 @@
 import os
 from dotenv import load_dotenv
 import psycopg2
+import pandas 
 
 load_dotenv() #> loads contents of the .env file into the script's environment
 
