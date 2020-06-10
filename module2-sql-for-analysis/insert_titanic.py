@@ -1,8 +1,8 @@
-# app/elephant_queries.py
-
 import os
 from dotenv import load_dotenv
 import psycopg2
+import pandas as pd
+from psycopg2.extras import execute_values
 
 load_dotenv() #> loads contents of the .env file into the script's environment
 
@@ -20,34 +20,30 @@ print("CURSOR:", cursor)
 cursor.execute('SELECT * from test_table;')
 result = cursor.fetchall()
 
-print(result)
+df = pd.read_csv('titanic.csv')
+print(df.head())
 
+list_of_tuples = []
+for row in df.iterrows():
+    list_of_tuples.append(row)
+# print(list_of_tuples)
 
-query = '''
-CREATE TABLE if not exists titanic (
-    id Serial Primary Key,
-    Survived int,
-    Pclass int,
-    Name varchar,
-    Sex varchar,
-    Age int,
-    Siblings_Spouses_Aboard int,
-    Parents_Children_Aboard int,
-    Fare int
-);
-'''
+lines = []
+for i in range(1, len(df)):
+    result = []
+    for j in range(0, 8):
+        result.append(list_of_tuples[i][1][j])
+    lines.append(tuple(result))
+print(lines)
 
-cursor.execute(query)
+# INSERTING RECORDS (MULTIPLE)
 
-# inserting records (single)
-
-insertion_query = """
+multi_insertion_query = """
 INSERT INTO titanic
     (Survived, Pclass, Name, Sex, Age, Siblings_Spouses_Aboard,
-    Parents_Children_Aboard, Fare) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+    Parents_Children_Aboard, Fare) VALUES %s
 """
-record_to_insert = (0, 3, 'Mr. Owen Harris Brown', 'male', 22, 1, 0, 7.25)
-cursor.execute(insertion_query, record_to_insert)
+execute_values(cursor, multi_insertion_query, lines) # third param: data as a list of tuples!
 
 # save the transactions
 connection.commit()
