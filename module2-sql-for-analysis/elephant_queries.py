@@ -18,7 +18,32 @@ print("CONNECTION:", connection)
 cursor = connection.cursor()
 print("CURSOR:", cursor)
 
-cursor.execute('SELECT * from test_table;')
+# FETCH DATA
+# FYI: in sqlite: result = cursor.execute("SELECT * from test_table;").fetchall()
 
+cursor.execute('SELECT * from test_table;')
 result = cursor.fetchall()
 print(result)
+
+# INSERT DATA
+
+
+insertion_sql = """
+INSERT INTO test_table (name, data) VALUES
+(
+  'A row name',
+  null
+),
+(
+  'Another row, with JSON',
+  '{ "a": 1, "b": ["dog", "cat", 42], "c": true }'::JSONB
+);
+"""
+
+cursor.execute(insertion_sql)
+
+# ACTUALLY SAVE THE TRANSACTIONS
+connection.commit()
+
+cursor.close()
+connection.close()
