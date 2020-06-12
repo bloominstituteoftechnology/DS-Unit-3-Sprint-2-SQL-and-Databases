@@ -4,3 +4,5 @@ df = pd.read_csv('https://raw.githubusercontent.com/britneh/DS-Unit-3-Sprint-2-S
 
 print(df.head(10))
 print(df.shape)
+import psycopg2
+
