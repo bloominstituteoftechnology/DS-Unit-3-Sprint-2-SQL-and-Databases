@@ -59,7 +59,7 @@ numWeapons = c.execute(INVENTORY_JOIN_WEAPONS).fetchall()[0][0]
 numCharacters = c.execute(TOTAL_CHARACTERS).fetchall()[0][0]
 print(f" total number of armory item types: {numArmoryItemTypes}")
 print(f" total number of armory weapons: {numWeaponsTypes}"
-        f"     non weapon items: {numArmoryItemTypes - numWeaponsTypes}"
+        f" non weapon items: {numArmoryItemTypes - numWeaponsTypes}"
         )
 
 #simple way
