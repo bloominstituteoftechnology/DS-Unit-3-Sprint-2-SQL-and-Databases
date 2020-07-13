@@ -36,6 +36,7 @@ INVENTORY_JOIN_WEAPONS = (f"SELECT {COUNT} FROM charactercreator_character_inven
                         f"l.item_id = r.item_ptr_id")
 
 GROUPBY_CHARACTER = (f" GROUP BY l.character_id")
+
 tables= c.fetchall()
 
 subclassTables = []
