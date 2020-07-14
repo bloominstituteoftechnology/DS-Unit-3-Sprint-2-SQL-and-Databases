@@ -104,3 +104,5 @@ query = '''
 '''
 result = curs.execute(query).fetchall()
 print(f'\nOne average, each character has {result[0][0] / result[0][1]} weapons\n')
+
+
