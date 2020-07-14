@@ -10,34 +10,34 @@ COUNT_CLERICS = 'select count(*) from charactercreator_cleric'
 TOTAL_ARMORY_ITEMS = "SELECT COUNT(*) FROM armory_item"
 TOTAL_INVENTORY_ITEMS = "SELECT COUNT(*) FROM charactercreator_character_inventory"
 cols = '*'
-WEAPONS_TYPE = (f"SELECT {cols}"              
-                        f" FROM armory_item ai JOIN armory_weapon aw"
-                        f" ON aw.item_ptr_id = ai.item_id"   
-                        )
+WEAPONS_TYPE = (f"SELECT {cols}"
+                f" FROM armory_item ai JOIN armory_weapon aw"
+                f" ON aw.item_ptr_id = ai.item_id"
+                )
 
 cols = 'count(item_id)'
 CHARACTER_JOIN_ITEM = (f"SELECT {cols} FROM charactercreator_character l"
-                        f"JOIN charactercreator_character_inventory j"
-                        f"ON"
-                        f"l.character_id = j.character_id"
-                        f"JOIN armory_item r ON"
-                        f"j.item_id = r.item_id")
+                       f"JOIN charactercreator_character_inventory j"
+                       f"ON"
+                       f"l.character_id = j.character_id"
+                       f"JOIN armory_item r ON"
+                       f"j.item_id = r.item_id")
 
 CHARACTER_JOIN_WEAPON = (f"SELECT {cols} FROM charactercreator_character l"
-                        f"JOIN charactercreator_character_inventory j"
-                        f"ON"
-                        f"l.character_id = j.character_id"
-                        f"JOIN armory_weapon r ON"
-                        f"j.item_id = r.item_ptr_id")
+                         f"JOIN charactercreator_character_inventory j"
+                         f"ON"
+                         f"l.character_id = j.character_id"
+                         f"JOIN armory_weapon r ON"
+                         f"j.item_id = r.item_ptr_id")
 
 INVENTORY_JOIN_WEAPONS = (f"SELECT {COUNT} FROM charactercreator_character_inventory l "
-                        f"JOIN armory_weapon r "
-                        f"ON "
-                        f"l.item_id = r.item_ptr_id")
+                          f"JOIN armory_weapon r "
+                          f"ON "
+                          f"l.item_id = r.item_ptr_id")
 
 GROUPBY_CHARACTER = (f" GROUP BY l.character_id")
 
-tables= c.fetchall()
+tables = c.fetchall()
 
 subclassTables = []
 [subclassTables.append(tableName[0]) for tableName in tables if 'charactercreator' in tableName[0] and (
@@ -59,12 +59,12 @@ numWeapons = c.execute(INVENTORY_JOIN_WEAPONS).fetchall()[0][0]
 numCharacters = c.execute(TOTAL_CHARACTERS).fetchall()[0][0]
 print(f" total number of armory item types: {numArmoryItemTypes}")
 print(f" total number of armory weapons: {numWeaponsTypes}"
-        f" non weapon items: {numArmoryItemTypes - numWeaponsTypes}"
-        )
+      f" non weapon items: {numArmoryItemTypes - numWeaponsTypes}"
+      )
 
-#simple way
+# simple way
 avgItemsPerCharacter = (numInventoryItems / numCharacters)
-avgWeaponsPerCharacter =(numWeapons / numCharacters)
+avgWeaponsPerCharacter = (numWeapons / numCharacters)
 print(f"\navg number of items / char = {avgItemsPerCharacter}\n")
 print(f"avg weapons / char = {avgWeaponsPerCharacter}\n")
 
@@ -76,24 +76,31 @@ print(f"avg weapons / char = {avgWeaponsPerCharacter}\n")
 """
 cols = 'count(j.item_id) item_count'
 CHARACTER_JOIN_ITEM = (f"SELECT {cols} FROM charactercreator_character l "
-                        f"JOIN charactercreator_character_inventory j "
-                        f"ON "
-                        f"l.character_id = j.character_id "
-                        f"JOIN armory_item r ON "
-                        f"j.item_id = r.item_id ")
+                       f"JOIN charactercreator_character_inventory j "
+                       f"ON "
+                       f"l.character_id = j.character_id "
+                       f"JOIN armory_item r ON "
+                       f"j.item_id = r.item_id ")
 
 #WHERE_ITEM_IS_WEAPON =(f"WHERE j.item ")
 GROUPBY_CHARACTER = (f" GROUP BY l.character_id")
 
-ITEMS_PER_CHAR_FULL = CHARACTER_JOIN_ITEM + GROUPBY_CHARACTER  # fully composed query
-AVG_IT_CHAR = f"SELECT avg(item_count) FROM ({ITEMS_PER_CHAR_FULL})" # Find avg item coutn
+ITEMS_PER_CHAR_FULL = CHARACTER_JOIN_ITEM + \
+    GROUPBY_CHARACTER  # fully composed query
+# Find avg item coutn
+AVG_IT_CHAR = f"SELECT avg(item_count) FROM ({ITEMS_PER_CHAR_FULL})"
+# dont really need join
+SIMPLE_ITEMS_PER_CHAR = f"SELECT character_id, count(item_id) "
+f"FROM charactercreator_character_inventory "
+f"GROUP BY character_id"
+
 
 avgItemsPerCharacter = c.execute(AVG_IT_CHAR).fetchall()[0][0]
-print (f"\nAverage Items Per Character: {avgItemsPerCharacter:.2f}")
+print(f"\nAverage Items Per Character: {avgItemsPerCharacter:.2f}")
 
 
 conn.close()
- #SQL for FUN
+# SQL for FUN
 
 """SELECT avg(item_count) 
    FROM ( select l.character_id, 
