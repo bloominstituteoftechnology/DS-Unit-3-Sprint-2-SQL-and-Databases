@@ -152,21 +152,48 @@ AVG_AGE_BY_CLASS = f"""SELECT "Pclass", AVG("Age") as "Average Age"
                         GROUP BY "Pclass"
                         ORDER BY "Pclass";
                         """
+AVG_AGE_BY_SURVIVAL = f"""SELECT "Survived",AVG("Age")
+                        FROM titanic
+                        GROUP BY "Survived"
+                        """
 """
 - What was the average fare by passenger class? By survival?
-- How many siblings/spouses aboard on average, by passenger class? By survival?
-- How many parents/children aboard on average, by passenger class? By survival?
-- Do any passengers have the same name?
 """
-AVG_FARE_BY_CLASS = """SELECT "Pclass as "Class",
+AVG_FARE_BY_CLASS = """SELECT "Pclass" as "Class",
                                AVG("Fare") as "Average Fare"
                         FROM titanic
                         GROUP BY "Pclass"
                         ORDER BY "Pclass";
                         """
 AVG_FARE_BY_SURVIVED = """SELECT "Survived", 
-                                    AVG("Fare") as "Average Fare"
+                                AVG("Fare") as "Average Fare"
                         FROM titanic
                         GROUP BY "Survived"
                         ORDER BY "Survived";
                         """
+"""
+- How many siblings/spouses aboard on average, by passenger class? By survival?
+- How many parents/children aboard on average, by passenger class? By survival?
+- Do any passengers have the same name?
+"""
+SIBLINGS_SPOUSES_AVG_BY_CLASS = """
+                        SELECT "PClass",
+                                AVG("Siblings/Spouses Aboard") as "Siblings or Spouses"
+                        FROM titanic
+                        GROUP BY "Pclass"
+                        """
+SIBLINGS_SPOUSES_AVG_BY_SURVIVAL = """
+                        SELECT "Survived",
+                                AVG("Siblings/Spouses Aboard") as "Siblings or Spouses"
+                        FROM titanic
+                        GROUP BY "Survived"
+                        """
+PARENTS_CHILDREN_AVG_BY_CLASS = """
+                        SELECT "Pclass",
+                            ROUND(AVG("Parents/Children Aboard"),2) as "Parents and Children"
+                        FROM titanic
+                        GROUP BY "Pclass"
+                        ORDER BY "Pclass"
+                        """
+
+
