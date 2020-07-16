@@ -24,13 +24,20 @@ rpg_test = db.rpg_test
 
 rpg_test.insert_one(rpg_character)
 
-json_url = "https://github.com/LambdaSchool/Django-RPG/blob/master/testdata.json"
-import bson
-with open('testdata.json') as json_file:
-    rpg_json = json.load(json_file)[0]
+"""  This was to clear out test data:
+rpg_test.drop()
+rpg_mdb.drop()
 
-rpg_mdb = db.rpg_data
-table_id = rpg_mdb.insert_one(rpg_json)
-curs = rpg_mdb.find({"_id": table_id})
-print(curs.count())
+"""
 
+with open('testdata.json') as json_file:   #local copy of json file from URL
+    rpg_json = json.load(json_file)        # list cont dicts 
+    
+coll = db.rpg_data          # referecen to rpg_data collection i.e. the data store 
+for r in rpg_json:          # each element r is a dict with a 'record' that will be 
+    coll.insert_one(r)      # inserted as a document
+
+"""Verify that we have inserted what we think """
+
+c= db["rpg_data"] 
+c.estimated_document_count()
