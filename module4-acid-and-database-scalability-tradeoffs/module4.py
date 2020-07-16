@@ -78,6 +78,7 @@ queries["SIBLINGS_SPOUSES_AVG_BY_CLASS"] = """
                                 AVG("Siblings/Spouses Aboard") as "Siblings or Spouses"
                         FROM titanic
                         GROUP BY "Pclass"
+                        ORDER BY "Pclass"
                         """
 queries["SIBLINGS_SPOUSES_AVG_BY_SURVIVAL"] = """
                         SELECT "Survived",
@@ -85,18 +86,26 @@ queries["SIBLINGS_SPOUSES_AVG_BY_SURVIVAL"] = """
                         FROM titanic
                         GROUP BY "Survived"
                         """
-queries["PARENTS_CHILDREN_AVG_BY_CLASS"] = """
+queries["AVG_PARENTS_CHILDREN_BY_CLASS"] = """
                         SELECT "Pclass",
                             ROUND(AVG("Parents/Children Aboard"),2) as "Parents and Children"
                         FROM titanic
                         GROUP BY "Pclass"
                         ORDER BY "Pclass"
                         """
-
+queries["ARE_ANY_NAMES_THE_SAME"] ="""
+                SELECT CASE (select count("Name") FROM titanic) != (select count(distinct("Name")) from titanic) 
+                            WHEN 't' THEN 'yes' 
+                            ELSE 'no' 
+                            END as "Duplicate names Exist?";
+                        """
 with psycopg2.connect(**params) as conn:     
     with conn.cursor() as curs:            # this code will auto commit if no exception
        # curs.execute(COUNT_PASSENGERS_BY_CLASS).fetchall()
         for name in queries:
             curs.execute(queries[name])
-            print(f"{name} :  {curs.fetchall()}")
+            result = curs.fetchall()     # list of tuples
+            print(f"{name} : ")
+            for x in result:             #iterate thru list print on new line
+                print(f"{x}")
 conn.close()
