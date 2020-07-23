@@ -7,7 +7,7 @@ cursor.execute('SELECT COUNT(character_id) FROM charactercreator_character')
 print("1. ", cursor.fetchall())
 
 cursor.execute('SELECT COUNT(character_ptr_id) FROM charactercreator_thief')
-print("2.\nThief: ", cursor.fetchall())
+print("2.Thief: ", cursor.fetchall())
 
 cursor.execute('SELECT COUNT(character_ptr_id) FROM charactercreator_cleric')
 print("Cleric: ", cursor.fetchall())
