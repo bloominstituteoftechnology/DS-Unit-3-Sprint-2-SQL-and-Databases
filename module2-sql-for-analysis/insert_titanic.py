@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+########## Connect to PostGRES ##########
+
 DB_NAME = os.getenv('DB_NAME')
 DB_USER = os.getenv('DB_USER')
 DB_PASS = os.getenv('DB_PASS')
@@ -16,6 +18,8 @@ conn = psycopg2.connect(dbname=DB_NAME,
                         host=DB_HOST)
 
 cursor = conn.cursor()
+
+########## Create Titanic SQL Table ##########
 
 create_titanic_table = '''
     CREATE TABLE IF NOT EXISTS titanic (
@@ -33,6 +37,8 @@ create_titanic_table = '''
 
 cursor.execute(create_titanic_table)
 conn.commit()
+
+##########  Read in CSV and populate Titanic Table ##########
 
 titanic_db = pd.read_csv('titanic.csv')
 titanic_db['Name'] = titanic_db['Name'].apply(lambda x: x.replace("'",""))
