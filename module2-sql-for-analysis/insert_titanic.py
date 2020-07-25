@@ -1,7 +1,21 @@
 import psycopg2
 import sqlite3
 import os
+import pandas as pd
 from dotenv import load_dotenv
+
+connect = sqlite3.connect('insert_titanic.sqlite3')
+cursor = connect.cursor()
+
+df = pd.read_csv('titanic.csv')
+
+df.to_sql('titanic', connect)
+
+cursor.execute('SELECT COUNT(*) FROM titanic')
+print('1. ', cursor.fetchall())
+
+cursor.execute('SELECT COUNT(*)')
+print('2. ', cursor.fetchall())
 
 load_dotenv()
 
@@ -15,7 +29,7 @@ conn = psycopg2.connect(dbname=DB_NAME,
                         password=DB_PASS, 
                         host=DB_HOST)
 
-cursor = conn.cursor()
+cursor2 = conn.cursor()
 
 sl_conn = sqlite3.connect("titanic.csv")
 sl_cursor = sl_conn.cursor()
@@ -44,6 +58,6 @@ for character in titanic:
         (Name, Survived, Pclass, Sex, Age, Siblings/Spouses Aboard, Parents/Children Aboard, Fare) VALUES
         {character}
     '''
-    cursor.execute(insert_query)
+    cursor2.execute(insert_query)
 
 conn.commit()
