@@ -1,19 +1,19 @@
-import psycopg2
 import sqlite3
 import os
+import psycopg2
 from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_NAME = os.getenv("DB_NAME")
-DB_USER = os.getenv("DB_USER")
-DB_PASS = os.getenv("DB_PASS")
-DB_HOST = os.getenv("DB_HOST")
+DB_NAME2 = os.getenv("DB_NAME3")
+DB_USER2 = os.getenv("DB_USER3")
+DB_PASS2 = os.getenv("DB_PASS3")
+DB_HOST2 = os.getenv("DB_HOST3")
 
-conn = psycopg2.connect(dbname=DB_NAME, 
-                        user=DB_USER,
-                        password=DB_PASS, 
-                        host=DB_HOST)
+conn = psycopg2.connect(dbname=DB_NAME2, 
+                        user=DB_USER2,
+                        password=DB_PASS2, 
+                        host=DB_HOST2)
 
 cursor = conn.cursor()
 
@@ -48,3 +48,5 @@ for character in characters:
     cursor.execute(insert_query)
 
 conn.commit()
+cursor.close()
+conn.close()
