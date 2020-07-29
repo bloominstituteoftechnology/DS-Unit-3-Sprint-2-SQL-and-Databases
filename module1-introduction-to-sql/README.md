@@ -51,14 +51,79 @@ randomized, the numeric and boolean fields were left as defaults.
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
-- How many total Characters are there?
+- How many total Characters are there? 302
+  SELECT
+	count(character_id)
+FROM charactercreator_character
+
 - How many of each specific subclass?
-- How many total Items?
-- How many of the Items are weapons? How many are not?
+  Cleric = 75
+  Fighter = 68
+  Mage = 108
+  Necromancer = 11
+  Thief = 51
+  SELECT
+	  COUNT()
+  FROM charactercreator_cleric
+	SELECT
+	  COUNT()
+  FROM charactercreator_fighter
+	SELECT
+	  COUNT()
+  FROM charactercreator_mage
+  SELECT
+    COUNT()
+  FROM charactercreator_necromancer
+	SELECT
+    COUNT()
+  FROM charactercreator_thief
+
+- How many total Items? 211
+  SELECT 
+	(select COUNT(item_id) FROM armory_item)
+	+ (select COUNT(item_ptr_id) FROM armory_weapon)
+  AS Total_Items
+
+- How many of the Items are weapons? How many are not? 
+  Weapons = 37, Other items = 174
+  SELECT
+	COUNT()
+  FROM armory_weapon
+
 - How many Items does each character have? (Return first 20 rows)
+  SELECT 
+	character_id
+	,count(item_id)
+  FROM charactercreator_character_inventory
+  GROUP BY character_id
+  LIMIT 20
+  
 - How many Weapons does each character have? (Return first 20 rows)
+  SELECT character_id, count(item_id)
+	FROM charactercreator_character_inventory LEFT JOIN armory_weapon
+	ON item_id = item_ptr_id
+  GROUP BY character_id
+  LIMIT 20
+
 - On average, how many Items does each Character have?
+  SELECT 
+	character_id
+	,COUNT(item_id) as 'No_of_Items'
+	,ROUND(AVG(item_id))
+  FROM charactercreator_character_inventory
+  GROUP BY character_id
+  ORDER BY character_id
+  LIMIT 20
+
 - On average, how many Weapons does each character have?
+  SELECT 
+  character_id
+	,count(item_id)
+	,round(avg(item_ptr_id))
+FROM charactercreator_character_inventory LEFT JOIN armory_weapon
+ON item_id = item_ptr_id
+GROUP BY character_id
+LIMIT 20
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
