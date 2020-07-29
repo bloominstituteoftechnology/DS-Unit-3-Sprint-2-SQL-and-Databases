@@ -1,8 +1,8 @@
+import os
 import psycopg2
 from psycopg2.extras import execute_values
 import json
 import pandas as pd
-import os
 from psycopg2.extras import DictCursor
 from dotenv import load_dotenv
 

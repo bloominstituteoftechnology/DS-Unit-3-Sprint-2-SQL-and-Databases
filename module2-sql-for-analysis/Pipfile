@@ -9,6 +9,8 @@ pylint = "*"
 [packages]
 python-dotenv = "*"
 psycopg2-binary = "*"
+pandas = "*"
+sqlalchemy = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,6 +1,5 @@
 import psycopg2
 from sqlalchemy import create_engine
-import json
 import pandas as pd
 import os
 
@@ -14,7 +13,7 @@ df = pd.read_csv(file_path)
 print(df.shape)
 print(df.head())
 
-# Establishing connection and cursor to PostgreSQL
+# Establishing variables to PostgreSQL
 
 DB_NAME = os.getenv('DB_NAME2', default='Check env variables')
 DB_USER = os.getenv('DB_USER2', default='Check env variables')
