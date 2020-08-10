@@ -107,7 +107,7 @@ resultscharitems20 = execute_query(curs, character_items_20)
 
 # How many weapons does each character have? (Return first 20 rows)
 character_weapons_20 = """
-SELECT name, COUNT(item_ptr_id) FROM
+SELECT character_id, name, COUNT(item_ptr_id) FROM
 (SELECT cc.character_id, cc.name, aw.item_ptr_id, aw.power
 FROM charactercreator_character AS cc,
 armory_weapon AS aw,
