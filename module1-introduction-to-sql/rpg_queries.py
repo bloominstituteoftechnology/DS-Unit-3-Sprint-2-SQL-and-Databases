@@ -94,20 +94,20 @@ not_weapons = execute_query(curs, total_items)[0][0] - execute_query(curs, total
 
 # How many Items does each character have? (Return first 20 rows)
 character_items_20 = """
-SELECT name, COUNT(DISTINCT item_id) FROM
+SELECT character_id, name, COUNT(item_id) FROM
 (SELECT cc.character_id, cc.name, ai.item_id, ai.name
 FROM charactercreator_character AS cc,
 armory_item AS ai,
 charactercreator_character_inventory AS cci
 WHERE cc.character_id = cci.character_id
 AND ai.item_id = cci.item_id)
-GROUP BY 1 ORDER BY 2 DESC
+GROUP BY 1 ORDER BY 3 DESC
 LIMIT 20;"""
 resultscharitems20 = execute_query(curs, character_items_20)
 
 # How many weapons does each character have? (Return first 20 rows)
 character_weapons_20 = """
-SELECT name, COUNT(DISTINCT item_ptr_id) FROM
+SELECT name, COUNT(item_ptr_id) FROM
 (SELECT cc.character_id, cc.name, aw.item_ptr_id, aw.power
 FROM charactercreator_character AS cc,
 armory_weapon AS aw,
@@ -159,7 +159,7 @@ if __name__ == '__main__':
         f'Total Items: {resultsitems[0][0]} \n'
         f'Total Weapons {results_weapons[0][0]}\n'
         f'Total Items that are not Weapons: {not_weapons}\n \n'
-        f'Top 20 Characters Number of Weapons: {resultscharitems20}\n \n'
+        f'Top 20 Characters Number of Items: {resultscharitems20}\n \n'
         f'Top 20 Characters Number of Weapons: {resultscharweapons20}\n \n'
         f'Avg items per Character: {round(resultsavgitems[0][0], 2)}\n'
         f'Avg items per Character: {round(resultsavgweapons[0][0], 2)}\n'
