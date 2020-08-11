@@ -52,12 +52,32 @@ Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
 - How many total Characters are there?
+  Answer: 302
+  
 - How many of each specific subclass?
+Cleric = 75
+Fighters = 68
+Mage = 68
+Necromancer = 11
+Thief = 51
+
 - How many total Items?
+  Answer: 174 Items
+  
 - How many of the Items are weapons? How many are not?
+  Answer: 37 weapons, non_weapons
+
 - How many Items does each character have? (Return first 20 rows)
+
+Answered as a Query
+    
 - How many Weapons does each character have? (Return first 20 rows)
+
+Answered as Query
+
 - On average, how many Items does each Character have?
+
+
 - On average, how many Weapons does each character have?
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
@@ -77,7 +97,7 @@ Some of these queries are challenging - that's OK! You can keep working on them
 tomorrow as well (we'll visit loading the same data into PostgreSQL). It's also
 OK to figure out the results partially with a query and partially with a bit of
 logic or math afterwards, though doing things purely with SQL is a good goal.
-[Subqueries](https://www.w3resource.com/sql/subqueries/understanding-sql-subqueries.php)
+    [Subqueries](https://www.w3resource.com/sql/subqueries/understanding-sql-subqueries.php)
 and [aggregation functions](https://www.sqltutorial.org/sql-aggregate-functions/)
 may be helpful for putting together more complicated queries.
 
