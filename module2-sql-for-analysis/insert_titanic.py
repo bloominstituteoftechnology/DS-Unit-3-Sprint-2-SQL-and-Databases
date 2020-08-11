@@ -15,7 +15,7 @@ df['Name'] = df['Name'].str.replace("'", "")
 
 dbname = 'zgexitff'
 user = 'zgexitff'
-password = 'N-rZTbhw5RUyDylzQH6Cmai2wSD4SGtr'
+password = 'XXX'
 host = 'isilo.db.elephantsql.com'
 
 pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
