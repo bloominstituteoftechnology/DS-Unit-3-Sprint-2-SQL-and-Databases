@@ -138,3 +138,38 @@ INSERT INTO charactercreator_character
 VALUES """ + str(characters[0][1:]) + ";"
 
 print(example_insert)  # Not running, just inspecting
+# If we ran this, we'd insert the first character
+# But we want them all - loops!
+for character in characters:
+    insert_character = """
+    INSERT INTO charactercreator_character
+    (name, level, exp, hp, strength, intelligence, dexterity, wisdom)
+    VALUES """ + str(character[1:]) + ";"
+    pg_curs.execute(insert_character)
+
+# Note - we're executing each character one at a time
+# That works, and is simple, but inefficient (lots of roundtrips to database)
+# Stretch/afternoon goal - see if you can combine into a single
+# insert that does them all at once
+pg_conn.commit()
+# Let's look at what we've done
+pg_curs.execute('SELECT * FROM charactercreator_character LIMIT 5;')
+pg_curs.fetchall()
+# Ids are different (on first run, now fixed)!
+# That's because we had an aborted run
+# Let's fix this by deleting the data and DROPping the table
+# Other tables are fine, but we'll dump the data *and* schema to rerun
+# pg_curs.execute('DROP TABLE charactercreator_character;')
+# pg_conn.commit()
+pg_curs.execute('SELECT * FROM charactercreator_character;')
+pg_characters = pg_curs.fetchall()
+# We could do more spot checks, but let's loop and check them all
+# TODO/afternoon task - consider making this a more formal test
+for character, pg_character in zip(characters, pg_characters):
+    assert character == pg_character
+    # No complaints - which means they're all the same!
+    # Closing out cursor/connection to wrap up
+    pg_curs.close()
+    pg_conn.close()
+    sl_curs.close()
+    sl_conn.close()
