@@ -76,9 +76,10 @@ Answered as a Query
 Answered as Query
 
 - On average, how many Items does each Character have?
-
+2.9735099337748343
 
 - On average, how many Weapons does each character have?
+1.3096774193548386
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
@@ -120,9 +121,12 @@ Using the standard `sqlite3` module:
 Then write the following queries (also with `sqlite3`) to test:
 
 - Count how many rows you have - it should be 249!
+- Verified
 - How many users who reviewed at least 100 `Nature` in the category also
   reviewed at least 100 in the `Shopping` category?
+- 78 Users
 - (*Stretch*) What are the average number of reviews for each category?
+
 
 Your code (to reproduce all above steps) should be saved in
 `buddymove_holidayiq.py`, and added to the repository along with the generated

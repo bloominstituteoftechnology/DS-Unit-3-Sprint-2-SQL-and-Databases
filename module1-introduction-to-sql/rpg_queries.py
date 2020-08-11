@@ -10,6 +10,7 @@ def execute_query(cursor, query):
     return cursor.fetchall()
 
 
+# QUERIES
 GET_TOTAL_CHARACTERS = """ 
     SELECT COUNT(*)
     FROM charactercreator_character;
@@ -90,13 +91,16 @@ FROM charactercreator_character
 AS cc, armory_item AS ai, charactercreator_character_inventory 
 AS cci WHERE cc.character_id = cci.character_id 
 AND ai.item_id = cci.item_id) GROUP BY 1);
-
 """
 AVG_WEAPONS_PER_CHARACTER = """
-SELECT AVG(
-
-
-
+    SELECT AVG(num_weapons)
+    FROM(SELECT character_id, character_name, COUNT(DISTINCT aw_name) AS num_weapons
+    FROM (SELECT cc.character_id, cc.name AS character_name, aw.item_ptr_id AS aw_name 
+    FROM charactercreator_character 
+    AS cc, armory_weapon AS aw, charactercreator_character_inventory 
+    AS cci WHERE cc.character_id = cci.character_id 
+    AND aw.item_ptr_id = cci.item_id) 
+    GROUP BY 1)
 """
 if __name__ == '__main__':
     conn = connect_to_db()
@@ -131,3 +135,6 @@ if __name__ == '__main__':
 
     average_items_per_character = execute_query(curs, AVG_ITEMS_PER_CHARACTER)
     print('average items per character', average_items_per_character)
+
+    average_weapons_per_character = execute_query(curs, AVG_WEAPONS_PER_CHARACTER)
+    print('average weapons_per_character', average_weapons_per_character)
