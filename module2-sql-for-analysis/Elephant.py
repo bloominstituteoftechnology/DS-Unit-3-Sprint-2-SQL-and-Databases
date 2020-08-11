@@ -1,5 +1,4 @@
 import psycopg2
-import json
 
 """
 # Looks similar to sqlite3, but needs auth/host info to connect
