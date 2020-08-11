@@ -24,6 +24,13 @@ WHERE Nature >= 100 and Shopping >=100
 
 """
 
+GET_AVG_FOR_EACH_REVIEW = """
+
+SELECT AVG(Sports), AVG(Religious), 
+AVG(Nature), AVG(Theatre), AVG(Shopping), AVG(Picnic)
+FROM REVIEWS;
+
+"""
 
 
 if __name__ == '__main__':
@@ -31,4 +38,7 @@ if __name__ == '__main__':
     curs = conn.cursor()
 
     reviews_least_100 = execute_query(curs, GET_REVIEWS_LEAST_100)
-    print(reviews_least_100)
+    print('Reviews at least 100 Nature and Shopping',reviews_least_100)
+
+    average_for_reviews = execute_query(curs, GET_AVG_FOR_EACH_REVIEW)
+    print('Averages for Each Review', average_for_reviews)

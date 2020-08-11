@@ -102,6 +102,8 @@ AVG_WEAPONS_PER_CHARACTER = """
     AND aw.item_ptr_id = cci.item_id) 
     GROUP BY 1)
 """
+
+
 if __name__ == '__main__':
     conn = connect_to_db()
     curs = conn.cursor()
