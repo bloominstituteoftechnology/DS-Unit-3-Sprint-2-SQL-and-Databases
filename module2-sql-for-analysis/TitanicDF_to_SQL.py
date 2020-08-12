@@ -10,13 +10,15 @@ print(df.head())
 print(df.info())
 print(df.describe())
 # Create Table
-conn = sqlite3.connect('Titanic2.db')
+conn = sqlite3.connect('Titanic.db')
 c = conn.cursor()
 c.execute(
-'CREATE TABLE TITANIC (Survived number, Pclass number, Name text,' \
-' Sex text, Age float, Siblings_Spouses number,Parents_Children number, Flare float)')
+    'CREATE TABLE TITANIC (Survived number, Pclass number, Name text,' \
+    ' Sex text, Age float, Siblings_Spouses number,Parents_Children number, Fare float)')
 
 df.to_sql('TITANIC', conn, if_exists='replace', index=False)
 
 c.execute("SELECT * FROM TITANIC;")
-sl_curs =
+
+for row in c.fetchall():
+    print(row)

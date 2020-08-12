@@ -1,6 +1,7 @@
 import sqlite3
 import psycopg2
 
+# Establish Connection W/ DataBase
 dbname = 'ppezxvjc'
 user = 'ppezxvjc'
 password = 't0tlBYAiZvucD-MTqJAG2SPT87DZbVnS'  # Don't commit
@@ -14,7 +15,7 @@ sl_conn = sqlite3.connect('Titanic.db')
 sl_curs = sl_conn.cursor()
 
 # Create Table
-get_people = "SELECT *  FROM Titanic"
+get_people = "SELECT * FROM TITANIC"
 sl_curs.execute(get_people)
 people = sl_curs.fetchall()
 # Get rows for the table
@@ -31,7 +32,9 @@ sl_curs.execute('PRAGMA table_info(TITANIC);')
 print(sl_curs.fetchall())
 
 create_TITANIC_table = """
-CREATE TABLE TITANIC (
+CREATE TABLE if not exists TITANIC4 (
+    Survived INT,
+    Pclass INT,
     Name INT,
     Sex VARCHAR(30),
     Age FlOAT,
@@ -41,19 +44,20 @@ CREATE TABLE TITANIC (
     );
     """
 
+#
+# # Defining a function to refresh connection and cursor
+# def refresh_connection_and_cursor(conn, curs):
+#     curs.close()
+#     conn.close()
+#     pg_conn = psycopg2.connect(dbname=dbname, user=user,
+#                                password=password, host=host)
+#     pg_curs = pg_conn.cursor()
+#     return pg_conn, pg_curs
+#
 
-# Defining a function to refresh connection and cursor
-def refresh_connection_and_cursor(conn, curs):
-    curs.close()
-    conn.close()
-    pg_conn = psycopg2.connect(dbname=dbname, user=user,
-                               password=password, host=host)
-    pg_curs = pg_conn.cursor()
-    return pg_conn, pg_curs
-
-pg_conn, pg_curs = refresh_connection_and_cursor(pg_conn, pg_curs)
-print(create_TITANIC_table)
-pg_conn.commit()
+# pg_conn, pg_curs = refresh_connection_and_cursor(pg_conn, pg_curs)
+# pg_curs.execute(create_TITANIC_table)
+# pg_conn.commit()
 
 # PostgreSQL comparison to the SQLite pragma
 # We can query tables if we want to check
@@ -76,23 +80,22 @@ print(people[0])
 print(people[0][1:])
 
 example_insert = """
-INSERT INTO TITANIC
-(Name, Sex, Age, Siblings_Spouses, Parents_Children,Fare)
+INSERT INTO TITANIC4
+(Survived, Pclass, Name, Sex, Age, Siblings_Spouses, Parents_Children,Fare)
 VALUES """ + str(people[0][1:]) + ";"
 
 print(example_insert)
-
 for person in people:
     insert_person = """
-    INSERT INTO TITANIC
-    (Name, Sex, Age, Siblings_Spouses, Parents_Children, Fare)
-    VALUES """ + str(people[1:]) + ";"
+    INSERT INTO TITANIC4
+    (Survived, Pclass,Name, Sex, Age, Siblings_Spouses, Parents_Children, Fare)
+    VALUES """ + str(person[1:]) + ";"
     pg_curs.execute(insert_person)
 
 pg_conn.commit()
 
 # Let's look at what we've done
-print(pg_curs.execute('SELECT * FROM TITANIC LIMIT 5;'))
+print(pg_curs.execute('SELECT * FROM TITANIC2 LIMIT 5;'))
 print(pg_curs.fetchall())
 
 # Now the data looks the same! But let's check it systematically
