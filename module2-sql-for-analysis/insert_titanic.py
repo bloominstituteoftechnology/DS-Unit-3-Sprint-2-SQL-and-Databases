@@ -9,7 +9,7 @@ import sqlite3
 import pandas as pd
 
 # Connection
-conn = sqlite3.connect('testdb.db')
+conn = sqlite3.connect('titanic.db')
 c = conn.cursor()
 
 # Read csv to df
@@ -26,12 +26,12 @@ c.execute(delete)
 df.to_sql('titanic', con=conn)
 
 # connect to sql
-sl_conn = sqlite3.connect('titanic.sqlite3')
+sl_conn = sqlite3.connect('titanic.db')
 sl_curs = sl_conn.cursor()
 
-row_count = 'SELECT COUNT(*) FROM titanic'
-sl_curs.execute(row_count)
-rows = sl_curs.fetchall()
+get_passenger = 'SELECT * FROM titanic'
+sl_curs.execute(get_passenger)
+passengers = sl_curs.fetchall()
 
 # Auth/Host info to connect
 dbname = 'yfnzcrhk'
