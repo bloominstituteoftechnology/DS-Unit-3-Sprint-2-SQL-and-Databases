@@ -32,10 +32,11 @@ sl_curs.execute('PRAGMA table_info(TITANIC);')
 print(sl_curs.fetchall())
 
 create_TITANIC_table = """
-CREATE TABLE if not exists TITANIC4 (
+DROP TABLE if exists TITANIC;
+CREATE TABLE if not exists TITANIC (
     Survived INT,
     Pclass INT,
-    Name INT,
+    Name VARCHAR(100),
     Sex VARCHAR(30),
     Age FlOAT,
     Siblings_Spouses INT,
@@ -44,20 +45,20 @@ CREATE TABLE if not exists TITANIC4 (
     );
     """
 
-#
-# # Defining a function to refresh connection and cursor
-# def refresh_connection_and_cursor(conn, curs):
-#     curs.close()
-#     conn.close()
-#     pg_conn = psycopg2.connect(dbname=dbname, user=user,
-#                                password=password, host=host)
-#     pg_curs = pg_conn.cursor()
-#     return pg_conn, pg_curs
-#
 
-# pg_conn, pg_curs = refresh_connection_and_cursor(pg_conn, pg_curs)
-# pg_curs.execute(create_TITANIC_table)
-# pg_conn.commit()
+# Defining a function to refresh connection and cursor
+def refresh_connection_and_cursor(conn, curs):
+    curs.close()
+    conn.close()
+    pg_conn = psycopg2.connect(dbname=dbname, user=user,
+                               password=password, host=host)
+    pg_curs = pg_conn.cursor()
+    return pg_conn, pg_curs
+
+
+pg_conn, pg_curs = refresh_connection_and_cursor(pg_conn, pg_curs)
+pg_curs.execute(create_TITANIC_table)
+pg_conn.commit()
 
 # PostgreSQL comparison to the SQLite pragma
 # We can query tables if we want to check
@@ -71,45 +72,48 @@ WHERE
    schemaname != 'pg_catalog'
 AND schemaname != 'information_schema';
 """
-print(pg_curs.execute(show_tables))
+print('tables', pg_curs.execute(show_tables))
 print(pg_curs.fetchall())
 
 # Done with step 2 (transform)
 # Step 3 - Load!
 print(people[0])
 print(people[0][1:])
-
 example_insert = """
-INSERT INTO TITANIC4
+INSERT INTO TITANIC7
 (Survived, Pclass, Name, Sex, Age, Siblings_Spouses, Parents_Children,Fare)
-VALUES """ + str(people[0][1:]) + ";"
+VALUES """ + str(people[0][0:]) + ";"
 
 print(example_insert)
 for person in people:
+    if "'" in person[2]:
+        person = list(person)
+        person[2] = person[2].replace("'", "")
+        person = tuple(person)
     insert_person = """
-    INSERT INTO TITANIC4
+    INSERT INTO TITANIC7
     (Survived, Pclass,Name, Sex, Age, Siblings_Spouses, Parents_Children, Fare)
-    VALUES """ + str(person[1:]) + ";"
+    VALUES """ + str(person[0:]) + ";"
     pg_curs.execute(insert_person)
 
 pg_conn.commit()
 
 # Let's look at what we've done
-print(pg_curs.execute('SELECT * FROM TITANIC2 LIMIT 5;'))
+print(pg_curs.execute('SELECT * FROM TITANIC7 LIMIT 10;'))
 print(pg_curs.fetchall())
-
-# Now the data looks the same! But let's check it systematically
-pg_curs.execute('SELECT * FROM TITANIC;')
-pg_people = pg_curs.fetchall()
-
-# We could do more spot checks, but let's loop and check them all
-# TODO/afternoon task - consider making this a more formal test
-for person, pg_person in zip(people, pg_people):
-    assert person == pg_person
-
-# No complaints - which means they're all the same!
-# Closing out cursor/connection to wrap up
-pg_curs.close()
-pg_conn.close()
-sl_curs.close()
-sl_conn.close()
+#
+# # Now the data looks the same! But let's check it systematically
+# pg_curs.execute('SELECT * FROM TITANIC6;')
+# pg_people = pg_curs.fetchall()
+#
+# # We could do more spot checks, but let's loop and check them all
+# # TODO/afternoon task - consider making this a more formal test
+# for person, pg_person in zip(people, pg_people):
+#     assert person == pg_person
+#
+# # No complaints - which means they're all the same!
+# # Closing out cursor/connection to wrap up
+# pg_curs.close()
+# pg_conn.close()
+# sl_curs.close()
+# sl_conn.close()
