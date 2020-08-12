@@ -21,7 +21,7 @@ sl_curs = sl_conn.cursor()
 
 def table_insert(table):
     document = sl_curs.execute(table).fetchall()
-    db.test.insert_one(document)
+    db.test.insert_one({'document': document)
 
 # Get and copy the charactercreator_character table from
 # SQLite3 to MongoDB
