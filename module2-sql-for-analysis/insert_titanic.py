@@ -74,3 +74,4 @@ CREATE TABLE titanic (
 pg_curs = pg_conn.cursor()
 pg_curs.execute(create_titanic_table)
 pg_conn.commit()
+#pandas - to_records

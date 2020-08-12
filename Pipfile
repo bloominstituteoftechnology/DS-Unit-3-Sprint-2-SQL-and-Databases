@@ -7,6 +7,9 @@ verify_ssl = true
 
 [packages]
 pandas = "*"
+pymongo = "*"
+dnspython = "*"
+flask-pymongo = "*"
 
 [requires]
 python_version = "3.8"
