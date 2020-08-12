@@ -18,6 +18,7 @@ user = "ajkuvccu"  # ElephantSQL happens to use same name for db and user
 password = "FBOFpSpFdAFrxYUG-DBqN39wDQ0Mjc4V"  # Sensitive! Don't share/commit
 host = "isilo.db.elephantsql.com"
 
+
 def create_type_class():
     type_class_statement = """
     CREATE TYPE class as ENUM ('1', '2', '3');
@@ -26,9 +27,11 @@ def create_type_class():
     pg_curs.execute(type_class_statement)
     pg_conn.commit()  # "Save" by committing
 
+
 def drop():
     pg_curs.execute("DROP TABLE titanic")
     pg_conn.commit()  # "Save" by committing
+
 
 # Defining a function to refresh connection and cursor
 def refresh_connection_and_cursor(conn, curs):
@@ -37,6 +40,7 @@ def refresh_connection_and_cursor(conn, curs):
     pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
     pg_curs = pg_conn.cursor()
     return pg_conn, pg_curs
+
 
 if __name__ == "__main__":
     # If we make too many connections, the database complains! Be sure to close
@@ -63,17 +67,16 @@ if __name__ == "__main__":
 
     pg_conn, pg_curs = refresh_connection_and_cursor(pg_conn, pg_curs)
 
-    #pg_curs.execute(create_table_statement)
+    # pg_curs.execute(create_table_statement)
     pg_conn.commit()  # "Save" by committing
 
-    with open('titanic.csv', 'r') as f:
+    with open("titanic.csv", "r") as f:
         reader = csv.reader(f)
-        next(reader) # Skipe the header row.
+        next(reader)  # Skipe the header row.
         for row in reader:
             pg_curs.execute(
-            "INSERT INTO titanic VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
-            row
-        )
+                "INSERT INTO titanic VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", row
+            )
     pg_conn.commit()
 
     pg_curs.execute("SELECT * FROM 'public'.'titanic' LIMIT 100")
