@@ -121,7 +121,7 @@ resultscharweapons20 = execute_query(curs, character_weapons_20)
 # Avg items per character
 avg_items_character = """
 SELECT AVG(nc) FROM
-(SELECT character_id, COUNT(DISTINCT item_id) AS nc FROM
+(SELECT character_id, COUNT (DISTINCT item_id) AS nc FROM
 (SELECT cc.character_id, cc.name, ai.item_id, ai.name
 FROM charactercreator_character AS cc,
 armory_item AS ai,

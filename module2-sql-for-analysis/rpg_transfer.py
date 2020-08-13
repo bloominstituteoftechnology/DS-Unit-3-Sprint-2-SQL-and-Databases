@@ -31,6 +31,7 @@ sl_curs.execute(get_characters)
 characters = sl_curs.fetchall()
 
 create_character_table = """
+DROP TABLE IF EXISTS charactercreator_character;
 CREATE TABLE charactercreator_character (
     character_id SERIAL PRIMARY KEY, 
     name VARCHAR(30), 

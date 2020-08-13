@@ -51,18 +51,6 @@ CREATE TABLE Titanic (
 pg_curs.execute(create_titanic_table)
 pg_conn.commit()
 
-# Old code from before, keeping here for now
-# get_titanic = "SELECT * FROM titanic;"
-# st_curs.execute(get_titanic)
-# titanic_data = st_curs.fetchall()
-#
-# for titanic in titanic_data:
-#     insert_data = """
-#         INSERT INTO titanic8
-#         (Survived, Pclass, Name, Sex, Age, Siblings_Spouses_Aboard, Parents_Children_Aboard, Fare)
-#         VALUES """ + str(titanic[1:]) + ";"
-#     pg_curs.execute(insert_data)
-
 # using the execute_values function - Would like to go over this again to enhance my understanding
 execute_values(pg_curs, """
 INSERT INTO Titanic
@@ -73,17 +61,7 @@ VALUES %s;
 # commit
 pg_conn.commit()
 
-# pg_curs.execute('SELECT * FROM titanic7 LIMIT 5;')
-# titanic_pg = pg_curs.fetchall()
 
-# show_table = """
-# SELECT *
-# FROM pg_catalog.pg_tables
-# """
-#
-# pg_curs.execute(show_table)
-
-# running to make sure works
 pg_curs.execute("""
 SELECT *
 FROM Titanic
