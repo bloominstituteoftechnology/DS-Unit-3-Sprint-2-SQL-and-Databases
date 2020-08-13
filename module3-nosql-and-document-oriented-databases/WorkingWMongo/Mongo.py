@@ -1,8 +1,7 @@
 import pymongo
-
 password = 'suh264tUm'
 dbname = 'test'
-connection = ('mongodb+srv://jonatan5696:'+ password +
+connection = ('mongodb+srv://jonatan5696:' + password +
               '@cluster0.jalzo.gcp.mongodb.net/' + dbname +
               '?retryWrites=true&w=majority')
 client = pymongo.MongoClient(connection)
@@ -52,37 +51,28 @@ aarons_doc = {
 }
 
 # Let's put them all in a list for convenience
-all_docs = [byrnes_doc, daves_doc, sasanas_doc, tylers_doc, walters_doc,
+#all_docs = [byrnes_doc, daves_doc, sasanas_doc, tylers_doc, walters_doc,
             aarons_doc]
-
 
 print(f'len of docs {len(all_docs)}\n')
 
 # Insert Documents Back Into Data Base
 db.test.insert_many(all_docs)
 
-db.test.insert_one({
-    'animal': 'tiger',
-    'color': 'green',
-    'city': 'Paris'
-})
+# db.test.insert_one({
+#     'animal': 'tiger',
+#     'color': 'green',
+#     'city': 'Paris'
+# })
 
-#Look for Documents
+# Look for Documents
 print(f'looking for docs: {list(db.test.find())}')
 
-print('not in list form',db.test.find_one({'color': 'green'}))
-print('in list form',list(db.test.find({'color': 'green'})))
+print('not in list form', db.test.find_one({'color': 'green'}))
+print('in list form', list(db.test.find({'color': 'green'})))
 
 more_docs = []
 for i in range(10):
     doc = {'even': i % 2 == 0}
     doc['value'] = i
     more_docs.append(doc)
-
-print(more_docs)
-# db.test.insert_many(more_docs)
-
-print(list(db.test.find({'even': True, 'value': 0})))
-print(list(db.test.find({'even': True})))
-result = db.test.update_one({'x': 1}, {'$inc': {'x': 3}})
-print(f'looking for docs: {list(db.test.find())}')

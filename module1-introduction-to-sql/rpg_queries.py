@@ -108,8 +108,9 @@ if __name__ == '__main__':
     conn = connect_to_db()
     curs = conn.cursor()
 
-    total_characters = execute_query(curs, GET_TOTAL_CHARACTERS)
-    print('total characters', total_characters)
+    total_characters = curs.execute(GET_TOTAL_CHARACTERS)
+    total_c = curs.fetchall()
+    print('total characters', total_c)
 
     number_cleric = execute_query(curs, GET_CHARACTERS_CLERIC)
     number_fighter = execute_query(curs, GET_CHARACTERS_FIGHTER)

@@ -31,6 +31,7 @@ print(f'people {people[:5]}')
 sl_curs.execute('PRAGMA table_info(TITANIC);')
 print(sl_curs.fetchall())
 
+
 create_TITANIC_table = """
 DROP TABLE if exists TITANIC;
 CREATE TABLE if not exists TITANIC (
@@ -60,6 +61,9 @@ pg_conn, pg_curs = refresh_connection_and_cursor(pg_conn, pg_curs)
 pg_curs.execute(create_TITANIC_table)
 pg_conn.commit()
 
+pg_curs.execute('DROP TABLE if exists TITANIC3,TITANIC4,TITANIC5,TITANIC6')
+pg_conn.commit()
+
 # PostgreSQL comparison to the SQLite pragma
 # We can query tables if we want to check
 # This is a clever optional thing, showing postgresql internals
@@ -84,7 +88,7 @@ INSERT INTO TITANIC7
 (Survived, Pclass, Name, Sex, Age, Siblings_Spouses, Parents_Children,Fare)
 VALUES """ + str(people[0][0:]) + ";"
 
-print(example_insert)
+
 for person in people:
     if "'" in person[2]:
         person = list(person)
@@ -98,22 +102,23 @@ for person in people:
 
 pg_conn.commit()
 
-# Let's look at what we've done
+# Let's look at what we've done first
 print(pg_curs.execute('SELECT * FROM TITANIC7 LIMIT 10;'))
-print(pg_curs.fetchall())
-#
-# # Now the data looks the same! But let's check it systematically
-# pg_curs.execute('SELECT * FROM TITANIC6;')
-# pg_people = pg_curs.fetchall()
-#
-# # We could do more spot checks, but let's loop and check them all
+pg_curs.fetchall()
+
+# Now the data looks the same! But let's check it systematically
+pg_curs.execute('SELECT * FROM TITANIC7;')
+pg_people = pg_curs.fetchall()
+
+#TESTS
+# We could do more spot checks, but let's loop and check them all
 # # TODO/afternoon task - consider making this a more formal test
 # for person, pg_person in zip(people, pg_people):
 #     assert person == pg_person
-#
-# # No complaints - which means they're all the same!
-# # Closing out cursor/connection to wrap up
-# pg_curs.close()
-# pg_conn.close()
-# sl_curs.close()
-# sl_conn.close()
+
+# No complaints - which means they're all the same!
+# Closing out cursor/connection to wrap up
+pg_curs.close()
+pg_conn.close()
+sl_curs.close()
+sl_conn.close()

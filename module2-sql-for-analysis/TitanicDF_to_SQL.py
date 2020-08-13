@@ -10,7 +10,7 @@ print(df.head())
 print(df.info())
 print(df.describe())
 # Create Table
-conn = sqlite3.connect('Titanic.db')
+conn = sqlite3.connect('name.db')
 c = conn.cursor()
 c.execute(
     'CREATE TABLE TITANIC (Survived number, Pclass number, Name text,' \
