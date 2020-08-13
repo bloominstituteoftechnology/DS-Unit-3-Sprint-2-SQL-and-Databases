@@ -75,4 +75,3 @@ print("RESULT 3", type(result3), result3)
 for row in result3:
 print(type(row), row)
 """
-

@@ -10,7 +10,7 @@ way to store data and PostgreSQL has in my opinion extra steps so its harder.
 """first make shell and install pymongo and dnspython"""
 import pymongo
 
-password = 'Aa02155120'  # Don't commit/share this! Reset it if it leak
+password = 'placehl'commit/share this! Reset it if it leak
 User = 'John-Thomas'
 dbname = 'test'
 connection = (
