@@ -133,16 +133,45 @@ Before we get started you'll need a few things.
 10. Return the first and last name of each employee and who they report to
 
 ## NoSQL
+https://www.unitedglobalgrp.com/uncategorized/to-sql-or-to-nosql/#:~:text=The%20most%20significant%20trade%2Doff,systems%20%E2%80%93%20i.e.%20relational%20databases%20vs.&text=NoSQL%20databases%20do%20not%20require,spent%20preparing%20data%20%5B7%5D.
+Unless u have a reason to scale -- go with traditional sql
+If u have relational data go with postgress
+
 
 ### Questions of Understanding
 
 1. What is a document store?
+https://www.mongodb.com/document-databases
+
+What is a Document Database?
+Built around JSON-like documents, document databases are both natural and flexible for developers to work with. They promise higher developer productivity,
+ and faster evolution with application needs. As a class of non-relational, sometimes called NoSQL database, 
+the document data model has become the most popular alternative to tabular, relational databases.
+
+1. Intuitive Data Model: Faster and Easier for Developers
+Documents map to the objects in your code, so they are much more natural to work with. There is no need to decompose 
+data across tables, run expensive JOINs, or integrate a separate ORM layer.
+ Data that is accessed together is stored together, 
+so you have less code to write and your users get higher performance.
 
 2. What is a `key:value` pair? What data type in Python uses `key:value` pairs?
 
 3. Give an example of when it would be best to use a SQL Database and when it would be best to use a NoSQL Database
 
 4. What are some of the trade-offs between SQL and NoSQL?
+The most significant trade-off between SQL and NoSQL systems – i.e. relational databases vs. "everything else" – is the security and trustworthiness of vital, operational data for the agility, scalability and flexibility of big data.  Relational databases are specialized to structure data in a specific, well-defined, well-organized model [9].  Because they fully support ACID principles, transactions are not only highly reliable, the database also guarantees crash recovery.  The security risks that do exist are defined, and new research and product iterations continually improve against these gaps [9].  However, the same fail-saves that guarantee data also restrain performance [6].  The relational database stores multiple copies of data, which is centralized and unencrypted; in this way, the RDBMS is both inefficient and vulnerable to fraud, error and security attacks [3].
+
+NoSQL databases do not require pre-defined schema, relationships or keys; less complex models translate to less time spent preparing data [7]. 
+ Additionally, that NoSQL systems don’t fully support ACID principles also translates into faster performance
+ of storing and retrieving data [7].  Theses performance-focused design features lend themselves particularly to the manipulation of Big Data.  
+ At the same time, however, their design leaves security as an afterthought [9]. 
+  Because NoSQL systems cannot be evaluated using ACID, transaction reliability is not natively assured [5, 6, 9]. 
+   Where ACID principles are programmed into NoSQL systems, designers face a performance vs. consistency 
+  trade-off – i.e. performance is negatively affected [6].  Further, there is some research that indicates a wide variation
+   in the distribution of NoSQL database performance measures based on the type of operation
+   performed, as well as the number of
+   synchronous users [8].  Without ACID support, changes made in close proximity
+ can overwrite other changes made within the database, especially if they occur close in time.
 
 5. What does each letter in BASE stand for? Give an explanation for each and why they matter?
     - B

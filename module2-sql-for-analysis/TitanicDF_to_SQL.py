@@ -12,6 +12,9 @@ print(df.describe())
 # Create Table
 conn = sqlite3.connect('Titanic3.db')
 c = conn.cursor()
+# This is in sqllite, the data types maybe be different in POSTGRESQL,
+# EX, IN SQLLITE IT TAKES TEXT AS CHAR VS IN PSTGRE IT TAKES DATA TYPE
+# AS VARCHAR
 c.execute(
     'CREATE TABLE TITANIC (Survived INT , Pclass number, Name text,' \
     ' Sex text, Age float, Siblings_Spouses number,Parents_Children number, Fare float)')
