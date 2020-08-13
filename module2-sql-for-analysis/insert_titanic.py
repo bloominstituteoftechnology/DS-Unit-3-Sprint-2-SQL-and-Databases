@@ -1,8 +1,8 @@
+import csv
+import sqlite3
+
 import pandas as pd
 import psycopg2
-import sqlite3
-from csv import DictReader
-import csv
 
 """
 # DictReader : 

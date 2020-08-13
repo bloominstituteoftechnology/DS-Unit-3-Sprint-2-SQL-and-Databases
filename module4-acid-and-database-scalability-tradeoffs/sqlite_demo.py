@@ -27,7 +27,7 @@ def insert_data(conn):
     ]
     curs = conn.cursor()
     for row in my_data:
-        pass
+        insert_statement = curs.execute("""INSERT INTO students VALUE (?,?,?), my_data""")
         # Exercise - write an insert statement!
     curs.close()
     conn.commit()
