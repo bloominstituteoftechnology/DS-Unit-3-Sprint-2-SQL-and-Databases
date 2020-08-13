@@ -5,7 +5,9 @@ import sqlite3
 def refresh_connection_and_cursor(conn, curs):
     curs.close()
     conn.close()
-    pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
+    pg_conn = psycopg2.connect(
+        dbname=dbname, user=user, password=password, host=host
+    )
     pg_curs = pg_conn.cursor()
     return pg_conn, pg_curs
 
@@ -18,12 +20,16 @@ if __name__ == "__main__":
 
     dbname = "ajkuvccu"
     user = "ajkuvccu"  # ElephantSQL happens to use same name for db and user
-    password = "FBOFpSpFdAFrxYUG-DBqN39wDQ0Mjc4V"  # Sensitive! Don't share/commit
+    password = (  # Sensitive! Don't share/commit
+        "FBOFpSpFdAFrxYUG-DBqN39wDQ0Mjc4V"
+    )
     host = "isilo.db.elephantsql.com"
 
     # If we make too many connections, the database complains! Be sure to close
     # cursors and connections
-    pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
+    pg_conn = psycopg2.connect(
+        dbname=dbname, user=user, password=password, host=host
+    )
 
     pg_curs = pg_conn.cursor()  # Works the same as SQLite!
 

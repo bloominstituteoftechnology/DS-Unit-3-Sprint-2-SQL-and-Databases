@@ -17,7 +17,9 @@ import sqlite3
 if __name__ == "__main__":
 
     # Given code to connect to Mongo
-    password = "EtZkty4uluNwiVyb"  # Don't commit/share this! Reset it if it leaks
+    password = (  # Don't commit/share this! Reset it if it leaks
+        "EtZkty4uluNwiVyb"
+    )
     dbname = "rpg"
     client = pymongo.MongoClient(
         "mongodb+srv://xpandalord:"

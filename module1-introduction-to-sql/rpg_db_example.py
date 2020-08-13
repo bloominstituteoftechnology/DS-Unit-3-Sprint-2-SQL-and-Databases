@@ -121,7 +121,11 @@ if __name__ == "__main__":
         num_items += pair[1]
     for pair in total_weapon_inventory:
         num_weapons += pair[1]
-    print("On average, each Character has %f items?" % (num_items / characters[0][0]))
     print(
-        "On average, each Character has %f weapons?" % (num_weapons / characters[0][0])
+        "On average, each Character has %f items?"
+        % (num_items / characters[0][0])
+    )
+    print(
+        "On average, each Character has %f weapons?"
+        % (num_weapons / characters[0][0])
     )

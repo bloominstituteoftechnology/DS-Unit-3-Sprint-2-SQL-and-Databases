@@ -37,7 +37,9 @@ def drop():
 def refresh_connection_and_cursor(conn, curs):
     curs.close()
     conn.close()
-    pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
+    pg_conn = psycopg2.connect(
+        dbname=dbname, user=user, password=password, host=host
+    )
     pg_curs = pg_conn.cursor()
     return pg_conn, pg_curs
 
@@ -45,7 +47,9 @@ def refresh_connection_and_cursor(conn, curs):
 if __name__ == "__main__":
     # If we make too many connections, the database complains! Be sure to close
     # cursors and connections
-    pg_conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
+    pg_conn = psycopg2.connect(
+        dbname=dbname, user=user, password=password, host=host
+    )
 
     pg_curs = pg_conn.cursor()  # Works the same as SQLite!
 
@@ -75,7 +79,8 @@ if __name__ == "__main__":
         next(reader)  # Skipe the header row.
         for row in reader:
             pg_curs.execute(
-                "INSERT INTO titanic VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", row
+                "INSERT INTO titanic VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
+                row,
             )
     pg_conn.commit()
 

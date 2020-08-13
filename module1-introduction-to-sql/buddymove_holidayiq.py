@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     print("There are %d total rows." % (rows[0][0]))
     print(
-        "There are %d total users who reviewed at least 100 in the 'Nature' category as"
-        " well as at least 100 in the 'Shopping' category."
+        "There are %d total users who reviewed at least 100 in the 'Nature'"
+        " category as well as at least 100 in the 'Shopping' category."
         % (users[0][0])
     )
