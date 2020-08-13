@@ -57,4 +57,4 @@ list(db.test.find({'doc_type': 'rpg_character'}))
 get_characters = 'SELECT * FROM charactercreator_character;'
 characters = sl_curs.execute(get_characters).fetchall()
 characters[:10]
-
+# worked on first two assignents to review and stufy guide
