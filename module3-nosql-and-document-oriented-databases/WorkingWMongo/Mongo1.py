@@ -17,17 +17,18 @@ curs = conn.cursor()
 get_characters = 'SELECT * FROM charactercreator_character;'
 characters = curs.execute(get_characters).fetchall()
 print(characters)
-character_observations = []
-for char in characters:
-    get_rpg_characters = {'Character_id':char[0],
-                         'name':char[1],
-                          'level':char[2],
-                          'exp':char[3],
-                          'hp': char[4],
-                          'strength': char[5],
-                          'intelligence': char[6],
-                          'dexterity': char[7],
-                          'wisdom': char[8]}
-    character_observations.append(get_rpg_characters)
-    db.character_data.insert_one
-    db.character_data.insert
+# character_observations = []
+# for char in characters:
+#     get_rpg_characters = {'Character_id':char[0],
+#                          'name':char[1],
+#                           'level':char[2],
+#                           'exp':char[3],
+#                           'hp': char[4],
+#                           'strength': char[5],
+#                           'intelligence': char[6],
+#                           'dexterity': char[7],
+#                           'wisdom': char[8]}
+#     character_observations.append(get_rpg_characters)
+# db.character_data.insert_many(character_observations)
+
+print(db.character_data.find_one({'name':'Minus c'}))
