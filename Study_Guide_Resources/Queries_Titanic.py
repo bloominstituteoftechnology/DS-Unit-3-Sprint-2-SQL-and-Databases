@@ -59,6 +59,28 @@ FROM TITANIC
 GROUP BY Pclass;
 """
 
+GET_AVG_FARE_CLASS = """
+SELECT Pclass, AVG(FARE) AS FARES_BY_CLASS
+FROM TITANIC
+GROUP BY Pclass
+"""
+
+GET_AVG_FARE_SURVIVAL = """
+SELECT Survived, AVG(FARE) AS FARES_BY_CLASS
+FROM TITANIC
+GROUP BY Survived;
+"""
+GET_AVG_SIBLINGS_SPOUSES_CLASS = """
+SELECT Pclass, AVG(Siblings_Spouses)
+FROM TITANIC
+GROUP BY Pclass
+"""
+GET_AVG_SIBLINGS_SPOUSES_SURVIVAL = """
+SELECT Survived, AVG(Siblings_Spouses) 
+FROM TITANIC
+GROUP BY Survived;
+"""
+
 if __name__ == '__main__':
     conn = connect_to_db()
     curs = conn.cursor()
@@ -79,5 +101,19 @@ if __name__ == '__main__':
 
     avg_age_class = execute_query(curs, GET_AVG_AGE_CLASS)
     print('Average Age of Passenger Class', avg_age_class)
+
+    avg_fare_class = execute_query(curs,GET_AVG_FARE_CLASS)
+    print('Average Fare for Each Class', avg_fare_class)
+
+    avg_fare_survival = execute_query(curs,GET_AVG_FARE_SURVIVAL)
+    print('Average Fare by Survival', avg_fare_survival)
+
+    avg_siblings_spouses_class = execute_query(curs, GET_AVG_SIBLINGS_SPOUSES_CLASS)
+    print('Average Siblings/Spouses by Class', avg_siblings_spouses_class)
+
+    avg_siblings_spouses_survival = execute_query(curs, GET_AVG_SIBLINGS_SPOUSES_SURVIVAL)
+    print('Average Siblings/Spouses by Survival', avg_siblings_spouses_survival)
+
+
 
 
