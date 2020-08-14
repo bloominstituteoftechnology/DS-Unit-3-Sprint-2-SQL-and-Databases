@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_FILEPATH = 'data/Review_Chinook_Sqlite.sqlite'
+DB_FILEPATH = 'Chinook_Sqlite.sqlite'
 
 conn = sqlite3.connect(DB_FILEPATH)
 curs = conn.cursor()
