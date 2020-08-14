@@ -9,7 +9,7 @@ conn = sqlite3.connect('example_db.sqlite')
 
 def create_statement(conn):
     curs = conn.cursor()
-    create_statement ="""
+    create_statement = """
     CREATE TABLE if not exists students1 (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name CHAR(30),
@@ -20,6 +20,7 @@ def create_statement(conn):
     curs.execute(create_statement)
     curs.close()
     conn.commit()
+
 
 def insert_data(conn):
     # SIMILAR TO GETTING DATA OF ROWS USING SL_CURS.EXECUTE AND THEN
@@ -38,6 +39,7 @@ def insert_data(conn):
         curs.execute(insert_row)
         conn.commit()
 
+
 # Creates student table
 create_statement(conn)
 
@@ -48,5 +50,3 @@ insert_data(conn)
 curs = conn.cursor()
 print(curs.execute('SELECT * FROM students LIMIT 10;'))
 print(curs.fetchall)
-
-

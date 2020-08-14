@@ -83,8 +83,8 @@ GET_NON_WEAPONS = """
 """
 
 AVG_ITEMS_PER_CHARACTER = """
-SELECT AVG(num_item) 
-FROM (SELECT character_id, character_name,
+    SELECT AVG(num_item) 
+    FROM (SELECT character_id, character_name,
 COUNT(DISTINCT item_id) AS num_item FROM 
 (SELECT cc.character_id, cc.name AS character_name, ai.item_id, ai.name AS item_name 
 FROM charactercreator_character 
