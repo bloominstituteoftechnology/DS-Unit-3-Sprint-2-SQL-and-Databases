@@ -51,10 +51,15 @@ For instance a Country can only have one UN Representative, and also a UN Repres
 can only represent one Country.
 	- One-to-Many
 One to Many Relationship (1:M)
-This is where a row from one table can have multiple matching rows in another table this relationship is defined as a one to many relationship. This type of relationship can be created using Primary key-Foreign key relationship.
+This is where a row from one table can have multiple matching rows in another table this relationship is defined as a one to many relationship. 
+This type of relationship can be created using Primary key-Foreign key relationship.
 This kind of Relationship, allows a Car to have multiple Engineers.
 	- Many-to-Many
-A row from one table can have multiple matching rows in another table, and a row in the other table can also have multiple matching rows in the first table this relationship is defined as a many to many relationship. This type of relationship can be created using a third table called “Junction table” or “Bridging table”. This Junction or Bridging table can be assumed as a place where attributes of the relationships between two lists of entities are stored.
+A row from one table can have multiple matching rows in another table, and a row in the other table can also have 
+multiple matching rows in the first table this relationship is defined as a many to many relationship. 
+This type of relationship can be created using a third table called “Junction table” or “Bridging table”. 
+This Junction or Bridging table can be assumed as a place where attributes of the relationships between two 
+lists of entities are stored.
 This kind of Relationship, allows a junction or bridging table as a connection for the two tables.
 
 ## Syntax
@@ -159,7 +164,13 @@ so you have less code to write and your users get higher performance.
 3. Give an example of when it would be best to use a SQL Database and when it would be best to use a NoSQL Database
 
 4. What are some of the trade-offs between SQL and NoSQL?
-The most significant trade-off between SQL and NoSQL systems – i.e. relational databases vs. "everything else" – is the security and trustworthiness of vital, operational data for the agility, scalability and flexibility of big data.  Relational databases are specialized to structure data in a specific, well-defined, well-organized model [9].  Because they fully support ACID principles, transactions are not only highly reliable, the database also guarantees crash recovery.  The security risks that do exist are defined, and new research and product iterations continually improve against these gaps [9].  However, the same fail-saves that guarantee data also restrain performance [6].  The relational database stores multiple copies of data, which is centralized and unencrypted; in this way, the RDBMS is both inefficient and vulnerable to fraud, error and security attacks [3].
+The most significant trade-off between SQL and NoSQL systems – i.e. relational databases vs. "everything else" – is the security and trustworthiness of vital, operational data for the agility, 
+scalability and flexibility of big data. 
+ Relational databases are specialized to structure data in a specific, 
+well-defined, well-organized model [9].  Because they fully support ACID principles, transactions are not only highly reliable, the database also guarantees crash recovery.  
+The security risks that do exist are defined, and new research and product iterations continually improve against these gaps [9].
+  However, the same fail-saves that guarantee data also restrain performance [6].  The relational database stores multiple copies of data, which is centralized and unencrypted;
+   in this way, the RDBMS is both inefficient and vulnerable to fraud, error and security attacks [3].
 
 NoSQL databases do not require pre-defined schema, relationships or keys; less complex models translate to less time spent preparing data [7]. 
  Additionally, that NoSQL systems don’t fully support ACID principles also translates into faster performance
