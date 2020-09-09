@@ -1,11 +1,10 @@
 import sqlite3
 import pandas as pd
 
-conn = sqlite3.connect('buddymove_holidayiq.py')
+conn = sqlite3.connect('buddymove_holidayiq.sqlite3')
 curs = conn.cursor()
-df = pd.read_csv('buddymove_holidayiq.csv')
-review = df.to_sql(df, con=sqlite3)
-
+review = pd.read_csv('buddymove_holidayiq.csv')
+review.to_sql('review', con=conn, if_exists = 'replace')
 
 
 def execute_query(cursor, query):
@@ -14,7 +13,22 @@ def execute_query(cursor, query):
     print(result)
 
 
-COUNT = SELECT * FROM buddymove_holidayiq
+ROW_COUNT= """ 
+SELECT COUNT(*) FROM review;
+"""
 
 
-execute_query(curs, COUNT)
+print('Row Count:')
+execute_query(curs, ROW_COUNT)
+
+
+USER_COUNT = """
+SELECT COUNT(*)
+FROM review
+WHERE Nature >= 100
+AND Shopping >= 100;
+"""
+
+
+print('Users who love nature and shopping count:')
+execute_query(curs, USER_COUNT)
