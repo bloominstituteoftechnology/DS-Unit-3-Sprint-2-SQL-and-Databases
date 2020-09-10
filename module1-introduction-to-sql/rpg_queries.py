@@ -5,6 +5,7 @@ conn = sqlite3.connect('rpg_db.sqlite3')
 curs = conn.cursor()
 
 
+
 def execute_query(cursor, query):
     cursor.execute(query)
     result = cursor.fetchall()
