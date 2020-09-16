@@ -13,6 +13,7 @@ c.execute('CREATE TABLE REVIEWS (UserId text, Sports number,Religious number, Na
 # Saving Created Table into our Data Base
 conn.commit()
 
+
 # Convert DF to SQL
 df.to_sql('REVIEWS', conn, if_exists='replace', index=False)
 
