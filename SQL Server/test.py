@@ -1,7 +1,6 @@
 from sqlalchemy import create_engine
 import pandas as pd
-import pymssql
-
+import pymssql  ## http://www.pymssql.org/index.html
 
 def main():
     # ____ Connect to SQL Server __________
