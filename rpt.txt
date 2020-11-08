@@ -1,0 +1,172 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----- R P G  D a t a b a s e   I N F O ------
+There are a total of 302 Characters
+75 Clerics
+68 Fighters
+51 Thieves
+108 Mages, of which 11 are Necromancers
+
+There are a total of 174 items
+37 Weapons
+137 Non-Weapons
+
+Character  -->  Items / Weapons
+-----------------------------
+Debit --> 7 / 3
+Quas --> 6 / 0
+Ab voluptas se --> 5 / 3
+Acc --> 5 / 2
+Aliqu --> 5 / 2
+Aliquam n --> 5 / 1
+Amet quo fugit aliquam sequi --> 5 / 1
+Architecto i --> 5 / 1
+Asperi --> 5 / 2
+Atque aspernatur possi --> 5 / 0
+Autem eos voluptates off --> 5 / 1
+Autem mollitia fuga lauda --> 5 / 2
+Culpa repellat unde --> 5 / 2
+Cupidi --> 5 / 0
+Dicta enim debitis accusantiu --> 5 / 1
+-----------------------------
+Each character has average of 3.0235690235690234 items
+
+Character  --> Weapon:Power
+------------------------------
+Ab illum invento --> Repudiandae molestias be : 0
+Ab voluptas se --> Omnis maxime deserunt : 0
+Ab voluptas se --> Corporis voluptas provi : 0
+Ab voluptas se --> Repelle : 0
+Acc --> Sit quibusdam ab, enim in ex : 0
+Acc --> Nemo expl : 0
+Accusa --> Facere neque qu : 0
+Accusantium qu --> Ipsum sit praesentium cum ame : 0
+Accusantium vitae n --> Inventore re : 0
+Ad necess --> Amet vel distinctio mo : 0
+Adipisci voluptas --> Ipsum sit praesentium cum ame : 0
+Aliqu --> Eum error eveni : 0
+Aliqu --> Amet vel distinctio mo : 0
+Aliquam n --> Sit quidem tempora doloribus r : 0
+Amet quo fugit aliquam sequi --> Atque repudiandae molestiae v : 0
+------------------------------
+
+Character  -->  Weapon Count
+------------------------------
+Ab illum invento --> 1
+Ab voluptas se --> 3
+Acc --> 2
+Accusa --> 1
+Accusantium qu --> 1
+Accusantium vitae n --> 1
+Ad necess --> 1
+Adipisci voluptas --> 1
+Aliqu --> 2
+Aliquam n --> 1
+Amet quo fugit aliquam sequi --> 1
+Aperiam sit --> 1
+Architecto i --> 1
+Architecto repudian --> 2
+Asperi --> 2
+------------------------------
+Each character has average of 1.326797385620915 weapons
+
+There are a total of 174 items
