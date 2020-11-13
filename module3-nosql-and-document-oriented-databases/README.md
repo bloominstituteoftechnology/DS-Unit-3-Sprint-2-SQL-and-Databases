@@ -32,8 +32,8 @@ representation of the data is likely to be particularly useful for this purpose.
 ## Assignment
 
 Reproduce (debugging as needed) the live lecture task of setting up and
-inserting the RPG data (specifically the `charactercreator_character` and
-`charactercreator_character_inventory`) into a MongoDB instance. Your documents in 
+inserting the RPG data (specifically the `charactercreator_character`,
+`charactercreator_character_inventory`, `armory_itmem`) into a MongoDB instance. Your documents in 
 MongoDB should contain the character traits (name, lvel, etc.) and skills (strength, 
 wisdom, etc.) and a list of their items. Then answer the following question (can be a 
 comment in the top of your code or in Markdown) - "How was working with MongoDB different 
