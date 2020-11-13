@@ -42,11 +42,11 @@ from working with PostgreSQL? What was easier, and what was harder?"
 Mongo document example:
 ```
 mongo_document = {
-  "name": <value>,
-  "strength": <value>,
+  "name": <VALUE>,
+  "strength": <VALUE>,
   "items": [
-    <value>,
-    <value>
+    <ITEM NAME>,
+    <ITEM NAME>
   ]
 }
 ```
