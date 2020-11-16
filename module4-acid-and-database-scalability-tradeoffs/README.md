@@ -41,7 +41,20 @@ Practice! Go back to both your deployed PostgreSQL (Titanic data) and MongoDB
 (RPG data) instances - use [MongoDB
 queries](https://docs.mongodb.com/manual/tutorial/query-documents/) to answer
 the same questions as you did from the first module (when the RPG data was in
-SQLite). With PostgreSQL, answer the following:
+SQLite):
+- How many total Characters are there?
+- How many total Items?
+- How many of the Items are weapons? How many are not?
+- How many Items does each character have? (Return first 20 rows)
+- How many Weapons does each character have? (Return first 20 rows)
+- On average, how many Items does each Character have?
+- On average, how many Weapons does each character have?
+
+
+
+
+
+With PostgreSQL, answer the following:
 
 - How many passengers survived, and how many died?
 - How many passengers were in each class?
