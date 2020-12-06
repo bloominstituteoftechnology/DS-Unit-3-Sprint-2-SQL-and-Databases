@@ -52,13 +52,70 @@ Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
 - How many total Characters are there?
+    SELECT * FROM charactercreator_character
+    
+    There are a total of 302 characters.
+    
 - How many of each specific subclass?
+    There are 75 cleric characters.
+    There are 68 fighter characters.
+    There are 108 mage characters.
+    There are only 11 necromancers (a subset of mage characters).
+    There are 51 thief characters.
+    
 - How many total Items?
+    There are total items in the armory.
+    
 - How many of the Items are weapons? How many are not?
+    37 items in the armory are weapons, which means 137 items are not weapons. 
+    
 - How many Items does each character have? (Return first 20 rows)
+    SELECT * FROM charactercreator_character_inventory 
+    LIMIT 20
+    
+    The first 20 rows of charactercreator_character_inventory tells us that:
+      - character 1 has three items 
+      - character 2 has three items
+      - character 3 has two items
+      - character 4 has four items
+      - character 5 has four items
+      - character 6 has one item 
+      - character 7 has at least 3 items.
+      
 - How many Weapons does each character have? (Return first 20 rows)
+    SELECT armory_weapon.item_ptr_id, character_id, COUNT(item_ptr_id)
+    FROM armory_weapon
+    INNER JOIN charactercreator_character_inventory ON charactercreator_character_inventory.item_id = armory_weapon.item_ptr_id
+    GROUP BY charactercreator_character_inventory.character_id
+    ORDER BY character_id ASC;
+    
+    Of the first 20 characters, the following characters have the following number weapons:
+      - character 5 has 2 weapons
+      - character 7 has 1 weapon
+      - character 11 has 1 weapon
+      - charactrer 20 has 1 weapon.
+    
 - On average, how many Items does each Character have?
+    SELECT AVG(items_per_char)
+    FROM(
+      SELECT COUNT(charactercreator_character_inventory.item_id) as items_per_char
+      FROM charactercreator_character_inventory
+      GROUP BY charactercreator_character_inventory.character_id)
+     
+    Looks like each character has an average of 2.97 items.
+    
+    
 - On average, how many Weapons does each character have?
+    SELECT AVG(weapons)
+    FROM 
+    (SELECT COUNT(item_ptr_id) as weapons
+    FROM(
+    	SELECT *
+        FROM charactercreator_character_inventory
+        LEFT JOIN armory_weapon ON charactercreator_character_inventory.item_id = armory_weapon.item_ptr_id)
+    GROUP BY character_id)
+    
+    It appears that the average number of weapons across all characters (including ones that do not have any weapons in their inventory) is 0.67.
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
