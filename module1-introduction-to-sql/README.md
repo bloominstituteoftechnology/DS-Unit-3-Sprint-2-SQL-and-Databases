@@ -52,13 +52,34 @@ Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
 - How many total Characters are there?
+  Answer: 302
+  
 - How many of each specific subclass?
+Cleric = 75
+Fighters = 68
+Mage = 68
+Necromancer = 11
+Thief = 51
+
 - How many total Items?
+  Answer: 174 Items
+  
 - How many of the Items are weapons? How many are not?
+  Answer: 37 weapons, non_weapons
+
 - How many Items does each character have? (Return first 20 rows)
+
+Answered as a Query
+    
 - How many Weapons does each character have? (Return first 20 rows)
+
+Answered as Query
+
 - On average, how many Items does each Character have?
+2.9735099337748343
+
 - On average, how many Weapons does each character have?
+1.3096774193548386
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
@@ -77,7 +98,7 @@ Some of these queries are challenging - that's OK! You can keep working on them
 tomorrow as well (we'll visit loading the same data into PostgreSQL). It's also
 OK to figure out the results partially with a query and partially with a bit of
 logic or math afterwards, though doing things purely with SQL is a good goal.
-[Subqueries](https://www.w3resource.com/sql/subqueries/understanding-sql-subqueries.php)
+    [Subqueries](https://www.w3resource.com/sql/subqueries/understanding-sql-subqueries.php)
 and [aggregation functions](https://www.sqltutorial.org/sql-aggregate-functions/)
 may be helpful for putting together more complicated queries.
 
@@ -100,9 +121,12 @@ Using the standard `sqlite3` module:
 Then write the following queries (also with `sqlite3`) to test:
 
 - Count how many rows you have - it should be 249!
+- Verified
 - How many users who reviewed at least 100 `Nature` in the category also
   reviewed at least 100 in the `Shopping` category?
+- 78 Users
 - (*Stretch*) What are the average number of reviews for each category?
+
 
 Your code (to reproduce all above steps) should be saved in
 `buddymove_holidayiq.py`, and added to the repository along with the generated
