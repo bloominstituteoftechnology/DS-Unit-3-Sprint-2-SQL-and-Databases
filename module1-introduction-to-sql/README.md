@@ -51,14 +51,22 @@ randomized, the numeric and boolean fields were left as defaults.
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions:
 
-- How many total Characters are there?
-- How many of each specific subclass?
-- How many total Items?
-- How many of the Items are weapons? How many are not?
-- How many Items does each character have? (Return first 20 rows)
-- How many Weapons does each character have? (Return first 20 rows)
-- On average, how many Items does each Character have?
-- On average, how many Weapons does each character have?
+- How many total Characters are there?  
+**A**: There are ___ total characters.  
+- How many of each specific subclass?  
+**A**: Is Necromancer the only subclass? If so, there are ___ Necromancers.  
+- How many total Items?  
+**A**: There are ___ total items.  
+- How many of the Items are weapons? How many are not?  
+**A**: ___ of the Items are weapons. Thus, ___ of the Items are not weapons.  
+- How many Items does each character have? (Return first 20 rows)  
+**A**: Query that shows first 20 characters and their respective Items.  
+- How many Weapons does each character have? (Return first 20 rows)  
+**A**: Query that shows first 20 characters and their respective weapons.  
+- On average, how many Items does each Character have?  
+**A**: Get mean Items for all Characters.  
+- On average, how many Weapons does each character have?  
+**A**: Get mean Weapons for all Characters.  
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
@@ -69,9 +77,9 @@ subsets of them by type (i.e. subclasses), connected via a key (`item_id` and
 `character_id`).
 
 You can use the DB Browser or other tools to explore the data and work on your
-queries if you wish, but to complete the assignment you should write a file
+queries if you wish, but to complete the assignment you should **write a file
 `rpg_queries.py` that imports `sqlite3` and programmatically executes and
-reports results for the above queries.
+reports results for the above queries.**
 
 Some of these queries are challenging - that's OK! You can keep working on them
 tomorrow as well (we'll visit loading the same data into PostgreSQL). It's also
