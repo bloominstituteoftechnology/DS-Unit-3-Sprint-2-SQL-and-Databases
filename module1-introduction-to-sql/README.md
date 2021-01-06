@@ -50,7 +50,9 @@ randomized, the numeric and boolean fields were left as defaults.
 
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions. You should store each query as a string and label each
-as the indicated variable names:
+as the indicated variable names. Also, store each of these queries in a seperate 
+file named `queries.py` and either check these queries in the file or import them 
+into another: 
 
 - `TOTAL_CHARACTERS`: How many total Characters are there?
 - `TOTAL_SUBCLASS`: How many of each specific subclass?
@@ -107,8 +109,10 @@ Then write the following queries (also with `sqlite3`) to test:
 - (*Stretch*) What are the average number of reviews for each category?
 
 Your code (to reproduce all above steps) should be saved in
-`buddymove_holidayiq.py`, and added to the repository along with the generated
-SQLite database.
+`buddymove_holidayiq.py`. 
+
+When you submit your files to Canvas you should upload `queries.py`, 
+`buddymove_holidayiq.py`, and `buddymove_holidayiq`.
 
 ## Resources and Stretch Goals
 
