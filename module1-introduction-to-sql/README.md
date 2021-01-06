@@ -49,16 +49,18 @@ connections from characters to them. Note that, while the name field was
 randomized, the numeric and boolean fields were left as defaults.
 
 Use `sqlite3` to load and write queries to explore the data, and answer the
-following questions:
+following questions. You should store each query as a string and label each
+as the indicated variable names:
 
-- How many total Characters are there?
-- How many of each specific subclass?
-- How many total Items?
-- How many of the Items are weapons? How many are not?
-- How many Items does each character have? (Return first 20 rows)
-- How many Weapons does each character have? (Return first 20 rows)
-- On average, how many Items does each Character have?
-- On average, how many Weapons does each character have?
+- `TOTAL_CHARACTERS`: How many total Characters are there?
+- `TOTAL_SUBCLASS`: How many of each specific subclass?
+- `TOTAL_ITEMS`: How many total Items?
+- `WEAPONS`: How many of the Items are weapons? 
+- `NON_WEAPONS`: How many of the items are not weapons?
+- `CHARACTER_ITEMS`: How many Items does each character have? (Return first 20 rows)
+- `CHARACTER_WEAPONS`: How many Weapons does each character have? (Return first 20 rows)
+- `AVG_CHARACTER_ITEMS`: On average, how many Items does each Character have?
+- `AVG_CHARACTER_WEAPONS`: On average, how many Weapons does each character have?
 
 You do not need all the tables - in particular, the `account_*`, `auth_*`,
 `django_*`, and `socialaccount_*` tables are for the application and do not have
