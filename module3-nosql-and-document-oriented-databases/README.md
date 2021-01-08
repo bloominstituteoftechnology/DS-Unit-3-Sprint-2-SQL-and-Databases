@@ -44,6 +44,7 @@ Mongo document example:
 mongo_document = {
   "name": <VALUE>,
   "strength": <VALUE>,
+  ...
   "items": [
     <ITEM NAME>,
     <ITEM NAME>
