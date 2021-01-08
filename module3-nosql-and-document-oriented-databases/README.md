@@ -43,8 +43,13 @@ Mongo document example:
 ```
 mongo_document = {
   "name": <VALUE>,
+  "level": <VALUE>,
+  "exp": <VALUE>,
+  "hp": <VALUE>,
   "strength": <VALUE>,
-  ...
+  "intelligence": <VALUE>,
+  "dexterity": <VALUE>,
+  "wisdom": <VALUE>,
   "items": [
     <ITEM NAME>,
     <ITEM NAME>
