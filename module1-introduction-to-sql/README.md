@@ -51,7 +51,7 @@ randomized, the numeric and boolean fields were left as defaults.
 Use `sqlite3` to load and write queries to explore the data, and answer the
 following questions. You should store each query as a string and label each
 as the indicated variable names. Also, store each of these queries in a seperate 
-file named `queries.py` and either check these queries in the file or import them 
+file named `queries.py` and either run these queries in the file or import them 
 into another: 
 
 - `TOTAL_CHARACTERS`: How many total Characters are there?
@@ -112,7 +112,7 @@ Your code (to reproduce all above steps) should be saved in
 `buddymove_holidayiq.py`. 
 
 When you submit your files to Canvas you should upload `queries.py`, 
-`buddymove_holidayiq.py`, and `buddymove_holidayiq`.
+`buddymove_holidayiq.py`, and `buddymove_holidayiq.sqlite3`.
 
 ## Resources and Stretch Goals
 
