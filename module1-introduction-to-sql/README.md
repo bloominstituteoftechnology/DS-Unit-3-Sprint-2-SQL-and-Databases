@@ -55,7 +55,7 @@ file named `queries.py` and either run these queries in the file or import them
 into another: 
 
 - `TOTAL_CHARACTERS`: How many total Characters are there?
-- `TOTAL_SUBCLASS`: How many of each specific subclass?
+- `TOTAL_SUBCLASS`: How many of each specific subclass (the necromancer table)?
 - `TOTAL_ITEMS`: How many total Items?
 - `WEAPONS`: How many of the Items are weapons? 
 - `NON_WEAPONS`: How many of the items are not weapons?
