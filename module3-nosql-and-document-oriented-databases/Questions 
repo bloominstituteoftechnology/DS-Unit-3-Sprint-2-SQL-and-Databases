@@ -1,0 +1,9 @@
+"How was working with MongoDB different from working with
+PostgreSQL? What was easier, and what was harder?"
+
+- The largest difference in working with MongoDb and PostgreSQL was the necessity for a schema when working with
+PostrgeSQL. When you need a schema in order to work with a database it makes the data much more rigid. Certain situations
+call for certain types of necessities for data to have parameters for loading. My ideas for this can help avoid
+adding types or values to a DB that are either unnecessary or improper. I am a big fan of structure, although in a case
+where you need to have a large variety of data placed in a DB that may not always align with what is previously placed
+in the DB, a MongoDB would be the way to go.
