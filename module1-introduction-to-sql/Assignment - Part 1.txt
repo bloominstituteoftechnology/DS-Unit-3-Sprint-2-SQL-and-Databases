@@ -1,0 +1,98 @@
+How many total Characters are there?
+
+SELECT character_id, COUNT(*)
+FROM charactercreator_character;
+302
+
+How many of each specific subclass?
+
+SELECT character_ptr_id, COUNT(*)
+FROM charactercreator_thief;
+51
+
+SELECT character_ptr_id, COUNT(*)
+FROM charactercreator_cleric;
+75
+
+SELECT character_ptr_id, COUNT(*)
+FROM charactercreator_fighter;
+68
+
+SELECT character_ptr_id, COUNT(*)
+FROM charactercreator_mage;
+108
+
+SELECT mage_ptr_id, COUNT(*)
+FROM charactercreator_necromancer;
+11
+
+How many total Items?
+
+SELECT item_id, COUNT(*)
+FROM armory_item;
+174
+
+How many of the Items are weapons? How many are not?
+
+SELECT item_id, COUNT(*)
+FROM armory_item
+WHERE item_id IN
+(
+SELECT item_ptr_id FROM armory_weapon
+);
+37
+
+SELECT item_id, COUNT(*)
+FROM armory_item
+WHERE item_id NOT IN
+(
+SELECT item_ptr_id FROM armory_weapon
+);
+
+How many Items does each character have? (Return first 20 rows)
+
+SELECT character_id, COUNT(*)
+FROM charactercreator_character_inventory
+GROUP BY character_id
+LIMIT 20;
+
+How many Weapons does each character have? (Return first 20 rows)
+
+SELECT character_id, COUNT(*)
+FROM charactercreator_character_inventory
+WHERE item_id IN
+(
+SELECT item_ptr_id FROM armory_weapon
+)
+GROUP BY character_id
+LIMIT 20;
+
+On average, how many Items does each Character have?
+
+SELECT AVG(x.cnt)
+FROM
+(
+SELECT COUNT(item_id) as cnt
+FROM charactercreator_character_inventory
+GROUP BY character_id
+)x;
+2.97350993377483
+
+On average, how many Weapons does each character have?
+
+SELECT AVG(x.cnt)
+FROM
+(
+SELECT COUNT(item_id) as cnt
+FROM charactercreator_character_inventory
+WHERE item_id IN
+(
+SELECT item_ptr_id FROM armory_weapon
+)
+GROUP BY character_id
+)x;
+1.30967741935484
+
+SELECT name, count(*)
+FROM charactercreator_character
+GROUP BY name;
