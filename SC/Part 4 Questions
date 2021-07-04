@@ -1,0 +1,24 @@
+QUESTIONS
+
+In the Northwind database, what is the type of relationship between the Employee and Territory tables?
+
+	The relationship between Employee and Territory tables is many to many assuming there are multiple 
+	entries in the Employee table under each unique EmployeeID and if each territory is not unique to EmployeeID. 
+	There would be multiple employees for each territory and multiple territories for each employee making 
+	it many to many. If TerritoryID is unique to an employee, in the case where only one employee can work
+	in each territory, this would be a many to one relationship between the Employee and Territory tables 
+	because there could only be one employee for each territory, but multiple terrritories for each employee.
+
+What is a situation where a document store (like MongoDB) is appropriate, and what is a situation where it is not appropriate?
+
+	MongoDB prioritizes for horizontal scalability of non-relational data and the data is distributed 
+	over multiple servers. It is appropriate for massive amounts of unstructured data that don’t have 
+	a clear schema. It is not appropriate for relational data that is not already joined.
+
+What is "NewSQL", and what is it trying to achieve?
+
+	NewSQL builds on SQL and NoSQL to preserve the functionality of traditional SQL relational databases, 
+	and scalability of NoSQL databases. NewSQL adheres to ACID(atomicity, consistency, isolation, durability) 
+	for transactional consistency and uses a SQL interface. It aims to achieve improved functionality over 
+	SQL and NoSQL by offering high speed transactions for massive amounts of data, scalability, 
+	while maintaining ACID.
