@@ -1,0 +1,7 @@
+part 4
+
+I think the relationship between employees and territories is many to one employees can have multiple territories linked to them but only one employee is linked to each territory
+
+It is good to use a doucemtnt store when one is using a lot of unstructured data and also when one may need to scale quickly or in the prototype phase. It would not be appropriate for a big established company doing money transfers.
+
+New SQL is a blend between the best parts of relational databases and document stores. It aims to have structure and ACID garuntees but also be able to scale.
