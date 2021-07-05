@@ -1,0 +1,38 @@
+These are the 10 most expensive items, in descending order:
+0: Côte de Blaye
+1: Thüringer Rostbratwurst
+2: Mishi Kobe Niku
+3: Sir Rodney's Marmalade
+4: Carnarvon Tigers
+5: Raclette Courdavault
+6: Manjimup Dried Apples
+7: Tarte au sucre
+8: Ipoh Coffee
+9: Rössle Sauerkraut
+
+The mean hiring age is 37.28
+
+In Seattle the mean hiring age is 43.39. 
+In Tacoma the mean hiring age is 40.48. 
+In Kirkland the mean hiring age is 28.59. 
+In Redmond the mean hiring age is 55.62. 
+In London the mean hiring age is 38.62. 
+In London the mean hiring age is 30.29. 
+In London the mean hiring age is 33.60. 
+In Seattle the mean hiring age is 36.15. 
+In London the mean hiring age is 28.80. 
+--FIN--
+Most expensive items and suppliers, descending order: 
+0: Côte de Blaye, supplied by Exotic Liquids
+1: Mishi Kobe Niku, supplied by Exotic Liquids
+2: Raclette Courdavault, supplied by Exotic Liquids
+3: Manjimup Dried Apples, supplied by Exotic Liquids
+4: Rössle Sauerkraut, supplied by Exotic Liquids
+5: Gnocchi di nonna Alice, supplied by Exotic Liquids
+6: Sirop d'érable, supplied by Exotic Liquids
+7: Nord-Ost Matjeshering, supplied by Exotic Liquids
+8: Grandma's Boysenberry Spread, supplied by Exotic Liquids
+9: Chef Anton's Cajun Seasoning, supplied by Exotic Liquids
+
+The largest category is Seafood
+--FIN--

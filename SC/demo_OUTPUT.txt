@@ -1,0 +1,5 @@
+
+	The number of rows is 3.
+        The number of rows in which both x and y are >=5 is 2.
+        The number of distinct values in y is 2.
+            
