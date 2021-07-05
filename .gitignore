@@ -102,3 +102,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+module2-sql-for-analysis/credentials.py
