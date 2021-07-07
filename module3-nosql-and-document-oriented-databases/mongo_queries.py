@@ -1,0 +1,142 @@
+import pymongo
+from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+MONGO_DB_USER = os.getenv("MONGO_DB_USER", default="OOPS")
+MONGO_DB_PASSWORD = os.getenv("MONGO_DB_PASSWORD", default="OOPS")
+MONGO_CLUSTER_NAME = os.getenv("MONGO_CLUSTER_NAME", default="OOPS")
+
+connection_uri = "mongodb+srv://Kyle_Yates_Mongo:LAMBDADS13@cluster0-t0nfl.mongodb.net/test?retryWrites=true&w=majority"
+print("----------------")
+print("URI:", connection_uri)
+
+client = pymongo.MongoClient(connection_uri)
+print("----------------")
+print("CLIENT:", type(client), client)
+
+# breakpoint()
+
+db = client.kyle_ds13 # "test_database" or whatever you want to call it
+print("----------------")
+print("DB:", type(db), db)
+
+# breakpoint()
+
+collection = db.pokemon_test # "pokemon_test" or whatever you want to call it
+print("----------------")
+print("COLLECTION:", type(collection), collection)
+
+
+
+
+# collection.insert_one({
+#     "name": "Pikachu",
+#     "level": 30,
+#     "exp": 76000000000,
+#     "hp": 400,
+# })
+
+
+# print("----------------")
+# print("COLLECTIONS:")
+# print(db.list_collection_names())
+# print("----------------")
+# print("COLLECTION:", type(collection), collection)
+
+# count all docs
+print("DOCS:", collection.count_documents({}))
+
+# count specific entries
+print("COLLECTION COUNT DOCS:", collection.count_documents({"name": "Pikachu"}))
+
+
+pikas = list(collection.find({"name": "Pikachu"}))
+print (pikas)
+
+print("----------------")
+print("COLLECTIONS:")
+print(db.list_collection_names()) # won't see until after inserting data
+​
+collection.insert_one({
+    "name": "Pikachu",
+    "level": 30,
+    "exp": 76000000000,
+    "hp": 400,
+    "other_attr":{
+        "a":1,
+        "b":[1,2,3]
+    }
+})
+​
+warturtle = {
+    "name": "Warturtle",
+    "level": 90,
+    "exp": 100,
+    "hp": 1000,
+}
+​
+jigglypuff = {
+    "name": "Jigglypuff",
+    "level": 99,
+    "exp": 100000000000,
+    "hp": 500,
+}
+​
+charizard = {
+    "name": "charizard",
+    "level": 30,
+    "exp": 4450000000,
+    "hp": 500,
+    "learned_moves":{
+        "flamethrower":30,
+        "fly": 42
+    }
+}
+​
+Rayquaza = {
+"name": "Rayquaza",
+"level": 99,
+"exp": 1000,
+"hp": 1000,
+}
+​
+swampert = {
+    "name": "Kiplar",
+    "level": 100,
+    "exp": 1059860,
+    "hp": 361,
+}
+​
+snorlax = {
+    "name": "Snorlax",
+    "lvl": 100,
+    "exp": 1059860,
+    "hp": 361,
+}
+​
+team = [warturtle, jigglypuff, charizard, Rayquaza, swampert]
+collection.insert_many(team)
+​
+print("----------------")
+print("COLLECTIONS:")
+print(db.list_collection_names()) # won't see until after inserting data
+​
+print("DOCS:", collection.count_documents({}))
+# SELECT count(id) from pokemon
+​
+print("PIKAS:", collection.count_documents({"name": "Pikachu"}))
+# SELECT count(id) from pokemon WHERE name = "Pikachu"
+​
+pika = collection.find_one({"name": "Pikachu"})
+# SELECT * FROM pokemon WHERE name = "Pikachu" LIMIT 1
+print(pika)
+​
+pikas = list(collection.find({"name": "Pikachu"}))
+# SELECT * FROM pokemon WHERE name = "Pikachu"
+print(pikas)
+​
+strong_pokemon = list(collection.find({"level": {"$gte": 70}}))
+# SELECT * FROM pokemon WHERE level >= 70
