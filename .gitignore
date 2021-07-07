@@ -2,6 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.vscode
+
+# Stupid apple finder
+.DS_Store
 
 # C extensions
 *.so
