@@ -1,0 +1,153 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unknown </title></head><body>
+<h1 id="data-science-unit-3-sprint-challenge-2">Data Science Unit 3 Sprint Challenge 2</h1>
+<h2 id="databases-and-sql">Databases and SQL</h2>
+<p>A SQL Query walks into a bar. In one corner of the bar are two tables. The Query
+walks up to the tables and asks:</p>
+<p>...</p>
+<p><em>"Mind if I join you?"</em></p>
+<hr/>
+<p>In this sprint challenge you will write code and answer questions related to
+databases, with a focus on SQL but an acknowledgment of the broader ecosystem.
+You may use any tools and references you wish, but your final code should
+reflect <em>your</em> work and be saved in <code>.py</code> files (<em>not</em> notebooks), and (along
+with this file including your written answers) added to your
+<code>DS-Unit-3-Sprint-2-SQL-and-Databases</code> repo.</p>
+<p>For all your code, you may only import/use the following:
+- other modules you write
+- <code>sqlite3</code> (from the standard library)</p>
+<p>As always, make sure to manage your time - get a section/question to "good
+enough" and then move on to make sure you do everything. You can always revisit
+and polish at the end if time allows.</p>
+<p>This file is Markdown, so it may be helpful to add/commit/push it first so you
+can view it all nice and rendered on GitHub.</p>
+<p>Good luck!</p>
+<h3 id="part-1-making-and-populating-a-database">Part 1 - Making and populating a Database</h3>
+<p>Consider the following data:</p>
+<table>
+<thead>
+<tr>
+<th>s</th>
+<th>x</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>'g'</td>
+<td>3</td>
+<td>9</td>
+</tr>
+<tr>
+<td>'v'</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr>
+<td>'f'</td>
+<td>8</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>Using the standard <code>sqlite3</code> module:</p>
+<ul>
+<li>Open a connection to a new (blank) database file <code>demo_data.sqlite3</code></li>
+<li>Make a cursor, and execute an appropriate <code>CREATE TABLE</code> statement to accept
+  the above data (name the table <code>demo</code>)</li>
+<li>Write and execute appropriate <code>INSERT INTO</code> statements to add the data (as
+  shown above) to the database</li>
+</ul>
+<p>Make sure to <code>commit()</code> so your data is saved! The file size should be non-zero.</p>
+<p>Then write the following queries (also with <code>sqlite3</code>) to test:</p>
+<ul>
+<li>Count how many rows you have - it should be 3!</li>
+<li>How many rows are there where both <code>x</code> and <code>y</code> are at least 5?</li>
+<li>How many unique values of <code>y</code> are there (hint - <code>COUNT()</code> can accept a keyword
+  <code>DISTINCT</code>)?</li>
+</ul>
+<p>Your code (to reproduce all above steps) should be saved in <code>demo_data.py</code> and
+added to the repository along with the generated SQLite database.</p>
+<h3 id="part-2-the-northwind-database">Part 2 - The Northwind Database</h3>
+<p>Using <code>sqlite3</code>, connect to the given <code>northwind_small.sqlite3</code> database.</p>
+<p><img alt="Northwind Entity-Relationship Diagram" src="northwind_erd-1.png"/></p>
+<p>Above is an entity-relationship diagram - a picture summarizing the schema and
+relationships in the database. Note that it was generated using Microsoft
+Access, and some of the specific table/field names are different in the provided
+data. You can see all the tables available to SQLite as follows:</p>
+<p>```python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>curs.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY
+name;").fetchall()
+[('Category',), ('Customer',), ('CustomerCustomerDemo',),
+('CustomerDemographic',), ('Employee',), ('EmployeeTerritory',), ('Order',),
+('OrderDetail',), ('Product',), ('Region',), ('Shipper',), ('Supplier',),
+('Territory',)]
+```</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><em>Warning</em>: unlike the diagram, the tables in SQLite are singular and not plural
+(do not end in <code>s</code>). And you can see the schema (<code>CREATE TABLE</code> statement)
+behind any given table with:
+```python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>curs.execute('SELECT sql FROM sqlite_master WHERE name="Customer";').fetchall()
+[('CREATE TABLE "Customer" \n(\n  "Id" VARCHAR(8000) PRIMARY KEY, \n
+"CompanyName" VARCHAR(8000) NULL, \n  "ContactName" VARCHAR(8000) NULL, \n
+"ContactTitle" VARCHAR(8000) NULL, \n  "Address" VARCHAR(8000) NULL, \n  "City"
+VARCHAR(8000) NULL, \n  "Region" VARCHAR(8000) NULL, \n  "PostalCode"
+VARCHAR(8000) NULL, \n  "Country" VARCHAR(8000) NULL, \n  "Phone" VARCHAR(8000)
+NULL, \n  "Fax" VARCHAR(8000) NULL \n)',)]
+```</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>In particular note that the <em>primary</em> key is <code>Id</code>, and not <code>CustomerId</code>. On
+other tables (where it is a <em>foreign</em> key) it will be <code>CustomerId</code>. Also note -
+the <code>Order</code> table conflicts with the <code>ORDER</code> keyword! We'll just avoid that
+particular table, but it's a good lesson in the danger of keyword conflicts.</p>
+<p>Answer the following questions (each is from a single table):</p>
+<ul>
+<li>What are the ten most expensive items (per unit price) in the database?</li>
+<li>What is the average age of an employee at the time of their hiring? (Hint: a
+  lot of arithmetic works with dates.)</li>
+<li>(<em>Stretch</em>) How does the average age of employee at hire vary by city?</li>
+</ul>
+<p>Your code (to load and query the data) should be saved in <code>northwind.py</code>, and
+added to the repository. Do your best to answer in purely SQL, but if necessary
+use Python/other logic to help.</p>
+<h3 id="part-3-sailing-the-northwind-seas">Part 3 - Sailing the Northwind Seas</h3>
+<p>You've answered some basic questions from the Northwind database, looking at
+individual tables - now it's time to put things together, and <code>JOIN</code>!</p>
+<p>Using <code>sqlite3</code> in <code>northwind.py</code>, answer the following:</p>
+<ul>
+<li>What are the ten most expensive items (per unit price) in the database <em>and</em>
+  their suppliers?</li>
+<li>What is the largest category (by number of unique products in it)?</li>
+<li>(<em>Stretch</em>) Who's the employee with the most territories? Use <code>TerritoryId</code>
+  (not name, region, or other fields) as the unique identifier for territories.</li>
+</ul>
+<h3 id="part-4-questions-and-your-answers">Part 4 - Questions (and your Answers)</h3>
+<p>Answer the following questions, baseline ~3-5 sentences each, as if they were
+interview screening questions (a form you fill when applying for a job):</p>
+<ul>
+<li>In the Northwind database, what is the type of relationship between the
+  <code>Employee</code> and <code>Territory</code> tables?</li>
+<li>What is a situation where a document store (like MongoDB) is appropriate, and
+  what is a situation where it is not appropriate?</li>
+<li>What is "NewSQL", and what is it trying to achieve?</li>
+</ul>
+<h3 id="part-5-turn-it-in">Part 5 - Turn it in!</h3>
+<p>Add all the files you wrote (<code>demo_data.py</code>, <code>northwind.py</code>), as well as this
+file with your answers to part 4, to your weekly repo
+(<code>DS-Unit-3-Sprint-2-SQL-and-Databases</code>). You're also encouraged to include the
+output from your queries as docstring comments, to facilitate grading. Commit,
+push, and await feedback from your PM. Thanks for your hard work!</p>
+<p>If you got this far, check out the <a href="https://github.com/jpwhite3/northwind-SQLite3/blob/master/Northwind_large.sqlite.zip">larger Northwind
+database</a> -
+your queries should run on it as well, with richer results.</p>
+</body></html>
