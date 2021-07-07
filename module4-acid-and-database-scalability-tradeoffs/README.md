@@ -57,14 +57,116 @@ SQLite):
 With PostgreSQL, answer the following:
 
 - How many passengers survived, and how many died?
+    SELECT SUM(survived)
+    FROM titanic_table2;
+    
+    342
+
 - How many passengers were in each class?
+    SELECT pclass, SUM(pclass) AS total_passengers
+    FROM titanic_table2
+    GROUP BY pclass;
+
+    1	216
+    2	368
+    3	1461
+
 - How many passengers survived/died within each class?
+    SELECT pclass, survived AS survived_died, Count(survived)
+    FROM titanic_table2
+    GROUP BY pclass, survived
+    ORDER BY pclass, survived_died;
+
+    pclass	survived_died	count
+        1	      0	        80
+        1	      1	        136
+        2	      0	        97
+        2	      1	        87
+        3	      0	        368
+        3	      1	        119
+
 - What was the average age of survivors vs nonsurvivors?
+    SELECT survived, AVG(age)
+    FROM titanic_table2
+    GROUP BY survived;
+
+    survived	avg
+        0	30.1385321100917
+        1	28.4083918128272
+
 - What was the average age of each passenger class?
+    SELECT pclass, AVG(age)
+    FROM titanic_table2
+    GROUP BY pclass;
+
+    pclass	avg
+      1	    38.7889814815587
+      2	    29.8686413042571
+      3	    25.188747433238
+
 - What was the average fare by passenger class? By survival?
+    SELECT pclass, AVG(fare) AS avg_fare
+    FROM titanic_table2
+    GROUP BY pclass;
+
+    pclass	avg_fare
+        1	84.154687528257
+        2	20.6621831810993
+        3	13.7077075010452    
+
+    SELECT survived, AVG(fare) AS avg_fare
+    FROM titanic_table2
+    GROUP BY survived;
+    
+    survived	avg_fare
+        0	    22.2085840951412
+        1	    48.3954076976107
+
 - How many siblings/spouses aboard on average, by passenger class? By survival?
+    SELECT pclass, AVG(siblings_spouses_aboard) avg_relatives
+    FROM titanic_table2
+    GROUP BY pclass;
+
+    pclass	avg_relatives
+        1	0.41666666666666666667e0
+        2	0.40217391304347826087e0
+        3	0.62012320328542094456e0
+
+    SELECT survived, AVG(siblings_spouses_aboard) avg_relatives
+    FROM titanic_table2
+    GROUP BY survived;
+
+    survived	avg_relatives
+        0	    0.5577981651376146789e0
+        1	    0.47368421052631578947e0
+
 - How many parents/children aboard on average, by passenger class? By survival?
+    SELECT pclass, AVG(parents_children_aboard) avg_parent_child
+    FROM titanic_table2
+    GROUP BY pclass;
+
+    pclass	avg_parent_child
+    1	    0.35648148148148148148e0
+    2	    0.38043478260869565217e0
+    3	    0.39630390143737166324e0
+
+    SELECT survived, AVG(parents_children_aboard) avg_parent_child
+    FROM titanic_table2
+    GROUP BY survived;
+
+    survived	avg_parent_child
+    0	        0.33211009174311926606e0
+    1	        0.46491228070175438596e0
+
 - Do any passengers have the same name?
+    SELECT name
+    FROM titanic_table2
+    GROUP BY name
+    HAVING COUNT(*) > 1;
+
+    NO RESULTS!!
+
+
 - (Bonus! Hard, may require pulling and processing with Python) How many married
   couples were aboard the Titanic? Assume that two people (one `Mr.` and one
   `Mrs.`) with the same last name and with at least 1 sibling/spouse aboard are

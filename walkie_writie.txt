@@ -1,0 +1,60 @@
+Walkie Writie - 02/21/2019
+
+So far in this sprint you've used SQLite, PostgreSQL, and MongoDB. For each of
+these, consider the following questions:
+
+- What was easy about using this technology?
+- What was hard about using this technology?
+- What more would you like to learn about it?
+
+Write a summary in the style of a possible blog post, and bring the
+questions/discussion to class. Bonus - later on, follow up and complete a real
+blog post about different database technologies!
+
+
+SQLite:
+
+1. It was easy to implement quickly since I already have had some experience
+working with SQL. Also, since the DB Browser for SQLite is installed locally
+it was simple to start experimenting with queries.
+
+2. Actually, it wasn't very hard. I just had to review commands and play with
+executing queries to refresh what I had previously learned.
+
+3. PostgreSQL
+
+---
+
+PostgreSQL:
+
+1. It's still SQL. There wasn't a need to learn new commands. Also, PostgreSQL
+is very forgiving in how you pass in queries.
+
+2. The hardest thing was learning how to execute queries from Python. Learning 
+the work sequence of connecting to PostgreSQL, working with the cursor, 
+executing and closing the connection all in a Python script of a Class/Method
+was novel and challenging.
+
+3. Working with larger datasets with a goal in view, maybe as a small "real-world"
+like project.
+
+---
+
+MongoDB:
+
+1. I did not find anything necessarily "easy" about working with MongoDB. Although
+the easiest thing was how straight forward it can be to read an object and how each 
+has a unique object id which can be used as prove that the object it's indeed unique.
+Also I find it is a great technology for organizations and applications that require
+a lot more flexibility for logging data since it uses JSON.
+
+2. Working with JSON was the hardest thing. My focus this week has been to improve at
+SQL so I didn't make the effort to get passed the hurdle of parsing JSON code. Also,
+I struggled working with the 'primer' database given in the MongoDB documentation. It
+required some editing since it was not wrapped in brackets ([]) for Python to be able
+to iterate.
+
+3. I would have liked to have spent more time learning how to work with JSON in Python.
+I think It's really useful specially since a lot of API's data is stored as JSON.
+
+

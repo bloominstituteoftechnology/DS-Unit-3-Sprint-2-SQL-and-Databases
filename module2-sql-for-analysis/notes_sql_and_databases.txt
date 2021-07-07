@@ -1,0 +1,13 @@
+STEPS - Connecting to Posgresql using 'psycopg2' and Loading SQL table
+
+import psycopg2 as pg
+pg.connect
+
+# Found in 'Details' tab in 'ElephantSQL'
+dbname = (User & Default database)
+user = (User & Default database)
+password = (Password)
+host = (URL)
+
+
+
