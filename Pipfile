@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+pandas = "*"
+psycopg2-binary = "*"
+wget = "*"
+windows-curses = "*"
+pymongo = "*"
+dnspython = "*"
+
+[requires]
+python_version = "3.7"
