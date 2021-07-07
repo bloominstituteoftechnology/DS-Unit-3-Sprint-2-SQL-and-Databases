@@ -143,3 +143,4 @@ If you need one more stretch goal - the RPG data was generated using
 [django-autofixture](https://github.com/volrath/django-autofixture), a tool that
 facilitates tests by randomly generating data. Check it out, and if you got
 Django working, see if you can generate more data.
+
