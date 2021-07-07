@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "*"
+ipykernel = "*"
+
+[packages]
+pandas = "*"
+python-dotenv = "*"
+psycopg2-binary = "*"
+pymongo = {extras = ["gssapi", "snappy", "srv", "tls"],version = "*"}
+
+[requires]
+python_version = "3.7"
