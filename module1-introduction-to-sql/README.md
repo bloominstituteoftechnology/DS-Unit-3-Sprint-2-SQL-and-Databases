@@ -1,4 +1,4 @@
-# Introduction to SQL
+# Introduction to SQL-notes
 
 The basics of Structured Query Language, a relatively simple query language.
 
