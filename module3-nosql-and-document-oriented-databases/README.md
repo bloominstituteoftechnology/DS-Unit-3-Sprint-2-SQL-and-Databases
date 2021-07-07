@@ -64,6 +64,12 @@ mongo_document = {
 Then answer the following question (can be a comment in the top of your code or in Markdown) - "How 
 was working with MongoDB different from working with PostgreSQL? What was easier, and what was harder?"
 
+ANSWER: 
+------------------------------------------------------------------------------------------------------------------------
+
+I found PostgreSQL to be easier then MongoDB; to elucidate, creating a function that iterated upon the passengers list within the titanic dataset was intuitive, and adding those passengers to our PostgreSQL using Elephant SQL was also intuitive; understanding the concept of using sqlite3 to create a connection to 'bridge the gap' between our final insertion into PostgreSQL was essential. I ran into some errors but finally was able to get it to work well. On the other hand, while MongoDB's interface makes it easier to query data through its implementation of key value pairs using dictionaries, I was not able to input all of my titanic dataset onto Mongo (just parts of it, like we did in class).
+------------------------------------------------------------------------------------------------------------------------
+
 There is no other required tasks to turn in, but it is suggested to then revisit
 the first two modules, rework/complete things as needed, and just check out with
 fresh eyes the SQL approach. Compare and contrast, and come with questions
