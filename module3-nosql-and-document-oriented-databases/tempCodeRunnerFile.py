@@ -1,0 +1,1 @@
+print(list(db.test.find({'name': 'Trial'})))
