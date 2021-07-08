@@ -16,7 +16,7 @@ these, consider the following questions:
 
 - What was easy about using this technology?
 - What was hard about using this technology?
-- What more would you like to learn about it?
+- What more would you like to learn about?
 
 Write a summary in the style of a possible blog post, and bring the
 questions/discussion to class. Bonus - later on, follow up and complete a real

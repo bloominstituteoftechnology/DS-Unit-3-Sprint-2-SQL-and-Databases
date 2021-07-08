@@ -1,0 +1,412 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.2
+-- Dumped by pg_dump version 11.2
+
+-- Started on 2019-02-19 16:33:40
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 197 (class 1259 OID 16571)
+-- Name: charactercreator_character; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.charactercreator_character (
+    character_id integer NOT NULL,
+    name character varying(30),
+    level integer,
+    exp integer,
+    hp integer,
+    strength integer,
+    intelligence integer,
+    dexterity integer,
+    wisdom integer
+);
+
+
+ALTER TABLE public.charactercreator_character OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 16569)
+-- Name: charactercreator_character_character_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.charactercreator_character_character_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.charactercreator_character_character_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2816 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: charactercreator_character_character_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.charactercreator_character_character_id_seq OWNED BY public.charactercreator_character.character_id;
+
+
+--
+-- TOC entry 2685 (class 2604 OID 16574)
+-- Name: charactercreator_character character_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.charactercreator_character ALTER COLUMN character_id SET DEFAULT nextval('public.charactercreator_character_character_id_seq'::regclass);
+
+
+--
+-- TOC entry 2810 (class 0 OID 16571)
+-- Dependencies: 197
+-- Data for Name: charactercreator_character; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.charactercreator_character (character_id, name, level, exp, hp, strength, intelligence, dexterity, wisdom) FROM stdin;
+1	Aliquid iste optio reiciendi	0	0	10	1	1	1	1
+2	Optio dolorem ex a	0	0	10	1	1	1	1
+3	Minus c	0	0	10	1	1	1	1
+4	Sit ut repr	0	0	10	1	1	1	1
+5	At id recusandae expl	0	0	10	1	1	1	1
+6	Non nobis et of	0	0	10	1	1	1	1
+7	Perferendis	0	0	10	1	1	1	1
+8	Accusantium amet quidem eve	0	0	10	1	1	1	1
+9	Sed nostrum inventore error m	0	0	10	1	1	1	1
+10	Harum repellendus omnis od	0	0	10	1	1	1	1
+11	Itaque ut commodi,	0	0	10	1	1	1	1
+12	Molestiae quis	0	0	10	1	1	1	1
+13	Ali	0	0	10	1	1	1	1
+14	Tempora quod optio possimus il	0	0	10	1	1	1	1
+15	Sed itaque beatae pari	0	0	10	1	1	1	1
+16	Quam dolor	0	0	10	1	1	1	1
+17	Molestias expedita	0	0	10	1	1	1	1
+18	Lauda	0	0	10	1	1	1	1
+19	Incidunt sint perferen	0	0	10	1	1	1	1
+20	Laboriosa	0	0	10	1	1	1	1
+21	Dolore esse nesciunt fugit com	0	0	10	1	1	1	1
+22	Dolorum nam reic	0	0	10	1	1	1	1
+23	Repellat ad numquam volu	0	0	10	1	1	1	1
+24	Facere enim velit eligend	0	0	10	1	1	1	1
+25	Sed ratione quis rep	0	0	10	1	1	1	1
+26	Doloribus neque	0	0	10	1	1	1	1
+27	Ab voluptas se	0	0	10	1	1	1	1
+28	Molestias m	0	0	10	1	1	1	1
+29	In pariatur corpori	0	0	10	1	1	1	1
+30	Possimus ad dignissimos vel, a	0	0	10	1	1	1	1
+31	At minus accusa	0	0	10	1	1	1	1
+32	Ad necess	0	0	10	1	1	1	1
+33	Expedita c	0	0	10	1	1	1	1
+34	Voluptates sunt voluptas volu	0	0	10	1	1	1	1
+35	Autem mollitia fuga lauda	0	0	10	1	1	1	1
+36	Sint quibusdam ob	0	0	10	1	1	1	1
+37	Rerum et o	0	0	10	1	1	1	1
+38	Doloribus dolore r	0	0	10	1	1	1	1
+39	Eaque su	0	0	10	1	1	1	1
+40	Vel molestias numqua	0	0	10	1	1	1	1
+41	Iste assumenda repellat q	0	0	10	1	1	1	1
+42	Animi labo	0	0	10	1	1	1	1
+43	Eum culpa eaque ea omn	0	0	10	1	1	1	1
+44	Harum provident vel quam	0	0	10	1	1	1	1
+45	Aspe	0	0	10	1	1	1	1
+46	Nisi nequ	0	0	10	1	1	1	1
+47	Quod tempora	0	0	10	1	1	1	1
+48	Porro aliq	0	0	10	1	1	1	1
+49	Quas	0	0	10	1	1	1	1
+50	Magnam eligendi quia animi	0	0	10	1	1	1	1
+51	Officiis se	0	0	10	1	1	1	1
+52	Id assumend	0	0	10	1	1	1	1
+53	Voluptatibus fu	0	0	10	1	1	1	1
+54	Odit rat	0	0	10	1	1	1	1
+55	Debit	0	0	10	1	1	1	1
+56	Cum aut quas repudia	0	0	10	1	1	1	1
+57	Deleniti qui quae quidem	0	0	10	1	1	1	1
+58	Adipisci voluptas	0	0	10	1	1	1	1
+59	Debitis sit ratione eos nam	0	0	10	1	1	1	1
+60	Esse illo molestias archi	0	0	10	1	1	1	1
+61	Sunt at itaque voluptatum d	0	0	10	1	1	1	1
+62	Est totam	0	0	10	1	1	1	1
+63	Reprehenderit commodi eius	0	0	10	1	1	1	1
+64	Debit	0	0	10	1	1	1	1
+65	Soluta dol	0	0	10	1	1	1	1
+66	Vel nesc	0	0	10	1	1	1	1
+67	Ratione quia ali	0	0	10	1	1	1	1
+68	Rerum recusandae minima	0	0	10	1	1	1	1
+69	Totam natus eius fugiat volu	0	0	10	1	1	1	1
+70	Perferendis commodi null	0	0	10	1	1	1	1
+71	Laudantiu	0	0	10	1	1	1	1
+72	Voluptat	0	0	10	1	1	1	1
+73	Incidunt nesciun	0	0	10	1	1	1	1
+74	Illum amet vero	0	0	10	1	1	1	1
+75	Suscipit exercitationem re	0	0	10	1	1	1	1
+76	Quas enim error maxime nisi m	0	0	10	1	1	1	1
+77	Labore qu	0	0	10	1	1	1	1
+78	Repudiandae deleniti unde	0	0	10	1	1	1	1
+79	Ut do	0	0	10	1	1	1	1
+80	Quaerat esse labore q	0	0	10	1	1	1	1
+81	Quidem aliq	0	0	10	1	1	1	1
+82	Aperiam vitae eos dolor sed	0	0	10	1	1	1	1
+83	Minus nobis porro	0	0	10	1	1	1	1
+84	In similique	0	0	10	1	1	1	1
+85	Culpa repellat unde	0	0	10	1	1	1	1
+86	Architecto i	0	0	10	1	1	1	1
+87	A sed pariatur qua	0	0	10	1	1	1	1
+88	Tempore assumenda aperiam	0	0	10	1	1	1	1
+89	Sed ullam tempora iusto co	0	0	10	1	1	1	1
+90	Ipsa	0	0	10	1	1	1	1
+91	Fugiat incidun	0	0	10	1	1	1	1
+92	Molestiae of	0	0	10	1	1	1	1
+93	Quae quisquam cons	0	0	10	1	1	1	1
+94	Repellendus ea non facil	0	0	10	1	1	1	1
+95	Quod non quibu	0	0	10	1	1	1	1
+96	Numquam velit distinctio	0	0	10	1	1	1	1
+97	Necessitatibus nihil ex debi	0	0	10	1	1	1	1
+98	Velit tempore nemo, na	0	0	10	1	1	1	1
+99	Nesciunt v	0	0	10	1	1	1	1
+100	Dicta enim debitis accusantiu	0	0	10	1	1	1	1
+101	Vitae a	0	0	10	1	1	1	1
+102	Praesentium voluptas u	0	0	10	1	1	1	1
+103	Unde ullam mollitia? Nu	0	0	10	1	1	1	1
+104	Neque molestias qu	0	0	10	1	1	1	1
+105	Officiis es	0	0	10	1	1	1	1
+106	Beatae mi	0	0	10	1	1	1	1
+107	Mollitia nam corporis temp	0	0	10	1	1	1	1
+108	Repudiandae repellat i	0	0	10	1	1	1	1
+109	Laboriosam	0	0	10	1	1	1	1
+110	Nam minus amet	0	0	10	1	1	1	1
+111	Harum quae volup	0	0	10	1	1	1	1
+112	Impedit facere ulla	0	0	10	1	1	1	1
+113	Enim	0	0	10	1	1	1	1
+114	Dolore magni	0	0	10	1	1	1	1
+115	Eaque at corpori	0	0	10	1	1	1	1
+116	Fug	0	0	10	1	1	1	1
+117	Dolorum laudanti	0	0	10	1	1	1	1
+118	Perferendis nat	0	0	10	1	1	1	1
+119	Cupidi	0	0	10	1	1	1	1
+120	Commodi eius dicta digniss	0	0	10	1	1	1	1
+121	Debitis eu	0	0	10	1	1	1	1
+122	Nihil repella	0	0	10	1	1	1	1
+123	Rem quasi minima hic sed anim	0	0	10	1	1	1	1
+124	Sed ali	0	0	10	1	1	1	1
+125	Earum vol	0	0	10	1	1	1	1
+126	Inventore tempore com	0	0	10	1	1	1	1
+127	Repell	0	0	10	1	1	1	1
+128	Consequatur quis recusandae qu	0	0	10	1	1	1	1
+129	Dolores ea velit mi	0	0	10	1	1	1	1
+130	Atque blanditiis a aperiam	0	0	10	1	1	1	1
+131	Reprehenderit sequi iu	0	0	10	1	1	1	1
+132	Natus architecto eos, hic blan	0	0	10	1	1	1	1
+133	Ipsa illo quas	0	0	10	1	1	1	1
+134	Voluptas ali	0	0	10	1	1	1	1
+135	Voluptates obcaecati quod e	0	0	10	1	1	1	1
+136	Dolor adipisci a voluptate	0	0	10	1	1	1	1
+137	Repellendus natus quae, n	0	0	10	1	1	1	1
+138	Laudantium earum nam in dol	0	0	10	1	1	1	1
+139	Molestias face	0	0	10	1	1	1	1
+140	Maiores suscipit exc	0	0	10	1	1	1	1
+141	Illum dolore perferen	0	0	10	1	1	1	1
+142	Explicabo recusandae ma	0	0	10	1	1	1	1
+143	Odio obcaecati hic nostrum n	0	0	10	1	1	1	1
+144	Voluptate ali	0	0	10	1	1	1	1
+145	Repudiandae vitae sapiente mol	0	0	10	1	1	1	1
+146	Ipsam cumque	0	0	10	1	1	1	1
+147	Fugiat quos alias eos dese	0	0	10	1	1	1	1
+148	Eaque impe	0	0	10	1	1	1	1
+149	Elige	0	0	10	1	1	1	1
+150	Adip	0	0	10	1	1	1	1
+151	Fuga nemo vel mo	0	0	10	1	1	1	1
+152	Libero cumque impedit eveniet	0	0	10	1	1	1	1
+153	Odio soluta	0	0	10	1	1	1	1
+154	Vero nostrum duc	0	0	10	1	1	1	1
+155	Repellend	0	0	10	1	1	1	1
+156	Quod	0	0	10	1	1	1	1
+157	Suscipit reiciend	0	0	10	1	1	1	1
+158	Voluptat	0	0	10	1	1	1	1
+159	Porro dolor fuga quam	0	0	10	1	1	1	1
+160	Amet quo fugit aliquam sequi	0	0	10	1	1	1	1
+161	Magni adipisci veritatis sit q	0	0	10	1	1	1	1
+162	Debitis enim cumque cum qu	0	0	10	1	1	1	1
+163	Dolorem eligend	0	0	10	1	1	1	1
+164	Autem lib	0	0	10	1	1	1	1
+165	Saepe assumenda perferendis f	0	0	10	1	1	1	1
+166	Deserunt	0	0	10	1	1	1	1
+167	Provident soluta simil	0	0	10	1	1	1	1
+168	In accu	0	0	10	1	1	1	1
+169	Inve	0	0	10	1	1	1	1
+170	Placeat sapiente	0	0	10	1	1	1	1
+171	Ducimus architecto ullam	0	0	10	1	1	1	1
+172	Voluptate tempora rerum	0	0	10	1	1	1	1
+173	Totam incidunt earum perspicia	0	0	10	1	1	1	1
+174	Optio quas e	0	0	10	1	1	1	1
+175	Ab illum invento	0	0	10	1	1	1	1
+176	Repellat quis natus totam, s	0	0	10	1	1	1	1
+177	Est voluptate accusantium tem	0	0	10	1	1	1	1
+178	Beatae q	0	0	10	1	1	1	1
+179	Velit	0	0	10	1	1	1	1
+180	Minus nequ	0	0	10	1	1	1	1
+181	Autem eos voluptates off	0	0	10	1	1	1	1
+182	Vel fug	0	0	10	1	1	1	1
+183	Architecto repudian	0	0	10	1	1	1	1
+184	Opti	0	0	10	1	1	1	1
+185	Iust	0	0	10	1	1	1	1
+186	Sapiente	0	0	10	1	1	1	1
+187	Officiis repellat corrupti su	0	0	10	1	1	1	1
+188	Dicta et natus e	0	0	10	1	1	1	1
+189	At quos	0	0	10	1	1	1	1
+190	Laborum ven	0	0	10	1	1	1	1
+191	Exceptur	0	0	10	1	1	1	1
+192	Reiciendis assumenda dolo	0	0	10	1	1	1	1
+193	Poss	0	0	10	1	1	1	1
+194	Acc	0	0	10	1	1	1	1
+195	Placeat esse archit	0	0	10	1	1	1	1
+196	Enim repellendus nihil est te	0	0	10	1	1	1	1
+197	Ipsam incidunt t	0	0	10	1	1	1	1
+198	Iure	0	0	10	1	1	1	1
+199	Illo en	0	0	10	1	1	1	1
+200	A rem ex	0	0	10	1	1	1	1
+201	Officiis su	0	0	10	1	1	1	1
+202	Numquam molestias	0	0	10	1	1	1	1
+203	Voluptates unde	0	0	10	1	1	1	1
+204	Quae praesentium vel	0	0	10	1	1	1	1
+205	Quas	0	0	10	1	1	1	1
+206	Dolores aliquid inv	0	0	10	1	1	1	1
+207	Mollitia tempore laborum eaqu	0	0	10	1	1	1	1
+208	Nobis voluptates fugiat quia	0	0	10	1	1	1	1
+209	Similique dolorem dolore maio	0	0	10	1	1	1	1
+210	Sapiente	0	0	10	1	1	1	1
+211	Officia nisi dolore	0	0	10	1	1	1	1
+212	Distinctio	0	0	10	1	1	1	1
+213	Eos quia dignissimos saepe vel	0	0	10	1	1	1	1
+214	Ullam neque sint eligendi	0	0	10	1	1	1	1
+215	Excepturi deleniti ab a	0	0	10	1	1	1	1
+216	Accusa	0	0	10	1	1	1	1
+217	Reiciendis laboriosam di	0	0	10	1	1	1	1
+218	Delectus ex	0	0	10	1	1	1	1
+219	Pari	0	0	10	1	1	1	1
+220	Veritatis velit facilis iste	0	0	10	1	1	1	1
+221	Dol	0	0	10	1	1	1	1
+222	Qui iste pr	0	0	10	1	1	1	1
+223	Deleni	0	0	10	1	1	1	1
+224	Reprehenderit volu	0	0	10	1	1	1	1
+225	Accusantium vitae n	0	0	10	1	1	1	1
+226	Natus consequatur incidun	0	0	10	1	1	1	1
+227	Dignissimos a	0	0	10	1	1	1	1
+228	Vitae modi	0	0	10	1	1	1	1
+229	Accusantium qu	0	0	10	1	1	1	1
+230	Reiciendis dignissimos ratio	0	0	10	1	1	1	1
+231	Expedita provident natus volup	0	0	10	1	1	1	1
+232	Rerum repellat voluptas c	0	0	10	1	1	1	1
+233	Maiores quos incidunt dolor	0	0	10	1	1	1	1
+234	Aper	0	0	10	1	1	1	1
+235	Nulla	0	0	10	1	1	1	1
+236	Laudantium tempora itaque	0	0	10	1	1	1	1
+237	Reprehenderit	0	0	10	1	1	1	1
+238	Aliqu	0	0	10	1	1	1	1
+239	Odio harum nam mole	0	0	10	1	1	1	1
+240	Arc	0	0	10	1	1	1	1
+241	Reprehenderit li	0	0	10	1	1	1	1
+242	Repr	0	0	10	1	1	1	1
+243	Optio m	0	0	10	1	1	1	1
+244	Esse odit amet rep	0	0	10	1	1	1	1
+245	Provident nostrum minima	0	0	10	1	1	1	1
+246	Ex nihil quae facilis a omni	0	0	10	1	1	1	1
+247	Dolorem quaerat sunt	0	0	10	1	1	1	1
+248	Distinctio	0	0	10	1	1	1	1
+249	Repudiandae ip	0	0	10	1	1	1	1
+250	Iste debitis dolorum amet m	0	0	10	1	1	1	1
+251	Non qui vo	0	0	10	1	1	1	1
+252	Dolorem ma	0	0	10	1	1	1	1
+253	Molestias labore tempore ita	0	0	10	1	1	1	1
+254	Vol	0	0	10	1	1	1	1
+255	Adipisci molest	0	0	10	1	1	1	1
+256	Omni	0	0	10	1	1	1	1
+257	Voluptatibus dolor	0	0	10	1	1	1	1
+258	Quo	0	0	10	1	1	1	1
+259	Atque aspernatur possi	0	0	10	1	1	1	1
+260	Ullam c	0	0	10	1	1	1	1
+261	Iusto quas voluptatibu	0	0	10	1	1	1	1
+262	Optio qui sunt dolores, ab	0	0	10	1	1	1	1
+263	Illum recusandae nulla re	0	0	10	1	1	1	1
+264	Verita	0	0	10	1	1	1	1
+265	Expedita quod blanditiis	0	0	10	1	1	1	1
+266	Mag	0	0	10	1	1	1	1
+267	Omnis quos aspernatur d	0	0	10	1	1	1	1
+268	Sunt impedit co	0	0	10	1	1	1	1
+269	Minima quam ea ad	0	0	10	1	1	1	1
+270	Suscipit quidem e	0	0	10	1	1	1	1
+271	Harum	0	0	10	1	1	1	1
+272	Dolore laborum ips	0	0	10	1	1	1	1
+273	Magni veniam earum corporis	0	0	10	1	1	1	1
+274	Optio	0	0	10	1	1	1	1
+275	Nam fugit vel.	0	0	10	1	1	1	1
+276	Ut numquam quam eum, alias ius	0	0	10	1	1	1	1
+277	Error amet tempore nulla	0	0	10	1	1	1	1
+278	Deserunt a	0	0	10	1	1	1	1
+279	Aperiam sit	0	0	10	1	1	1	1
+280	Asperi	0	0	10	1	1	1	1
+281	Similique aperiam earum expli	0	0	10	1	1	1	1
+282	Iure h	0	0	10	1	1	1	1
+283	At sint ducimus nostrum i	0	0	10	1	1	1	1
+284	Reprehenderit temporib	0	0	10	1	1	1	1
+285	Molestiae quaerat maxim	0	0	10	1	1	1	1
+286	Maior	0	0	10	1	1	1	1
+287	Unde natus ut ipsa cupi	0	0	10	1	1	1	1
+288	Praesentium atque ear	0	0	10	1	1	1	1
+289	Rem minima	0	0	10	1	1	1	1
+290	Provident sed soluta, sed si	0	0	10	1	1	1	1
+291	Natus quia veritatis	0	0	10	1	1	1	1
+292	Vero a	0	0	10	1	1	1	1
+293	Optio harum labori	0	0	10	1	1	1	1
+294	Duci	0	0	10	1	1	1	1
+295	Ipsa elige	0	0	10	1	1	1	1
+296	Sunt blanditiis i	0	0	10	1	1	1	1
+297	Doloremque	0	0	10	1	1	1	1
+298	Autem ratione vitae quos, do	0	0	10	1	1	1	1
+299	Voluptatibus aliquid	0	0	10	1	1	1	1
+300	Quaerat sequi sit eius corpori	0	0	10	1	1	1	1
+301	Libe	0	0	10	1	1	1	1
+302	Aliquam n	0	0	10	1	1	1	1
+\.
+
+
+--
+-- TOC entry 2817 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: charactercreator_character_character_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.charactercreator_character_character_id_seq', 302, true);
+
+
+--
+-- TOC entry 2687 (class 2606 OID 16576)
+-- Name: charactercreator_character charactercreator_character_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.charactercreator_character
+    ADD CONSTRAINT charactercreator_character_pkey PRIMARY KEY (character_id);
+
+
+-- Completed on 2019-02-19 16:33:40
+
+--
+-- PostgreSQL database dump complete
+--
+
