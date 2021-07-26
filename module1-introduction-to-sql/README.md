@@ -42,10 +42,9 @@ organized using the keyword `GROUP`.
 ## Assignment - Part 1, Querying a Database
 
 This directory contains a file `rpg_db.sqlite3`, a database for a hypothetical
-webapp role-playing game. This test data has dozens-to-hundreds of randomly
-generated characters across the base classes (Fighter, Mage, Cleric, and Thief)
-as well as a few Necromancers. Also generated are Items, Weapons, and
-connections from characters to them. Note that, while the name field was
+role-playing game. This test data has dozens-to-hundreds of randomly
+generated characters with various tables holding information about these characters. Also generated are Items, Weapons, and
+connections between these generated characters. Note that, while the name field was
 randomized, the numeric and boolean fields were left as defaults.
 
 Use `sqlite3` to load and write queries to explore the data, and answer the
@@ -55,7 +54,7 @@ file named `queries.py` and either run these queries in the file or import them
 into another: 
 
 - `TOTAL_CHARACTERS`: How many total Characters are there?
-- `TOTAL_SUBCLASS`: How many of each specific subclass (the necromancer table)?
+- `TOTAL_SUBCLASS`: How many of each specific subclass (the `necromancer` table)?
 - `TOTAL_ITEMS`: How many total Items?
 - `WEAPONS`: How many of the Items are weapons? 
 - `NON_WEAPONS`: How many of the items are not weapons?
