@@ -34,8 +34,8 @@ some of the specific functions that are different in PostgreSQL than SQLite.
 ## Assignment
 
 Reproduce (debugging as needed) the live lecture task of setting up and
-inserting the RPG data into a PostgreSQL database, and add the code you write to
-do so.
+inserting the RPG data into a PostgreSQL database. We walked through most of these
+steps in lesson but see if you can finish moving the `charactercreator_character` table.
 
 Then, set up a new table for the Titanic data (`titanic.csv`) - spend some time
 thinking about the schema to make sure it is appropriate for the columns.
@@ -44,6 +44,8 @@ be useful. Once it is set up, write a `insert_titanic.py` script that uses
 `psycopg2` to connect to and upload the data from the csv, and add the file to
 your repo. Then start writing PostgreSQL queries to explore the data!
 
+Please upload the `insert_titanic.py` python file to Canvas.
+ 
 ## Resources and Stretch Goals
 
 PostgreSQL is a real true powerful production database - explore the [official
