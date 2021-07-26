@@ -37,7 +37,7 @@ job interviews.
 
 ## Assignment
 
-Practice! Go back to both your deployed PostgreSQL (Titanic data) and MongoDB
+Go back to both your deployed PostgreSQL (Titanic data) and MongoDB
 (RPG data) instances - use [MongoDB
 queries](https://docs.mongodb.com/manual/tutorial/query-documents/) to answer
 the same questions as you did from the first module (when the RPG data was in
@@ -51,10 +51,7 @@ SQLite):
 - On average, how many Weapons does each character have?
 
 
-
-
-
-With PostgreSQL, answer the following:
+Then with PostgreSQL, answer the following about the your titanic database:
 
 - How many passengers survived, and how many died?
 - How many passengers were in each class?
@@ -70,23 +67,19 @@ With PostgreSQL, answer the following:
   `Mrs.`) with the same last name and with at least 1 sibling/spouse aboard are
   a married couple.
 
+Please compare and contrast the difference between these forms of querying and relate it back to the differences discussed in lesson today.
+Please turn into Canvas your list of PostGreSQL and MongoDB database queries - this can be in any format (`.py`, .`ipynb`, etc.).
+
 ## Resources and Stretch Goals
 
-The assignment drilled core SQL, but *didn't* review joins - revisit the RPG
+The assignment covered core SQL, but *didn't* review joins - revisit the RPG
 data, and do more joins (explicit or implicit) to make sure you understand how
 to connect data across tables.
-
-If you got the Titanic data in your MongoDB cluster - see if you can also answer
-the above questions using MongoDB!
 
 Read up on [database
 normalization](https://en.wikipedia.org/wiki/Database_normalization) - a variety
 of formal techniques for reducing the redundancy of data stored in a relational
 database.
-
-Keep working on your written summary from the "before lecture" exercise, and
-grow it into a proper blog post. Consider focusing it on one particular
-technology or technique, and compare/contrast it with the alternatives.
 
 Get more reps in! Check out [SQLBolt](https://sqlbolt.com/) and [w3schools SQL
 Tutorial](https://www.w3schools.com/sql/), both of which include interactive
