@@ -18,8 +18,7 @@ these, consider the following questions:
 - What was hard about using this technology?
 - What more would you like to learn about it?
 
-Write a summary in the style of a possible blog post, and bring the
-questions/discussion to class. Bonus - later on, follow up and complete a real
+Write a summary in the style of a possible blog post, and be prepared with questions and/or discussion topics into class. Bonus - later on, follow up and complete a real
 blog post about different database technologies!
 
 ## Live Lecture Task
@@ -40,15 +39,15 @@ job interviews.
 Go back to both your deployed PostgreSQL (Titanic data) and MongoDB
 (RPG data) instances - use [MongoDB
 queries](https://docs.mongodb.com/manual/tutorial/query-documents/) to answer
-the same questions as you did from the first module (when the RPG data was in
+the questions from the first module (when the RPG data was in
 SQLite):
 - How many total Characters are there?
 - How many total Items?
-- How many of the Items are weapons? How many are not?
-- How many Items does each character have? (Return first 20 rows)
-- How many Weapons does each character have? (Return first 20 rows)
+- How many of the Items are Weapons? How many are not?
+- How many Items does each Character have? (Return first 20 rows)
+- How many Weapons does each Character have? (Return first 20 rows)
 - On average, how many Items does each Character have?
-- On average, how many Weapons does each character have?
+- On average, how many Weapons does each Character have?
 
 
 Then with PostgreSQL, answer the following about the your titanic database:
@@ -62,19 +61,20 @@ Then with PostgreSQL, answer the following about the your titanic database:
 - How many siblings/spouses aboard on average, by passenger class? By survival?
 - How many parents/children aboard on average, by passenger class? By survival?
 - Do any passengers have the same name?
-- (Bonus! Hard, may require pulling and processing with Python) How many married
-  couples were aboard the Titanic? Assume that two people (one `Mr.` and one
-  `Mrs.`) with the same last name and with at least 1 sibling/spouse aboard are
-  a married couple.
 
 Please compare and contrast the difference between these forms of querying and relate it back to the differences discussed in lesson today.
 Please turn into Canvas your list of PostGreSQL and MongoDB database queries - this can be in any format (`.py`, .`ipynb`, etc.).
 
 ## Resources and Stretch Goals
 
+#### Stretch:
+Using the PostGreSQL Titanic Database, how many married couples were aboard the Titanic? Assume that two people (one `Mr.` and one `Mrs.`) with the same last name and with at least 1 sibling/spouse aboard are a married couple.
+
 The assignment covered core SQL, but *didn't* review joins - revisit the RPG
 data, and do more joins (explicit or implicit) to make sure you understand how
 to connect data across tables.
+
+#### Resources: 
 
 Read up on [database
 normalization](https://en.wikipedia.org/wiki/Database_normalization) - a variety
@@ -83,5 +83,5 @@ database.
 
 Get more reps in! Check out [SQLBolt](https://sqlbolt.com/) and [w3schools SQL
 Tutorial](https://www.w3schools.com/sql/), both of which include interactive
-exercises. Mastering SQL is all about practice, so get it down now and you'll be
+exercises. Mastering SQL is all about practice, so continue to work on it regularly and you'll be
 confident for your job interviews.
