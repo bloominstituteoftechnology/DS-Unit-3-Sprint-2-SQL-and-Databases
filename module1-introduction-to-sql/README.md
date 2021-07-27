@@ -1,6 +1,5 @@
 # Introduction to SQL
-
-The basics of Structured Query Language, a relatively simple query language.
+We will be introduced to the basics of Structured Query Language (SQL) - SQL is the primary tool used to connect to a relational database.
 
 ## Learning Objectives
 
@@ -115,6 +114,8 @@ When you submit your files to Canvas you should upload `queries.py`,
 
 ## Resources and Stretch Goals
 
+#### Stretch:
+
 For a more complicated example SQLite database with a number of tables to play
 with, check out this [SQLite Sample
 Database](https://www.sqlitetutorial.net/sqlite-sample-database/).
@@ -126,19 +127,3 @@ module](https://docs.python.org/3.5/library/json.html), and reproducing the
 above queries with direct manipulation of the Python dictionaries. Also, try to
 load it into a `pandas` dataframe and reproduce the above queries with
 appropriate dataframe function calls.
-
-This database is part of a Django (Python webapp framework) application, the
-[Django-RPG](https://github.com/LambdaSchool/Django-RPG/tree/master) - check it
-out, and (though this is very much a stretch goal) you can [get started with
-Django](https://www.djangoproject.com/start/) and see if you can run it
-(definitely use `pipenv`!). If you are able to, then you can use the the [Django
-ORM](https://docs.djangoproject.com/en/2.1/topics/db/) (object-relational
-mapping, a way to interact with SQL through programming language objects), and
-[query](https://docs.djangoproject.com/en/2.1/topics/db/queries/) the data.
-You'll find that the questions we answered with pure SQL are remarkably simple
-to answer using the ORM.
-
-If you need one more stretch goal - the RPG data was generated using
-[django-autofixture](https://github.com/volrath/django-autofixture), a tool that
-facilitates tests by randomly generating data. Check it out, and if you got
-Django working, see if you can generate more data.
