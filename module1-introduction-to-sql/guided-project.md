@@ -352,8 +352,8 @@ You can also indicate ascending and descending when sorting alphabetically. `DES
 SELECT name,COUNT(*)
 FROM charactercreator_character
 GROUP BY name
-ORDER BY COUNT(*) DESC
-WHERE COUNT(*)>1;
+HAVING COUNT(*)>1
+ORDER BY COUNT(*) DESC;
 ```
 
 ### Use an alias to refer to a selection
@@ -362,8 +362,58 @@ WHERE COUNT(*)>1;
 SELECT name,COUNT(*) as total_name_repeated
 FROM charactercreator_character
 GROUP BY name
-ORDER BY total_name_repeated DESC
-WHERE total_name_repeated>1;
+HAVING total_name_repeated>1
+ORDER BY total_name_repeated DESC;
 ```
 
 Notice that when we use an alias, the column header of our attribute is renamed to have the alias as the column header.
+
+[Order of Execution of Query Statements](https://sqlbolt.com/lesson/select_queries_order_of_execution)
+
+[Difference between the WHERE and HAVING statements](https://www.geeksforgeeks.org/difference-between-where-and-having-clause-in-sql/)
+
+## Multi-table Queries
+
+Suppose we wanted to get the names of all Mage characters who have pets.
+
+Notice that the character names and whether or not they have pets are pieces of information that are found in two different tables. In order to answer this question we'll need to "JOIN" these tables together so that all of their information is in one place.
+
+When we join two tables we have to match up up corresponding information in the two tables using some kind of ID. In this case we can use the `character_id` and `character_ptr_id` since this is the same character_id living in both tables. However, since not every character is a mage not every character_id will exist in the `charactercreator_mage` table.
+
+```SQL
+SELECT name, has_pet
+FROM charactercreator_mage
+INNER JOIN charactercreator_character
+ON charactercreator_mage.character_ptr_id = charactercreator_character.character_id
+```
+
+We start off the query stating the columns that we want to associate with one another in this case `name` and `has_pet`. Then we'll state the first of the two tables where the information can be found, and then state what type of join we want to perform. 90% of the time you'll be doing an `INNER JOIN`. An inner join simply means that if we can't find matching IDs between the two tables that we will leave that character out of the final results.
+
+It actualy doesn't matter which table we select from and which table we join to, we can switch the tables in the `FROM` and `INNER JOIN` statements and we'll get the same result.
+
+```SQL
+SELECT name, has_pet
+FROM charactercreator_character 
+INNER JOIN charactercreator_mage
+ON charactercreator_mage.character_ptr_id = charactercreator_character.character_id
+```
+
+There are four ways of joining tables:
+
+- `INNER JOIN`: Returns records that have matching values in both tables
+- `RIGHT (OUTER) JOIN`: Returns all records from the right table and includes any data from the right table where a match was found.
+- `LEFT (OUTER) JOIN`: Returns all records from the left table and includes any data from the right table where a match was found.
+- `FULL (OUTER) JOIN`: Returns all records
+
+SQLite only supports `INNER` and `LEFT`joins at the moment, but these two should get you everything that you need. Let's try a LEFT join as well.
+
+```SQL
+SELECT name, has_pet
+FROM charactercreator_character 
+LEFT JOIN charactercreator_mage
+ON charactercreator_mage.character_ptr_id = charactercreator_character.character_id
+```
+
+Notice that when we do a `LEFT` join when we get a bunch of `NULL` values in the `has_pet` column. This is because we have included all records from `charactercreator_character` The left-hand --or first stated-- table regardless of if their IDs are present (matching) in the `charactercreator_mage` table.
+
+[All about SQL Joins](https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/)
