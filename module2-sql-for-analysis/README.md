@@ -1,13 +1,15 @@
-# Sprint 2 Module 2 - 
+# Sprint 2 Module 2 -
 
 ## Learning Objectives
+
 * Deploy and use a simple PostgreSQL database
 * Create a data pipeline with SQL
 
 ## Before Lecture
+
 Sign up for a free [ElephantSQL](https://www.elephantsql.com/) account. This will allow you to run a "cloud" PostgreSQL instance (20mb). If you wish, you may also install [PostgreSQL](https://www.postgresql.org/) locally, which facilitates larger databases, but is not necessary for our daily tasks.
 
-You can also install [pgAdmin](https://www.pgadmin.org/), which (like the DB Browser for SQLite) lets you connect to, explore, and query databases using a Graphical User Interface (GUI) tool. This is optional, but can be pretty important when connecting to the database and getting a better visual representation of the DB.
+You can also install [pgAdmin](https://www.pgadmin.org/), which (like the DB Browser for SQLite) lets you connect to, explore, and query databases using a Graphical User Interface (GUI) tool. This is optional, but can be really helpful when connecting to the database and getting a better visual representation of the DB.
 
 ## Guided Project
 
