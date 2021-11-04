@@ -17,7 +17,7 @@ Go back to both your deployed PostgreSQL (Titanic data) and MongoDB
 - How many parents/children aboard on average, by passenger class? By survival?
 - Do any passengers have the same name?
 
-# Part 2 - MongoDB RPG Data
+## Part 2 - MongoDB RPG Data
 
 Use [MongoDB
 queries](https://docs.mongodb.com/manual/tutorial/query-documents/) to answer
@@ -35,5 +35,3 @@ SQLite):
 Please compare and contrast the difference between these forms of querying and relate it back to the differences discussed in lesson today.
 
 Please turn into Canvas your list of PostgreSQL and MongoDB database queries - this can be in any format (`.py`, .`ipynb`, etc.).
-
-
