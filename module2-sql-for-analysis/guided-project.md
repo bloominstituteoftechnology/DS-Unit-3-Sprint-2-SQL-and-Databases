@@ -25,7 +25,7 @@ Inside of the `DS##_databases` folder that we worked in yesterday, make a new su
 
 Make a new file inside of this folder called `pipeline.py`.
 
-Download a [fresh copy](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/rpg_db.sqlite3) of the `rpg_db.sqlite3` database that we were working with yesterday and move it into your `postgresql_example` folder alongside your `pipeline.py`.
+Download a [fresh copy](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/rpg_db.sqlite3) of the `rpg_db.sqlite3` database that we were working with yesterday and move it into your `postgresql_example` folder alongside your `pipeline.py`.
 
 ## Create a Virtual Environment for this project
 

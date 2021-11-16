@@ -24,11 +24,11 @@ inspection and querying.
 
 ## Live Lecture Task
 
-[See guided-project.md](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/guided-project.md)
+[See guided-project.md](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/guided-project.md)
 
 ## Assignment
 
-[See assignment.md](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/assignment.md)
+[See assignment.md](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/assignment.md)
 
 ## Stretch Goals
 
@@ -39,7 +39,7 @@ with, check out this [SQLite Sample
 Database](https://www.sqlitetutorial.net/sqlite-sample-database/).
 
 The RPG data also exists in a [JSON
-file](https://github.com/LambdaSchool/Django-RPG/blob/master/testdata.json) -
+file](https://github.com/BloomInstituteOfTechnology/Django-RPG/blob/master/testdata.json) -
 try loading it with the standard [json
 module](https://docs.python.org/3.5/library/json.html), and reproducing the
 above queries with direct manipulation of the Python dictionaries. Also, try to

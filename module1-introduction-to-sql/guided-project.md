@@ -31,11 +31,11 @@ If you don't have Git and SSH keys installed yet, just create a new folder on yo
 
 ### Download the database for local use
 
-[Download the `rgb_db.sqlite3` file](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/rpg_db.sqlite3) from this week's repository.
+[Download the `rgb_db.sqlite3` file](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/rpg_db.sqlite3) from this week's repository.
 
 Within DB Browser, select the `Open Database` button and use the file browser to open the `rgb_db.sqlite3` file. Once you have it open, feel free to click through some of the table "Schemas" on the left-hand side. The table attributes with little gold key icons next to them are called "primary keys" and the ones with silver keys next to them are called "secondary keys." They are the most important fields in the database table.
 
-You can refer to [this image](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/schema.png) to see an overview of the structure of the rgb database.
+You can refer to [this image](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module1-introduction-to-sql/schema.png) to see an overview of the structure of the rgb database.
 
 The database keys are what controls the "relations" in this relational database. When any record is created in a database it has to have all of the elements required by the schema in that table. Note all of the "NOT NULL" indicators in the `schema.png` file. Each record within a table is assigned a primary ID at the moment that it is created. In the database's eyes this ID is how that record will be identified. The database is very fast at querying records by ID. Primary keys are assigned when we add a record to a table, secondary keys point to a record in a different table to relate those two items to each other.
 

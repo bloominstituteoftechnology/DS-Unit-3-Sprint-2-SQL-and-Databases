@@ -2,7 +2,7 @@
 
 Another database, same data? Let's try to store the RPG data in our MongoDB instance, and learn about the advantages and disadvantages of the NoSQL paradigm in the process. We will depend on [PyMongo](https://pymongo.readthedocs.io/en/stable/) to connect to the database.
 
-Note - the [JSON](https://github.com/LambdaSchool/Django-RPG/blob/master/testdata.json) representation of the data is likely to be particularly useful for this purpose.
+Note - the [JSON](https://github.com/BloomInstituteOfTechnology/Django-RPG/blob/master/testdata.json) representation of the data is likely to be particularly useful for this purpose.
 
 Before we start today's Guided Project, make sure you have an [MongoDB Atlas account](https://www.mongodb.com/cloud/atlas).
 
@@ -74,7 +74,7 @@ On the next screen just leave the default options. We'll let AWS host our DB fro
 
 ![Shared cluster hosted on AWS](aws-virginia.png)
 
-If you already have MongoDB account, I recommend making a new project for your Lambda School work and then making a new cluster within that project. You should see screens similar to what I've shown above when you create your cluster. It make take 1-3 minutes for your cluster to become available after creating it.
+If you already have MongoDB account, I recommend making a new project for your BloomTech work and then making a new cluster within that project. You should see screens similar to what I've shown above when you create your cluster. It make take 1-3 minutes for your cluster to become available after creating it.
 
 ## Add a new Database User
 

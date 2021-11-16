@@ -23,11 +23,11 @@ blog post about different database technologies!
 
 ## Live Lecture Task
 
-[See guided-project.md](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module4-acid-and-database-scalability-tradeoffs/guided-project.md)
+[See guided-project.md](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module4-acid-and-database-scalability-tradeoffs/guided-project.md)
 
 ## Assignment
 
-[See guided-project.md](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module4-acid-and-database-scalability-tradeoffs/assignment.md)
+[See guided-project.md](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module4-acid-and-database-scalability-tradeoffs/assignment.md)
 
 ### Stretch Goals
 

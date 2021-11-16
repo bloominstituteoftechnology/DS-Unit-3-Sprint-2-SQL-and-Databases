@@ -13,11 +13,11 @@ Sign up for an account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas), 
 
 ## Live Lecture Task
 
-[See guided-project.md](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module3-nosql-and-document-oriented-databases/guided-project.md)
+[See guided-project.md](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module3-nosql-and-document-oriented-databases/guided-project.md)
 
 ## Assignment
 
-[See assignment.md](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module3-nosql-and-document-oriented-databases/assignment.md)
+[See assignment.md](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module3-nosql-and-document-oriented-databases/assignment.md)
 
 ## Resources and Stretch Goals
 

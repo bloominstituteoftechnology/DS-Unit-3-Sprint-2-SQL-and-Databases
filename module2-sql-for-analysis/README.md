@@ -13,11 +13,11 @@ You can also install [pgAdmin](https://www.pgadmin.org/), which (like the DB Bro
 
 ## Guided Project
 
-[See guided-project.md](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module2-sql-for-analysis/guided-project.md)
+[See guided-project.md](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module2-sql-for-analysis/guided-project.md)
 
 ## Assignment
 
-[See assignment.md](https://github.com/LambdaSchool/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module2-sql-for-analysis/assignment.md)
+[See assignment.md](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module2-sql-for-analysis/assignment.md)
 
 ## Stretch Goals
 
