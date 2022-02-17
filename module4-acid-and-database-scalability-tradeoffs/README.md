@@ -27,7 +27,7 @@ blog post about different database technologies!
 
 ## Assignment
 
-[See guided-project.md](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module4-acid-and-database-scalability-tradeoffs/assignment.md)
+[See assignment.md](https://github.com/BloomInstituteOfTechnology/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module4-acid-and-database-scalability-tradeoffs/assignment.md)
 
 ### Stretch Goals
 
