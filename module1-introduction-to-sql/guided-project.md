@@ -19,7 +19,7 @@ organized using the keyword `GROUP`.
 
 ## Before the Guided Project
 
-Make sure you have download [DB Browser for SQLite](v)
+Make sure you have download [DB Browser for SQLite](https://sqlitebrowser.org/dl/)
 
 ## Guided Project Walkthrough
 
