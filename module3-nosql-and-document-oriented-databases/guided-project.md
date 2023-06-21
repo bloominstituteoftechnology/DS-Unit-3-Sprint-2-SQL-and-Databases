@@ -116,7 +116,7 @@ Next, you'll see a new menu where we will tell the DB the "driver" aka programmi
 
 ![Connection String Menu](connection-string.png)
 
-In this menu **YOU MUST CHANGE THE DROPDOWN MENU FROM Node.js TO Python!!** For the Python version select 3.6 or later.
+In this menu **YOU MUST CHANGE THE DROPDOWN MENU FROM Node.js TO Python!!** For the Python Driver version select newest version. Contrary to popular belief, this is refering to the PyMongo driver version, not the version of Python! Always select the newest version unless you really need to support an older version of PyMongo.
 
 Copy the connection string, hit "Close" and head back to Google Colab where we'll use the connection string to make our first connection to the DB.
 
