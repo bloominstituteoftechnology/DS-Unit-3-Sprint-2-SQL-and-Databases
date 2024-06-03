@@ -2,11 +2,11 @@
 
 **IMPORTANT NOTE**
 
-The following Guided Project demonstrates using a cloud PostgreSQL service called ElephantDB, which has since stopped taking new sign ups, to accomplish the project's objectives.
+The following Guided Project demonstrates using a cloud PostgreSQL service called ElephantSQL, which has since stopped taking new sign ups, to accomplish the project's objectives.
 
 In order to follow along, some adjustments must be made:
 
-1. Use [Aiven.io](https://aiven.io/) instead of ElephantDB as demonstrated in Learning Objective 1 in this module.
+1. Use [Aiven.io](https://aiven.io/) instead of ElephantSQL as demonstrated in Learning Objective 1 in this module.
 2. Connect to and interact with your database from your Python code as demonstrated in Learning Objective 2.
 
 Yesterday we used a simple local workflow with SQLite - today, we'll work on inserting the same RPG data into a more production-style PostgreSQL database running on a server. We will use [psycopg](http://initd.org/psycopg/), a Python library for connecting to PostgreSQL, and specifically we will install [psycopg2-binary](https://pypi.org/project/psycopg2-binary/).
