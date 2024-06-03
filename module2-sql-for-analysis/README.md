@@ -7,9 +7,9 @@
 
 ## Before Lecture
 
-Sign up for a free [ElephantSQL](https://www.elephantsql.com/) account. This will allow you to run a "cloud" PostgreSQL instance (20mb). If you wish, you may also install [PostgreSQL](https://www.postgresql.org/) locally, which facilitates larger databases, but is not necessary for our daily tasks.
+Sign up for a free [Aiven.io](https://aiven.io/) account. This will allow you to run a "cloud" PostgreSQL instance. If you wish, you may also install [PostgreSQL](https://www.postgresql.org/) locally, which facilitates larger databases, but is not necessary for our daily tasks.
 
-You can also install [pgAdmin](https://www.pgadmin.org/), which (like the DB Browser for SQLite) lets you connect to, explore, and query databases using a Graphical User Interface (GUI) tool. This is optional, but can be really helpful when connecting to the database and getting a better visual representation of the DB.
+You must also install [DBeaver Community](https://dbeaver.io/download/), which (like the DB Browser for SQLite) lets you connect to, explore, and query databases using a Graphical User Interface (GUI) tool.
 
 ## Guided Project
 
